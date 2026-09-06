@@ -6,13 +6,26 @@ The suite is intentionally format-neutral: it supports Markdown, LaTeX, Word-ori
 
 ---
 
+## Provenance & Attribution (Fork Information)
+
+> [!NOTE]
+> This project builds upon and extends the work from [santifs/thesis-writing-skill](https://github.com/santifs/thesis-writing-skill), from which it was originally forked.
+>
+> While the original repository provided the core `thesis-writing` skill, this repository significantly broadens the scope into a comprehensive, modular suite by adding dedicated modules for:
+> - Research Objectives Definition & Pitfall Avoidance (`objectives-writting/`)
+> - Academic Paragraph Architecture & Typologies (`parragraph-structure/`)
+> - Academic Citations & APA 7th Referencing (`reference-writting/`)
+> - Academic Writing Tools, Punctuation & Formatting Conventions (`writting-tools/`)
+
+---
+
 ## Suite Architecture & Modules
 
 The repository is organized into five specialized, interconnected modules:
 
 ```text
 pdg-writtting/
-├── thesis-writing/          # Global thesis orchestration & end-to-end workflow
+├── thesis-writing/          # Global thesis orchestration & end-to-end workflow (from upstream)
 ├── objectives-writting/      # Formulation & audit of research objectives
 ├── parragraph-structure/    # Academic paragraph architecture & typologies
 ├── reference-writting/      # Attribution, direct quotes & paraphrasing (APA 7th)
@@ -93,6 +106,14 @@ cp -R thesis-writing objectives-writting parragraph-structure reference-writting
 # Claude / Antigravity
 cp -R thesis-writing objectives-writting parragraph-structure reference-writting writting-tools ~/.claude/skills/
 ```
+
+---
+
+## Acknowledgments & Upstream Repository
+
+This project is a fork of and contains foundational material from:
+- **Original Repository:** [santifs/thesis-writing-skill](https://github.com/santifs/thesis-writing-skill)
+- **Original Author:** [santifs](https://github.com/santifs)
 
 ---
 
