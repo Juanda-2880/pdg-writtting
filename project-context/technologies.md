@@ -4,7 +4,7 @@ This document defines the technology stack, architectural layers, orchestration 
 
 ---
 
-## 1. High-Level Architectural Layers
+## 1. High-Level Architectural Layers (This archecture has not been defined fully yet, but the following is a preliminary outline of the system's layered architecture.)
 
 The system architecture is structured across four primary layers:
 

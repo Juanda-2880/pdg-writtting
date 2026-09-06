@@ -1,0 +1,6 @@
+# Ignore all generated/temporary build artifacts in this directory.
+# Agents write scratch and compiled output here so source folders stay clean.
+*
+!.gitignore
+!.gitkeep
+!README.md

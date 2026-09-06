@@ -1,0 +1,102 @@
+% ==========================================================================
+% Main document for the IAsLab PDG thesis (Universidad Icesi).
+% See README.md in this folder before editing — chapters live in
+% chapters/, one file each, precisely so an agent can read/edit just the
+% section it needs instead of this whole document.
+% ==========================================================================
+\documentclass[letterpaper,11pt]{report}
+\input{../latex/preamble} % shared preamble — see ../latex/README.md; edit
+                          % there, not a local copy, so the whole thesis
+                          % stays on one preamble.
+
+\begin{document}
+
+% --- Title page ------------------------------------------------------------
+\begin{titlepage}
+\begin{center}
+
+\doublespacing
+% [verify: confirm the exact official Spanish title with the tutor before
+% the first real submission — this is a working title from
+% project-context/documentation.md's "Formulation of Objectives", not a
+% confirmed final title.]
+{\Huge \textbf{Extensión del sistema web de IAsLab: despliegue distribuido de modelos de inteligencia artificial, gobernanza y monitoreo de infraestructura}}\\[3cm]
+
+\singlespacing
+
+\textsc{\Large Proyecto de Grado}\\[1cm]
+
+Presentado como parte de los requisitos para obtener el título de \\
+Ingeniero(a) de Sistemas \\[3cm]
+% [verify: confirm exact degree title/wording with the program]
+
+por \\[0.5cm]
+
+\textsc{\Large Juan Jose De La Pava}\\
+\textsc{\Large Juan David Pacheco Vargas}\\
+\textsc{\Large Juan Camilo Melo}\\[1cm]
+
+\large{Tutor:} Kevin David Rodríguez Belalcázar \\
+\large{Profesor acompañante:} Alejandro Muñoz Bravo \\
+
+\vfill
+
+{\Large Departamento de Computación y Sistemas Inteligentes}\\[0.3cm]
+{\Large Facultad Barberi de Ingeniería, Diseño y Ciencias Aplicadas}\\[0.5cm]
+
+\large Universidad Icesi\\
+\large 2026\\
+
+\end{center}
+\end{titlepage}
+
+\pagenumbering{roman}
+
+\setlength{\cftparskip}{0pt}
+\setlength{\cftbeforesecskip}{0.2em}
+\tableofcontents
+\pagebreak
+
+\listoftables
+\pagebreak
+
+\listoffigures
+\pagebreak
+
+\sloppy
+
+% --- Resumen / Abstract -----------------------------------------------------
+% Write these LAST, once the thesis is otherwise complete — see
+% thesis-writing/structure.md item 1 and thesis-writing/SKILL.md Mode 2.
+\chapter*{Resumen}
+% [verify: not yet written]
+
+\noindent \textbf{Palabras Clave}: % [verify]
+
+\chapter*{Abstract}
+% [verify: not yet written]
+
+\noindent \textbf{Keywords}: % [verify]
+
+\clearpage
+\pagenumbering{arabic}
+
+% --- Chapters ----------------------------------------------------------------
+% Undergraduate/TFG structure per thesis-writing/structure.md. Add/reorder
+% chapters only through the Coordinador (agent-roles/Coordinador.md) — and
+% update STATUS.md and this list together, never one without the other.
+\include{chapters/01-introduccion}
+\include{chapters/02-marco-teorico}
+\include{chapters/03-metodologia}
+\include{chapters/04-resultados}
+\include{chapters/05-discusion}
+\include{chapters/06-conclusiones}
+
+% --- Bibliography (APA 7 via natbib+apalike, see ../latex/preamble.tex) ----
+\bibliography{references}
+
+% --- Appendices --------------------------------------------------------------
+\appendix
+\include{chapters/99-anexos}
+
+\end{document}

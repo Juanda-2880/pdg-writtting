@@ -5,6 +5,14 @@ This directory contains the foundational specifications, institutional documenta
 
 ---
 
+## Authors:
+
+This project and thesis is developed by the following students of the **Universidad Icesi**:
+
+- Juan Jose De La Pava
+- Juan David Pacheco Vargas
+- Juan Camilo Melo
+
 ## File Overview
 
 | File | Description |

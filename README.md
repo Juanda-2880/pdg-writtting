@@ -22,16 +22,21 @@ The suite is intentionally format-neutral: it supports Markdown, LaTeX, Word-ori
 
 ## Suite Architecture & Modules
 
-The repository is organized into six specialized, interconnected modules:
+The repository is organized into six writing-reference modules, plus a multi-agent harness (agent roles, a LaTeX configuration module, and a scratch build directory) that governs how AI agents use them, plus the actual thesis document itself:
 
 ```text
 pdg-writtting/
-├── project-context/         # Institutional PDG charter, requirements & tech stack
-├── thesis-writing/          # Global thesis orchestration & end-to-end workflow (from upstream)
+├── CLAUDE.md                # Harness-wide rules every agent must follow
+├── agent-roles/              # Multi-agent workflow: Coordinador, Investigador, Redactor, Revisor
+├── compiled-output/          # Scratch directory for generated/compiled artifacts (gitignored)
+├── latex/                    # LaTeX config, build rules & skill (preamble, Makefile, citation setup)
+├── thesis/                   # The actual thesis document — one file per chapter, see thesis/README.md
+├── project-context/          # Institutional PDG charter, requirements & tech stack
+├── thesis-writing/           # Global thesis orchestration & end-to-end workflow (from upstream)
 ├── objectives-writting/      # Formulation & audit of research objectives
-├── parragraph-structure/    # Academic paragraph architecture & typologies
-├── reference-writting/      # Attribution, direct quotes & paraphrasing (APA 7th)
-└── writting-tools/          # APA formatting, paragraph mechanics & punctuation
+├── parragraph-structure/     # Academic paragraph architecture & typologies
+├── reference-writting/       # Attribution, direct quotes & paraphrasing (APA 7th)
+└── writting-tools/           # APA formatting, paragraph mechanics & punctuation
 ```
 
 ---
@@ -69,7 +74,29 @@ Ethical and technical standards for attributing external scholarship under APA 7
 - **Indirect Citations & Paraphrasing:** Synthesis of single and multi-source literature, narrative vs. parenthetical citations, and reporting verb taxonomies.
 - **Error Avoidance:** Preventing patchwriting, quote over-reliance, and attribution boundaries blurring.
 
-### 6. [`writting-tools/`](./writting-tools/README.md)
+### 6. [`agent-roles/`](./agent-roles/README.md)
+The multi-agent workflow that turns the modules above into a repeatable writing process:
+- **Coordinador:** Plans tasks, assigns work, tracks thesis status; the only role that makes structural decisions.
+- **Investigador:** Sources and verifies evidence from `project-context/` and outside literature; flags gaps instead of guessing.
+- **Redactor:** Drafts prose/LaTeX from approved outlines and verified evidence, applying the modules above.
+- **Revisor:** Runs the micro/macro review checklist, checks citations and structure, validates the build.
+
+### 7. [`compiled-output/`](./compiled-output/README.md)
+A gitignored scratch directory where agents write generated or compiled artifacts (LaTeX build files, draft exports, test compilations) so the source modules stay clean.
+
+### 8. [`latex/`](./latex/README.md)
+LaTeX configuration, build tooling, and a dedicated skill so agents don't reinvent the toolchain each session:
+- **Preamble & build**: a ready-to-copy `preamble.tex`, `Makefile`, and `latexmkrc` (report class, Spanish/babel, `latexmk`, output routed to `compiled-output/`).
+- **APA 7 citations in LaTeX**: `natbib` + `apalike`, chosen to match `reference-writting/` and `writting-tools/normas-APA.md`.
+- **Semantic-markup rules**: correct `description`/`itemize`/`enumerate` use, `cleveref` cross-references, `csquotes` quotations, `booktabs`/`longtable` tables.
+
+### 9. [`thesis/`](./thesis/README.md)
+The actual thesis document — real, submittable content, not guidance:
+- **One file per chapter** under `chapters/`, so an agent can read/edit a single section instead of loading 60+ pages of prose into context.
+- **`STATUS.md`**: the single source of truth for what's drafted/under review/approved, kept current by the Coordinador role.
+- **`main.tex`**: a thin skeleton (`\input{../latex/preamble}` + `\include{chapters/...}`) — never the place to "see the whole thesis."
+
+### 10. [`writting-tools/`](./writting-tools/README.md)
 Technical reference manuals and orthographic conventions:
 - **APA 7th Standard:** Margins, font recommendations, 5-level heading hierarchy, empirical table/figure structures, and reference lists.
 - **Paragraph Integration:** Informational flow, the Given-New principle, and avoiding loose demonstratives.
@@ -96,7 +123,12 @@ Instruct your AI coding or writing assistant to leverage the relevant module bas
 
 # Referencing & Attribution
 "Use reference-writting and writting-tools to format these external citations and tables according to APA 7th."
+
+# Multi-agent thesis writing (Claude Code)
+"Act as the Coordinador (see agent-roles/) and plan the next task for drafting Chapter 3."
 ```
+
+For Claude Code specifically, [`CLAUDE.md`](./CLAUDE.md) is loaded automatically and defines the harness-wide rules (structure/README sync, where generated output goes, the agent-role workflow, no invented facts/citations) — read it before working in this repo.
 
 ---
 

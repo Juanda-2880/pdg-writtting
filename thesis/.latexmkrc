@@ -1,0 +1,12 @@
+# latexmk config for the IAsLab PDG thesis document (copied from
+# ../latex/latexmkrc — see ../latex/README.md).
+
+$pdf_mode = 1;          # produce PDF via pdflatex
+$bibtex_use = 2;        # rerun bibtex whenever the .bib changes, not just once
+$pdflatex = 'pdflatex -interaction=nonstopmode -synctex=1 %O %S';
+
+# Keep every intermediate/auxiliary file inside compiled-output/ (the
+# -outdir flag passed on the command line/Makefile already does this; these
+# extra clean targets just teach `latexmk -C` about the extra extensions
+# our packages produce, e.g. bibtex's .bbl/.blg and tikz externalization).
+$clean_ext = "bbl blg run.xml bcf synctex.gz";
