@@ -12,6 +12,7 @@ The suite is intentionally format-neutral: it supports Markdown, LaTeX, Word-ori
 > This project builds upon and extends the work from [santifs/thesis-writing-skill](https://github.com/santifs/thesis-writing-skill), from which it was originally forked.
 >
 > While the original repository provided the core `thesis-writing` skill, this repository significantly broadens the scope into a comprehensive, modular suite by adding dedicated modules for:
+> - Degree Project Context, Requirements & Technologies (`project-context/`)
 > - Research Objectives Definition & Pitfall Avoidance (`objectives-writting/`)
 > - Academic Paragraph Architecture & Typologies (`parragraph-structure/`)
 > - Academic Citations & APA 7th Referencing (`reference-writting/`)
@@ -21,10 +22,11 @@ The suite is intentionally format-neutral: it supports Markdown, LaTeX, Word-ori
 
 ## Suite Architecture & Modules
 
-The repository is organized into five specialized, interconnected modules:
+The repository is organized into six specialized, interconnected modules:
 
 ```text
 pdg-writtting/
+├── project-context/         # Institutional PDG charter, requirements & tech stack
 ├── thesis-writing/          # Global thesis orchestration & end-to-end workflow (from upstream)
 ├── objectives-writting/      # Formulation & audit of research objectives
 ├── parragraph-structure/    # Academic paragraph architecture & typologies
@@ -36,32 +38,38 @@ pdg-writtting/
 
 ## Module Summaries
 
-### 1. [`thesis-writing/`](./thesis-writing/README.md)
+### 1. [`project-context/`](./project-context/README.md)
+The empirical ground truth and architectural specifications for the IAsLab Degree Project (PDG):
+- **Project Charter:** Universidad Icesi official scope, background, objectives, and deliverables.
+- **System Requirements:** Functional requirements (model provisioning, Fair-Share quotas, 20% overbooking, SAAMFI RBAC, hardware telemetry, benchmark harness) and non-functional constraints.
+- **Technology Stack:** Multi-tiered architecture encompassing Kubernetes, KubeRay, NVIDIA GPU Operator, LiteLLM Proxy, vLLM, Ollama, LGP monitoring stack (Loki/Prometheus/Grafana), and DCGM telemetry.
+
+### 2. [`thesis-writing/`](./thesis-writing/README.md)
 The central workflow module governing the full lifecycle of an empirical research thesis:
 - **Scoping & Definition:** Transforming a broad topic into a research question, identifying research gaps, and verifying feasibility.
 - **Outlining:** Detailed chapter and subsection architectures for undergraduate (TFG), master's (TFM), and doctoral dissertations.
 - **Drafting:** Academic writing moves (Claim $\rightarrow$ Evidence $\rightarrow$ Interpretation), keeping Results factual and Discussion interpretive.
 - **Macro & Micro Review:** Auditing flow, structural transitions, tone, and empirical consistency.
 
-### 2. [`objectives-writting/`](./objectives-writting/README.md)
+### 3. [`objectives-writting/`](./objectives-writting/README.md)
 Specialized guidelines for formulating and evaluating research objectives:
 - **Hierarchy:** Clear boundary between 1 General Objective (terminal contribution) and 3–5 Specific Objectives (tactical milestones).
 - **Standards:** Strict enforcement of SMART criteria, syntactic formula ($Verb + Variable + Context + Purpose$), and Bloom's Taxonomy cognitive alignment.
 - **Anti-patterns:** Identifying and fixing common errors, including confusing operational activities with objectives, compound verbs, and unmeasurable statements.
 
-### 3. [`parragraph-structure/`](./parragraph-structure/README.md)
+### 4. [`parragraph-structure/`](./parragraph-structure/README.md)
 Frameworks for building self-contained, cohesive micro-arguments:
 - **Tri-Part Model:** *Fase Organizadora* (Topic sentence/claim), *Contenido* (Empirical evidence and analysis), and *Fase de Cierre* (Local conclusion/transition).
 - **Typologies:** 7 development patterns (Concept Definition, Problem-Solution, Cause-Effect, Comparison-Contrast, Sequence, Enumeration, Framing).
 - **Opening Strategies:** 6 introductory paragraph styles (Synthesis, Assertive Claims, Epigraph/Quote, Guiding Questions, Analogy, Critical Incident).
 
-### 4. [`reference-writting/`](./reference-writting/README.md)
+### 5. [`reference-writting/`](./reference-writting/README.md)
 Ethical and technical standards for attributing external scholarship under APA 7th:
 - **Direct Quotations:** Explicit guidelines for short in-text quotes (<40 words) and indented block quotations ($\ge 40$ words) with mandatory locators (`p.`, `pp.`, `para.`).
 - **Indirect Citations & Paraphrasing:** Synthesis of single and multi-source literature, narrative vs. parenthetical citations, and reporting verb taxonomies.
 - **Error Avoidance:** Preventing patchwriting, quote over-reliance, and attribution boundaries blurring.
 
-### 5. [`writting-tools/`](./writting-tools/README.md)
+### 6. [`writting-tools/`](./writting-tools/README.md)
 Technical reference manuals and orthographic conventions:
 - **APA 7th Standard:** Margins, font recommendations, 5-level heading hierarchy, empirical table/figure structures, and reference lists.
 - **Paragraph Integration:** Informational flow, the Given-New principle, and avoiding loose demonstratives.
@@ -74,10 +82,13 @@ Technical reference manuals and orthographic conventions:
 Instruct your AI coding or writing assistant to leverage the relevant module based on your task:
 
 ```text
-# Planning & Scoping
+# Referencing Project Requirements & Architecture
+"Consult project-context/requirements.md and technologies.md to check our GPU telemetry specifications."
+
+# Planning & Scoping Objectives
 "Use the objectives-writting skill to evaluate my proposed General and Specific Objectives."
 
-# Structural Outlining & Drafting
+# Structural Outlining & Drafting Chapters
 "Use the thesis-writing skill to outline my Methodology chapter and review it against structure.md."
 
 # Paragraph Development & Argumentation
@@ -101,10 +112,10 @@ python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-githu
 Copy the skill folders into your agent's local skills directory:
 ```bash
 # Codex
-cp -R thesis-writing objectives-writting parragraph-structure reference-writting writting-tools ~/.codex/skills/
+cp -R thesis-writing objectives-writting parragraph-structure reference-writting writting-tools project-context ~/.codex/skills/
 
 # Claude / Antigravity
-cp -R thesis-writing objectives-writting parragraph-structure reference-writting writting-tools ~/.claude/skills/
+cp -R thesis-writing objectives-writting parragraph-structure reference-writting writting-tools project-context ~/.claude/skills/
 ```
 
 ---
