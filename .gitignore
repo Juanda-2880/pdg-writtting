@@ -1,0 +1,12 @@
+# Latex
+*.toc
+*.out
+*.lot
+*.log
+*.lof
+*.aux
+*.blg
+*.bbl
+*.fls
+*latexmk
+*.gz
