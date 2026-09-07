@@ -1,0 +1,32 @@
+% ==========================================================================
+% Capítulo: Hipótesis y restricciones
+% Estado: se registra en ../STATUS.md, no aquí.
+%
+% Debe contener (project-context/formato-anteproyecto.md, "Hipótesis y
+% restricciones"; extensión máxima 1 página):
+%   - Hipótesis del proyecto, argumentada y justificada.
+%   - Restricciones que afectan alcance, calidad, cronograma y presupuesto,
+%     igualmente argumentadas.
+% NO debe contener: restricciones inventadas — deben trazar a
+% ../../project-context/documentation.md ("Scope": exclusions, constraints,
+% assumptions) y requirements.md (NFR y "Hardware Constraints").
+% ==========================================================================
+\chapter{Hipótesis y restricciones}\label{cha:hipotesis-restricciones}
+
+\section{Hipótesis}
+
+Se plantea como hipótesis de ingeniería que un motor de orquestación de inferencia agnóstico a la tecnología subyacente, acoplado a una gobernanza de cuotas por rol \emph{Fair-Share} y a telemetría fina, permite extender el sistema web del IAsLab hacia una plataforma que sostenga despliegue, gobernanza y monitoreo de MLOps sin degradar el desempeño ni la disponibilidad de la fase de entrenamiento. Es plausible: la primera fase ya demostró que un control plane centralizado, apoyado en SAAMFI, resuelve problemas equivalentes, y reutilizar ese patrón evita un paradigma no probado. Es además falsable mediante pruebas de carga y validaciones de usabilidad (\cref{obj:evaluacion}): una degradación del desempeño o una aceptación insatisfactoria la refutarían.
+
+\section{Restricciones}
+
+Las restricciones que se enumeran a continuación condicionan el alcance, la calidad o el cronograma del proyecto. Se distinguen de los supuestos, que son condiciones externas sobre las que el proyecto no tiene control directo y que se presentan por separado al cierre de esta sección.
+
+\begin{description}
+  \item[Despliegue estrictamente on-premise] El sistema opera dentro de la infraestructura física del IAsLab, sin recurrir a proveedores de nube pública comercial. Afecta el alcance y la calidad, pues descarta los patrones de escalado elástico y obliga a diseñar la orquestación para un parque de hardware finito y conocido de antemano.
+  \item[Capacidad de VRAM limitada por nodo] Cada nodo de inferencia dispone de una GPU NVIDIA RTX 4080 con 16 GB de VRAM. Afecta el alcance y la calidad, ya que obliga a cuantizar los modelos y acota el tamaño y la precisión de los que la plataforma puede servir de forma concurrente.
+  \item[Exclusión del desarrollo de modelos propios] El proyecto no contempla el diseño de arquitecturas de redes neuronales ni de algoritmos subyacentes: se limita a orquestar modelos preentrenados de código abierto. Afecta el alcance, delimitando el trabajo a la capa de infraestructura y orquestación.
+  \item[Límites de red y capacidad física del laboratorio] La red interna del campus y la capacidad instalada imponen un techo al tráfico y a la concurrencia sostenibles. Afecta la calidad y el cronograma, porque condiciona el diseño de las pruebas de carga a los límites reales de la infraestructura.
+  \item[Base de código heredada] La extensión se construye sobre el código resultante de la fase de entrenamiento, que arrastra un backlog de historias de usuario sin resolver. Afecta el cronograma, pues parte del esfuerzo se destina a estabilizar componentes existentes antes de incorporar capacidades nuevas.
+\end{description}
+
+Adicionalmente, el proyecto asume dos condiciones externas: la disponibilidad ininterrumpida de los clústeres del IAsLab durante las pruebas y la persistencia del servicio institucional de autenticación SAAMFI. Su incumplimiento retrasaría las actividades de validación y comprometería la gobernanza de cuotas por rol, que depende de los atributos que ese servicio provee.

@@ -1,0 +1,38 @@
+% ==========================================================================
+% Capítulo: Objetivos
+% Estado: se registra en ../STATUS.md, no aquí.
+%
+% Debe contener (project-context/formato-anteproyecto.md, "Objetivos";
+% extensión máxima 1 página):
+%   - OBJETIVO GENERAL: uno solo, verbo en infinitivo, medible, alcanzable
+%     en ~8 meses, en relación directa con el título del proyecto.
+%   - OBJETIVOS ESPECÍFICOS: máximo 4, derivados del general y que en
+%     conjunto lo cubran; precisos, realizables y mensurables.
+% NO debe contener: actividades disfrazadas de objetivos, verbos
+% compuestos, ni enunciados no medibles.
+%
+% Reglas de formulación y anti-patrones: ../../objectives-writting/
+% (objectives-definition.md y objectives-avoid.md) — de obligada consulta.
+% Objetivos base a reformular: ../../project-context/documentation.md,
+% sección "Formulation of Objectives".
+% ==========================================================================
+\chapter{Objetivos}\label{cha:objetivos}
+
+\section{Objetivo general}
+
+Extender el sistema web de orquestación del IAsLab con despliegue distribuido de IA, gobernanza de recursos por rol y observabilidad avanzada de infraestructura, para consolidar el ciclo de vida de MLOps on-premise en la Universidad Icesi, en ocho meses.
+
+\section{Objetivos específicos}
+
+\begin{enumerate}
+  % Hace que \cref/\Cref nombren estos ítems como "objetivo específico N"
+  % en lugar de "Punto N"; es local a este entorno (ver ../../latex/preamble.tex).
+  \crefalias{enumi}{objesp}
+  \item \label{obj:telemetria} Ampliar el módulo de telemetría del IAsLab con visualizaciones interactivas de métricas de hardware (temperatura, VRAM, consumo energético) e inferencia (latencia, \emph{tokens} por segundo, saturación de concurrencia), con el fin de que los administradores observen en tiempo real el consumo y diagnostiquen fallos antes de afectar a otros usuarios. Se considera \enquote{tiempo real} que las métricas expuestas reflejen el estado de la infraestructura dentro de una ventana no mayor a cinco minutos, criterio que se verificará en el \cref{obj:evaluacion}.
+
+  \item \label{obj:gobernanza} Diseñar un esquema lógico de cuotas y restricciones de infraestructura acoplado a los atributos de rol de SAAMFI (pregrado, electiva, semilleros y profesores), bajo el principio \emph{Fair-Share}, con el fin de prevenir la monopolización de las GPU conforme crece la concurrencia de usuarios.
+
+  \item \label{obj:orquestacion} Integrar en la interfaz del IAsLab un motor de orquestación de inferencia independiente de la tecnología subyacente, que permita desplegar modelos ya entrenados de forma concurrente, con el fin de habilitarlos en la misma plataforma usada para el entrenamiento.
+
+  \item \label{obj:evaluacion} Evaluar el desempeño de la extensión en producción mediante pruebas de carga y validaciones de usabilidad con usuarios del laboratorio, con el fin de determinar si alcanza una aceptación satisfactoria \emph{[verify: ADR-004 — criterio cuantitativo de aceptación operacional, no especificado en project-context/]}.
+\end{enumerate}

@@ -48,6 +48,8 @@ The empirical ground truth and architectural specifications for the IAsLab Degre
 - **Project Charter:** Universidad Icesi official scope, background, objectives, and deliverables.
 - **System Requirements:** Functional requirements (model provisioning, Fair-Share quotas, 20% overbooking, SAAMFI RBAC, hardware telemetry, benchmark harness) and non-functional constraints.
 - **Technology Stack:** Multi-tiered architecture encompassing Kubernetes, KubeRay, NVIDIA GPU Operator, LiteLLM Proxy, vLLM, Ollama, LGP monitoring stack (Loki/Prometheus/Grafana), and DCGM telemetry.
+- **Anteproyecto Format:** The faculty's official section-by-section format the thesis document follows.
+- **`ADR.md` — Open-questions register:** The single list of unresolved doubts blocking the document, each recorded with the exact file and marker where it is used so another agent can apply the answer with a `grep` instead of re-reading the thesis. Entries are deleted, not archived, once resolved.
 
 ### 2. [`thesis-writing/`](./thesis-writing/README.md)
 The central workflow module governing the full lifecycle of an empirical research thesis:
@@ -92,9 +94,10 @@ LaTeX configuration, build tooling, and a dedicated skill so agents don't reinve
 
 ### 9. [`thesis/`](./thesis/README.md)
 The actual thesis document — real, submittable content, not guidance:
-- **One file per chapter** under `chapters/`, so an agent can read/edit a single section instead of loading 60+ pages of prose into context.
-- **`STATUS.md`**: the single source of truth for what's drafted/under review/approved, kept current by the Coordinador role.
-- **`main.tex`**: a thin skeleton (`\input{../latex/preamble}` + `\include{chapters/...}`) — never the place to "see the whole thesis."
+- **One file per chapter/section** under `chapters/`, so an agent can read/edit a single section instead of loading 60+ pages of prose into context.
+- **Anteproyecto structure**: the document currently follows the faculty's *anteproyecto* format (`project-context/formato-anteproyecto.md`) — Motivación y antecedentes, Descripción del problema, Hipótesis y restricciones, Objetivos, Marco teórico, Estado del arte, Metodología, Contribución y resultados, Anexos — **not** the final-thesis structure in `thesis-writing/structure.md`.
+- **`STATUS.md`**: the single source of truth for what's drafted/under review/approved, plus the standing structural decisions, kept current by the Coordinador role.
+- **`main.tex`**: a thin skeleton (`\input{../latex/preamble}` + front matter + `\include{chapters/...}`) — never the place to "see the whole thesis."
 
 ### 10. [`writting-tools/`](./writting-tools/README.md)
 Technical reference manuals and orthographic conventions:

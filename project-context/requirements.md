@@ -23,6 +23,7 @@ The IAsLab computational ecosystem requires an end-to-end MLOps platform running
 - **FR-02.1 (Time-Slot & Resource Reservations):** Students and faculty must be able to reserve computing slots in advance with automated start and termination windows.
 - **FR-02.2 (Class & Academic Priority):** Academic courses (e.g., the 24-student AI elective) must have configurable reservation priority over individual thesis or exploratory tasks.
 - **FR-02.3 (Overbooking / Over-quota Buffer):** The reservation engine must support a controlled over-allocation buffer (10% to 20%) under statistical assumption that not all concurrent students exhaust peak burst inference simultaneously.
+  - **Origin of the 10–20% range (confirmed 2026-09-06):** this is an **IAsLab design decision**, not a figure taken from literature. Its stated rationale is the lab administrators' experience managing concurrent workloads and optimising GPU resources, informed by usage patterns observed in previous course offerings. Write it up as a design decision attributed to the laboratory — **never** cite it to an external source. No historical-usage dataset is on file in this repository, so the thesis must not present numbers, charts, or statistics derived from those observations unless the lab supplies the underlying data.
 - **FR-02.4 (Fine-Grained Dynamic RBAC):** Dynamic role-based access control coupled with Universidad Icesi's **SAAMFI** identity provider, distinguishing between:
   - *Undergraduate Thesis Students (PDG / TFG)*
   - *Elective Course Students (Electiva IA)*

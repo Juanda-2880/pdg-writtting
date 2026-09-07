@@ -16,7 +16,7 @@
 \begin{center}
 
 \doublespacing
-% [verify: confirm the exact official Spanish title with the tutor before
+% [verify: ADR-001 — confirm the exact official Spanish title with the tutor before
 % the first real submission — this is a working title from
 % project-context/documentation.md's "Formulation of Objectives", not a
 % confirmed final title.]
@@ -26,15 +26,17 @@
 
 \textsc{\Large Proyecto de Grado}\\[1cm]
 
-Presentado como parte de los requisitos para obtener el título de \\
-Ingeniero(a) de Sistemas \\[3cm]
-% [verify: confirm exact degree title/wording with the program]
+Presentado como parte de los requisitos para obtener los títulos de \\
+Ingeniero Telemático e Ingeniero de Sistemas \\[2cm]
 
 por \\[0.5cm]
 
 \textsc{\Large Juan Jose De La Pava}\\
+{\normalsize Ingeniería Telemática e Ingeniería de Sistemas}\\[0.4cm]
 \textsc{\Large Juan David Pacheco Vargas}\\
-\textsc{\Large Juan Camilo Melo}\\[1cm]
+{\normalsize Ingeniería Telemática}\\[0.4cm]
+\textsc{\Large Juan Camilo Melo}\\
+{\normalsize Ingeniería Telemática}\\[1cm]
 
 \large{Tutor:} Kevin David Rodríguez Belalcázar \\
 \large{Profesor acompañante:} Alejandro Muñoz Bravo \\
@@ -42,6 +44,7 @@ por \\[0.5cm]
 \vfill
 
 {\Large Departamento de Computación y Sistemas Inteligentes}\\[0.3cm]
+% [verify: ADR-012 — departamento que corresponde al programa de Ingeniería Telemática]
 {\Large Facultad Barberi de Ingeniería, Diseño y Ciencias Aplicadas}\\[0.5cm]
 
 \large Universidad Icesi\\
@@ -66,31 +69,73 @@ por \\[0.5cm]
 \sloppy
 
 % --- Resumen / Abstract -----------------------------------------------------
-% Write these LAST, once the thesis is otherwise complete — see
-% thesis-writing/structure.md item 1 and thesis-writing/SKILL.md Mode 2.
+% Se escriben AL FINAL, cuando el resto del documento esté completo — ver
+% project-context/formato-anteproyecto.md ("Resumen": máx. 1 página, 4-6
+% palabras clave, sin citas) y thesis-writing/SKILL.md Modo 2.
 \chapter*{Resumen}
-% [verify: not yet written]
+\addcontentsline{toc}{chapter}{Resumen}
+% [verify: not yet written — se redacta al final del anteproyecto]
 
-\noindent \textbf{Palabras Clave}: % [verify]
+\noindent \textbf{Palabras clave}: % [verify]
 
 \chapter*{Abstract}
-% [verify: not yet written]
+\addcontentsline{toc}{chapter}{Abstract}
+% [verify: not yet written — se redacta al final del anteproyecto]
 
 \noindent \textbf{Keywords}: % [verify]
+
+% --- Lista de acrónimos -----------------------------------------------------
+% Todo acrónimo usado en el documento va aquí y, además, debe definirse la
+% primera vez que aparece en el texto. Las siglas en inglés van en cursiva
+% (project-context/formato-anteproyecto.md, "Lista de acrónimos").
+% NOTA: la "Lista de símbolos" se omite deliberadamente — el documento no
+% introduce símbolos matemáticos, y el formato permite obviar esa sección.
+\chapter*{Lista de acrónimos}
+\addcontentsline{toc}{chapter}{Lista de acrónimos}
+% Solo se listan las siglas que aparecen realmente en el documento. Las
+% expansiones en inglés van en cursiva, según el formato institucional.
+% Cada sigla debe además definirse la primera vez que aparece en el texto.
+\begin{description}
+  \item[AWQ] Cuantización de pesos consciente de las activaciones (\emph{Activation-aware Weight Quantization})
+  \item[CPU] Unidad central de procesamiento (\emph{Central Processing Unit})
+  \item[DCGM] Gestor de GPU para centros de datos, de NVIDIA (\emph{Data Center GPU Manager})
+  \item[DSR] Investigación en ciencias del diseño (\emph{Design Science Research})
+  \item[GGUF] Formato de archivo para modelos cuantizados empleado por \emph{llama.cpp} y Ollama
+  \item[GPTQ] Método de cuantización posterior al entrenamiento para modelos generativos preentrenados
+  \item[GPU] Unidad de procesamiento gráfico (\emph{Graphics Processing Unit})
+  \item[IAsLab] Laboratorio de Inteligencia Artificial y Arquitectura de Software de la Universidad Icesi
+  \item[LLM] Modelo extenso de lenguaje (\emph{Large Language Model})
+  \item[MLOps] Operaciones de aprendizaje automático (\emph{Machine Learning Operations})
+  \item[PDG] Proyecto de grado
+  \item[RBAC] Control de acceso basado en roles (\emph{Role-Based Access Control})
+  \item[SAAMFI] Servicio institucional de identidad y autenticación de la Universidad Icesi % [verify: ADR-011 — expansión oficial de la sigla SAAMFI]
+  \item[SSO] Inicio de sesión único (\emph{Single Sign-On})
+  \item[SUS] Escala de usabilidad del sistema (\emph{System Usability Scale})
+  \item[VRAM] Memoria de acceso aleatorio de video (\emph{Video Random Access Memory})
+\end{description}
+
+% --- Glosario de términos ---------------------------------------------------
+\chapter*{Glosario de términos}
+\addcontentsline{toc}{chapter}{Glosario de términos}
+% [verify: not yet written]
 
 \clearpage
 \pagenumbering{arabic}
 
 % --- Chapters ----------------------------------------------------------------
-% Undergraduate/TFG structure per thesis-writing/structure.md. Add/reorder
-% chapters only through the Coordinador (agent-roles/Coordinador.md) — and
-% update STATUS.md and this list together, never one without the other.
-\include{chapters/01-introduccion}
-\include{chapters/02-marco-teorico}
-\include{chapters/03-metodologia}
-\include{chapters/04-resultados}
-\include{chapters/05-discusion}
-\include{chapters/06-conclusiones}
+% Estructura de ANTEPROYECTO según project-context/formato-anteproyecto.md
+% (no la estructura de tesis final de thesis-writing/structure.md). Añadir o
+% reordenar capítulos solo a través del Coordinador
+% (agent-roles/Coordinador.md) — y actualizar STATUS.md, thesis/README.md y
+% esta lista en el mismo cambio, nunca uno sin el otro.
+\include{chapters/01-motivacion-antecedentes}
+\include{chapters/02-descripcion-problema}
+\include{chapters/03-hipotesis-restricciones}
+\include{chapters/04-objetivos}
+\include{chapters/05-marco-teorico}
+\include{chapters/06-estado-del-arte}
+\include{chapters/07-metodologia}
+\include{chapters/08-contribucion-resultados}
 
 % --- Bibliography (APA 7 via natbib+apalike, see ../latex/preamble.tex) ----
 \bibliography{references}

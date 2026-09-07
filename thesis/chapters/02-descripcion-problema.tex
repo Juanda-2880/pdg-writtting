@@ -1,0 +1,32 @@
+% ==========================================================================
+% Capítulo: Descripción del problema
+% Estado: se registra en ../STATUS.md, no aquí.
+%
+% Debe contener (project-context/formato-anteproyecto.md, "Descripción del
+% problema"; extensión máxima 1 página):
+%   - IDENTIFICACIÓN DEL PROBLEMA: síntomas y manifestaciones, con sus
+%     causas y efectos jerarquizados (causas principales/secundarias,
+%     efectos principales/secundarios), derivados del capítulo anterior.
+%   - FORMULACIÓN DEL PROBLEMA: enunciado claro, sucinto y sin
+%     ambigüedades del problema a resolver, con su pertinencia y
+%     relevancia en el contexto.
+% NO debe contener: la solución, los objetivos, ni tecnología concreta
+% (eso va en 04-objetivos.tex y 07-metodologia.tex).
+%
+% El árbol de problemas correspondiente va en 99-anexos.tex.
+% Hechos del proyecto: ../../project-context/documentation.md (secciones
+% "Problem Description" y "Scope") y requirements.md.
+% ==========================================================================
+\chapter{Descripción del problema}\label{cha:descripcion-problema}
+
+\section{Identificación del problema}
+
+El sistema web del IAsLab presenta síntomas conforme los proyectos avanzan hacia las etapas productivas del ciclo de vida de MLOps (\cref{cha:motivacion-antecedentes}). El síntoma principal es la fragmentación del flujo de trabajo: los investigadores entrenan modelos, pero carecen de un mecanismo integrado para desplegarlos y servir su inferencia, lo que impide traducir la investigación del laboratorio en servicios consumibles. La causa principal es la ausencia de un motor de orquestación de inferencia y de su interfaz; la secundaria, el desarrollo incremental del sistema, centrado en el entrenamiento.
+
+Un segundo síntoma es el riesgo de monopolización de las unidades de procesamiento gráfico (GPU) conforme crece la adopción de la plataforma, condición ya documentada en clústeres compartidos (\cref{cha:motivacion-antecedentes}). Su causa principal es la ausencia de gobernanza que imponga cuotas por rol; la secundaria, que SAAMFI autentica usuarios sin traducir el rol en límites de consumo de hardware. El efecto es la competencia desordenada por recursos entre pregrado, electiva, semilleros y profesores investigadores, con riesgo de desplazar tareas exploratorias de tesis o semillero. Un tercer síntoma técnico es la telemetría primitiva del monitoreo, que impide observar el consumo en tiempo real y dificulta diagnosticar saturaciones. Subsiste, además, un backlog de historias de usuario que compromete la estabilidad del software.
+
+\section{Formulación del problema}
+
+El sistema carece de un mecanismo para desplegar y servir la inferencia de modelos ya entrenados, y no incorpora gobernanza de cuotas por rol ni telemetría granular en tiempo real, lo que fragmenta el ciclo de MLOps y expone la plataforma a un uso inequitativo de recursos. De ello se deriva la pregunta que orienta el proyecto: ¿cómo extender el sistema para incorporar despliegue e inferencia distribuida, gobernanza de cuotas por rol y observabilidad avanzada, sin comprometer su estabilidad ni disponibilidad? Responderla es pertinente y relevante porque consolida, en una sola plataforma, las etapas hoy desarticuladas de entrenamiento, despliegue y monitoreo.
+
+% [verify: ADR-010 — enlazar al árbol de problemas cuando exista en 99-anexos.tex]

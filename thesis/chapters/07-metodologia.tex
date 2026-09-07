@@ -1,0 +1,100 @@
+% ==========================================================================
+% Capítulo: Metodología
+% Estado: se registra en ../STATUS.md, no aquí.
+%
+% Debe contener (project-context/formato-anteproyecto.md, "Metodología"):
+%   - Formulación y JUSTIFICACIÓN de la metodología de ingeniería elegida,
+%     soportada en referentes de la profesión (marcos, estándares, modelos
+%     de proceso) y citada. Explicar el "cómo" y por qué esa y no otra.
+%   - Estructura lógica del proceso: recolección de datos, organización,
+%     sistematización, análisis, interpretación y presentación de
+%     resultados.
+%   - ESQUEMA DE TRABAJO: roles y funciones del equipo. [pendiente]
+%   - FASES DE DESARROLLO DEL PROYECTO: en estrecha relación con los
+%     objetivos específicos; cada fase con duración asignada.
+%   - ANÁLISIS DE RIESGOS Y LIMITACIONES: riesgos que afectan alcance,
+%     cronograma, presupuesto y calidad.
+%   - CRONOGRAMA (diagrama de Gantt) y PRESUPUESTO. [pendiente]
+% NO debe contener: metodología descrita sin justificación, ni fases que no
+% mapeen a un objetivo específico.
+%
+% Hechos técnicos: ../../project-context/technologies.md y requirements.md.
+% ==========================================================================
+\chapter{Metodología}\label{cha:metodologia}
+
+Este capítulo formula y justifica la metodología de ingeniería adoptada para resolver el problema planteado en el \cref{cha:descripcion-problema}, describe la estructura lógica del proceso de investigación —desde la recolección de datos hasta la presentación de resultados—, delimita el esquema de trabajo con el tutor, define las fases de desarrollo del proyecto en relación directa con los objetivos específicos del \cref{cha:objetivos}, y analiza los riesgos y limitaciones que pueden afectar su alcance, cronograma, presupuesto y calidad.
+
+\section{Estrategia metodológica}\label{sec:estrategia-metodologica}
+
+El proyecto se enmarca dentro de \emph{Design Science Research} (DSR), un paradigma de investigación orientado a la construcción y evaluación de artefactos de software que resuelven un problema organizacional identificado. \citet{hevner-designscienceis-2004} formulan siete guías para la investigación en Sistemas de Información bajo este paradigma, entre ellas que el artefacto producido debe ser relevante para un problema organizacional real y que su utilidad debe demostrarse mediante una evaluación rigurosa; ambas condiciones se cumplen en este proyecto, pues la extensión del sistema web del IAsLab constituye un artefacto de software concreto —el motor de orquestación de inferencia, el módulo de cuotas y el módulo de telemetría ampliado— que responde a una necesidad operativa documentada del laboratorio y cuya utilidad se contrastará empíricamente mediante las pruebas de carga y usabilidad descritas más adelante. Para ordenar la ejecución del proyecto se adopta, además, el proceso de seis pasos de \citet{peffers-dsrm-2007}: identificación del problema y motivación, definición de los objetivos de una solución, diseño y desarrollo del artefacto, demostración, evaluación, y comunicación de resultados. Esta secuencia es coherente con la estructura del presente documento, en la que los \cref{cha:descripcion-problema,cha:objetivos} cubren los dos primeros pasos, las fases descritas en la \cref{sec:fases-desarrollo} cubren el diseño, el desarrollo y la demostración, y la evaluación de desempeño y usabilidad prevista en \cref{obj:evaluacion} cierra el ciclo antes de la comunicación de resultados en el informe final del proyecto de grado.
+
+Design Science Research define el marco investigativo del proyecto, pero no prescribe cómo organizar el trabajo de ingeniería día a día; para ello se adopta un proceso de desarrollo iterativo-incremental de tipo Scrum, siguiendo la \emph{Scrum Guide} de \citet{schwaber-scrumguide-2020}. Esta elección responde a que el alcance del proyecto —cuatro objetivos específicos con dependencias técnicas parciales entre sí (telemetría, gobernanza, orquestación y evaluación)— se beneficia de ciclos cortos de construcción y retroalimentación sobre un backlog heredado cuya estabilización, según se documentó en el \cref{cha:hipotesis-restricciones}, es en sí misma una condición previa al desarrollo de las capacidades nuevas. Un proceso iterativo permite priorizar y reordenar el backlog conforme se estabiliza el código heredado y conforme la disponibilidad de los clústeres del IAsLab lo permita, en lugar de comprometer de antemano una secuencia rígida de actividades como exigiría un modelo de desarrollo en cascada.
+
+La estructura lógica del proceso de investigación se organiza en cuatro etapas. La recolección de datos se apoya en tres fuentes instrumentadas por el propio sistema: la telemetría de hardware e inferencia que produce el módulo de observabilidad ampliado (\cref{obj:telemetria}), los resultados que genera el motor de \emph{benchmarking} automatizado sobre los nodos de inferencia, y los instrumentos de usabilidad aplicados a los usuarios finales de la plataforma. La organización y sistematización de estos datos consiste en consolidar las métricas de hardware, de inferencia y de percepción de usuario en formatos comparables entre fases y entre motores de inferencia evaluados. El análisis contrasta estas métricas contra los objetivos específicos formulados, determinando en qué medida cada módulo construido resuelve la carencia que motivó su desarrollo. Finalmente, la interpretación y presentación de resultados traduce los hallazgos del análisis en conclusiones sobre el cumplimiento de la hipótesis de ingeniería del \cref{cha:hipotesis-restricciones} y sobre el nivel de aceptación operacional de la extensión.
+
+La evaluación empírica prevista en \cref{obj:evaluacion} se apoya en dos instrumentos con respaldo metodológico propio. Para el desempeño técnico, el proyecto recurre a pruebas de carga sobre los nodos de inferencia; \citet{jiang-loadtestingsurvey-2015}, en su revisión de la literatura sobre pruebas de carga en sistemas de gran escala, sistematizan el diseño de la carga, su ejecución y el análisis de los resultados obtenidos, estructura que este proyecto sigue para contrastar el comportamiento de los motores de inferencia desplegados bajo concurrencia realista de usuarios. Para la aceptación operacional por parte de los usuarios finales, se emplea el \emph{System Usability Scale} de \citet{brooke-sus-1996}, un cuestionario de diez ítems ampliamente validado como instrumento estándar para cuantificar la usabilidad percibida de un sistema de software, aplicable a los distintos roles de usuario del IAsLab identificados en el \cref{cha:motivacion-antecedentes}.
+
+\section{Esquema de trabajo}
+
+El proyecto lo desarrolla un equipo de tres estudiantes que trabaja bajo un esquema de responsabilidad compartida: en lugar de asignar cada módulo a un integrante, los tres participan en la implementación de los subsistemas, en la ejecución de las pruebas y en la redacción del documento. Este esquema es coherente con el carácter formativo del proyecto de grado, en el que cada integrante debe desarrollar las competencias asociadas a la totalidad del trabajo y no solo a una de sus partes, y resulta viable dado el tamaño del equipo, que hace innecesaria una división formal de roles para coordinar el trabajo.
+
+El seguimiento se realiza mediante una reunión semanal con el tutor del proyecto, en la que se revisa el avance de la iteración en curso y se ajusta el alcance de la siguiente. Esta cadencia se articula con el proceso iterativo descrito en la \cref{sec:estrategia-metodologica} y proporciona el punto de control periódico que permite detectar desviaciones frente a las fases planificadas.
+
+\section{Fases de desarrollo del proyecto}
+\label{sec:fases-desarrollo}
+
+Las fases de desarrollo del proyecto guardan una relación directa con los objetivos específicos formulados en el \cref{cha:objetivos}, de modo que cada fase produce el artefacto o el resultado necesario para satisfacer uno de ellos. La primera fase corresponde al análisis y la estabilización del backlog heredado de la primera etapa del sistema web, condición previa identificada en el \cref{cha:hipotesis-restricciones} antes de incorporar cualquier capacidad nueva sobre el código existente. Las fases siguientes desarrollan, en orden, el módulo de observabilidad, el esquema de gobernanza de cuotas y el motor de orquestación de inferencia, y cierran con la fase de evaluación empírica que contrasta los tres módulos anteriores contra los objetivos que les dieron origen. La \cref{tab:fases-desarrollo} resume esta correspondencia.
+
+\begin{xltabular}{\textwidth}{p{0.24\textwidth} X p{0.16\textwidth}}
+        \caption{Fases de desarrollo del proyecto y su correspondencia con los objetivos específicos.}
+        \label{tab:fases-desarrollo} \\
+        \toprule
+        \textbf{Fase} & \textbf{Actividades principales} & \textbf{Objetivo específico} \\
+        \midrule
+        \endfirsthead
+        \toprule
+        \textbf{Fase} & \textbf{Actividades principales} & \textbf{Objetivo específico} \\
+        \midrule
+        \endhead
+        \bottomrule
+        \endfoot
+        Análisis y estabilización del backlog heredado &
+        Revisión del backlog de historias de usuario pendientes de la primera fase del sistema web, priorización y resolución de los ítems que condicionan la estabilidad del código base sobre el que se construyen las fases siguientes &
+        Condición previa (\cref{cha:hipotesis-restricciones}) \\
+        \addlinespace
+        Observabilidad de infraestructura &
+        Instrumentación y ampliación del módulo de telemetría con métricas de hardware e inferencia por nodo, y construcción de las visualizaciones gráficas interactivas correspondientes &
+        \Cref{obj:telemetria} \\
+        \addlinespace
+        Gobernanza de cuotas &
+        Diseño del esquema lógico de cuotas y restricciones de infraestructura acoplado a los atributos de rol de SAAMFI bajo el principio \emph{Fair-Share}, e integración con el módulo administrativo de la plataforma &
+        \Cref{obj:gobernanza} \\
+        \addlinespace
+        Orquestación de inferencia &
+        Integración del motor de orquestación de inferencia independiente de la tecnología subyacente y de la interfaz web para configurar y desplegar modelos entrenados de forma concurrente &
+        \Cref{obj:orquestacion} \\
+        \addlinespace
+        Evaluación empírica &
+        Ejecución de pruebas de carga sobre los nodos de inferencia mediante el motor de \emph{benchmarking} automatizado y aplicación de instrumentos de usabilidad (System Usability Scale) con usuarios finales &
+        \Cref{obj:evaluacion} \\
+\end{xltabular}
+
+% [verify: ADR-008 — duración de cada fase, depende del cronograma]
+
+\section{Análisis de riesgos y limitaciones}
+
+Los riesgos que se describen a continuación se derivan de las restricciones y los supuestos ya enunciados en el \cref{cha:hipotesis-restricciones}, sin duplicar su argumentación, y se presentan junto con la dimensión del proyecto que comprometen y la estrategia prevista para mitigarlos.
+
+\begin{description}
+  \item[Indisponibilidad de los clústeres del IAsLab] Compromete el cronograma, dado que las fases de desarrollo y, en particular, la evaluación empírica dependen del acceso continuo a los nodos de cómputo del laboratorio, condición que el \cref{cha:hipotesis-restricciones} asume vigente pero no controla directamente. Como estrategia de mitigación, las actividades de desarrollo que no requieren hardware de inferencia (por ejemplo, la definición del esquema lógico de cuotas) se priorizan en los periodos de menor disponibilidad de los clústeres.
+  \item[Cambios o caída del servicio SAAMFI] Compromete el alcance y el cronograma, pues el control de acceso y la gobernanza de cuotas por rol dependen de los atributos que provee este servicio institucional de identidad. La mitigación consiste en aislar la lógica de mapeo de roles en un componente propio de la extensión, de modo que un cambio en la interfaz de SAAMFI exija ajustar ese componente y no rediseñar el esquema de cuotas completo.
+  \item[Saturación de VRAM y eventos de congelamiento en nodos GPU] Compromete la calidad del servicio de inferencia y, potencialmente, el cronograma de las pruebas de carga, ya que la saturación de memoria de video o el congelamiento de un nodo GPU (FR-03.4) puede interrumpir sesiones de otros usuarios concurrentes. \citet{liu-gpufailureprediction-2022} documentan que este tipo de fallos es predecible con telemetría suficiente en producción, por lo que la mitigación prevista es que el módulo de observabilidad (\cref{obj:telemetria}) genere las alertas de diagnóstico automatizado que exige FR-03.4 antes de que la saturación derive en una interrupción no controlada.
+  \item[Esfuerzo del backlog heredado mayor al previsto] Compromete el cronograma y el alcance de las fases posteriores, en la medida en que la fase de estabilización descrita en la \cref{sec:fases-desarrollo} podría absorber más tiempo del proyectado si el backlog heredado presenta una deuda técnica mayor a la esperada. La mitigación consiste en delimitar de forma temprana, dentro de la fase de estabilización, qué ítems del backlog son estrictamente bloqueantes para las fases de gobernanza y orquestación, y cuáles pueden diferirse.
+  \item[Dificultad para reclutar usuarios finales en las validaciones de usabilidad] Compromete la calidad de la evidencia recogida para \cref{obj:evaluacion}, pues la aplicación del \emph{System Usability Scale} \citep{brooke-sus-1996} requiere la participación voluntaria de estudiantes, semilleros e investigadores cuya disponibilidad no está garantizada. La mitigación consiste en distribuir la aplicación del instrumento entre los distintos roles de usuario identificados en el \cref{cha:motivacion-antecedentes}, de modo que la muestra no dependa de un único grupo.
+  \item[Límites de ancho de banda del campus] Compromete la calidad de las pruebas de carga, en tanto la red interna de la Universidad Icesi impone un techo de tráfico y concurrencia distinto al que tendría un entorno de nube pública sin esa restricción, condición ya señalada como límite físico en el \cref{cha:hipotesis-restricciones}. La mitigación consiste en diseñar los escenarios de prueba de carga a partir de la capacidad real medida de la red institucional, en lugar de extrapolar cifras de referentes de la literatura obtenidos en infraestructuras de mayor escala.
+\end{description}
+
+% [verify: ADR-008 — CRONOGRAMA: diagrama de Gantt pendiente; requiere fechas de inicio/fin del PDG]
+\section{Presupuesto}
+
+El proyecto no requiere presupuesto propio. El trabajo consiste en desplegar y poner en funcionamiento el clúster sobre la infraestructura ya instalada en el laboratorio, sin adquisición de hardware nuevo, y la totalidad del software empleado —Kubernetes, KubeRay, vLLM, Ollama, LiteLLM, Prometheus, Grafana y Loki— es de código abierto. La restricción de operar estrictamente on-premise, señalada en el \cref{cha:hipotesis-restricciones}, elimina además cualquier gasto recurrente por servicios de nube pública. En consecuencia, los únicos recursos comprometidos son el tiempo de los integrantes del equipo y el uso del equipamiento existente del IAsLab.

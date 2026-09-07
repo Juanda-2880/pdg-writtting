@@ -23,35 +23,43 @@ This is where the actual thesis text lives — as opposed to `thesis-writing/`, 
 
 | Path | What it is |
 | :--- | :--- |
-| `main.tex` | Document skeleton: `\documentclass`, `\input{../latex/preamble}`, title page, front matter (Resumen/Abstract — written last), the ordered list of `\include{chapters/...}`, bibliography, appendices. |
+| `main.tex` | Document skeleton: `\documentclass`, `\input{../latex/preamble}`, title page, front matter (Resumen/Abstract — written last — Lista de acrónimos, Glosario), the ordered list of `\include{chapters/...}`, bibliography, appendices. |
 | `STATUS.md` | Per-chapter status tracker — read this, not the chapters, to see where the thesis stands. |
-| `chapters/NN-nombre.tex` | One file per chapter (see below). Numbered so the reading/compile order is obvious; `99-anexos.tex` is deliberately last regardless of how many numbered chapters exist. |
+| `chapters/NN-nombre.tex` | One file per chapter/section (see below). Numbered so the reading/compile order is obvious; `99-anexos.tex` is deliberately last regardless of how many numbered chapters exist. |
 | `references.bib` | The single shared BibTeX database — every citation key used anywhere in `chapters/` must resolve here (see `../latex/references/citations-and-figures.md`). |
 | `imagenes/` | Figures referenced from `chapters/` — descriptive filenames, not `figura1.png` (see `../latex/references/citations-and-figures.md`). |
 | `Makefile` / `.latexmkrc` | Copied from `../latex/` — run `make build` from this folder. Output goes to `../compiled-output/latex-build/`, never here. |
 
-## Chapters (undergraduate/TFG structure, per `../thesis-writing/structure.md`)
+## Capítulos (estructura de **anteproyecto**, según `../project-context/formato-anteproyecto.md`)
 
-| # | File | Chapter |
-| :--- | :--- | :--- |
-| — | `main.tex` front matter | Resumen / Abstract (written **last**) |
-| 01 | `chapters/01-introduccion.tex` | Introducción |
-| 02 | `chapters/02-marco-teorico.tex` | Marco teórico |
-| 03 | `chapters/03-metodologia.tex` | Metodología |
-| 04 | `chapters/04-resultados.tex` | Resultados |
-| 05 | `chapters/05-discusion.tex` | Discusión |
-| 06 | `chapters/06-conclusiones.tex` | Conclusiones |
-| — | `references.bib` → `\bibliography{}` | Bibliografía |
-| 99 | `chapters/99-anexos.tex` | Anexos |
+> [!IMPORTANT]
+> El documento sigue la estructura de **anteproyecto** exigida por la facultad, **no** la estructura de tesis final descrita en `../thesis-writing/structure.md`. Por eso no hay capítulos de Resultados, Discusión ni Conclusiones: no corresponden a esta entrega. Esa decisión está registrada en `STATUS.md`.
 
-Each stub file already has a comment block naming exactly what it must/must-not contain and which modules govern it — read that before asking "what goes here."
+| # | Archivo | Sección | Extensión máxima |
+| :--- | :--- | :--- | :--- |
+| — | `main.tex` front matter | Resumen / Abstract (se escriben **al final**) | 1 página / 1 párrafo |
+| — | `main.tex` front matter | Lista de acrónimos, Glosario de términos | — |
+| 01 | `chapters/01-motivacion-antecedentes.tex` | Motivación y antecedentes (contexto, antecedentes, justificación) | 3 páginas |
+| 02 | `chapters/02-descripcion-problema.tex` | Descripción del problema (identificación y formulación) | 1 página |
+| 03 | `chapters/03-hipotesis-restricciones.tex` | Hipótesis y restricciones | 1 página |
+| 04 | `chapters/04-objetivos.tex` | Objetivos (general + específicos) | 1 página |
+| 05 | `chapters/05-marco-teorico.tex` | Marco teórico | 4 páginas |
+| 06 | `chapters/06-estado-del-arte.tex` | Estado del arte | 4 páginas |
+| 07 | `chapters/07-metodologia.tex` | Metodología (esquema de trabajo, fases, riesgos, cronograma, presupuesto) | — |
+| 08 | `chapters/08-contribucion-resultados.tex` | Contribución y resultados del proyecto de grado | 4 páginas |
+| — | `references.bib` → `\bibliography{}` | Referencias bibliográficas | — |
+| 99 | `chapters/99-anexos.tex` | Anexos (análisis de participación, árbol de problemas, árbol de objetivos) | — |
+
+La **Lista de símbolos** se omite deliberadamente: el documento no introduce símbolos matemáticos y el formato permite obviar esa sección.
+
+Cada archivo ya trae un bloque de comentarios que dice exactamente qué debe y qué no debe contener, y qué módulos lo gobiernan — léelo antes de preguntar "qué va aquí".
 
 ## Writing workflow
 
 Follow `../agent-roles/README.md`'s Coordinador → Investigador → Redactor → Revisor loop. In practice, for one chapter:
 
 1. Coordinador checks `STATUS.md`, assigns the chapter/subsection.
-2. Investigador gathers evidence from `../project-context/` (and literature, for Marco teórico), flags gaps as `[verify: ...]`/`cite_needed` — never invents.
+2. Investigador gathers evidence from `../project-context/` (and literature, for Marco teórico and Estado del arte), flags gaps as `[verify: ...]`/`cite_needed` — never invents.
 3. Redactor writes into the chapter file, following its header comment, `../thesis-writing/writing-guide.md`, and `../latex/SKILL.md` for the LaTeX mechanics.
 4. Revisor runs `make build` from this folder and the checklist in `../thesis-writing/review-checklist.md`.
 5. Coordinador updates `STATUS.md`.

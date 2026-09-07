@@ -13,6 +13,7 @@ This repository is a writing harness for an academic thesis (PDG, Universidad Ic
 
 5. **Follow the role workflow in [`agent-roles/`](./agent-roles/README.md)** when doing substantive thesis work: Coordinador plans and assigns, Investigador sources evidence, Redactor drafts, Revisor checks. Don't skip Investigador/Revisor to save a step — the whole point of the split is to prevent invented facts and structural drift.
 
-## Content rule
+## Content rules
 
 6. **Never invent facts, requirements, technical details, or citations.** Anything about the IAsLab project must trace back to `project-context/`; anything about outside literature must be a real, checkable source. If evidence is missing, flag it (`[cite_needed]`, `[verify: ...]`) rather than filling the gap with something plausible-sounding.
+7. **Every gap that needs a human decision gets an entry in [`project-context/ADR.md`](./project-context/ADR.md).** Marking `[verify: ...]` in the text is only half the job: the marker must name an ADR id (`[verify: ADR-012 — ...]`) and the matching entry must record *where* the gap is used, so whoever applies the answer finds it with a `grep` instead of re-reading the document. When a question is answered and applied, **delete its entry** — that file holds only what is still open.

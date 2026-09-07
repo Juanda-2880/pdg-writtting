@@ -102,10 +102,17 @@
 % convention this cleveref set follows for reference words), but its default
 % word for the `table` type is "Cuadro", not "Tabla" — override it to match
 % normas-APA.md and this thesis's own usage, capitalized the same way.
+% Los objetivos específicos viven en un `enumerate` (thesis/chapters/
+% 04-objetivos.tex) y se referencian desde otros capítulos. Por defecto
+% cleveref los nombraría "Punto N"; ese enumerate declara localmente
+% \crefalias{enumi}{objesp} para que sus etiquetas usen el nombre de abajo,
+% sin afectar a ninguna otra lista numerada del documento.
 \AtBeginDocument{%
   \crefname{table}{Tabla}{Tablas}%
   \Crefname{table}{Tabla}{Tablas}%
 }
+\crefname{objesp}{objetivo específico}{objetivos específicos}
+\Crefname{objesp}{Objetivo específico}{Objetivos específicos}
 
 % --- Reusable project shorthands --------------------------------------------
 \newcommand{\etal}{\textit{et al.}}
