@@ -22,7 +22,7 @@ The suite is intentionally format-neutral: it supports Markdown, LaTeX, Word-ori
 
 ## Suite Architecture & Modules
 
-The repository is organized into six writing-reference modules, plus a multi-agent harness (agent roles, a LaTeX configuration module, and a scratch build directory) that governs how AI agents use them, plus the actual thesis document itself:
+The repository is organized into six writing-reference modules, plus a meeting-insights module that captures what gets decided out loud, a multi-agent harness (agent roles, a LaTeX configuration module, and a scratch build directory) that governs how AI agents use them, and the actual thesis document itself:
 
 ```text
 pdg-writtting/
@@ -31,7 +31,9 @@ pdg-writtting/
 ├── compiled-output/          # Scratch directory for generated/compiled artifacts (gitignored)
 ├── latex/                    # LaTeX config, build rules & skill (preamble, Makefile, citation setup)
 ├── thesis/                   # The actual thesis document — one file per chapter, see thesis/README.md
+├── meetings/                 # Meeting insights: one traceable record per meeting, plus INDEX.md
 ├── project-context/          # Institutional PDG charter, requirements & tech stack
+├── meeting-insights/         # Turns a pasted meeting transcript into a record in meetings/
 ├── thesis-writing/           # Global thesis orchestration & end-to-end workflow (from upstream)
 ├── objectives-writting/      # Formulation & audit of research objectives
 ├── parragraph-structure/     # Academic paragraph architecture & typologies
@@ -104,6 +106,17 @@ Technical reference manuals and orthographic conventions:
 - **APA 7th Standard:** Margins, font recommendations, 5-level heading hierarchy, empirical table/figure structures, and reference lists.
 - **Paragraph Integration:** Informational flow, the Given-New principle, and avoiding loose demonstratives.
 - **Punctuation Precision:** Mandatory rules for *Punto y Seguido*, *Punto y Aparte*, citation punctuation, comma splices, semicolons, and dashes.
+- **Banned AI tells (§4):** the em dash (`—`) as a parenthetical, and the antithetical `no es X, es Y` construction — both prohibited in the thesis text, with the substitution table and the `grep` checks that verify it.
+
+### 11. [`meeting-insights/`](./meeting-insights/README.md)
+Turns a meeting transcript, pasted into the chat and never committed, into a durable record in `meetings/`:
+- **Traceable extraction:** every recorded claim carries a literal quote and a timestamp; a line without one does not enter the file.
+- **Four buckets, not one:** decided / committed / suggested / merely discussed are kept apart, so a tutor's passing suggestion never reads as an instruction.
+- **Two cross-checks:** which entries of `project-context/ADR.md` the meeting answers, and where what was said contradicts what `project-context/` already states.
+- **Proposes, never applies:** the skill writes only into `meetings/`; promoting a spoken fact into `project-context/` or the thesis is a separate, human-approved step.
+
+### 12. [`meetings/`](./meetings/README.md)
+The output of the module above: one Markdown file per meeting (`AAAA-MM-DD-<slug>.md`) plus `INDEX.md`, the one-row-per-meeting summary an agent reads before opening any full record. Raw transcripts are deliberately not versioned.
 
 ---
 
@@ -127,6 +140,9 @@ Instruct your AI coding or writing assistant to leverage the relevant module bas
 # Referencing & Attribution
 "Use reference-writting and writting-tools to format these external citations and tables according to APA 7th."
 
+# Capturing what was decided in a meeting
+"Aquí va la transcripción de la reunión con el tutor: <...>. Extrae los insights con meeting-insights."
+
 # Multi-agent thesis writing (Claude Code)
 "Act as the Coordinador (see agent-roles/) and plan the next task for drafting Chapter 3."
 ```
@@ -147,10 +163,10 @@ python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-githu
 Copy the skill folders into your agent's local skills directory:
 ```bash
 # Codex
-cp -R thesis-writing objectives-writting parragraph-structure reference-writting writting-tools project-context ~/.codex/skills/
+cp -R thesis-writing objectives-writting parragraph-structure reference-writting writting-tools project-context meeting-insights ~/.codex/skills/
 
 # Claude / Antigravity
-cp -R thesis-writing objectives-writting parragraph-structure reference-writting writting-tools project-context ~/.claude/skills/
+cp -R thesis-writing objectives-writting parragraph-structure reference-writting writting-tools project-context meeting-insights ~/.claude/skills/
 ```
 
 ---
