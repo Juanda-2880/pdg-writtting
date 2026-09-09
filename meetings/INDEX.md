@@ -11,6 +11,7 @@ Spanish documents.
 | :--- | :--- | :--- | :---: | :--- | :---: |
 | 2026-08-26 | Arquitectura propuesta, recursos del laboratorio y alcance de PDG1 (2.ª reunión) | [`2026-08-26-tutor-arquitectura.md`](./2026-08-26-tutor-arquitectura.md) | 10 | ADR-013, ADR-014, ADR-015 (pend.) · ADR-008, ADR-016 partial (pend.) | 3 |
 | 2026-09-04 | Elicitación con Alejandro: uso real de la sala, motor de inferencia y benchmarks | [`2026-09-04-alejandro-elicitacion.md`](./2026-09-04-alejandro-elicitacion.md) | 3 | none · **ADR-013 contradicted** | 4 |
+| 2026-09-09 | Delimitación del alcance y revisión en vivo del anteproyecto (3rd with the tutor) | [`2026-09-09-tutor-alcance-y-revision.md`](./2026-09-09-tutor-alcance-y-revision.md) | 11 | **ADR-015, ADR-016, ADR-018 resolved** (pend.) · ADR-011 partial · ADR-008, ADR-014, ADR-017 advanced | 4 |
 
 ## Columns
 
