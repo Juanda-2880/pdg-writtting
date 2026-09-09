@@ -75,9 +75,13 @@ decided / suggested / discussed are three different buckets.
 
 ## Output template
 
-Write the insight file in **the language of the meeting** (Spanish for this project).
-Omit a section entirely if it has no content — an empty heading reads as "nothing was
-said about this", which is a claim you cannot make.
+Write the insight file in **the language of the meeting**, which for this project is
+Spanish. The template below is therefore given in Spanish on purpose: its headings and
+labels are the **literal output** the skill must emit, not documentation to be translated.
+Keep them verbatim so every record in `meetings/` is greppable by the same section names.
+
+Omit a section entirely if it has no content. An empty heading reads as "nothing was said
+about this", which is a claim you cannot make.
 
 ```markdown
 # Reunión AAAA-MM-DD — <tema>
@@ -120,29 +124,31 @@ said about this", which is a claim you cannot make.
 
 ## Quick reference
 
-| Bucket | Qué entra | Qué NO entra |
+Section names stay in Spanish because they are the literal output headings.
+
+| Section | What goes in | What does NOT |
 | :--- | :--- | :--- |
-| Decisiones | Alguien decidió y nadie objetó | "Podríamos…", "habría que ver" |
-| Compromisos | Una persona se hizo cargo de algo | Una tarea que nadie tomó |
-| Respuestas a ADR | Responde una duda abierta concreta | Un comentario tangencialmente relacionado |
-| Contradicciones | Choca con algo escrito en `project-context/` | Choca con algo que tú suponías |
-| Hechos nuevos | Dato del proyecto afirmado con seguridad | Dato que el hablante dijo dudando |
-| Preguntas abiertas | Quedó explícitamente sin responder | Algo que a ti te quedó sin claro |
-| Discutido | Se habló, no se cerró | Ruido, saludos, temas ajenos |
+| `Decisiones tomadas` | Someone decided and nobody objected | "We could…", "we'd have to look at it" |
+| `Compromisos` | A named person took something on | A task nobody picked up |
+| `Respuestas a dudas abiertas (ADR)` | Answers a specific open entry | A tangentially related remark |
+| `Contradicciones con project-context/` | Clashes with something written there | Clashes with something you assumed |
+| `Hechos nuevos del proyecto` | A project fact stated with confidence | A fact the speaker hedged |
+| `Preguntas que quedaron abiertas` | Explicitly left unanswered | Something *you* found unclear |
+| `Discutido sin conclusión` | Discussed, never closed | Noise, greetings, unrelated topics |
 
 ## Common mistakes
 
-- **Resumir en vez de citar.** Un insight sin cita literal es indistinguible de una invención. Si no encuentras la frase, la línea no va.
-- **Ascender una sugerencia a decisión.** "Yo lo movería a anexos" no es "se movió a anexos". Es la falla más cara: convierte una opinión del tutor en un compromiso del documento.
-- **Adivinar quién habló.** La diarización falla; `[hablante incierto]` es una respuesta válida, inventar un nombre no.
-- **No leer `ADR.md` antes de extraer.** Se producen actas que no cierran ninguna duda porque no se sabía cuáles había.
-- **Aplicar la respuesta al documento en la misma pasada.** No es el trabajo de esta skill (ver arriba).
-- **Cambiar de idioma.** Las citas se transcriben como se dijeron; nunca se traducen.
+- **Summarizing instead of quoting.** An insight with no literal quote is indistinguishable from an invention. If you cannot find the sentence, the line does not go in.
+- **Promoting a suggestion to a decision.** "I'd move that to the appendix" is not "it was moved to the appendix". This is the most expensive failure: it turns the tutor's opinion into a commitment of the document.
+- **Guessing who spoke.** Diarization fails constantly; `[hablante incierto]` is a valid answer, inventing a name is not.
+- **Not reading `ADR.md` before extracting.** You produce a tidy record that closes nothing, because you did not know which questions were open.
+- **Applying the answer to the document in the same pass.** Not this skill's job (see above).
+- **Switching languages.** Quotes are transcribed as they were spoken and are never translated.
 
 ## Supporting files
 
-- [`extraction-guide.md`](./extraction-guide.md) — las reglas de extracción: evidencia obligatoria, las tres cubetas, atribución incierta, cruce con `ADR.md` y con `project-context/`.
-- [`README.md`](./README.md) — qué es el módulo y cómo se enlaza con el resto del harness.
+- [`extraction-guide.md`](./extraction-guide.md) — the extraction rules: mandatory evidence, the four buckets, uncertain attribution, and the two cross-checks against `ADR.md` and `project-context/`.
+- [`README.md`](./README.md) — what the module is and how it wires into the rest of the harness.
 
 When sharing or installing this skill, keep the whole `meeting-insights/` folder together.
 `SKILL.md` depends on `extraction-guide.md` by relative path, and writes into `meetings/`.

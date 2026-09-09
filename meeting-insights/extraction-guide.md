@@ -37,7 +37,7 @@ Four different things, four different buckets. The distinction is the single mos
 thing this skill produces, because the tutor's *suggestions* and the tutor's *instructions*
 carry very different weight for a thesis.
 
-| Se dijo | Va en |
+| What was said (Spanish, as spoken) | Goes in |
 | :--- | :--- |
 | "Entonces queda así, lo dejamos en X" | **Decisiones** |
 | "Yo me encargo de mandarte el dato" | **Compromisos** |

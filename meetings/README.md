@@ -1,71 +1,76 @@
-# Meetings — Insights de reuniones
+# Meetings
 
-Un archivo por reunión, con lo que se decidió, quién se comprometió a qué, y qué dudas
-abiertas quedaron respondidas. Los genera la skill
-[`meeting-insights/`](../meeting-insights/README.md) a partir de una transcripción pegada en
-el chat.
+One record per meeting: what was decided, who committed to what, and which open questions
+were answered. The records are produced by the
+[`meeting-insights/`](../meeting-insights/README.md) skill from a transcript pasted into
+the chat.
 
-Esta carpeta guarda **contenido**, no guías: las reglas de extracción viven en el módulo,
-igual que [`thesis/`](../thesis/README.md) guarda el documento y `latex/` las reglas para
-escribirlo.
+This folder holds **content**, not guidance. The extraction rules live in the module, the
+same split [`thesis/`](../thesis/README.md) has with `latex/`.
+
+> **Language.** The records themselves are written **in Spanish**, because the meetings are
+> in Spanish and quotes are never translated. This README, like every other module README
+> in the repository, is in English.
 
 ---
 
-## Convenio de nombres
+## Naming convention
 
 ```text
-meetings/AAAA-MM-DD-<slug>.md      # 2026-09-07-tutor-objetivos.md
+meetings/AAAA-MM-DD-<slug>.md      # 2026-08-26-tutor-arquitectura.md
 ```
 
-El slug son dos o tres palabras en minúscula separadas por guiones, que digan de qué fue la
-reunión: `tutor-objetivos`, `admin-hardware`, `equipo-cronograma`. Si hay dos reuniones el
-mismo día, el slug las distingue.
+The slug is two or three lowercase hyphenated words naming what the meeting was about:
+`tutor-arquitectura`, `alejandro-elicitacion`, `equipo-cronograma`. When two meetings fall
+on the same day, the slug is what tells them apart.
 
-[`INDEX.md`](./INDEX.md) lleva una fila por reunión. **Léelo antes de abrir un insight
-completo**: dice qué reuniones hay, de qué fueron y qué ADR respondió cada una — la misma
-relación que `thesis/STATUS.md` tiene con los capítulos.
+[`INDEX.md`](./INDEX.md) carries one row per meeting. **Read it before opening a full
+record**: it says which meetings exist, what each was about, and which ADR entries each one
+answered. Same relationship `thesis/STATUS.md` has with the chapters.
 
-## Las transcripciones crudas no se versionan
+## Raw transcripts are not versioned
 
-La transcripción se pega en el chat, se procesa y se descarta. Solo persiste el insight
-derivado. Tres razones:
+The transcript is pasted into the chat, processed, and discarded. Only the derived record
+persists. Three reasons:
 
-1. **Trazabilidad sin volcado.** Cada afirmación del insight lleva su cita literal y su marca
-   de tiempo, así que la fuente es verificable sin guardar el texto completo.
-2. **Datos de terceros.** Una transcripción registra a personas que no decidieron que sus
-   palabras quedaran en un repositorio público. El insight recoge lo que el proyecto
-   necesita; el resto no tiene por qué quedar.
-3. **Peso y ruido.** Las transcripciones son largas y en su mayoría irrelevantes; versionarlas
-   entierra el contenido útil en el historial.
+1. **Traceability without a dump.** Every claim in a record carries its literal quote and
+   timestamp, so the source is checkable without storing the full text.
+2. **Third-party data.** A transcript records people who never agreed to have their words
+   land in a repository. The record keeps what the project needs; the rest has no reason to
+   stay.
+3. **Weight and noise.** Transcripts are long and mostly irrelevant, and versioning them
+   buries the useful content in the history.
 
-Si hace falta conservar una para reprocesarla, va en `compiled-output/`, que ya está
-gitignoreado — nunca aquí.
+If one has to be kept for reprocessing, it goes in `compiled-output/`, which is already
+gitignored. Never here.
 
-## Qué es (y qué no es) un insight
+## What a record is, and what it is not
 
-**Es evidencia propuesta.** Un dato afirmado en una reunión es un *candidato* a hecho del
-proyecto. Se convierte en hecho cuando alguien lo escribe en
-[`project-context/`](../project-context/README.md), y solo entonces el Redactor puede citarlo.
+**It is proposed evidence.** A fact asserted in a meeting is a *candidate* project fact. It
+becomes a fact when a human writes it into
+[`project-context/`](../project-context/README.md), and only then may the Redactor cite it.
+This is rule 9 of [`CLAUDE.md`](../CLAUDE.md).
 
-Por lo mismo, un insight **nunca** cierra una entrada de
-[`project-context/ADR.md`](../project-context/ADR.md) por su cuenta. La marca como
-*"pendiente de aplicar"*, con la respuesta literal y la ubicación que la propia entrada
-registra; borrarla es un paso aparte, que ocurre cuando la respuesta ya está aplicada al
-documento.
+For the same reason, a record **never** closes an entry in
+[`project-context/ADR.md`](../project-context/ADR.md) on its own. It marks the entry
+*pendiente de aplicar*, with the literal answer and the location the entry itself records.
+Deleting the entry is a separate step, and it happens once the answer is actually in the
+document.
 
-## Estructura de un insight
+## Structure of a record
 
-Secciones fijas, en este orden, y las que no tengan contenido se omiten (un encabezado vacío
-afirma que "no se habló de esto", y eso no se puede sostener):
+Fixed sections, in this order. Sections with no content are omitted, because an empty
+heading asserts "nothing was said about this" and that is not a claim you can support. The
+headings are in Spanish since they are the literal output of the skill.
 
-| Sección | Qué recoge |
+| Section | What it holds |
 | :--- | :--- |
-| Decisiones tomadas | Alguien decidió y nadie objetó |
-| Compromisos | Quién se hizo cargo de qué, y para cuándo |
-| Respuestas a dudas abiertas (ADR) | Qué entrada de `ADR.md` quedó respondida, y con qué respuesta literal |
-| Contradicciones con `project-context/` | Lo dicho contra lo escrito, con el localizador de ambos |
-| Hechos nuevos del proyecto | Candidatos a entrar en `project-context/` |
-| Preguntas que quedaron abiertas | Candidatas a ADR nueva |
-| Discutido sin conclusión | Se habló, nadie cerró nada |
+| `Decisiones tomadas` | Someone decided and nobody objected |
+| `Compromisos` | Who took on what, and by when |
+| `Respuestas a dudas abiertas (ADR)` | Which `ADR.md` entry was answered, and with what literal answer |
+| `Contradicciones con project-context/` | What was said against what is written, with a locator for both |
+| `Hechos nuevos del proyecto` | Candidates to enter `project-context/` |
+| `Preguntas que quedaron abiertas` | Candidates for a new ADR entry |
+| `Discutido sin conclusión` | Discussed, never closed |
 
-La plantilla exacta está en [`meeting-insights/SKILL.md`](../meeting-insights/SKILL.md).
+The exact template is in [`meeting-insights/SKILL.md`](../meeting-insights/SKILL.md).

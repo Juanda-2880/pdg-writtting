@@ -66,54 +66,69 @@ The period represents the highest-level syntactic delimiter within a paragraph.
 | :--- | :--- | :--- | :--- |
 | **Hyphen (Guion corto)** | `-` | Compound words, prefixes, technical adjectives. | *State-of-the-art*, *pre-processing*, *socio-técnico*. |
 | **En-dash (Guion medio)** | `–` | Number ranges, page spans, dates, equal associations. | *pp. 120–145*, *2018–2024*, *Dijkstra–Fletcher model*. |
-| **Em-dash (Guion largo)** | `—` | **Prohibido en este proyecto.** Ver §4. | ~~*"El consumo energético —medido con instrumentación de precisión— disminuyó un 18%."*~~ → *"El consumo energético, medido con instrumentación de precisión, disminuyó un 18%."* |
+| **Em-dash (Guion largo)** | `—` | **Banned in this project.** See §4.1. | ~~*"El consumo energético —medido con instrumentación de precisión— disminuyó un 18%."*~~ → *"El consumo energético, medido con instrumentación de precisión, disminuyó un 18%."* |
 
 ---
 
-## 4. Rasgos que delatan redacción automática
+## 4. Markers of Machine-Written Prose
 
-Dos patrones están **prohibidos** en el documento de este proyecto. No son errores de gramática: son marcas de estilo que un evaluador asocia con texto generado por IA, y el tutor las señaló explícitamente como riesgo de malentendido sobre el uso de IA en el trabajo.
+Two patterns are **banned** from this project's document. They are not grammar errors: they
+are style markers an evaluator associates with AI-generated text, and the tutor flagged the
+first one explicitly as a risk of being misread as such.
 
-### 4.1 Guion largo (`—`) como signo parentético
+### 4.1 The em dash (`—`) as a parenthetical
 
-**Prohibido.** El tutor lo pidió de forma literal, tres veces en su revisión: *"Evitar escribir guiones largos (—) para evitar malentendidos sobre uso de IA"*.
+**Banned.** The tutor asked for it literally, three times in his review: *"Evitar escribir
+guiones largos (—) para evitar malentendidos sobre uso de IA"*.
 
-El guion largo sigue siendo válido en español académico general; la prohibición es **local a este proyecto** y responde a cómo se lee el documento, no a la norma. El `–` (en-dash) para rangos numéricos **sí se conserva**: es otro signo y no está en cuestión.
+The em dash remains valid in general academic Spanish. This prohibition is **local to this
+project** and answers to how the document is read, not to the norm. The en dash (`–`) for
+numeric ranges **stays**: it is a different mark and is not in question.
 
-Cómo sustituirlo, en orden de preferencia:
+How to replace it, in order of preference:
 
-| El guion largo hacía… | Sustituir por | Ejemplo |
+| What the em dash was doing | Replace with | Example |
 | :--- | :--- | :--- |
-| Un inciso corto | Comas | *La telemetría, medida cada cinco minutos, alimenta el panel.* |
-| Un inciso largo o técnico | Paréntesis | *El motor de inferencia (vLLM en la propuesta inicial, llama.cpp en la práctica) determina el rendimiento.* |
-| Una aclaración que remata la frase | Dos puntos | *El cuello de botella es uno solo: la velocidad de la red.* |
-| Dos ideas que se estaban forzando en una frase | Punto y seguido | *El clúster reparte la carga. Cada nodo sirve un modelo distinto.* |
+| A short aside | Commas | *La telemetría, medida cada cinco minutos, alimenta el panel.* |
+| A long or technical aside | Parentheses | *El motor de inferencia (vLLM en la propuesta inicial, llama.cpp en la práctica) determina el rendimiento.* |
+| A clarification closing the sentence | Colon | *El cuello de botella es uno solo: la velocidad de la red.* |
+| Two ideas forced into one sentence | Full stop | *El clúster reparte la carga. Cada nodo sirve un modelo distinto.* |
 
-Si al sustituirlo la frase se vuelve confusa, casi siempre significa que la frase cargaba demasiadas ideas: pártela.
+If the sentence turns confusing once the dash is gone, that almost always means it was
+carrying too many ideas. Split it.
 
-### 4.2 Estructura antitética (`no es X, es Y`)
+### 4.2 The antithetical construction (`no es X, es Y`)
 
-**Prohibida** en todas sus variantes:
+**Banned** in all its variants:
 
 - *No es un problema de red, es un problema de memoria.*
 - *El objetivo no es describir, sino justificar.*
 - *No solo reduce la latencia, sino que también mejora la equidad.*
 - *Esto no es una limitación; es una decisión de diseño.*
 
-Dos razones, y la segunda importa más que la primera:
+Two reasons, and the second matters more than the first:
 
-1. **Es un tic reconocible de redacción automática.** Su ritmo binario aparece con una frecuencia que la prosa académica humana no tiene.
-2. **Sustituye argumento por énfasis.** La construcción afirma un contraste en lugar de demostrarlo: presenta la tesis descartada como si alguien la hubiera sostenido, y da por probada la propia sin evidencia. En un anteproyecto donde cada afirmación debe apoyarse en una fuente o en un dato, es exactamente el hueco que un evaluador busca.
+1. **It is a recognizable tic of machine-written prose.** Its binary rhythm appears at a
+   frequency human academic writing does not have.
+2. **It substitutes emphasis for argument.** The construction *asserts* a contrast instead
+   of demonstrating it: it presents the discarded thesis as though someone had defended it,
+   and takes its own as proven without evidence. In a document where every claim must rest
+   on a source or a datum, that is precisely the hole an evaluator looks for.
 
-**Cómo corregirla:** afirma directamente lo que quieres decir y respáldalo. Si el contraste es real y aporta, desarróllalo como argumento con su evidencia, no como giro retórico.
+**How to fix it:** state directly what you mean and support it. If the contrast is real and
+carries weight, develop it as an argument with its evidence, not as a rhetorical turn.
 
-| En vez de | Escribe |
+| Instead of | Write |
 | :--- | :--- |
 | *No es un problema de red, es un problema de memoria.* | *El cuello de botella está en la memoria de video: la saturación de VRAM precede al congelamiento del nodo (\citealp{...}).* |
 | *El objetivo no es describir, sino justificar.* | *El objetivo es justificar la elección metodológica.* |
 | *No solo reduce la latencia, sino que también mejora la equidad.* | *Reduce la latencia. Además, distribuye el acceso entre roles con cuotas distintas.* |
 
-Cuando el contraste sí es el punto (por ejemplo, al refutar una alternativa en el estado del arte), la forma correcta es la del patrón **Comparación y Contraste** de [`../parragraph-structure/paragraph-types.md`](../parragraph-structure/paragraph-types.md): expones la alternativa, la evalúas con evidencia y explicas por qué no resuelve el problema. Eso es un párrafo, no una frase con coma.
+When the contrast genuinely is the point (refuting an alternative in the state of the art,
+for instance), the correct form is the **Comparación y Contraste** pattern from
+[`../parragraph-structure/paragraph-types.md`](../parragraph-structure/paragraph-types.md):
+present the alternative, evaluate it against evidence, and explain why it does not solve
+the problem. That is a paragraph, not a sentence with a comma.
 
 ---
 
@@ -124,9 +139,11 @@ Before submitting drafts, verify these mechanical checkpoints:
 - [ ] In-text parenthetical citations end with the period **outside** the closing parenthesis `)...`.
 - [ ] Semicolons are used strictly to link independent clauses or separate lists with internal commas.
 - [ ] Number and page ranges use en-dashes (`–`), not short hyphens (`-`).
-- [ ] **Cero guiones largos (`—`) en el documento** (§4.1). Contar ocurrencias, no líneas:
+- [ ] **Zero em dashes (`—`) in the document** (§4.1). Count occurrences, not lines:
       `grep -o '—' thesis/chapters/*.tex thesis/main.tex | wc -l`
-- [ ] **Ninguna estructura antitética** (§4.2). El grep es solo un primer filtro y **produce falsos positivos** (marca también los incisos con guion largo), así que sus resultados se revisan a mano:
+- [ ] **No antithetical constructions** (§4.2). The grep is a first filter only and **yields
+      false positives** (it also flags em-dash asides), so its output is reviewed by hand:
       `grep -nE 'no (es|son|solo|se trata)[^.;]{3,80}(sino|, (es|son))' thesis/chapters/*.tex`
-      Los casos que ningún patrón atrapa (`Esto no es una limitación; es una decisión`) solo los encuentra una lectura.
+      The cases no pattern catches (`Esto no es una limitación; es una decisión`) are only
+      found by reading.
 - [ ] In English prose adhering to APA 7, the Oxford comma is consistently applied.
