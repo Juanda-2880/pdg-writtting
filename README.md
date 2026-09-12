@@ -103,7 +103,7 @@ LaTeX configuration, build tooling, and a dedicated skill so agents don't reinve
 ### 9. [`thesis/`](./thesis/README.md)
 The actual thesis document — real, submittable content, not guidance:
 - **One file per chapter/section** under `chapters/`, so an agent can read/edit a single section instead of loading 60+ pages of prose into context.
-- **Anteproyecto structure**: the document currently follows the faculty's *anteproyecto* format (`project-context/formato-anteproyecto.md`) — Motivación y antecedentes, Descripción del problema, Hipótesis y restricciones, Objetivos, Marco teórico, Estado del arte, Metodología, Contribución y resultados, Anexos — **not** the final-thesis structure in `skills/thesis-writing/structure.md`.
+- **Anteproyecto structure**: the document currently follows the faculty's *anteproyecto* format (`project-context/formato-anteproyecto.md`) — Motivación y antecedentes, Descripción del problema, Objetivos, Marco teórico, Estado del arte, Metodología, Contribución y resultados, Anexos — **not** the final-thesis structure in `skills/thesis-writing/structure.md`. The faculty format does include a "Hipótesis y restricciones" section; the authors deliberately dropped it (see `thesis/STATUS.md`'s structural decisions), which is why the chapter numbering skips from 02 to 04.
 - **`STATUS.md`**: the single source of truth for what's drafted/under review/approved, plus the standing structural decisions, kept current by the Coordinador role.
 - **`main.tex`**: a thin skeleton (`\input{../skills/latex/preamble}` + front matter + `\include{chapters/...}`) — never the place to "see the whole thesis."
 

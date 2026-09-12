@@ -82,7 +82,7 @@ Responder **en una reunión** también vale, con una condición: que la respuest
 - **Dónde se usa:**
   - `thesis/chapters/04-objetivos.tex` — ítem con `\label{obj:evaluacion}` · marcador literal: `\emph{[verify: ADR-004 — criterio cuantitativo de aceptación operacional, no especificado en project-context/]}`
   - `thesis/chapters/07-metodologia.tex` — sección de estrategia metodológica, donde se describe la evaluación empírica
-- **Contexto:** el objetivo 4 promete "niveles satisfactorios de aceptación operacional" sin definirlos. La hipótesis de `thesis/chapters/03-hipotesis-restricciones.tex` se declara falsable **contra este criterio**: sin él, la hipótesis no es contrastable.
+- **Contexto:** el objetivo 4 promete "niveles satisfactorios de aceptación operacional" sin definirlos.
 - **Qué se necesita para cerrarla:** un umbral por cada dimensión evaluada — usabilidad (por ejemplo, puntaje SUS mínimo) y desempeño bajo carga (por ejemplo, latencia p95 y número de usuarios concurrentes soportados).
 - **Al resolver:** sustituir el marcador en el objetivo 4 y explicitar los mismos umbrales en la metodología, para que ambos capítulos digan lo mismo.
 
@@ -140,12 +140,11 @@ Responder **en una reunión** también vale, con una condición: que la respuest
 - **A quién corresponde:** tutor / administrador del laboratorio
 - **Dónde se usa:**
   - `thesis/chapters/01-motivacion-antecedentes.tex` — sección "Justificación", final del párrafo sobre servicio de LLM · marcador literal: `\todo{Creo que no son 16GB de VRAM..}`
-  - `thesis/chapters/03-hipotesis-restricciones.tex` — sección "Restricciones" · ítem literal: `\item[Capacidad de VRAM limitada por nodo]`
   - `project-context/requirements.md` — "Target Accelerator Hardware" y "Model Size Constraints" (dos menciones a 16 GB)
   - `project-context/technologies.md` — apartado de cuantización · texto literal: `inside the 16 GB VRAM of each RTX 4080`
-- **Contexto:** el tutor escribe *"Creo que no son 16GB de VRAM"*, contradiciendo a `requirements.md`, que afirma **NVIDIA GeForce RTX 4080 con 16 GB GDDR6X por nodo**. De esa cifra dependen el argumento de viabilidad del cap. 01 (que los LLM cuantizados caben en el hardware instalado), la restricción del cap. 03 y la justificación de cuantizar a 4/8 bits. Si el dato es falso, **la fuente de verdad está mal y hay que corregir `project-context/` antes que los capítulos**: parchear solo la prosa dejaría a los agentes futuros re-derivando la cifra equivocada.
+- **Contexto:** el tutor escribe *"Creo que no son 16GB de VRAM"*, contradiciendo a `requirements.md`, que afirma **NVIDIA GeForce RTX 4080 con 16 GB GDDR6X por nodo**. De esa cifra dependen el argumento de viabilidad del cap. 01 (que los LLM cuantizados caben en el hardware instalado) y la justificación de cuantizar a 4/8 bits. Si el dato es falso, **la fuente de verdad está mal y hay que corregir `project-context/` antes que los capítulos**: parchear solo la prosa dejaría a los agentes futuros re-derivando la cifra equivocada.
 - **Qué se necesita para cerrarla:** el modelo exacto de GPU y su VRAM por nodo de cómputo, y cuántos nodos hay de cada tipo si el parque es heterogéneo.
-- **Al resolver:** corregir primero `requirements.md` y `technologies.md`; después actualizar la restricción del cap. 03 y la frase de viabilidad del cap. 01, y borrar el `\todo{}`.
+- **Al resolver:** corregir primero `requirements.md` y `technologies.md`; después actualizar la frase de viabilidad del cap. 01, y borrar el `\todo{}`.
 
 ### ADR-014 — ¿Cómo ha sido históricamente el acceso a los equipos y GPU del IAsLab?
 
@@ -182,27 +181,14 @@ Responder **en una reunión** también vale, con una condición: que la respuest
 - **Qué se necesita para cerrarla:** una de dos: (a) "sí, y trabajamos así: <sprints de N semanas, estas ceremonias, este backlog>", o (b) "no, quítalo".
 - **Al resolver:** reescribir `sec:estrategia-metodologica` según la opción elegida, revisar que las fases de desarrollo sigan siendo coherentes con ella, y borrar el `\todo{}`.
 
-### ADR-017 — ¿Existe la fase de estabilización del backlog heredado, y en qué orden van las fases?
+### ADR-019 — ¿En qué orden cronológico van las fases de desarrollo del proyecto?
 
 - **Estado:** abierta
-- **Abierta por:** Coordinador · 2026-09-09
+- **Abierta por:** Coordinador · 2026-09-12
 - **A quién corresponde:** autores
 - **Dónde se usa:**
-  - `thesis/chapters/07-metodologia.tex` — `\section{Fases de desarrollo del proyecto}`, `\label{sec:fases-desarrollo}` · marcador literal: `\todo{Dicen que habrá una fase de análisis y estabilización del backlog`
-  - `thesis/chapters/07-metodologia.tex` — `\cref{tab:fases-desarrollo}` (el orden de las filas) y el riesgo `\item[Esfuerzo del backlog heredado mayor al previsto]`
-  - `thesis/chapters/03-hipotesis-restricciones.tex` — restricción `\item[Base de código heredada]`
-- **Contexto:** el tutor pregunta si esa fase de estabilización va a existir realmente y si el orden cronológico (observabilidad primero, luego orquestación y gobernanza) es el esperado. Además de la duda del tutor, hay una **contradicción dentro de `project-context/`**: `documentation.md` afirma en el planteamiento del problema que el software *requiere* estabilizarse resolviendo historias del backlog, y más adelante lista *"a stabilized codebase inherited from the training phase is available"* entre los **supuestos ya cumplidos**. Ningún agente puede decidir cuál de las dos versiones vale, y de ello dependen una fase entera, un riesgo y una restricción.
-- **Qué se necesita para cerrarla:** confirmación de si la estabilización del backlog es trabajo del PDG (y con qué peso), y el orden definitivo de las fases.
-- **Al resolver:** corregir la contradicción en `documentation.md`, reordenar `tab:fases-desarrollo` si aplica, ajustar el riesgo y la restricción, y borrar el `\todo{}`.
+  - `thesis/chapters/07-metodologia.tex` — `\section{Fases de desarrollo del proyecto}`, `\label{sec:fases-desarrollo}`, y `\cref{tab:fases-desarrollo}` (el orden de las filas) · marcador literal: `\todo{Dicen que habrá una fase de análisis y estabilización del backlog`
+- **Contexto:** el `\todo{}` del tutor plantea dos preguntas distintas; esta entrada cubre solo la segunda — "¿primero se trabajará la observabilidad de infraestructura y luego la de orquestación y gobernanza?" — porque es una decisión de secuenciación genuina, sin respuesta en `project-context/`. La primera pregunta del mismo `\todo{}` ("¿habrá una fase de estabilización del backlog heredado?") **ya se resolvió**: no existe tal backlog heredado, este proyecto no es continuación directa de uno anterior — ver la nota en `project-context/documentation.md` y la fila "Metodología" de `thesis/STATUS.md`, que registra el trabajo de redacción pendiente para quitar esa fase de la prosa.
+- **Qué se necesita para cerrarla:** el orden definitivo de las fases restantes (observabilidad, gobernanza, orquestación, evaluación) — confirmar si es el orden actual o corregirlo.
+- **Al resolver:** reordenar `tab:fases-desarrollo` si aplica, y borrar el `\todo{}` (junto con la fase de estabilización del backlog heredado, per la nota de `thesis/STATUS.md`).
 
-### ADR-018 — Las especificaciones de hardware, ¿van en "Restricciones" o en los anexos?
-
-- **Estado:** abierta
-- **Abierta por:** Coordinador · 2026-09-09
-- **A quién corresponde:** autores / tutor
-- **Dónde se usa:**
-  - `thesis/chapters/03-hipotesis-restricciones.tex` — final de la sección "Restricciones" · marcador literal: `\todo{Revisar características de los computadores nuevamente`
-  - `thesis/chapters/99-anexos.tex` — destino posible
-- **Contexto:** el tutor pregunta si este apartado lo exige el formato del PDG y sugiere que quizá pertenece a los anexos. El formato **sí** contempla el capítulo "Hipótesis y restricciones", de modo que la sección no sobra; lo que está en duda es si el **detalle de hardware** (modelo de GPU, VRAM, límites de red) se queda en la restricción o se traslada a un anexo con la restricción reducida a una frase. Depende de **ADR-010** (qué anexos se incluyen) y de **ADR-013**: no tiene sentido mover una tabla cuyas cifras están en disputa.
-- **Qué se necesita para cerrarla:** la decisión de dónde vive el detalle, una vez cerradas ADR-010 y ADR-013.
-- **Al resolver:** dejar la restricción como enunciado breve y, si se decide mover, crear el anexo con su `\label{}` y enlazarlo con `\cref{}`; borrar el `\todo{}`.

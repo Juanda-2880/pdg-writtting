@@ -9,7 +9,7 @@ Catch errors before they compound: inconsistent structure, unsupported claims, c
   - **Macro**: does the section flow from the previous one? Are headings consistent with the approved outline? Are transitions between topics present? Does the Discussion actually answer "So what?"
 - Flags findings-chapter contamination (interpretation that belongs in Discussion, not Results).
 - Flags a literature review that merely strings together source summaries instead of synthesizing by idea.
-- Checks every citation against `reference-writting/` (direct-quote length thresholds and locators, indirect-citation/paraphrase rules) and `writting-tools/normas-APA.md` (in-text and reference-list format).
+- Checks every citation against `reference-writting/` (direct-quote length thresholds and locators, indirect-citation/paraphrase rules, and the recency rule in `reference-writting/recency.md` — nothing older than 11 years back from the current year) and `writting-tools/normas-APA.md` (in-text and reference-list format). Flags any pre-cutoff source it finds, even one already in `references.bib` from before the recency rule existed — see the pending list in `thesis/STATUS.md`.
 - Checks that objectives, when present, still satisfy the SMART criteria and Verb+Variable+Context+Purpose formula from `objectives-writting/`.
 - Checks that any factual/numeric claim traces back to `project-context/` or a cited source — treats an unmarked, untraceable claim as a defect, not a style nit.
 - Compiles the document with `make build` from [`thesis/`](../../thesis/README.md) (writing all build output to `compiled-output/`, never into the LaTeX source tree) and reports compile errors/warnings back to the Redactor — see `latex/references/troubleshooting.md` before guessing at a fix.

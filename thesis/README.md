@@ -41,7 +41,6 @@ This is where the actual thesis text lives — as opposed to `skills/thesis-writ
 | — | `main.tex` front matter | Lista de acrónimos, Glosario de términos | — |
 | 01 | `chapters/01-motivacion-antecedentes.tex` | Motivación y antecedentes (contexto, antecedentes, justificación) | 3 páginas |
 | 02 | `chapters/02-descripcion-problema.tex` | Descripción del problema (identificación y formulación) | 1 página |
-| 03 | `chapters/03-hipotesis-restricciones.tex` | Hipótesis y restricciones | 1 página |
 | 04 | `chapters/04-objetivos.tex` | Objetivos (general + específicos) | 1 página |
 | 05 | `chapters/05-marco-teorico.tex` | Marco teórico | 4 páginas |
 | 06 | `chapters/06-estado-del-arte.tex` | Estado del arte | 4 páginas |
@@ -50,7 +49,8 @@ This is where the actual thesis text lives — as opposed to `skills/thesis-writ
 | — | `references.bib` → `\bibliography{}` | Referencias bibliográficas | — |
 | 99 | `chapters/99-anexos.tex` | Anexos (análisis de participación, árbol de problemas, árbol de objetivos) | — |
 
-La **Lista de símbolos** se omite deliberadamente: el documento no introduce símbolos matemáticos y el formato permite obviar esa sección.
+> [!NOTE]
+> El capítulo 03 (Hipótesis y restricciones) se eliminó por decisión de los autores; el numerado salta de 02 a 04 a propósito — ver `STATUS.md`. El formato de la facultad sí contempla esa sección, así que esto es una desviación deliberada, no un archivo perdido.
 
 Cada archivo ya trae un bloque de comentarios que dice exactamente qué debe y qué no debe contener, y qué módulos lo gobiernan — léelo antes de preguntar "qué va aquí".
 

@@ -12,6 +12,9 @@
 
 ---
 
+> [!NOTE]
+> **This project is not a continuation of a single prior project with an inherited backlog.** The macro-project above was split into separate degree projects — an earlier one and this one — related through the shared macro-project umbrella, not through a shared codebase or a handed-over backlog. Earlier drafts of this document implied backlog stabilization as an inherited obligation from "the training phase"; that framing was wrong and has been corrected below (confirmed by the authors, 2026-09-12).
+
 ## Introduction
 
 The Artificial Intelligence and Software Architecture Laboratory (IAsLab) of Universidad Icesi manages computational infrastructures used in academic and research projects in critical areas such as data science and artificial intelligence.
@@ -26,7 +29,7 @@ However, the machine learning lifecycle (MLOps) extends beyond the training and 
 
 Although the first phase of the project mitigated the operational bottleneck associated with model training and basic task orchestration, the current system presents limitations regarding the productive stages of the artificial intelligence lifecycle and the progressive scaling of its users.
 
-Currently, researchers using the platform do not have a mechanism within the web system to configure and manage the distributed deployment and inference of previously trained models (especially large-scale architectures such as LLMs). This gap fragments the workflow and limits putting research into production. On the other hand, the growing adoption of the system creates a latent risk of monopolization of graphics processing units (GPUs), since the platform does not incorporate a governance system with quotas or formal role-based restrictions. Finally, the software requires stabilization through the resolution of user stories from the backlog, and its monitoring module lacks fine-grained telemetry, preventing administrators from observing exact infrastructure consumption metrics in real time.
+Currently, researchers using the platform do not have a mechanism within the web system to configure and manage the distributed deployment and inference of previously trained models (especially large-scale architectures such as LLMs). This gap fragments the workflow and limits putting research into production. On the other hand, the growing adoption of the system creates a latent risk of monopolization of graphics processing units (GPUs), since the platform does not incorporate a governance system with quotas or formal role-based restrictions. Finally, its monitoring module lacks fine-grained telemetry, preventing administrators from observing exact infrastructure consumption metrics in real time.
 
 ## Formulation of Objectives
 
@@ -39,10 +42,10 @@ Extend the IAsLab's web orchestration system with distributed artificial intelli
 
 ## Scope
 
-- **High-level requirements:** The project will deliver the extension of the current frontend and backend, which will include: an expanded telemetry panel with granular metrics, an administrative quota module linked to SAAMFI user profiles, stabilization of backlog-based components, and a new deployment interface connected to a technology-agnostic inference orchestrator.
+- **High-level requirements:** The project will deliver the extension of the current frontend and backend, which will include: an expanded telemetry panel with granular metrics, an administrative quota module linked to SAAMFI user profiles, and a new deployment interface connected to a technology-agnostic inference orchestrator.
 - **Exclusions:** No neural network architectures, proprietary AI models, or underlying mathematical algorithms will be developed. Migration to commercial public cloud providers (such as AWS, GCP, or Azure) is also not contemplated.
 - **Constraints:** The software will run strictly on-premise, operating within the bandwidth and physical capacity limits of the units installed in the laboratory.
-- **Assumptions:** A stabilized codebase inherited from the training phase is available, uninterrupted availability of IAsLab clusters for testing is guaranteed, and the SAAMFI authentication service will remain persistent.
+- **Assumptions:** Uninterrupted availability of IAsLab clusters for testing is guaranteed, and the SAAMFI authentication service will remain persistent.
 
 ## Expected Results
 
