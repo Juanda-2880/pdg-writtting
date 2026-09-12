@@ -20,21 +20,19 @@
 
 \section{Objetivo general}
 
-\todo{Se quiere consolidar o se quiere extender? Evitar especificar dos verbos dentro del objetivo, evitar especificar fechas como "ocho meses"}
-Extender el sistema web de orquestación del IAsLab con despliegue distribuido de IA, gobernanza de recursos por rol y observabilidad avanzada de infraestructura, para consolidar el ciclo de vida de MLOps on-premise en la Universidad Icesi, en ocho meses.
+Construir la plataforma de orquestación y gobernanza de cargas de inteligencia artificial y aprendizaje automático del IAsLab, mediante módulos de despliegue de inferencia, gobernanza de recursos por rol y observabilidad de infraestructura, para consolidar el ciclo de vida de MLOps on-premise en la Universidad Icesi.
 
 \section{Objetivos específicos}
 
-\todo{Primer objetivo especfiico demasiado detallado, podría ser incluso un objetivo general, evitar usar palabras ambiguas como "interactivas", se puede evitar los aspectos que están entre paréntesis. Evitar especificar varios verbos en un solo objetivo. Ej: Desarrollar un módulo de observabilidad en el sistema web del IAsLab para la captura y visualización de métricas de hardware y de inferencia, orientado a la supervisión del estado de los nodos de cómputo. }
 \begin{enumerate}
   % Hace que \cref/\Cref nombren estos ítems como "objetivo específico N"
   % en lugar de "Punto N"; es local a este entorno (ver ../../skills/latex/preamble.tex).
   \crefalias{enumi}{objesp}
-  \item \label{obj:telemetria} Ampliar el módulo de telemetría del IAsLab con visualizaciones interactivas de métricas de hardware (temperatura, VRAM, consumo energético) e inferencia (latencia, \emph{tokens} por segundo, saturación de concurrencia), con el fin de que los administradores observen en tiempo real el consumo y diagnostiquen fallos antes de afectar a otros usuarios. Se considera \enquote{tiempo real} que las métricas expuestas reflejen el estado de la infraestructura dentro de una ventana no mayor a cinco minutos, criterio que se verificará en el \cref{obj:evaluacion}.
+  \item \label{obj:telemetria} Desarrollar un módulo de observabilidad en el sistema web del IAsLab para la captura y visualización de métricas de hardware y de carga de trabajo de los nodos de cómputo, orientado a la supervisión del estado de dichos nodos sin importar si ejecutan inferencia o entrenamiento.
 
-  \item \label{obj:gobernanza} \todo{Solo se va a diseñar o también desarrollar?}Diseñar un esquema lógico de cuotas y restricciones de infraestructura acoplado a los atributos de rol de SAAMFI (pregrado, electiva, semilleros y profesores), bajo el principio \emph{Fair-Share}, con el fin de prevenir la monopolización de las GPU conforme crece la concurrencia de usuarios.
+  \item \label{obj:gobernanza} Implementar un sistema de cuotas y restricciones de infraestructura, acoplado a los roles provistos por SAAMFI y a un rol de administrador de la plataforma, que reserve cupos de cómputo para cargas de inferencia y de entrenamiento con prioridad de los profesores sobre la asignación de la capacidad de la sala, con el fin de prevenir la monopolización de las GPU.
 
-  \item \label{obj:orquestacion} \todo{Cuál es esa interfaz del IASLab?}Integrar en la interfaz del IAsLab un motor de orquestación de inferencia independiente de la tecnología subyacente, que permita desplegar modelos ya entrenados de forma concurrente, con el fin de habilitarlos en la misma plataforma usada para el entrenamiento.
+  \item \label{obj:orquestacion} Incorporar a la plataforma un motor de orquestación de inferencia agnóstico al motor subyacente, empaquetado como imagen de contenedor, que permita desplegar modelos ya entrenados de forma concurrente, con el fin de habilitar el despliegue de modelos en la misma plataforma usada para el entrenamiento.
 
-  \item \label{obj:evaluacion} \todo{Evitar generar ambiguedades, en los objetivos no se agregan elementos como el de "verify: ADR-004 ...}Evaluar el desempeño de la extensión en producción mediante pruebas de carga y validaciones de usabilidad con usuarios del laboratorio, con el fin de determinar si alcanza una aceptación satisfactoria \emph{[verify: ADR-004 — criterio cuantitativo de aceptación operacional, no especificado en project-context/]}.
+  \item \label{obj:evaluacion} Evaluar el desempeño y la aceptación de la plataforma mediante pruebas de carga con veinte usuarios simultáneos y validaciones de usabilidad con usuarios del laboratorio, con el fin de determinar si alcanza un nivel de aceptación operacional satisfactorio.
 \end{enumerate}

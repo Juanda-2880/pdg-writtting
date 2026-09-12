@@ -71,6 +71,7 @@ Specialized guidelines for formulating and evaluating research objectives:
 - **Hierarchy:** Clear boundary between 1 General Objective (terminal contribution) and 3–5 Specific Objectives (tactical milestones).
 - **Standards:** Strict enforcement of SMART criteria, syntactic formula ($Verb + Variable + Context + Purpose$), and Bloom's Taxonomy cognitive alignment.
 - **Anti-patterns:** Identifying and fixing common errors, including confusing operational activities with objectives, compound verbs, and unmeasurable statements.
+- **Project-specific rules (`objectives-project-rules.md`):** the extra constraints the authors adopted after the tutor's review (ADR-028) and that override the generic guidance for this PDG: one infinitive verb, no ambiguous adjectives, no parenthetical enumerations, no dates inside an objective, no `[verify:]`/`\todo{}` markers, an explicit measurable criterion, and a verb that neither overstates nor understates what the project delivers.
 
 ### 4. [`skills/parragraph-structure/`](./skills/parragraph-structure/README.md)
 Frameworks for building self-contained, cohesive micro-arguments:

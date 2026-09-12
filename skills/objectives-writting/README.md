@@ -20,6 +20,7 @@ Research objectives establish the operational and scientific commitments of an a
 | :--- | :--- |
 | [`objectives-definition.md`](./objectives-definition.md) | Main skill guide: General vs. specific objectives, SMART criteria, syntactic formula, Bloom's taxonomy alignment, and operational modes. |
 | [`objectives-avoid.md`](./objectives-avoid.md) | Critical anti-patterns guide: Differentiating activities/tasks from scientific objectives, eliminating compound verbs, replacing unmeasurable verbs, and 6-gate audit checklist. |
+| [`objectives-project-rules.md`](./objectives-project-rules.md) | **Project-specific rules** adopted by the authors on 2026-09-12 after the tutor's review (ADR-028): one verb, no ambiguous adjectives, no parenthetical enumerations, no dates, no `[verify:]`/`\todo{}` markers, a measurable criterion in the sentence, and a verb that matches what the project really delivers. Overrides the generic guidance for the IAsLab PDG. |
 
 ---
 

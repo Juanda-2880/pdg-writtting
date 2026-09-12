@@ -245,35 +245,16 @@
 %% 7. Software engineering methodology (DSR, Scrum, SUS, load testing)
 %% ============================================================
 
-@article{hevner-designscienceis-2004,
-  author  = {Hevner, Alan R. and March, Salvatore T. and Park, Jinsoo and Ram, Sudha},
-  title   = {Design Science in Information Systems Research},
-  journal = {MIS Quarterly},
-  volume  = {28},
-  number  = {1},
-  pages   = {75--105},
-  year    = {2004},
-  url     = {https://aisel.aisnet.org/misq/vol28/iss1/6/}
-}
+%% Removed 2026-09-12: `hevner-designscienceis-2004` and `peffers-dsrm-2007`
+%% (Design Science Research). The tutor asked for DSR to be dropped from the
+%% document (ADR-016), `thesis/chapters/07-metodologia.tex` was rewritten
+%% without it, and both entries also predated the recency cutoff in
+%% ../skills/reference-writting/recency.md. No replacement is needed: the
+%% methodology chapter now describes the real iterative/Scrum process.
 
-@article{peffers-dsrm-2007,
-  author  = {Peffers, Ken and Tuunanen, Tuure and Rothenberger, Marcus A. and Chatterjee, Samir},
-  title   = {A Design Science Research Methodology for Information Systems Research},
-  journal = {Journal of Management Information Systems},
-  volume  = {24},
-  number  = {3},
-  pages   = {45--77},
-  year    = {2007},
-  doi     = {10.2753/MIS0742-1222240302}
-}
-
-@techreport{brooke-sus-1996,
-  author      = {Brooke, John},
-  title       = {{SUS}: A Quick and Dirty Usability Scale},
-  institution = {Redhatch Consulting Ltd.},
-  year        = {1996},
-  note        = {In P. W. Jordan, B. Thomas, B. A. Weerdmeester, \& A. L. McClelland (Eds.), Usability Evaluation in Industry, CRC Press, London},
-  url         = {https://digital.ahrq.gov/sites/default/files/docs/survey/systemusabilityscale%2528sus%2529_comp%255B1%255D.pdf}
+%% Removed 2026-09-12: `brooke-sus-1996` (1996) breached the recency rule in
+%% ../skills/reference-writting/recency.md. Replaced by `lewis-susbenchmarks-2018`,
+%% which recalibrates the SUS item benchmarks and supports the same claim.
 }
 
 @misc{schwaber-scrumguide-2020,
@@ -323,4 +304,145 @@
   journal = {arXiv preprint arXiv:2005.07598},
   year    = {2020},
   url     = {https://arxiv.org/abs/2005.07598}
+}
+
+%% ============================================================
+%% 9. Marco teórico (cap. 05) — fuentes añadidas 2026-09-12
+%% Todas cumplen la regla de vigencia de
+%% ../skills/reference-writting/recency.md (2015 o posterior).
+%% ============================================================
+
+@article{muiruri-mlinferenceserving-2026,
+  author  = {Muiruri, Dennis and Lwakatare, Lucy Ellen and Nurminen, Jukka K. and Mikkonen, Tommi},
+  title   = {Perspectives on Machine Learning Inference Serving in Real-World Settings},
+  journal = {Software: Practice and Experience},
+  year    = {2026},
+  doi     = {10.1002/spe.70069}
+}
+
+@article{carrion-k8sbibliometric-2022,
+  author  = {Carri\'{o}n, Carmen},
+  title   = {Kubernetes as a Standard Container Orchestrator: A Bibliometric Analysis},
+  journal = {Journal of Grid Computing},
+  volume  = {20},
+  pages   = {42},
+  year    = {2022},
+  doi     = {10.1007/s10723-022-09629-8}
+}
+
+@misc{shamim-k8smultivocal-2022,
+  author = {Shamim, Shazibul Islam and Gibson, Jonathan Alexander and Morrison, Patrick and Rahman, Akond},
+  title  = {Benefits, Challenges, and Research Topics: A Multi-vocal Literature Review of Kubernetes},
+  year   = {2022},
+  note   = {Preprint arXiv:2211.07032},
+  url    = {https://arxiv.org/abs/2211.07032}
+}
+
+@article{miao-llmservingsurvey-2025,
+  author  = {Miao, Xupeng and Oliaro, Gabriele and Zhang, Zhihao and Cheng, Xinhao and Jin, Hongyi and Chen, Tianqi and Jia, Zhihao},
+  title   = {Towards Efficient Generative Large Language Model Serving: A Survey from Algorithms to Systems},
+  journal = {ACM Computing Surveys},
+  volume  = {58},
+  number  = {1},
+  pages   = {1--37},
+  year    = {2025},
+  doi     = {10.1145/3754448}
+}
+
+@inproceedings{weitzel-nrpreservation-2025,
+  author    = {Weitzel, Derek and Graves, Ashton and Albin, Sam and Zhu, Huijun and W\"{u}rthwein, Frank and Tatineni, Mahidhar and Mishin, Dmitry and Graham, John and Khoda, Elham E. and Sada, Mohammad Firas and Smarr, Larry and DeFanti, Thomas},
+  title     = {The National Research Platform: Stretched, Multi-Tenant, Scientific {K}ubernetes Cluster},
+  booktitle = {Practice and Experience in Advanced Research Computing ({PEARC} '25)},
+  year      = {2025},
+  publisher = {ACM},
+  note      = {Preprint arXiv:2505.22864; verificar paginación final de las actas antes de la entrega},
+  url       = {https://arxiv.org/abs/2505.22864}
+}
+
+@misc{gao-dlschedulingtaxonomy-2022,
+  author = {Gao, Wei and Hu, Qinghao and Ye, Zhisheng and Sun, Peng and Wang, Xiaolin and Luo, Yingwei and Zhang, Tianwei and Wen, Yonggang},
+  title  = {Deep Learning Workload Scheduling in {GPU} Datacenters: Taxonomy, Challenges and Vision},
+  year   = {2022},
+  note   = {Preprint arXiv:2205.11913},
+  url    = {https://arxiv.org/abs/2205.11913}
+}
+
+@article{cohen-cloudovercommit-2019,
+  author  = {Cohen, Maxime C. and Keller, Philipp W. and Mirrokni, Vahab and Zadimoghaddam, Morteza},
+  title   = {Overcommitment in Cloud Services: Bin Packing with Chance Constraints},
+  journal = {Management Science},
+  volume  = {65},
+  number  = {7},
+  pages   = {3255--3271},
+  year    = {2019},
+  doi     = {10.1287/mnsc.2018.3091}
+}
+
+@inproceedings{bashir-peakovercommit-2021,
+  author    = {Bashir, Noman and Deng, Nan and Rzadca, Krzysztof and Irwin, David E. and Kodak, Sree and Jnagal, Rohit},
+  title     = {Take It to the Limit: Peak Prediction-Driven Resource Overcommitment in Datacenters},
+  booktitle = {Proceedings of the Sixteenth European Conference on Computer Systems ({EuroSys} '21)},
+  year      = {2021},
+  publisher = {ACM},
+  doi       = {10.1145/3447786.3456259}
+}
+
+@article{li-observabilitysurvey-2021,
+  author  = {Li, Bowen and Peng, Xin and Xiang, Qilin and Wang, Hanzhang and Xie, Tao and Sun, Jun and Liu, Xuanzhe},
+  title   = {Enjoy Your Observability: An Industrial Survey of Microservice Tracing and Analysis},
+  journal = {Empirical Software Engineering},
+  volume  = {27},
+  pages   = {25},
+  year    = {2021},
+  doi     = {10.1007/s10664-021-10063-9}
+}
+
+@inproceedings{li-rbaccloudsurvey-2015,
+  author    = {Li, Hua and Wang, Song and Tian, Xin and Wei, Wenjing and Sun, Chunhui},
+  title     = {A Survey of Extended Role-Based Access Control in Cloud Computing},
+  booktitle = {Proceedings of the 4th International Conference on Computer Engineering and Networks ({CENet} 2014)},
+  series    = {Lecture Notes in Electrical Engineering},
+  volume    = {355},
+  publisher = {Springer},
+  year      = {2015},
+  doi       = {10.1007/978-3-319-11104-9_95}
+}
+
+@inproceedings{fett-oauth2security-2016,
+  author    = {Fett, Daniel and K\"{u}sters, Ralf and Schmitz, Guido},
+  title     = {A Comprehensive Formal Security Analysis of {OAuth} 2.0},
+  booktitle = {Proceedings of the 2016 {ACM} {SIGSAC} Conference on Computer and Communications Security ({CCS} '16)},
+  pages     = {1204--1215},
+  year      = {2016},
+  publisher = {ACM},
+  doi       = {10.1145/2976749.2978385}
+}
+
+@misc{montesi-apigatewaypatterns-2016,
+  author = {Montesi, Fabrizio and Weber, Janine},
+  title  = {Circuit Breakers, Discovery, and {API} Gateways in Microservices},
+  year   = {2016},
+  note   = {Preprint arXiv:1609.05830},
+  url    = {https://arxiv.org/abs/1609.05830}
+}
+
+@article{lewis-susbenchmarks-2018,
+  author  = {Lewis, James R. and Sauro, Jeff},
+  title   = {Item Benchmarks for the System Usability Scale},
+  journal = {Journal of Usability Studies},
+  volume  = {13},
+  number  = {3},
+  pages   = {158--167},
+  year    = {2018}
+}
+
+@article{chen-llmquantizationsurvey-2026,
+  author  = {Chen, Yu-Ding and Zheng, Kai-Jie and Guo, Zi-Han},
+  title   = {A Survey of Quantization in {LLM}: Unlocking Potential Hardware Efficiency},
+  journal = {Journal of Computer Science and Technology},
+  volume  = {41},
+  number  = {1},
+  pages   = {341--358},
+  year    = {2026},
+  doi     = {10.1007/s11390-026-5979-1}
 }

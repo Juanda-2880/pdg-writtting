@@ -12,7 +12,8 @@ The system architecture is structured across four primary layers:
 ┌────────────────────────────────────────────────────────────────────────┐
 │ 1. PRESENTATION & ACCESS LAYER (Frontend & API Gateway)                │
 │    • Web GUI (React / Next.js control plane for deployment & quotas)   │
-│    • LiteLLM Proxy (OpenAI-compatible unified API gateway)             │
+│    • AI Gateway (OpenAI-compatible entry point + quota enforcement;    │
+│      NOT LiteLLM — adopted or built, see section B.1)                  │
 │    • SAAMFI (Institutional Identity Provider & OAuth/SAML Auth)        │
 ├────────────────────────────────────────────────────────────────────────┤
 │ 2. ORCHESTRATION & CLUSTERING LAYER (Distributed Workload Management)  │
@@ -61,12 +62,11 @@ The system architecture is structured across four primary layers:
 
 ### B. Inference Gateway & Serving Engines
 
-#### 1. LiteLLM Proxy
-- **Role:** Universal API Gateway providing a standard OpenAI-compatible interface (`/v1/chat/completions`, `/v1/models`).
-- **Key Features Used:**
-  - **Unified Client Interface:** Allows students to use standard client libraries (Python `openai`, LangChain, LlamaIndex, Curser/VSCode plugins) against local IAsLab models.
-  - **Load Balancing & Failover:** Distributes incoming user requests across available model replicas.
-  - **Token & Budget Tracking:** Enforces granular user-level quotas, rate limits (RPM/TPM), and generates detailed usage logs.
+#### 1. AI Gateway (LiteLLM Proxy **not adopted** — corrected by the authors 2026-09-12, ADR-024 closed)
+- **Decision:** the project does **not** adopt LiteLLM Proxy as its gateway, even though the laboratory already has it deployed. Reason: the platform must govern **any** AI/ML workload, not only LLM traffic, and a token-oriented LLM proxy does not cover non-LLM models. The tutor had said the same on 2026-08-26 (*"no tengamos que usar LightLLM [LiteLLM], toca hacer el LightLLM pero puramente enfocado a cualquier AI Gateway"*).
+- **How the decision resolves:** if the theoretical-framework review (`thesis/chapters/05-marco-teorico.tex`) identifies an existing technology that enforces quotas across arbitrary model workloads, that technology is adopted. If none fits, the quota-enforcement layer is built by the project.
+- **Role the component still has to play:** a single entry point exposing an OpenAI-compatible surface (`/v1/chat/completions`, `/v1/models`) so standard clients (Python `openai`, LangChain, LlamaIndex, IDE plugins) work against local IAsLab models; routing across available model replicas; and per-user quota and rate-limit enforcement with usage logging.
+- **Status in the thesis:** LiteLLM belongs in the *estado del arte* as prior art, not in the architecture as a dependency (tutor, 2026-08-26: *"Puede ir en el documento como, por ejemplo, estado de la práctica"*).
 
 #### 2. High-Performance Inference Engines
 - **vLLM:**
@@ -76,9 +76,10 @@ The system architecture is structured across four primary layers:
   - *Strengths:* Minimal runtime overhead, native support for quantized GGUF weights, and CPU offloading fallback.
   - *Target Workloads:* Single-user lightweight sessions and lower-spec exploratory models.
 
-#### 3. Quantization Technologies
+#### 3. Quantization Technologies (consumed, not implemented — ADR-021 closed 2026-09-12)
 - **AWQ / GPTQ / GGUF:**
-  - *Purpose:* Compressing 7B, 13B, and 14B parameter models down to 4-bit/8-bit representations, enabling multiple isolated model instances to run concurrently inside the 24 GB VRAM of each RTX 4090 (confirmed 2026-09-12 by the authors — see `requirements.md` §4).
+  - *Purpose:* 4-bit/8-bit representations of 7B, 13B and 14B parameter models are what let a model instance fit inside the 24 GB VRAM of an RTX 4090 node (confirmed 2026-09-12 by the authors — see `requirements.md` §4).
+  - *Project boundary:* **the platform does not run a quantization process of its own.** It deploys weights that already come quantized, and it may rely on whatever quantization the serving engine applies natively at load time (`llama.cpp` does this when a model is selected and deployed). A model that would require a separate, project-run quantization step is out of scope and must be supplied pre-quantized. See FR-01.3.
 
 ---
 

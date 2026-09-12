@@ -16,11 +16,7 @@
 \begin{center}
 
 \doublespacing
-% [verify: ADR-001 — confirm the exact official Spanish title with the tutor before
-% the first real submission — this is a working title from
-% project-context/documentation.md's "Formulation of Objectives", not a
-% confirmed final title.]
-{\Huge \textbf{Extensión del sistema web de IAsLab: despliegue distribuido de modelos de inteligencia artificial, gobernanza y monitoreo de infraestructura}}\\[3cm]
+{\Huge \textbf{IAsLab ORCHID: Plataforma de Orquestación y Gobernanza de Cargas de IA/ML en la Infraestructura de la Universidad Icesi}}\\[3cm]
 
 \singlespacing
 
@@ -31,11 +27,11 @@ Ingeniero Telemático e Ingeniero de Sistemas \\[2cm]
 
 por \\[0.5cm]
 
-\textsc{\Large Juan Jose De La Pava}\\
+\textsc{\Large Juan José De La Pava Giraldo}\\
 {\normalsize Ingeniería Telemática e Ingeniería de Sistemas}\\[0.4cm]
-\textsc{\Large Juan David Pacheco Vargas}\\
+\textsc{\Large Juan Camilo Melo López}\\
 {\normalsize Ingeniería Telemática}\\[0.4cm]
-\textsc{\Large Juan Camilo Melo}\\
+\textsc{\Large Juan David Pacheco Vargas}\\
 {\normalsize Ingeniería Telemática}\\[1cm]
 
 \large{Tutor:} Kevin David Rodríguez Belalcázar \\
@@ -43,8 +39,6 @@ por \\[0.5cm]
 
 \vfill
 
-{\Large Departamento de Computación y Sistemas Inteligentes}\\[0.3cm]
-% [verify: ADR-012 — departamento que corresponde al programa de Ingeniería Telemática]
 {\Large Facultad Barberi de Ingeniería, Diseño y Ciencias Aplicadas}\\[0.5cm]
 
 \large Universidad Icesi\\
@@ -97,16 +91,14 @@ por \\[0.5cm]
   \item[AWQ] Cuantización de pesos consciente de las activaciones (\emph{Activation-aware Weight Quantization})
   \item[CPU] Unidad central de procesamiento (\emph{Central Processing Unit})
   \item[DCGM] Gestor de GPU para centros de datos, de NVIDIA (\emph{Data Center GPU Manager})
-  \item[DSR] Investigación en ciencias del diseño (\emph{Design Science Research})
   \item[GGUF] Formato de archivo para modelos cuantizados empleado por \emph{llama.cpp} y Ollama
   \item[GPTQ] Método de cuantización posterior al entrenamiento para modelos generativos preentrenados
   \item[GPU] Unidad de procesamiento gráfico (\emph{Graphics Processing Unit})
   \item[IAsLab] Laboratorio de Inteligencia Artificial y Arquitectura de Software de la Universidad Icesi
-  \item[LLM] Modelo extenso de lenguaje (\emph{Large Language Model})
+  \item[LLM] Modelo de lenguaje de gran escala (\emph{Large Language Model})
   \item[MLOps] Operaciones de aprendizaje automático (\emph{Machine Learning Operations})
   \item[PDG] Proyecto de grado
   \item[RBAC] Control de acceso basado en roles (\emph{Role-Based Access Control})
-  \item[SAAMFI] Servicio institucional de identidad y autenticación de la Universidad Icesi % [verify: ADR-011 — expansión oficial de la sigla SAAMFI]
   \item[SSO] Inicio de sesión único (\emph{Single Sign-On})
   \item[SUS] Escala de usabilidad del sistema (\emph{System Usability Scale})
   \item[VRAM] Memoria de acceso aleatorio de video (\emph{Video Random Access Memory})
@@ -115,7 +107,14 @@ por \\[0.5cm]
 % --- Glosario de términos ---------------------------------------------------
 \chapter*{Glosario de términos}
 \addcontentsline{toc}{chapter}{Glosario de términos}
-% [verify: not yet written]
+% Términos específicos del dominio del proyecto, en orden alfabético
+% (project-context/formato-anteproyecto.md, "Glosario de términos").
+% SAAMFI va aquí y no en la lista de acrónimos: es un nombre propio, no una
+% sigla, y por tanto no tiene expansión que definir (confirmado por los
+% autores, 2026-09-12).
+\begin{description}
+  \item[SAAMFI] Servicio institucional de identidad de la Universidad Icesi. Funciona exclusivamente como proveedor de identidad (\emph{Identity Provider}), en el mismo sentido que Keycloak o Auth0: registra a los usuarios y su esquema de roles y permisos, y emite un token que cada sistema integrado consume según sus propias reglas. No impone políticas de autorización sobre los sistemas que lo usan, de modo que la traducción de un rol en un límite de consumo de hardware corresponde a la plataforma desarrollada en este proyecto.
+\end{description}
 
 \clearpage
 \pagenumbering{arabic}
