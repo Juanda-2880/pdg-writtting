@@ -1,6 +1,6 @@
 # The Thesis Document
 
-This is where the actual thesis text lives — as opposed to `thesis-writing/`, `objectives-writting/`, etc., which are *guidance* modules, not content. Everything under `chapters/` is real, submittable prose (once written).
+This is where the actual thesis text lives — as opposed to `skills/thesis-writing/`, `skills/objectives-writting/`, etc., which are *guidance* modules, not content. Everything under `chapters/` is real, submittable prose (once written).
 
 ## Why this is split into one file per chapter
 
@@ -15,7 +15,7 @@ This is where the actual thesis text lives — as opposed to `thesis-writing/`, 
 1. **Read `STATUS.md`** — it says what's done, what's in progress, what's untouched. Don't infer status by opening chapter files.
 2. **Read only the chapter file(s) your task is actually about.** Each one opens with a comment block stating what it must contain, what it must *not* contain, and which modules to draft from — that's usually enough context on its own.
 3. **Cross-chapter work is the exception, not the default.** Only open multiple chapter files when the task genuinely requires it:
-   - The Revisor's macro review (`../agent-roles/Revisor.md`) checks flow *between* chapters — that legitimately needs to read the adjacent ones.
+   - The Revisor's macro review (`../skills/agent-roles/Revisor.md`) checks flow *between* chapters — that legitimately needs to read the adjacent ones.
    - Discusión (`chapters/05-discusion.tex`) interprets Resultados and ties back to Marco teórico — drafting it well requires re-reading those two, not just its own stub.
    - Otherwise, a chapter's own header comment + `STATUS.md` should be enough; don't preemptively open the rest of the thesis "just in case."
 
@@ -23,17 +23,17 @@ This is where the actual thesis text lives — as opposed to `thesis-writing/`, 
 
 | Path | What it is |
 | :--- | :--- |
-| `main.tex` | Document skeleton: `\documentclass`, `\input{../latex/preamble}`, title page, front matter (Resumen/Abstract — written last — Lista de acrónimos, Glosario), the ordered list of `\include{chapters/...}`, bibliography, appendices. |
+| `main.tex` | Document skeleton: `\documentclass`, `\input{../skills/latex/preamble}`, title page, front matter (Resumen/Abstract — written last — Lista de acrónimos, Glosario), the ordered list of `\include{chapters/...}`, bibliography, appendices. |
 | `STATUS.md` | Per-chapter status tracker — read this, not the chapters, to see where the thesis stands. |
 | `chapters/NN-nombre.tex` | One file per chapter/section (see below). Numbered so the reading/compile order is obvious; `99-anexos.tex` is deliberately last regardless of how many numbered chapters exist. |
-| `references.bib` | The single shared BibTeX database — every citation key used anywhere in `chapters/` must resolve here (see `../latex/references/citations-and-figures.md`). |
-| `imagenes/` | Figures referenced from `chapters/` — descriptive filenames, not `figura1.png` (see `../latex/references/citations-and-figures.md`). |
-| `Makefile` / `.latexmkrc` | Copied from `../latex/` — run `make build` from this folder. Output goes to `../compiled-output/latex-build/`, never here. |
+| `references.bib` | The single shared BibTeX database — every citation key used anywhere in `chapters/` must resolve here (see `../skills/latex/references/citations-and-figures.md`). |
+| `imagenes/` | Figures referenced from `chapters/` — descriptive filenames, not `figura1.png` (see `../skills/latex/references/citations-and-figures.md`). |
+| `Makefile` / `.latexmkrc` | Copied from `../skills/latex/` — run `make build` from this folder. Output goes to `../compiled-output/latex-build/`, never here. |
 
 ## Capítulos (estructura de **anteproyecto**, según `../project-context/formato-anteproyecto.md`)
 
 > [!IMPORTANT]
-> El documento sigue la estructura de **anteproyecto** exigida por la facultad, **no** la estructura de tesis final descrita en `../thesis-writing/structure.md`. Por eso no hay capítulos de Resultados, Discusión ni Conclusiones: no corresponden a esta entrega. Esa decisión está registrada en `STATUS.md`.
+> El documento sigue la estructura de **anteproyecto** exigida por la facultad, **no** la estructura de tesis final descrita en `../skills/thesis-writing/structure.md`. Por eso no hay capítulos de Resultados, Discusión ni Conclusiones: no corresponden a esta entrega. Esa decisión está registrada en `STATUS.md`.
 
 | # | Archivo | Sección | Extensión máxima |
 | :--- | :--- | :--- | :--- |
@@ -56,12 +56,12 @@ Cada archivo ya trae un bloque de comentarios que dice exactamente qué debe y q
 
 ## Writing workflow
 
-Follow `../agent-roles/README.md`'s Coordinador → Investigador → Redactor → Revisor loop. In practice, for one chapter:
+Follow `../skills/agent-roles/README.md`'s Coordinador → Investigador → Redactor → Revisor loop. In practice, for one chapter:
 
 1. Coordinador checks `STATUS.md`, assigns the chapter/subsection.
 2. Investigador gathers evidence from `../project-context/` (and literature, for Marco teórico and Estado del arte), flags gaps as `[verify: ...]`/`cite_needed` — never invents.
-3. Redactor writes into the chapter file, following its header comment, `../thesis-writing/writing-guide.md`, and `../latex/SKILL.md` for the LaTeX mechanics.
-4. Revisor runs `make build` from this folder and the checklist in `../thesis-writing/review-checklist.md`.
+3. Redactor writes into the chapter file, following its header comment, `../skills/thesis-writing/writing-guide.md`, and `../skills/latex/SKILL.md` for the LaTeX mechanics.
+4. Revisor runs `make build` from this folder and the checklist in `../skills/thesis-writing/review-checklist.md`.
 5. Coordinador updates `STATUS.md`.
 
 ## Compiling
@@ -70,8 +70,8 @@ Follow `../agent-roles/README.md`'s Coordinador → Investigador → Redactor �
 cd thesis
 make build   # or: make watch
 ```
-See `../latex/README.md` for the TeX Live prerequisites and `../latex/references/troubleshooting.md` if the build fails.
+See `../skills/latex/README.md` for the TeX Live prerequisites and `../skills/latex/references/troubleshooting.md` if the build fails.
 
 ## Adding/renaming a chapter
 
-Goes through the Coordinador (`../agent-roles/Coordinador.md`) — it's a structural change. When it happens, update **together, in the same change**: the chapter file itself, the `\include` list in `main.tex`, the table above, and `STATUS.md`. Adding a new top-level folder or restructuring this one also triggers the repo-wide rule in `../CLAUDE.md` — update the root `README.md` too.
+Goes through the Coordinador (`../skills/agent-roles/Coordinador.md`) — it's a structural change. When it happens, update **together, in the same change**: the chapter file itself, the `\include` list in `main.tex`, the table above, and `STATUS.md`. Adding a new top-level folder or restructuring this one also triggers the repo-wide rule in `../CLAUDE.md` — update the root `README.md` too.

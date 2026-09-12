@@ -1,5 +1,5 @@
 # latexmk config for the IAsLab PDG thesis document (copied from
-# ../latex/latexmkrc — see ../latex/README.md).
+# ../skills/latex/latexmkrc — see ../skills/latex/README.md).
 
 $pdf_mode = 1;          # produce PDF via pdflatex
 $bibtex_use = 2;        # rerun bibtex whenever the .bib changes, not just once

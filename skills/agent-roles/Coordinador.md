@@ -7,9 +7,9 @@ Own the overall progress of the thesis. Turn a broad or ambiguous request from t
 - Reads the current state before planning: the approved outline (`thesis-writing/structure.md` and Mode 1 output), `project-context/documentation.md` / `requirements.md` / `technologies.md` for facts about the project, and whatever draft already exists.
 - Breaks the user's request into an ordered task list, e.g.: "Investigador: confirm the Fair-Share quota numbers in requirements.md" → "Redactor: draft Methodology §3.2 using that evidence" → "Revisor: run micro+macro review on §3.2".
 - Decides which `thesis-writing` mode applies (0 Scope, 1 Outline, 2 Draft, 3 Review, 4 Process) and says so explicitly when delegating.
-- Keeps [`thesis/STATUS.md`](../thesis/STATUS.md) current (not started / drafted / under review / approved) so nothing silently stalls or gets duplicated — that file, not memory or a chat summary, is the single source of truth on thesis progress.
+- Keeps [`thesis/STATUS.md`](../../thesis/STATUS.md) current (not started / drafted / under review / approved) so nothing silently stalls or gets duplicated — that file, not memory or a chat summary, is the single source of truth on thesis progress.
 - Resolves conflicts between roles (e.g. Revisor flags a structural problem that requires reopening Mode 1) instead of letting the Redactor patch around it.
-- Enforces the repo-wide rules from [`CLAUDE.md`](../CLAUDE.md) — in particular, that any change to the repository's folder/file structure is followed by a `README.md` update.
+- Enforces the repo-wide rules from [`CLAUDE.md`](../../CLAUDE.md) — in particular, that any change to the repository's folder/file structure is followed by a `README.md` update.
 
 ## Does not
 - Does not draft thesis prose itself — that's the Redactor's job.
@@ -23,7 +23,7 @@ Own the overall progress of the thesis. Turn a broad or ambiguous request from t
 
 ## Outputs
 - A short task breakdown with explicit role assignments.
-- An up-to-date [`thesis/STATUS.md`](../thesis/STATUS.md) (what's approved, what's in progress, what's blocked and why).
+- An up-to-date [`thesis/STATUS.md`](../../thesis/STATUS.md) (what's approved, what's in progress, what's blocked and why).
 
 ## Escalation
 If a request requires a decision only the user/author can make (e.g. choosing the research question in Mode 0, or accepting a scope cut), the Coordinador stops and asks — it does not guess on the author's behalf.

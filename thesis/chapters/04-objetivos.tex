@@ -11,7 +11,7 @@
 % NO debe contener: actividades disfrazadas de objetivos, verbos
 % compuestos, ni enunciados no medibles.
 %
-% Reglas de formulación y anti-patrones: ../../objectives-writting/
+% Reglas de formulación y anti-patrones: ../../skills/objectives-writting/
 % (objectives-definition.md y objectives-avoid.md) — de obligada consulta.
 % Objetivos base a reformular: ../../project-context/documentation.md,
 % sección "Formulation of Objectives".
@@ -28,7 +28,7 @@ Extender el sistema web de orquestación del IAsLab con despliegue distribuido d
 \todo{Primer objetivo especfiico demasiado detallado, podría ser incluso un objetivo general, evitar usar palabras ambiguas como "interactivas", se puede evitar los aspectos que están entre paréntesis. Evitar especificar varios verbos en un solo objetivo. Ej: Desarrollar un módulo de observabilidad en el sistema web del IAsLab para la captura y visualización de métricas de hardware y de inferencia, orientado a la supervisión del estado de los nodos de cómputo. }
 \begin{enumerate}
   % Hace que \cref/\Cref nombren estos ítems como "objetivo específico N"
-  % en lugar de "Punto N"; es local a este entorno (ver ../../latex/preamble.tex).
+  % en lugar de "Punto N"; es local a este entorno (ver ../../skills/latex/preamble.tex).
   \crefalias{enumi}{objesp}
   \item \label{obj:telemetria} Ampliar el módulo de telemetría del IAsLab con visualizaciones interactivas de métricas de hardware (temperatura, VRAM, consumo energético) e inferencia (latencia, \emph{tokens} por segundo, saturación de concurrencia), con el fin de que los administradores observen en tiempo real el consumo y diagnostiquen fallos antes de afectar a otros usuarios. Se considera \enquote{tiempo real} que las métricas expuestas reflejen el estado de la infraestructura dentro de una ventana no mayor a cinco minutos, criterio que se verificará en el \cref{obj:evaluacion}.
 

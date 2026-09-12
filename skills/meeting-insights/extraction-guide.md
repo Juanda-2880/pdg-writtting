@@ -71,7 +71,7 @@ Same rule for the transcript mangling a technical term: if it reads *"cubernetes
 
 ## 4. Cross-check against `ADR.md` — and do it first
 
-[`project-context/ADR.md`](../project-context/ADR.md) is the register of questions blocking
+[`project-context/ADR.md`](../../project-context/ADR.md) is the register of questions blocking
 the document. Read the open entries **before** extracting: you will not recognize an answer
 to ADR-011 if you don't know ADR-011 was asked.
 
@@ -118,7 +118,7 @@ A fact stated in a meeting is a **candidate**. It becomes a project fact when a 
 it into `project-context/`, and only then may the Redactor cite it. Until that happens it
 lives under *Hechos nuevos del proyecto (candidatos)* in the insight, with its quote.
 
-This is rule 6 of [`CLAUDE.md`](../CLAUDE.md) applied to speech: *"never invent facts,
+This is rule 6 of [`CLAUDE.md`](../../CLAUDE.md) applied to speech: *"never invent facts,
 requirements, technical details, or citations"* — and a plausible sentence that a
 transcription engine may have garbled is exactly the kind of gap that rule is about.
 

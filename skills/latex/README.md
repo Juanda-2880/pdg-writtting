@@ -9,7 +9,7 @@ This module provides the LaTeX-specific configuration, build tooling, and skill 
 1. Give agents a ready-to-copy preamble, `Makefile`, and `latexmkrc` instead of improvising packages/build steps per session.
 2. Fix the citation/bibliography stack (APA 7 via `natbib` + `apalike`) so it's consistent with [`reference-writting/`](../reference-writting/README.md) and [`writting-tools/normas-APA.md`](../writting-tools/normas-APA.md) — see [`SKILL.md`](./SKILL.md) for why this was chosen over the tutor's original `alphaabbr` style.
 3. Encode the semantic-markup rules (proper `description`/`itemize`/`enumerate` use, `cleveref` cross-references, `csquotes` quotations, `booktabs`/`longtable` tables) that keep the generated LaTeX correct and maintainable rather than visually-hacked.
-4. Route every compiled/generated artifact to [`compiled-output/`](../compiled-output/README.md), per the repo-wide rule in [`CLAUDE.md`](../CLAUDE.md).
+4. Route every compiled/generated artifact to [`compiled-output/`](../../compiled-output/README.md), per the repo-wide rule in [`CLAUDE.md`](../../CLAUDE.md).
 
 ## Prerequisite: install TeX Live
 
@@ -54,7 +54,7 @@ If any of those come back empty, that package/collection is missing — install 
 
 ## Status
 
-This module ships **configuration and rules**, not the thesis document itself — the actual document lives in [`thesis/`](../thesis/README.md), which uses this module's `preamble.tex` directly via `\input{../latex/preamble}` (so there is one preamble, not a copy that can drift) and its own copies of `Makefile`/`latexmkrc` (boilerplate, safe to copy once).
+This module ships **configuration and rules**, not the thesis document itself — the actual document lives in [`thesis/`](../../thesis/README.md), which uses this module's `preamble.tex` directly via `\input{../skills/latex/preamble}` (so there is one preamble, not a copy that can drift) and its own copies of `Makefile`/`latexmkrc` (boilerplate, safe to copy once).
 
 `preamble.tex` has been end-to-end test-compiled (`make build`, via `latexmk` + `pdflatex` + `bibtex`) with a sample chapter exercising every package: `description` lists, `\citet`/`\citep` (natbib+apalike), `\enquote{...}`, an equation, a `tikzpicture` figure, and a `booktabs` table — all cross-referenced with `\cref`. That test surfaced and fixed three real conflicts, now baked into `preamble.tex` and documented in [`references/troubleshooting.md`](./references/troubleshooting.md):
 - `babel[spanish]`'s `<`/`>` guillemet shorthands crashing TikZ arrow tips (`\draw[->]`) — fixed with a properly-scoped `\shorthandoff{<>}`.

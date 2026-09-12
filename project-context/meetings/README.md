@@ -2,11 +2,11 @@
 
 One record per meeting: what was decided, who committed to what, and which open questions
 were answered. The records are produced by the
-[`meeting-insights/`](../meeting-insights/README.md) skill from a transcript pasted into
+[`meeting-insights/`](../../skills/meeting-insights/README.md) skill from a transcript pasted into
 the chat.
 
 This folder holds **content**, not guidance. The extraction rules live in the module, the
-same split [`thesis/`](../thesis/README.md) has with `latex/`.
+same split [`thesis/`](../../thesis/README.md) has with `skills/latex/`.
 
 > **Language.** The records themselves are written **in Spanish**, because the meetings are
 > in Spanish and quotes are never translated. This README, like every other module README
@@ -48,11 +48,11 @@ gitignored. Never here.
 
 **It is proposed evidence.** A fact asserted in a meeting is a *candidate* project fact. It
 becomes a fact when a human writes it into
-[`project-context/`](../project-context/README.md), and only then may the Redactor cite it.
-This is rule 9 of [`CLAUDE.md`](../CLAUDE.md).
+[`project-context/`](../README.md), and only then may the Redactor cite it.
+This is rule 9 of [`CLAUDE.md`](../../CLAUDE.md).
 
 For the same reason, a record **never** closes an entry in
-[`project-context/ADR.md`](../project-context/ADR.md) on its own. It marks the entry
+[`project-context/ADR.md`](../ADR.md) on its own. It marks the entry
 *pendiente de aplicar*, with the literal answer and the location the entry itself records.
 Deleting the entry is a separate step, and it happens once the answer is actually in the
 document.
@@ -73,4 +73,4 @@ headings are in Spanish since they are the literal output of the skill.
 | `Preguntas que quedaron abiertas` | Candidates for a new ADR entry |
 | `Discutido sin conclusión` | Discussed, never closed |
 
-The exact template is in [`meeting-insights/SKILL.md`](../meeting-insights/SKILL.md).
+The exact template is in [`meeting-insights/SKILL.md`](../../skills/meeting-insights/SKILL.md).

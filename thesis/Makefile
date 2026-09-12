@@ -1,5 +1,5 @@
-# Build file for the IAsLab PDG thesis document (copied from ../latex/Makefile,
-# the module that owns this template — see ../latex/README.md). Drives
+# Build file for the IAsLab PDG thesis document (copied from ../skills/latex/Makefile,
+# the module that owns this template — see ../skills/latex/README.md). Drives
 # latexmk, which handles the pdflatex/bibtex rerun dance automatically
 # (needed for cross-references, ToC, and the APA/natbib bibliography to
 # converge).

@@ -20,7 +20,7 @@ Origin note: the semantic-markup, cross-reference, and citation practices below 
 - **Cross-references**: `cleveref` (loaded after `hyperref`), Spanish names.
 - **Build output**: everything generated goes to `compiled-output/` (repo root), per `CLAUDE.md` rule 2 — never into the LaTeX source tree.
 
-The actual thesis document lives in [`../thesis/`](../thesis/README.md) (`main.tex` + `chapters/`, per `thesis-writing/structure.md`). It uses this module's `preamble.tex` directly via `\input{../latex/preamble}` — edit the preamble here, not a copy, so the whole thesis stays on one source of truth. `Makefile`/`latexmkrc` are copied into `thesis/` once (boilerplate, low drift risk).
+The actual thesis document lives in [`../../thesis/`](../../thesis/README.md) (`main.tex` + `chapters/`, per `thesis-writing/structure.md`). It uses this module's `preamble.tex` directly via `\input{../skills/latex/preamble}` — edit the preamble here, not a copy, so the whole thesis stays on one source of truth. `Makefile`/`latexmkrc` are copied into `thesis/` once (boilerplate, low drift risk).
 
 ## Core principle: semantic markup
 

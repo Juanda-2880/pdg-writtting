@@ -1,6 +1,6 @@
 ---
 name: meeting-insights
-description: Use when a meeting transcript is pasted into the chat and needs to be turned into a durable record — meetings with the thesis tutor, the lab administrators, or the author team (acta, minutes, "extract the insights from this transcript", "what did we decide in this meeting"). Produces one traceable Markdown file per meeting in `meetings/`, cross-checked against the open questions in `project-context/ADR.md` and the project facts in `project-context/`.
+description: Use when a meeting transcript is pasted into the chat and needs to be turned into a durable record — meetings with the thesis tutor, the lab administrators, or the author team (acta, minutes, "extract the insights from this transcript", "what did we decide in this meeting"). Produces one traceable Markdown file per meeting in `project-context/meetings/`, cross-checked against the open questions in `project-context/ADR.md` and the project facts in `project-context/`.
 ---
 
 # Turning a Meeting Transcript into Project Evidence
@@ -53,7 +53,7 @@ index. Everything else can be marked uncertain; the date cannot.
 ### 3. Load what the meeting might answer
 
 Before extracting, read the open entries in
-[`project-context/ADR.md`](../project-context/ADR.md). You are looking for answers to
+[`project-context/ADR.md`](../../project-context/ADR.md). You are looking for answers to
 *specific* open questions, and you will only recognize them if you know what they are.
 Skipping this step is the most common way this skill produces a pretty file that closes
 nothing.
@@ -66,9 +66,9 @@ decided / suggested / discussed are three different buckets.
 
 ### 5. Write the file and index it
 
-- Write `meetings/AAAA-MM-DD-<slug>.md` (slug: two or three words, lowercase, hyphenated —
+- Write `project-context/meetings/AAAA-MM-DD-<slug>.md` (slug: two or three words, lowercase, hyphenated —
   `tutor-objetivos`, `admin-hardware`).
-- Add one row to [`meetings/INDEX.md`](../meetings/INDEX.md).
+- Add one row to [`meetings/INDEX.md`](../../project-context/meetings/INDEX.md).
 - Report to the user, in the chat: how many decisions were recorded, which ADR entries the
   meeting appears to answer, and any contradiction found with `project-context/`. Those are
   the parts that need a human next.
@@ -78,7 +78,7 @@ decided / suggested / discussed are three different buckets.
 Write the insight file in **the language of the meeting**, which for this project is
 Spanish. The template below is therefore given in Spanish on purpose: its headings and
 labels are the **literal output** the skill must emit, not documentation to be translated.
-Keep them verbatim so every record in `meetings/` is greppable by the same section names.
+Keep them verbatim so every record in `project-context/meetings/` is greppable by the same section names.
 
 Omit a section entirely if it has no content. An empty heading reads as "nothing was said
 about this", which is a claim you cannot make.
@@ -88,7 +88,7 @@ about this", which is a claim you cannot make.
 
 - **Participantes:** <nombre o rol> (tutor), … · marcar `[no identificado]` si la transcripción no lo aclara
 - **Duración / tramo cubierto:** <si consta>
-- **Fuente:** transcripción pegada en el chat, no versionada (ver `meetings/README.md`)
+- **Fuente:** transcripción pegada en el chat, no versionada (ver `project-context/meetings/README.md`)
 
 ## Decisiones tomadas
 
@@ -151,4 +151,4 @@ Section names stay in Spanish because they are the literal output headings.
 - [`README.md`](./README.md) — what the module is and how it wires into the rest of the harness.
 
 When sharing or installing this skill, keep the whole `meeting-insights/` folder together.
-`SKILL.md` depends on `extraction-guide.md` by relative path, and writes into `meetings/`.
+`SKILL.md` depends on `extraction-guide.md` by relative path, and writes into `project-context/meetings/`.

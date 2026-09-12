@@ -3,7 +3,7 @@
 One row per meeting. Read this before opening a full record: it says what exists and what
 each meeting closed, without loading whole files into context.
 
-Maintained by the [`meeting-insights/`](../meeting-insights/README.md) skill, which adds a
+Maintained by the [`meeting-insights/`](../../skills/meeting-insights/README.md) skill, which adds a
 row here in the same step that writes a record. Titles are in Spanish because they name
 Spanish documents.
 

@@ -33,7 +33,7 @@ La regla 6 de [`../CLAUDE.md`](../CLAUDE.md) prohíbe inventar hechos, requisito
 
 Responde por número de entrada. Basta con algo como *"ADR-007: el criterio es un puntaje SUS ≥ 68 y latencia p95 por debajo de 2 s bajo 24 usuarios concurrentes"*; el agente sabe por la entrada dónde aplicarlo.
 
-Responder **en una reunión** también vale, con una condición: que la respuesta quede registrada en un insight de [`../meetings/`](../meetings/README.md) con su cita literal, generado por la skill [`meeting-insights/`](../meeting-insights/README.md). Ese insight **no borra la entrada de aquí**: la marca como *pendiente de aplicar*. La entrada se borra cuando la respuesta ya está escrita en el documento, siguiendo los pasos de la sección anterior.
+Responder **en una reunión** también vale, con una condición: que la respuesta quede registrada en un insight de [`meetings/`](./meetings/README.md) con su cita literal, generado por la skill [`meeting-insights/`](../skills/meeting-insights/README.md). Ese insight **no borra la entrada de aquí**: la marca como *pendiente de aplicar*. La entrada se borra cuando la respuesta ya está escrita en el documento, siguiendo los pasos de la sección anterior.
 
 ### Qué **no** va aquí
 
