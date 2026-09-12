@@ -41,7 +41,7 @@ The system architecture is structured across four primary layers:
 #### 1. Kubernetes (K8s)
 - **Role:** Base container orchestrator managing worker nodes, storage volumes, and service discovery.
 - **Key Features Used:**
-  - **Node Selectors & Taints/Tolerations:** Directing GPU-heavy pods specifically to RTX 4080 nodes while isolating control services on legacy CPU machines.
+  - **Node Selectors & Taints/Tolerations:** Directing GPU-heavy pods specifically to RTX 4090 nodes while isolating control services on legacy CPU machines.
   - **Resource Quotas & Limits:** Enforcing physical memory and CPU constraints per container.
   - **Persistent Volume Claims (PVCs):** Mounting high-speed NVMe storage partitions dedicated to model repositories and checkpoints.
 
@@ -78,7 +78,7 @@ The system architecture is structured across four primary layers:
 
 #### 3. Quantization Technologies
 - **AWQ / GPTQ / GGUF:**
-  - *Purpose:* Compressing 7B, 13B, and 14B parameter models down to 4-bit/8-bit representations, enabling multiple isolated model instances to run concurrently inside the 16 GB VRAM of each RTX 4080.
+  - *Purpose:* Compressing 7B, 13B, and 14B parameter models down to 4-bit/8-bit representations, enabling multiple isolated model instances to run concurrently inside the 24 GB VRAM of each RTX 4090 (confirmed 2026-09-12 by the authors — see `requirements.md` §4).
 
 ---
 
@@ -86,7 +86,7 @@ The system architecture is structured across four primary layers:
 
 #### 1. SAAMFI (Universidad Icesi)
 - **Role:** Institutional authentication and authorization directory.
-- **Integration:** Maps authenticated student and faculty credentials directly to internal platform roles (Undergraduate Thesis, AI Elective, Research Faculty, Lab Admin), controlling access permissions and Fair-Share GPU allocation limits.
+- **Integration:** Maps authenticated student and faculty credentials directly to internal platform roles (Undergraduate Thesis, AI Elective, Research Faculty, Lab Admin), controlling access permissions and reservation-based GPU allocation, with professors holding priority to claim resources and control room-level allocation (corrected 2026-09-12, see `requirements.md` FR-02.7 — not a Fair-Share scheme).
 
 ---
 
@@ -97,7 +97,7 @@ The system architecture is structured across four primary layers:
 - **Metrics Collected:** Node CPU, RAM, disk space, and Kubernetes container resource usage.
 
 #### 2. NVIDIA DCGM Exporter (Data Center GPU Manager)
-- **Role:** Exposes low-level hardware metrics from the NVIDIA RTX 4080 cards directly to Prometheus.
+- **Role:** Exposes low-level hardware metrics from the NVIDIA RTX 4090 cards directly to Prometheus.
 - **Metrics Tracked:**
   - GPU Core & Memory Temperature (°C).
   - VRAM Utilization (allocated vs. free bytes).

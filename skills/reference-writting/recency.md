@@ -46,17 +46,19 @@ this project's claims, even when it is well-cited in the broader literature.
 
 ## Known violations as of 2026-09-12
 
-`thesis/references.bib` was assembled before this rule existed and has six sources older
-than the cutoff. Re-verifying these against the rule is flagged as pending work in
-`thesis/STATUS.md` — the Investigador should not silently leave them in when next drafting
-or reviewing the chapters that cite them.
+`thesis/references.bib` was assembled before this rule existed and has five sources older
+than the cutoff (a sixth, `ghodsi-dominantresourcefairness-2011`, was removed on 2026-09-12
+along with the "Fair-Share" governance concept it supported — see `thesis/STATUS.md`; the
+project's quota model is now reservation-based with role priority, not Fair-Share, so no
+replacement source is needed for that one). Re-verifying the remaining five against the
+rule is flagged as pending work in `thesis/STATUS.md` — the Investigador should not
+silently leave them in when next drafting or reviewing the chapters that cite them.
 
 | Key | Year | Cited for |
 | :--- | :--- | :--- |
 | `yoo-slurm-2003` | 2003 | HPC/cluster scheduler background |
 | `hevner-designscienceis-2004` | 2004 | Design Science Research guidelines (also tied to ADR-016 — DSR's place in the document is itself in question) |
 | `peffers-dsrm-2007` | 2007 | DSR process model (same ADR-016 dependency) |
-| `ghodsi-dominantresourcefairness-2011` | 2011 | Dominant Resource Fairness / Fair-Share scheduling |
 | `vavilapalli-yarn-2013` | 2013 | YARN cluster resource management |
 | `brooke-sus-1996` | 1996 | System Usability Scale instrument |
 
