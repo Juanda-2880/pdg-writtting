@@ -7,7 +7,7 @@ description: Use when writing, editing, or reviewing .tex files for the IAsLab P
 
 ## Overview
 
-This skill governs the mechanics of turning approved thesis content (see `thesis-writing/`) into compilable, well-formed LaTeX. It assumes the content decisions — what a chapter argues, what evidence backs a claim — are already settled by the `agent-roles/` workflow; this skill is about *how to express that in LaTeX correctly*, not what to say.
+This skill governs the mechanics of turning approved thesis content (see `thesis-writing/`) into compilable, well-formed LaTeX. It assumes the content decisions — what a chapter argues, what evidence backs a claim — are already settled by the `../agent-roles/` workflow; this skill is about *how to express that in LaTeX correctly*, not what to say.
 
 Origin note: the semantic-markup, cross-reference, and citation practices below are adapted from the MIT-licensed `dbosk/claude-skills` "latex-writing" skill, trimmed to this project's actual toolchain and rewritten for our APA/natbib setup. See `NOTICE.md` for the required attribution.
 
@@ -74,7 +74,7 @@ If a chapter needs to show a code snippet (e.g. a YAML benchmark spec from `proj
 
 1. **Check what evidence/outline this section is drafting from** — this skill doesn't replace `thesis-writing/writing-guide.md`; it's the layer under it.
 2. **Write the LaTeX using the semantic constructs above.**
-3. **Compile before moving on**: `make build` from the actual project folder (see `Makefile`). Per `agent-roles/Revisor.md`, the Revisor is the one who runs this check as part of sign-off, but the Redactor should still do a sanity compile after any structurally risky edit (new package, new environment, a table/figure that might not fit).
+3. **Compile before moving on**: `make build` from the actual project folder (see `Makefile`). Per `../../agent-roles/Revisor.md`, the Revisor is the one who runs this check as part of sign-off, but the Redactor should still do a sanity compile after any structurally risky edit (new package, new environment, a table/figure that might not fit).
 4. **If the build fails**, check `references/troubleshooting.md` before guessing.
 5. **New package or preamble change?** Add it to `preamble.tex` in the right section and document it in `references/packages.md` — see the rule at the bottom of that file about not doing this unilaterally.
 

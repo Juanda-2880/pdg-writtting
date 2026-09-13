@@ -22,11 +22,12 @@ The suite is intentionally format-neutral: it supports Markdown, LaTeX, Word-ori
 
 ## Suite Architecture & Modules
 
-The repository separates *how to write* from *what is true about the project*: every reference/procedure module (workflow, LaTeX, citations, punctuation, meeting extraction, agent roles) lives under `skills/`, everything that is fact or open-question about the IAsLab project (including raw meeting evidence) lives under `project-context/`, and the actual thesis document is its own top-level module:
+The repository separates *how to write* from *what is true about the project*: every reference/procedure module (workflow, LaTeX, citations, punctuation, meeting extraction) lives under `skills/`, the four role briefs that drive the process sit at the top level in `agent-roles/` because they govern every module rather than being one of them, everything that is fact or open-question about the IAsLab project (including raw meeting evidence) lives under `project-context/`, and the actual thesis document is its own top-level module:
 
 ```text
 pdg-writtting/
 ├── CLAUDE.md                # Harness-wide rules every agent must follow
+├── agent-roles/              # Multi-agent workflow: Coordinador, Investigador, Redactor, Revisor
 ├── compiled-output/          # Scratch directory for generated/compiled artifacts (gitignored)
 ├── fuentes/                  # PDFs behind the citations (local only) + INDEX.md mapping each BibTeX key to its file
 ├── thesis/                   # The actual thesis document — one file per chapter, see thesis/README.md
@@ -34,7 +35,6 @@ pdg-writtting/
 │   └── meetings/              # Meeting insights: one traceable record per meeting, plus INDEX.md
 └── skills/                   # Every reference/procedure module an agent applies while writing
     ├── README.md              # Loading index: which modules a given task needs, and which it doesn't
-    ├── agent-roles/           # Multi-agent workflow: Coordinador, Investigador, Redactor, Revisor
     ├── latex/                 # LaTeX config, build rules & skill (preamble, Makefile, citation setup)
     ├── meeting-insights/      # Turns a pasted meeting transcript into a record in project-context/meetings/
     ├── revision-humana/       # /revision-humana: applies only a person's feedback to one section, logs it in thesis/REVISIONES.md
@@ -89,8 +89,8 @@ Ethical and technical standards for attributing external scholarship under APA 7
 - **Error Avoidance:** Preventing patchwriting, quote over-reliance, and attribution boundaries blurring.
 - **Source fidelity (`source-fidelity.md`, project rule):** an indirect citation attributes only what the source says in its own terms, checked against the full text and recorded with the literal passage in `thesis/CITAS-VERIFICADAS.md`.
 
-### 6. [`skills/agent-roles/`](./skills/agent-roles/README.md)
-The multi-agent workflow that turns the modules above into a repeatable writing process:
+### 6. [`agent-roles/`](./agent-roles/README.md)
+A **top-level** module, not one of the `skills/`: it is the multi-agent workflow that turns the modules above into a repeatable writing process, and it governs all of them rather than sitting alongside them.
 - **Coordinador:** Plans tasks, assigns work, tracks thesis status; the only role that makes structural decisions.
 - **Investigador:** Sources and verifies evidence from `project-context/` and outside literature; flags gaps instead of guessing.
 - **Redactor:** Drafts prose/LaTeX from approved outlines and verified evidence, applying the modules above.
@@ -172,7 +172,7 @@ Instruct your AI coding or writing assistant to leverage the relevant module bas
 "Aquí va la transcripción de la reunión con el tutor: <...>. Extrae los insights con meeting-insights."
 
 # Multi-agent thesis writing (Claude Code)
-"Act as the Coordinador (see skills/agent-roles/) and plan the next task for drafting Chapter 3."
+"Act as the Coordinador (see agent-roles/) and plan the next task for drafting Chapter 3."
 ```
 
 For Claude Code specifically, [`CLAUDE.md`](./CLAUDE.md) is loaded automatically and defines the harness-wide rules (structure/README sync, where generated output goes, the agent-role workflow, no invented facts/citations) — read it before working in this repo.

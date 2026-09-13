@@ -25,21 +25,27 @@ Este capítulo formula y justifica la metodología de ingeniería adoptada para 
 
 \section{Estrategia metodológica}\label{sec:estrategia-metodologica}
 
-El proyecto adopta un proceso de desarrollo iterativo e incremental de tipo Scrum, siguiendo la \emph{Scrum Guide} de \citet{schwaber-scrumguide-2020}, organizado en \emph{sprints} de dos semanas. Esta elección responde a que el alcance del proyecto, cuatro objetivos específicos con dependencias técnicas parciales entre sí (telemetría, gobernanza, orquestación y evaluación), se beneficia de ciclos cortos de construcción y retroalimentación, en los que cada \emph{sprint} entrega un incremento verificable del sistema y permite reordenar el trabajo restante conforme avanza el desarrollo y conforme lo permite la disponibilidad de los nodos de cómputo del IAsLab, en lugar de comprometer de antemano una secuencia rígida de actividades como exigiría un modelo de desarrollo en cascada.
+El proyecto adopta un proceso de desarrollo iterativo e incremental de tipo Scrum, siguiendo la \emph{Scrum Guide} de \citet{schwaber-scrumguide-2020}, organizado en \emph{sprints} de tres semanas. Esta elección responde a que el alcance del proyecto, cuatro objetivos específicos con dependencias técnicas parciales entre sí, se beneficia de ciclos cortos de construcción y retroalimentación, en los que cada \emph{sprint} entrega un incremento verificable y permite reordenar el trabajo restante conforme avanza el desarrollo y conforme lo permite la disponibilidad de los nodos de cómputo del IAsLab, en lugar de comprometer de antemano una secuencia rígida de actividades como exigiría un modelo de desarrollo en cascada.
+
+La duración de tres semanas por \emph{sprint} responde a la naturaleza del trabajo de las primeras iteraciones. Levantar el clúster comprende una cadena de actividades, entre ellas desplegar Kubernetes sobre las estaciones de trabajo de la sala 104M, configurar la red, el nodo de control y los nodos de trabajo, aprovisionar el acceso a las unidades de procesamiento gráfico y, sobre esa base ya estable, integrar las extensiones que la plataforma necesita. Cada una de ellas depende de que la anterior quede estable, de modo que una iteración más corta obligaría a cerrar \emph{sprints} sin un clúster verificable. El equipo adoptó por eso una cadencia de tres semanas, que permite terminar cada iteración con infraestructura funcionando y comprobable.
 
 % [verify: ADR-030: Jira y Bitbucket salen del acta 2026-08-26 (Compromisos), no de project-context]
-Los artefactos y ceremonias que el equipo emplea de forma efectiva son los que exige el curso de proyecto de grado: un repositorio Jira para el \emph{backlog} y el seguimiento de las iteraciones, un repositorio Bitbucket para el control de versiones y los archivos de configuración de la infraestructura, y una reunión semanal de seguimiento con el tutor del proyecto, en la que se revisa el avance de la iteración en curso y se ajusta el alcance de la siguiente. El curso de Proyecto de Grado I exige, como mínimo, el anteproyecto y dos \emph{sprints}: el primero se dedicó a la arquitectura propuesta, el modelado de datos y los \emph{mockups} de la aplicación, y el segundo a las primeras características del sistema. No se documentan otras ceremonias de Scrum (por ejemplo, \emph{daily scrum} o retrospectivas formales) porque el equipo no las practica de forma sistemática; el punto de control periódico del proyecto es la reunión semanal con el tutor.
+Los artefactos y ceremonias que el equipo emplea de forma efectiva son los que exige el curso de proyecto de grado, es decir, un repositorio Jira para el \emph{backlog} y el seguimiento de las iteraciones, un repositorio Bitbucket para el control de versiones y los archivos de configuración de la infraestructura, y una reunión semanal de seguimiento con el tutor del proyecto, en la que se revisa el avance de la iteración en curso y se ajusta el alcance de la siguiente. El curso de Proyecto de Grado I exige, como mínimo, el anteproyecto y dos \emph{sprints}. No se documentan otras ceremonias de Scrum, por ejemplo el \emph{daily scrum} o las retrospectivas formales, porque el equipo no las practica de forma sistemática; el punto de control periódico del proyecto es la reunión semanal con el tutor.
 
-La estructura lógica del proceso de investigación se organiza en cuatro etapas. La recolección de datos se apoya en tres fuentes instrumentadas por el propio sistema: la telemetría de \emph{hardware} e inferencia que produce el módulo de observabilidad (\cref{obj:telemetria}), los resultados que genera el motor de \emph{benchmarking} automatizado sobre los nodos de inferencia, y los instrumentos de usabilidad aplicados a los usuarios finales de la plataforma. La organización y sistematización de estos datos consiste en consolidar las métricas de \emph{hardware}, de inferencia y de percepción de usuario en formatos comparables entre fases y entre motores de inferencia evaluados. El análisis contrasta estas métricas contra los objetivos específicos formulados, determinando en qué medida cada módulo construido resuelve la carencia que motivó su desarrollo. Finalmente, la interpretación y presentación de resultados traduce los hallazgos del análisis en conclusiones sobre el nivel de aceptación operacional de la plataforma.
+La estructura lógica del proceso de investigación se organiza en cuatro etapas. La recolección de datos se apoya en tres fuentes instrumentadas por el propio sistema, que son la telemetría de \emph{hardware} e inferencia que produce el módulo de observabilidad, los resultados que genera el motor de \emph{benchmarking} automatizado sobre los nodos de inferencia, y los instrumentos de usabilidad aplicados a los usuarios finales de la plataforma. La organización y sistematización de estos datos consiste en consolidar las métricas de \emph{hardware}, de inferencia y de percepción de usuario en formatos comparables entre fases y entre motores de inferencia evaluados. El análisis contrasta estas métricas contra los objetivos específicos formulados, determinando en qué medida cada módulo construido resuelve la carencia que motivó su desarrollo. Finalmente, la interpretación y presentación de resultados traduce los hallazgos del análisis en conclusiones sobre el nivel de aceptación operacional de la plataforma.
 
-La evaluación empírica prevista en \cref{obj:evaluacion} se apoya en dos instrumentos con respaldo metodológico propio y en un criterio cuantitativo de aceptación: el sistema debe soportar 20 usuarios simultáneos utilizando la plataforma. Para el desempeño técnico, el proyecto recurre a pruebas de carga sobre los nodos de inferencia bajo esa concurrencia objetivo; \citet{jiang-loadtestingsurvey-2015}, en su revisión de la literatura sobre pruebas de carga en sistemas de gran escala, sistematizan el diseño de la carga, su ejecución y el análisis de los resultados obtenidos, estructura que este proyecto sigue para contrastar el comportamiento de los motores de inferencia desplegados bajo esa concurrencia realista de usuarios. Para la aceptación operacional por parte de los usuarios finales, se emplea el \emph{System Usability Scale}, un cuestionario de diez ítems utilizado como instrumento estándar para cuantificar la usabilidad percibida de un sistema de \emph{software}. \citet{lewis-susbenchmarks-2018} recalibraron sus bandas de referencia por ítem a partir de 446 estudios y más de cinco mil respuestas individuales, lo que permite interpretar el puntaje obtenido frente a una línea base publicada en lugar de valorarlo de forma aislada. El instrumento se aplica a los distintos roles de usuario del IAsLab identificados en el \cref{cha:motivacion-antecedentes}.
+La evaluación empírica prevista en \cref{obj:evaluacion} se apoya en dos instrumentos con respaldo metodológico propio y en un criterio cuantitativo de aceptación, según el cual el sistema debe soportar 20 usuarios simultáneos utilizando la plataforma. Para el desempeño técnico, el proyecto recurre a pruebas de carga sobre los nodos de inferencia bajo esa concurrencia objetivo; \citet{jiang-loadtestingsurvey-2015}, en su revisión de la literatura sobre pruebas de carga en sistemas de gran escala, sistematizan el diseño de la carga, su ejecución y el análisis de los resultados obtenidos, estructura que este proyecto sigue para contrastar el comportamiento de los motores de inferencia desplegados bajo esa concurrencia realista de usuarios. Para la aceptación operacional por parte de los usuarios finales, se emplea el \emph{System Usability Scale}, un cuestionario de diez ítems utilizado como instrumento estándar para cuantificar la usabilidad percibida de un sistema de \emph{software}. \citet{lewis-susbenchmarks-2018} recalibraron sus bandas de referencia por ítem a partir de 446 estudios y más de cinco mil respuestas individuales, lo que permite interpretar el puntaje obtenido frente a una línea base publicada en lugar de valorarlo de forma aislada. El instrumento se aplica a los distintos roles de usuario del IAsLab identificados en el \cref{cha:motivacion-antecedentes}.
 
 \section{Fases de desarrollo del proyecto}
 \label{sec:fases-desarrollo}
 
-Las fases de desarrollo del proyecto guardan una relación directa con los objetivos específicos formulados en el \cref{cha:objetivos}, de modo que cada fase produce el artefacto o el resultado necesario para satisfacer uno de ellos. El trabajo técnico parte de levantar la infraestructura del clúster desde cero sobre las máquinas de la sala del IAsLab, sin partir de un sistema previo que estabilizar. Las fases siguen el orden observabilidad, gobernanza, orquestación y evaluación: la observabilidad se desarrolla primero porque es la condición para medir, en las fases posteriores, el efecto de las capacidades que se construyen sobre ella (por ejemplo, si el esquema de cuotas cambia el patrón de uso de las GPU); la gobernanza de cuotas se desarrolla antes que la orquestación porque el motor de despliegue concurrente de modelos necesita un esquema de reserva de cupos ya operante para controlar la asignación de recursos entre las cargas que despliega; y la evaluación empírica cierra el proceso porque requiere que los tres módulos anteriores estén construidos para poder contrastarlos, en conjunto, contra los objetivos que les dieron origen. La \cref{tab:fases-desarrollo} resume esta correspondencia y asigna a cada fase una duración en \emph{sprints} de dos semanas.
+Las fases de desarrollo guardan una relación directa con los objetivos específicos formulados en el \cref{cha:objetivos}, de modo que cada fase produce el artefacto necesario para satisfacer uno de ellos. El trabajo parte de levantar la infraestructura del clúster desde cero sobre las máquinas de la sala 104M, sin partir de un sistema previo que estabilizar, y el orden de las fases responde a la cadena de dependencias técnicas que se describe a continuación.
 
-\begin{xltabular}{\textwidth}{p{0.22\textwidth} X p{0.13\textwidth} p{0.1\textwidth}}
+La puesta en marcha del clúster ocupa la primera fase porque todo lo demás se ejecuta sobre él. Los motores de inferencia se despliegan como contenedores que el orquestador programa, la telemetría recolecta métricas de nodos que el clúster administra, y las cuotas se aplican sobre los recursos que el clúster reparte. El equipo deja el clúster desplegado, configurado y sirviendo modelos antes de construir la plataforma web que lo expone, de modo que la interfaz se diseñe sobre capacidades que ya funcionan en lugar de sobre supuestos acerca de cómo funcionarán. Por la misma razón, el proyecto no contempla una fase de prototipado de interfaz previa al desarrollo de la infraestructura.
+
+La observabilidad ocupa la segunda fase porque es el instrumento con el que se mide el efecto de todo lo que se construye después. Sin telemetría por nodo, ni el esquema de cuotas ni la plataforma pueden evaluarse con evidencia, y las pruebas de carga de la última fase quedarían sin datos que interpretar. La gobernanza de cuotas precede a la plataforma web porque su punto de aplicación vive dentro del clúster, en los mecanismos de cuota y de admisión que gobiernan la asignación de recursos, mientras que la plataforma únicamente expone y administra esas políticas; construir la interfaz antes que el mecanismo obligaría a rehacerla cuando el mecanismo quede definido. La plataforma de despliegue y administración ocupa la cuarta fase, ya sobre un clúster instrumentado y gobernado. La evaluación empírica cierra el proceso porque requiere que las cuatro fases anteriores estén construidas para contrastarlas, en conjunto, contra los objetivos que les dieron origen. La \cref{tab:fases-desarrollo} resume esta correspondencia y asigna a cada fase una duración en \emph{sprints} de tres semanas.
+
+\begin{xltabular}{\textwidth}{p{0.21\textwidth} X p{0.14\textwidth} p{0.09\textwidth}}
         \caption{Fases de desarrollo del proyecto, su correspondencia con los objetivos específicos y su duración.}
         \label{tab:fases-desarrollo} \\
         \toprule
@@ -52,105 +58,112 @@ Las fases de desarrollo del proyecto guardan una relación directa con los objet
         \endhead
         \bottomrule
         \endfoot
+        Puesta en marcha del clúster &
+        Despliegue y configuración de Kubernetes sobre las estaciones de trabajo de la sala 104M, aprovisionamiento de las unidades de procesamiento gráfico mediante el NVIDIA GPU Operator, integración de KubeRay y despliegue de los motores de inferencia como imágenes de contenedor &
+        \Cref{obj:orquestacion} & 2 \emph{sprints} \\
+        \addlinespace
         Observabilidad de infraestructura &
-        Instrumentación del módulo de telemetría con métricas de \emph{hardware} e inferencia por nodo, y construcción de las visualizaciones gráficas interactivas correspondientes &
-        \Cref{obj:telemetria} & 4 \emph{sprints} \\
+        Instrumentación de métricas de \emph{hardware} y de carga de trabajo por nodo con Prometheus, el exportador DCGM, Loki y Grafana &
+        \Cref{obj:telemetria} & 2 \emph{sprints} \\
         \addlinespace
         Gobernanza de cuotas &
-        Diseño e implementación del sistema de reserva de cupos y restricciones de infraestructura acoplado a los atributos de rol de SAAMFI, con prioridad de los profesores sobre la asignación de la capacidad de la sala, e integración con el módulo administrativo de la plataforma &
-        \Cref{obj:gobernanza} & 3 \emph{sprints} \\
+        Implementación del esquema de reserva de cupos y de las restricciones de infraestructura dentro del clúster, con prioridad de los profesores sobre la asignación de la capacidad de la sala y acoplamiento a los atributos de rol de SAAMFI &
+        \Cref{obj:gobernanza} & 2 \emph{sprints} \\
         \addlinespace
-        Orquestación de inferencia &
-        Integración del motor de orquestación de inferencia, independiente de la tecnología subyacente, y de la interfaz web para configurar y desplegar modelos entrenados de forma concurrente &
-        \Cref{obj:orquestacion} & 5 \emph{sprints} \\
+        Plataforma de despliegue y administración &
+        Construcción del servicio y la interfaz web con los que un usuario despliega modelos entrenados de forma concurrente, y del módulo administrativo que gestiona las políticas de cuota y presenta la telemetría recolectada &
+        \Cref{obj:orquestacion}, \cref{obj:gobernanza} & 3 \emph{sprints} \\
         \addlinespace
         Evaluación empírica &
-        Ejecución de pruebas de carga con 20 usuarios simultáneos sobre los nodos de inferencia mediante el motor de \emph{benchmarking} automatizado, y aplicación de instrumentos de usabilidad (\emph{System Usability Scale}) con usuarios finales &
-        \Cref{obj:evaluacion} & 3 \emph{sprints} \\
+        Ejecución de pruebas de carga con 20 usuarios simultáneos sobre los nodos de inferencia mediante el motor de \emph{benchmarking} automatizado, y aplicación del \emph{System Usability Scale} con usuarios finales &
+        \Cref{obj:evaluacion} & 1 \emph{sprint} \\
 \end{xltabular}
 
 \section{Cronograma}
 \label{sec:cronograma}
 
-El proyecto inicia el 10 de agosto de 2026 y finaliza en mayo de 2027. El formato de anteproyecto de la facultad exige que las actividades del cronograma se deriven de los objetivos específicos del \cref{cha:objetivos} y sean más detalladas y medibles que ellos; la \cref{tab:cronograma} presenta ese desglose, agrupado por \emph{sprints} de dos semanas, con las fechas de inicio y fin y el entregable de cada actividad. La tabla omite la columna de responsable porque todas las actividades las asume el equipo del proyecto en su conjunto.
+El proyecto inicia el 10 de agosto de 2026 y finaliza en mayo de 2027. Entre el 10 de agosto y el 20 de septiembre de 2026 el equipo dedica una etapa previa a la formulación del anteproyecto, el levantamiento de requisitos con el laboratorio y la definición de la arquitectura propuesta. Los \emph{sprints} de desarrollo comienzan el 21 de septiembre de 2026 y se suceden en ciclos de tres semanas. El formato de anteproyecto de la facultad exige que las actividades del cronograma se deriven de los objetivos específicos del \cref{cha:objetivos} y sean más detalladas y medibles que ellos. La \cref{tab:cronograma} presenta ese desglose, con las fechas de inicio y fin de cada \emph{sprint} y su entregable. La tabla omite la columna de responsable porque todas las actividades las asume el equipo del proyecto en su conjunto.
 
-% [verify: ADR-033: replanificar la distribución de fases entre PDG1 y PDG2 con el calendario de project-context/README.md, después de fijar el alcance (ADR-032)]
-El proyecto de grado se desarrolla en dos cursos. Durante PDG1 (del 10 de agosto a los primeros días de diciembre de 2026) se formula y entrega el anteproyecto, y se ejecutan en paralelo los dos \emph{sprints} que exige el curso y las fases de observabilidad y gobernanza. Durante PDG2, en el semestre siguiente (febrero a mayo de 2027), se ejecutan las fases de orquestación y evaluación empírica, y el documento del anteproyecto se amplía con el desarrollo realizado y los resultados obtenidos.
+% [verify: ADR-033: el sprint 4 termina el 13-dic, después del cierre de PDG1 (primeros días de diciembre), y el sprint 5 (11-31 ene) cae antes del inicio de PDG2 (febrero, project-context/README.md)]
+El proyecto de grado se desarrolla en dos cursos consecutivos. Durante PDG1, entre agosto y diciembre de 2026, se formula el anteproyecto y se entrega a inicios de diciembre de 2026, y en paralelo se ejecutan los cuatro primeros \emph{sprints}, correspondientes a la puesta en marcha del clúster y a la observabilidad de infraestructura. Durante PDG2, entre enero y mayo de 2027, se ejecutan las fases de gobernanza de cuotas, plataforma de despliegue y administración, y evaluación empírica, y el documento del anteproyecto se amplía con el desarrollo realizado y los resultados obtenidos.
 
-\begin{xltabular}{\textwidth}{p{0.14\textwidth} X p{0.15\textwidth} p{0.22\textwidth}}
-        \caption{Cronograma del proyecto, por \emph{sprints} de dos semanas, con entregables asociados.}
+\begin{xltabular}{\textwidth}{p{0.13\textwidth} X p{0.16\textwidth} p{0.21\textwidth}}
+        \caption{Cronograma del proyecto, por \emph{sprints} de tres semanas, con entregables asociados.}
         \label{tab:cronograma} \\
         \toprule
-        \textbf{Sprint} & \textbf{Actividad} & \textbf{Fechas} & \textbf{Entregable} \\
+        \textbf{\emph{Sprint}} & \textbf{Actividad} & \textbf{Fechas} & \textbf{Entregable} \\
         \midrule
         \endfirsthead
         \toprule
-        \textbf{Sprint} & \textbf{Actividad} & \textbf{Fechas} & \textbf{Entregable} \\
+        \textbf{\emph{Sprint}} & \textbf{Actividad} & \textbf{Fechas} & \textbf{Entregable} \\
         \midrule
         \endhead
         \bottomrule
         \endfoot
+        Etapa previa &
+        Formulación del anteproyecto, levantamiento de requisitos con el laboratorio y definición de la arquitectura propuesta &
+        10 ago -- 20 sep 2026 &
+        Documento de arquitectura y especificación de requisitos \\
+        \addlinespace
         \emph{Sprint} 1 &
-        Definición de la arquitectura propuesta, modelado de datos y \emph{mockups} de la plataforma &
-        10 ago -- 23 ago 2026 &
-        Documento de arquitectura y \emph{mockups} de la interfaz \\
+        Despliegue de Kubernetes sobre las estaciones de trabajo de la sala 104M, con configuración de red, nodo de control y nodos de trabajo &
+        21 sep -- 11 oct 2026 &
+        Clúster Kubernetes operativo y su configuración versionada \\
         \addlinespace
         \emph{Sprint} 2 &
-        Primeras características de la plataforma sobre la infraestructura de la sala &
-        24 ago -- 6 sep 2026 &
-        Incremento funcional inicial de la plataforma \\
+        Aprovisionamiento de las GPU mediante el NVIDIA GPU Operator, integración de KubeRay y despliegue de los motores de inferencia como imágenes de contenedor &
+        12 oct -- 1 nov 2026 &
+        Modelo desplegado y consumible sobre el clúster \\
         \addlinespace
-        \emph{Sprint} 3--4 &
-        Instrumentación de métricas de \emph{hardware} por nodo (temperatura, VRAM, consumo energético) &
-        7 sep -- 4 oct 2026 &
-        Exportadores de métricas de \emph{hardware} integrados (Prometheus, DCGM Exporter) \\
+        \emph{Sprint} 3 &
+        Instrumentación de métricas de \emph{hardware} por nodo (temperatura, VRAM, consumo energético, PCIe) y agregación centralizada de registros &
+        2 nov -- 22 nov 2026 &
+        Prometheus, exportador DCGM y Loki desplegados en el clúster \\
         \addlinespace
-        \emph{Sprint} 5--6 &
-        Instrumentación de métricas de inferencia y construcción del panel de visualización &
-        5 oct -- 1 nov 2026 &
-        Panel de telemetría (\cref{obj:telemetria}) \\
-        \addlinespace
-        \emph{Sprint} 7 &
-        Diseño del esquema lógico de reserva de cupos acoplado a los roles de SAAMFI &
-        2 nov -- 15 nov 2026 &
-        Esquema de cuotas documentado \\
-        \addlinespace
-        % [verify: ADR-033: los sprints 8-9 terminan después del cierre de PDG1 (primeros días de diciembre)]
-        \emph{Sprint} 8--9 &
-        Implementación del sistema de cuotas y su integración con el módulo administrativo &
-        16 nov -- 13 dic 2026 &
-        Módulo de gobernanza de cuotas (\cref{obj:gobernanza}) \\
+        \emph{Sprint} 4 &
+        Instrumentación de métricas de inferencia y construcción de los paneles de visualización &
+        23 nov -- 13 dic 2026 &
+        Panel de telemetría en Grafana (\cref{obj:telemetria}) \\
         \addlinespace
         Hito &
-        Entrega del anteproyecto (cierre de PDG1) &
-        Primeros días de dic. 2026 &
+        Entrega del anteproyecto (cierre documental de PDG1) &
+        Inicios de dic. 2026 &
         Documento de anteproyecto \\
         \addlinespace
-        % [verify: ADR-033: los sprints 10-11 empiezan en enero, antes del inicio de PDG2 (febrero)]
-        \emph{Sprint} 10--11 &
-        Integración del motor de orquestación de inferencia con Kubernetes y KubeRay/Ray &
-        11 ene -- 7 feb 2027 &
-        Motor de orquestación desplegado \\
+        \emph{Sprint} 5 &
+        Implementación del esquema de reserva de cupos y de las restricciones de recursos dentro del clúster &
+        11 ene -- 31 ene 2027 &
+        Mecanismo de cuotas operativo en el clúster \\
         \addlinespace
-        \emph{Sprint} 12--14 &
-        Interfaz web para configurar y desplegar modelos entrenados de forma concurrente &
-        8 feb -- 21 mar 2027 &
+        \emph{Sprint} 6 &
+        Acoplamiento de las cuotas a los atributos de rol de SAAMFI y prioridad de los profesores sobre la capacidad de la sala &
+        1 feb -- 21 feb 2027 &
+        Sistema de gobernanza por rol (\cref{obj:gobernanza}) \\
+        \addlinespace
+        \emph{Sprint} 7 &
+        Construcción del servicio de la plataforma que expone el despliegue de modelos sobre el clúster &
+        22 feb -- 14 mar 2027 &
+        Servicio de despliegue de modelos \\
+        \addlinespace
+        \emph{Sprint} 8 &
+        Interfaz web de despliegue concurrente de modelos, con selección de nodo y de motor de inferencia &
+        15 mar -- 4 abr 2027 &
         Interfaz de despliegue de modelos (\cref{obj:orquestacion}) \\
         \addlinespace
-        % [verify: ADR-031: diseño propio o reutilización del harness del laboratorio]
-        \emph{Sprint} 15 &
-        Diseño y ejecución del motor de \emph{benchmarking} automatizado bajo carga de 20 usuarios simultáneos &
-        22 mar -- 4 abr 2027 &
-        Reporte de pruebas de carga \\
+        \emph{Sprint} 9 &
+        Módulo administrativo de gestión de políticas de cuota y presentación de la telemetría dentro de la plataforma &
+        5 abr -- 25 abr 2027 &
+        Módulo administrativo de la plataforma \\
         \addlinespace
-        \emph{Sprint} 16--17 &
-        Aplicación del \emph{System Usability Scale} con usuarios finales del laboratorio &
-        5 abr -- 2 may 2027 &
-        Reporte de usabilidad (\cref{obj:evaluacion}) \\
+        % [verify: ADR-031: diseño propio o reutilización del harness del laboratorio]
+        \emph{Sprint} 10 &
+        Ejecución del motor de \emph{benchmarking} automatizado bajo carga de 20 usuarios simultáneos y aplicación del \emph{System Usability Scale} &
+        26 abr -- 16 may 2027 &
+        Reportes de pruebas de carga y de usabilidad (\cref{obj:evaluacion}) \\
         \addlinespace
         Cierre &
         Ampliación del documento del anteproyecto con el desarrollo realizado y los resultados obtenidos, y redacción del informe final &
-        3 may -- 29 may 2027 &
+        17 may -- 31 may 2027 &
         Informe final de PDG2 \\
 \end{xltabular}
 
@@ -160,7 +173,7 @@ Esta sección ubica el análisis de riesgos y limitaciones dentro del capítulo 
 
 \begin{description}
   \item[Falta de disponibilidad de los nodos de cómputo del IAsLab] Compromete el cronograma, dado que las fases de desarrollo y, en particular, la evaluación empírica dependen del acceso continuo a los nodos de cómputo del laboratorio, condición que el proyecto asume vigente pero no controla directamente. Como estrategia de mitigación, las actividades de desarrollo que no requieren \emph{hardware} de inferencia (por ejemplo, la definición del esquema lógico de cuotas) se priorizan en los periodos de menor disponibilidad de los nodos.
-  \item[Cambios o caída del servicio SAAMFI] SAAMFI es el proveedor de identidad institucional de la Universidad Icesi: emite un \emph{token} con los roles y permisos del usuario, y cada sistema que lo integra decide cómo usar esos atributos. Este riesgo compromete el alcance y el cronograma, pues el control de acceso y la gobernanza de cuotas por rol dependen de los atributos que provee ese servicio. La mitigación consiste en aislar la lógica de mapeo de roles en un componente propio de la plataforma, de modo que un cambio en la interfaz de SAAMFI exija ajustar ese componente y no rediseñar el esquema de cuotas completo.
+  \item[Cambios o caída del servicio SAAMFI] SAAMFI es el proveedor de identidad institucional de la Universidad Icesi, que emite un \emph{token} con los roles y permisos del usuario, y cada sistema que lo integra decide cómo usar esos atributos. Este riesgo compromete el alcance y el cronograma, pues el control de acceso y la gobernanza de cuotas por rol dependen de los atributos que provee ese servicio. La mitigación consiste en aislar la lógica de mapeo de roles en un componente propio de la plataforma, de modo que un cambio en la interfaz de SAAMFI exija ajustar solo ese componente, sin rediseñar el esquema de cuotas completo.
   % [verify: ADR-030: rango 90-95 % y fuente de poder salen del acta 2026-09-04; FR-03.4 solo dice 90%+]
   \item[Saturación de VRAM y congelamiento de nodos GPU] Compromete la calidad del servicio de inferencia y, potencialmente, el cronograma de las pruebas de carga. El equipo del laboratorio ha confirmado que un uso sostenido de la GPU entre 90\,\% y 95\,\% congela las máquinas de la sala, y que la causa física es que la fuente de poder de la torre no soporta el consumo eléctrico resultante. \citet{liu-gpufailureprediction-2022} documentan que este tipo de fallos es predecible con telemetría suficiente en producción, por lo que la mitigación prevista es que el módulo de observabilidad (\cref{obj:telemetria}) genere las alertas de diagnóstico automatizado que exige FR-03.4 antes de que la saturación derive en un congelamiento no controlado.
   \item[Uso simultáneo de los equipos para actividades académicas] Los equipos de la sala deben seguir siendo usables para las clases mientras el clúster corre sobre ellos, restricción operativa del laboratorio. Compromete la calidad del servicio de inferencia, en tanto la carga docente puede competir por los mismos recursos de cómputo que utiliza la plataforma. La mitigación consiste en que el esquema de cuotas (\cref{obj:gobernanza}) reserve capacidad para las cargas del proyecto sin bloquear el uso académico habitual de los equipos, y en ejecutar fuera del horario de clases toda prueba que pueda degradar el rendimiento de las máquinas.

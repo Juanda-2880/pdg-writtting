@@ -10,7 +10,7 @@ disable-model-invocation: true
 ## Why this exists
 
 The harness already has AI roles that draft and review the thesis (Redactor, Revisor in
-`../agent-roles/`). What it lacked is a pass where **a person decides what changes**. The
+`../../agent-roles/`). What it lacked is a pass where **a person decides what changes**. The
 tutor judged the second draft as *"buena forma y mal fondo"*. Substance problems like that
 are not caught by an AI reviewing AI prose, and letting the AI decide its own corrections is
 exactly how the document drifts toward sounding machine-written.

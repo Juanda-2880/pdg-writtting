@@ -11,24 +11,23 @@ or vice versa).
 
 | Task | Load | Don't load |
 | :--- | :--- | :--- |
-| **Draft or revise thesis prose** (Redactor) | [`agent-roles/Redactor.md`](./agent-roles/Redactor.md) · [`thesis-writing/`](./thesis-writing/README.md) · [`objectives-writting/`](./objectives-writting/README.md) (only if touching objectives) · [`parragraph-structure/`](./parragraph-structure/README.md) · [`reference-writting/`](./reference-writting/README.md) · [`writting-tools/`](./writting-tools/README.md) · [`latex/`](./latex/README.md) (if the LaTeX mechanics themselves are in question) | `meeting-insights/` |
-| **Source or verify evidence** (Investigador) | [`agent-roles/Investigador.md`](./agent-roles/Investigador.md) · [`reference-writting/`](./reference-writting/README.md) · [`../fuentes/README.md`](../fuentes/README.md) (where to find PDFs, licensed portals, what to do when a download is blocked) | `meeting-insights/` · `parragraph-structure/` · `writting-tools/` |
-| **Review a drafted section** (Revisor) | [`agent-roles/Revisor.md`](./agent-roles/Revisor.md) · [`thesis-writing/review-checklist.md`](./thesis-writing/review-checklist.md) · [`reference-writting/`](./reference-writting/README.md) · [`writting-tools/`](./writting-tools/README.md) · [`objectives-writting/`](./objectives-writting/README.md) (if objectives are in scope) · [`latex/references/troubleshooting.md`](./latex/references/troubleshooting.md) (only on a build failure) | `meeting-insights/` |
-| **Plan/assign work, track status** (Coordinador) | [`agent-roles/Coordinador.md`](./agent-roles/Coordinador.md) | Everything else — delegate instead of loading it yourself |
+| **Draft or revise thesis prose** (Redactor) | [`agent-roles/Redactor.md`](../agent-roles/Redactor.md) · [`thesis-writing/`](./thesis-writing/README.md) · [`objectives-writting/`](./objectives-writting/README.md) (only if touching objectives) · [`parragraph-structure/`](./parragraph-structure/README.md) · [`reference-writting/`](./reference-writting/README.md) · [`writting-tools/`](./writting-tools/README.md) · [`latex/`](./latex/README.md) (if the LaTeX mechanics themselves are in question) | `meeting-insights/` |
+| **Source or verify evidence** (Investigador) | [`agent-roles/Investigador.md`](../agent-roles/Investigador.md) · [`reference-writting/`](./reference-writting/README.md) · [`../fuentes/README.md`](../fuentes/README.md) (where to find PDFs, licensed portals, what to do when a download is blocked) | `meeting-insights/` · `parragraph-structure/` · `writting-tools/` |
+| **Review a drafted section** (Revisor) | [`agent-roles/Revisor.md`](../agent-roles/Revisor.md) · [`thesis-writing/review-checklist.md`](./thesis-writing/review-checklist.md) · [`reference-writting/`](./reference-writting/README.md) · [`writting-tools/`](./writting-tools/README.md) · [`objectives-writting/`](./objectives-writting/README.md) (if objectives are in scope) · [`latex/references/troubleshooting.md`](./latex/references/troubleshooting.md) (only on a build failure) | `meeting-insights/` |
+| **Plan/assign work, track status** (Coordinador) | [`agent-roles/Coordinador.md`](../agent-roles/Coordinador.md) | Everything else — delegate instead of loading it yourself |
 | **Extract insights from a meeting transcript** | [`meeting-insights/`](./meeting-insights/README.md) **only** | `thesis-writing/` · `objectives-writting/` · `parragraph-structure/` · `reference-writting/` · `writting-tools/` · `latex/` — none of the writing-mechanics modules apply to extraction, and mixing them in risks the extraction rules absorbing thesis-style phrasing |
 | **Apply a person's feedback to a specific section** (invoked only by a human as `/revision-humana`) | [`revision-humana/SKILL.md`](./revision-humana/SKILL.md) · the rule files it names ([`writting-tools/ortografia-rae.md`](./writting-tools/ortografia-rae.md), [`writting-tools/puntuation.md`](./writting-tools/puntuation.md) §4, [`writting-tools/nivel-de-detalle.md`](./writting-tools/nivel-de-detalle.md), [`objectives-writting/objectives-project-rules.md`](./objectives-writting/objectives-project-rules.md) if the section is an objective) | `meeting-insights/` · `thesis-writing/` · `parragraph-structure/`: the person decides the substance, the skill doesn't re-derive it |
 | **Fix the LaTeX build, add a package, touch the preamble** | [`latex/`](./latex/README.md) (`SKILL.md` + the relevant file under `references/`) | `meeting-insights/` · the prose-mechanics modules, unless the fix also touches wording |
 | **Reorganize the harness itself** (this repo's structure, `CLAUDE.md`, READMEs) | Just [`../CLAUDE.md`](../CLAUDE.md) and this file | None of the content modules below — their guidance doesn't bear on repo structure |
 
 If a task doesn't match a row above, it's probably a Coordinador judgment call: read
-`agent-roles/README.md` for the full role split, then load the specific module(s) that
+`../agent-roles/README.md` for the full role split, then load the specific module(s) that
 role's brief points to — don't load the whole `skills/` tree "to be safe."
 
 ## What's in here
 
 | Module | What it's for |
 | :--- | :--- |
-| [`agent-roles/`](./agent-roles/README.md) | The four-role workflow (Coordinador, Investigador, Redactor, Revisor) that the table above is organized around. |
 | [`thesis-writing/`](./thesis-writing/README.md) | Global thesis workflow: scoping, outlining, drafting moves, macro/micro review. |
 | [`objectives-writting/`](./objectives-writting/README.md) | Formulating and auditing General/Specific Objectives (SMART, Verb+Variable+Context+Purpose). |
 | [`parragraph-structure/`](./parragraph-structure/README.md) | Paragraph architecture: the tri-part model, 7 development typologies, 6 opening strategies. |

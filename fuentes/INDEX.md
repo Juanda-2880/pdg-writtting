@@ -6,9 +6,9 @@ Mapa de cada entrada de [`../thesis/references.bib`](../thesis/references.bib) a
 - **Versión del PDF:** si es la versión publicada, un preprint o una versión de autor. Una cita textual se comprueba siempre contra la versión publicada.
 - **Verificada:** si la entrada ya tiene usos comprobados en [`../thesis/CITAS-VERIFICADAS.md`](../thesis/CITAS-VERIFICADAS.md). «sí (parcial)» significa que hay usos verificados, no que todos lo estén.
 
-Actualizado: 2026-09-13 (revisión de Antecedentes y Justificación).
+Actualizado: 2026-09-13 (integración del Marco teórico de JDLP, que añade Burns et al. 2016 y Xu et al. 2024).
 
-## Citadas en la tesis (36)
+## Citadas en la tesis (38)
 
 | Clave BibTeX | Año | Citada en | Referencia | PDF | Versión del PDF | Cómo obtenerla | Verificada |
 | :--- | :---: | :--- | :--- | :--- | :--- | :--- | :---: |
@@ -35,6 +35,8 @@ Actualizado: 2026-09-13 (revisión de Antecedentes y Justificación).
 | `carrion-k8sbibliometric-2022` | 2022 | cap. 05 | [DOI](https://doi.org/10.1007/s10723-022-09629-8) | **falta** | — | Por determinar | no |
 | `shamim-k8smultivocal-2022` | 2022 | cap. 05 | [URL](https://arxiv.org/abs/2211.07032) | **falta** | — | Acceso abierto: arXiv | no |
 | `miao-llmservingsurvey-2025` | 2025 | cap. 05 | [DOI](https://doi.org/10.1145/3754448) | **falta** | — | ACM Digital Library (portal Icesi) | no |
+| `burns-borgomegak8s-2016` | 2016 | cap. 05 | [DOI](https://doi.org/10.1145/2898442.2898444) | **falta** | — | ACM Digital Library (portal Icesi); *ACM Queue* también la publica en acceso abierto | no |
+| `xu-k8soperatorbugs-2024` | 2024 | cap. 05 | [DOI](https://doi.org/10.1145/3650212.3680396) | **falta** | — | ACM Digital Library (portal Icesi) | no |
 | `weitzel-nrpreservation-2025` | 2025 | cap. 01, cap. 05 | [URL](https://arxiv.org/abs/2505.22864) | [`pdf/weitzel-nrpreservation-2025.pdf`](./pdf/weitzel-nrpreservation-2025.pdf) | **Preprint** arXiv 2505.22864v1 con referencia de PEARC '25 | Acceso abierto: arXiv. Versión publicada en ACM DL (portal Icesi) | sí (parcial) |
 | `gao-dlschedulingtaxonomy-2022` | 2022 | cap. 05 | [URL](https://arxiv.org/abs/2205.11913) | **falta** | — | Acceso abierto: arXiv | no |
 | `cohen-cloudovercommit-2019` | 2019 | cap. 05 | [DOI](https://doi.org/10.1287/mnsc.2018.3091) | **falta** | — | Por determinar | no |

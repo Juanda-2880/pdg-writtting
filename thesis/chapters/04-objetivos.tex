@@ -28,11 +28,11 @@ Construir la plataforma de orquestación y gobernanza de cargas de inteligencia 
   % Hace que \cref/\Cref nombren estos ítems como "objetivo específico N"
   % en lugar de "Punto N"; es local a este entorno (ver ../../skills/latex/preamble.tex).
   \crefalias{enumi}{objesp}
-  \item \label{obj:telemetria} Desarrollar un módulo de observabilidad en la plataforma para la captura y visualización de métricas de \emph{hardware} y de carga de trabajo de los nodos de cómputo, orientado a la supervisión del estado de dichos nodos sin importar si ejecutan inferencia o entrenamiento.
+  \item \label{obj:telemetria} Desarrollar un módulo de observabilidad de la plataforma para la captura y visualización de métricas de \emph{hardware} y de carga de trabajo de los nodos de cómputo del IAsLab, orientado a la supervisión del estado de dichos nodos.
 
-  \item \label{obj:gobernanza} Implementar un sistema de cuotas y restricciones de infraestructura, acoplado a los roles provistos por SAAMFI y a un rol de administrador de la plataforma, que reserve cupos de cómputo para cargas de inferencia y de entrenamiento con prioridad de los profesores sobre la asignación de la capacidad de la sala, con el fin de prevenir la monopolización de las GPU.
+  \item \label{obj:gobernanza} Implementar un sistema de cuotas y restricciones de infraestructura, acoplado a los roles provistos por SAAMFI y a un rol de administrador de la plataforma, que reserve cupos de cómputo para las cargas de inferencia con prioridad de los profesores sobre la asignación de la capacidad de la sala, con el fin de prevenir la monopolización de las GPU.
 
-  \item \label{obj:orquestacion} Incorporar a la plataforma un motor de orquestación de inferencia agnóstico al motor subyacente, empaquetado como imagen de contenedor, que permita desplegar modelos ya entrenados de forma concurrente, con el fin de habilitar el despliegue de modelos en la misma plataforma usada para el entrenamiento.
+  \item \label{obj:orquestacion} Implementar sobre el clúster de cómputo del IAsLab el despliegue concurrente de modelos de inteligencia artificial ya entrenados, mediante motores de inferencia empaquetados como imágenes de contenedor, con el fin de llevar los modelos del laboratorio a una fase de servicio consumible.
 
   \item \label{obj:evaluacion} Evaluar el desempeño y la aceptación de la plataforma mediante pruebas de carga con veinte usuarios simultáneos y la aplicación del \emph{System Usability Scale} a usuarios del laboratorio, con el fin de determinar si la plataforma sostiene esa concurrencia y en qué banda de referencia publicada se ubica su usabilidad percibida.
 \end{enumerate}

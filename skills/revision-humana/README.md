@@ -43,7 +43,7 @@ Start a new session afterwards if `/revision-humana` doesn't show up.
 
 ## Relationship with other modules
 
-- It does not replace the **Revisor** (`../agent-roles/Revisor.md`). The Revisor checks the
+- It does not replace the **Revisor** (`../../agent-roles/Revisor.md`). The Revisor checks the
   document against the rules. This skill applies a person's judgment on substance.
 - It applies the same rule files every other writing task uses: `../writting-tools/`,
   `../objectives-writting/objectives-project-rules.md`, `../reference-writting/recency.md`.

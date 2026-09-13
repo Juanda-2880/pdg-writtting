@@ -19,9 +19,13 @@ Los pasajes van en el idioma original y sin traducir. Las páginas son las del P
     - Pasaje: "Figure 1: Only a small fraction of real-world ML systems is composed of the ML code, as shown by the small black box in the middle. The required surrounding infrastructure is vast and complex." (p. 4, Figura 1). La figura incluye los recuadros *Serving Infrastructure* y *Monitoring* (verificado sobre la imagen de la página, porque `pdftotext` no extrae el texto de la figura).
     - **Estado:** verificada · 2026-09-13
   - `chapters/01-motivacion-antecedentes.tex` · *Contexto* ¶1 · **retirada el 2026-09-13** por extensión (el cap. 01 pasaba de 3 páginas) y porque la deuda técnica no aporta al hilo del párrafo. El pasaje sigue verificado para usos futuros: "we argue that ML systems have a special capacity for incurring technical debt […] This debt may be difficult to detect because it exists at the system level rather than the code level." (p. 1, §1 *Introduction*)
-  - `chapters/05-marco-teorico.tex` · `\label{sec:mlops-ciclo-vida}` ¶1 · «tratar el modelo entrenado como el sistema completo, sin atender la infraestructura que lo sirve, es la fuente principal de la deuda técnica oculta de estos sistemas»
-    - La fuente no presenta ninguna causa como «fuente principal» de la deuda; enumera varios factores de riesgo (*boundary erosion, entanglement, hidden feedback loops, undeclared consumers, data dependencies, configuration issues, changes in the external world*, p. 1, *Abstract*).
-    - **Estado:** sin respaldo · pendiente de la revisión del cap. 05
+  - `chapters/05-marco-teorico.tex` · `\label{sec:mlops-ciclo-vida}` ¶1 · **versión de JDLP retirada el 2026-09-13.** Decía que tratar el modelo entrenado como producto terminado «genera una deuda técnica que permanece invisible durante el desarrollo y emerge cuando el sistema debe operar». La fuente no presenta ninguna causa como fuente principal de la deuda ni describe ese momento de aparición; enumera varios factores de riesgo (p. 1, *Abstract*).
+  - `chapters/05-marco-teorico.tex` · `\label{sec:mlops-ciclo-vida}` ¶1 · «el código del modelo ocupa una fracción pequeña del conjunto, y la infraestructura que lo rodea, que incluye la configuración, la infraestructura de servicio, la gestión de los recursos de cómputo y el monitoreo, es extensa y compleja»
+    - Pasaje: el mismo de la Figura 1 (p. 4), cuyos recuadros incluyen *Configuration*, *Machine Resource Management*, *Serving Infrastructure* y *Monitoring*.
+    - **Estado:** verificada · 2026-09-13
+  - `chapters/05-marco-teorico.tex` · `\label{sec:mlops-ciclo-vida}` ¶1 · «estos sistemas tienen una capacidad especial para acumular deuda técnica, difícil de detectar porque se sitúa en el nivel del sistema completo, fuera del código del modelo»
+    - Pasaje: "we argue that ML systems have a special capacity for incurring technical debt […] This debt may be difficult to detect because it exists at the system level rather than the code level." (p. 1, §1 *Introduction*)
+    - **Estado:** verificada · 2026-09-13
 
 ## kreuzberger-mlopsoverview-2023
 
@@ -34,8 +38,9 @@ Los pasajes van en el idioma original y sin traducir. Las páginas son las del P
     - Pasaje: "C9 Monitoring Component (P8, P9). The monitoring component takes care of the continuous monitoring of the model serving performance (e.g., prediction accuracy). Additionally, monitoring of the ML infrastructure, CI/CD, and orchestration are required" (p. 4, §4.2)
     - **Estado:** verificada · 2026-09-13
   - Términos que la fuente **no** usa y no deben atribuírsele: *quota*, *telemetry*, *access governance*. La única aparición de *governance* se refiere a los artefactos: "These repetitive tasks yield a large number of artifacts that require a strong governance" (p. 8, §7).
-  - `chapters/05-marco-teorico.tex` · `\label{sec:mlops-ciclo-vida}` ¶1 · «MLOps designa la disciplina que extiende las prácticas de integración y entrega continuas, control de versiones y monitoreo del desarrollo de *software* convencional al ciclo de vida completo»
-    - **Estado:** sin verificar · pendiente de la revisión del cap. 05
+  - `chapters/05-marco-teorico.tex` · `\label{sec:mlops-ciclo-vida}` ¶1 · «MLOps designa un paradigma que reúne buenas prácticas, conceptos y una cultura de desarrollo para la conceptualización, implementación, monitoreo, despliegue y escalabilidad de extremo a extremo de los productos de aprendizaje automático, y que se apoya en tres disciplinas, el aprendizaje automático, la ingeniería de *software* (en particular DevOps) y la ingeniería de datos» (reescrita el 2026-09-13; la versión anterior le atribuía una lista de prácticas que el pasaje de definición no enumera así)
+    - Pasaje: el de p. 8, §6 citado arriba, que continúa: "Most of all, it is an engineering practice that leverages three contributing disciplines: machine learning, software engineering (especially DevOps), and data engineering."
+    - **Estado:** verificada · 2026-09-13
 
 ## eken-mlopsmultivocalreview-2026
 
@@ -55,9 +60,10 @@ Los pasajes van en el idioma original y sin traducir. Las páginas son las del P
   - `chapters/01-motivacion-antecedentes.tex` · *Contexto* ¶1 · **retirada el 2026-09-13.** La tesis citaba la conclusión «there is a significant gap in the detailing of activities related to operationalizing machine learning models» (p. 318 impresa, §6). El pasaje respaldaba la frase, pero los autores la retiraron porque describe el estado del campo en 2022 y puede no seguir vigente en 2026 (`skills/reference-writting/recency.md`, «Claims about the state of a field»). La reemplaza `eken-mlopsmultivocalreview-2026`.
   - Términos que la fuente **no** usa: *quota*, *telemetry*, *governance*.
   - Aviso de atribución: la frase de que el monitoreo es «one of the most relevant activities of MLOps practices» está en la sección de antecedentes (p. 310 impresa) y Lima et al. la atribuyen a Cardoso Silva et al. (2020). No es hallazgo propio de la revisión.
-  - `chapters/05-marco-teorico.tex` · `\label{sec:mlops-ciclo-vida}` ¶1 · «ubican el despliegue, el monitoreo en producción y la gobernanza de acceso entre las prácticas centrales de ese ciclo»
-    - La fuente no menciona la gobernanza de acceso, y el monitoreo aparece como afirmación de antecedentes atribuida a otro estudio.
-    - **Estado:** sin respaldo · pendiente de la revisión del cap. 05
+  - `chapters/05-marco-teorico.tex` · `\label{sec:mlops-ciclo-vida}` ¶1 · **versión anterior retirada el 2026-09-13.** Decía que la fuente ubica «el despliegue, el monitoreo en producción y la gobernanza de acceso» entre las prácticas centrales. La fuente no menciona la gobernanza de acceso, y el monitoreo aparece como afirmación de antecedentes atribuida a otro estudio.
+  - `chapters/05-marco-teorico.tex` · `\label{sec:mlops-ciclo-vida}` ¶1 · «El enfoque surgió para reducir el esfuerzo y mejorar la integración entre quienes llevan los modelos al entorno de producción»
+    - Pasaje: "MLOps have emerged as an approach to minimizing efforts and improving integration between those who are in the process of deploying the models in the production environment." (p. 308 impresa, *Abstract*)
+    - **Estado:** verificada · 2026-09-13
 
 ## gao-lowgpuutilization-2024
 

@@ -35,4 +35,4 @@ What each package in `../preamble.tex` is for, and why it's there. Don't add a n
 1. Check this table first — the need may already be covered.
 2. If genuinely new, add it to `preamble.tex` in the matching section (encoding/language/tables/floats/math/citations/etc.), not at the bottom.
 3. Add a row here explaining why.
-4. Per `agent-roles/Redactor.md`, don't introduce new packages or layout changes to an existing draft without the Coordinador's sign-off — an uncoordinated package addition is a common source of build breakage others then have to debug.
+4. Per `../../../agent-roles/Redactor.md`, don't introduce new packages or layout changes to an existing draft without the Coordinador's sign-off — an uncoordinated package addition is a common source of build breakage others then have to debug.

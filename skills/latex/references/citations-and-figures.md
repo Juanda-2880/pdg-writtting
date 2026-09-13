@@ -16,7 +16,7 @@ Rules:
 - **Never** hand-type a citation like `(Smith, 2020)` — always a `\cite*` command, so the bibliography stays the single source of truth and `apalike` handles formatting/sorting.
 - Follow `reference-writting/direct-reference.md` for when a citation must carry a locator (`p.`/`pp.`/`para.`) — direct quotes always do.
 - Follow `reference-writting/indirect-reference.md` for paraphrase/synthesis citations — usually `\citep{key}` or `\citet{key}`, no locator needed unless pointing to a specific passage.
-- Every `\cite*` key must exist in the shared `.bib` file. If the Investigador hasn't supplied a real source yet, use `\cite{cite_needed}` as a visible, grep-able placeholder — **never** invent a BibTeX key/entry to fill the gap (see `agent-roles/Investigador.md`).
+- Every `\cite*` key must exist in the shared `.bib` file. If the Investigador hasn't supplied a real source yet, use `\cite{cite_needed}` as a visible, grep-able placeholder — **never** invent a BibTeX key/entry to fill the gap (see `../../../agent-roles/Investigador.md`).
 
 **apalike vs. strict APA 7**: `apalike.bst` gets the shape right (author-year, hanging indent, alphabetical) but has known small deviations from the literal APA-7 rulebook (e.g. `and` vs. `&` between authors, some punctuation details). If a reviewer flags a specific mismatch, prefer a spot patch or a small custom `.bst` tweak over swapping the whole citation engine — a wholesale switch to `apacite`/biblatex-apa is a structural change that goes through the Coordinador, not a silent substitution.
 
@@ -67,7 +67,7 @@ Rules:
 
 - Use `booktabs` rules (`\toprule`/`\midrule`/`\bottomrule`) — never `\hline` or vertical rules (`|`), per standard academic table style.
 - Use `longtable`/`xltabular` instead of `tabular` for any table that risks spanning a page break (e.g. the full FR/NFR requirements list from `project-context/requirements.md`).
-- Every numeric claim drafted from evidence (per `agent-roles/Investigador.md`) that appears in prose should also appear in a table if there are more than 2–3 data points — per `thesis-writing/writing-guide.md`'s rule that every numeric claim gets a table or figure.
+- Every numeric claim drafted from evidence (per `../../../agent-roles/Investigador.md`) that appears in prose should also appear in a table if there are more than 2–3 data points — per `thesis-writing/writing-guide.md`'s rule that every numeric claim gets a table or figure.
 
 ## Equations
 
