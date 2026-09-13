@@ -25,6 +25,8 @@ This is where the actual thesis text lives — as opposed to `skills/thesis-writ
 | :--- | :--- |
 | `main.tex` | Document skeleton: `\documentclass`, `\input{../skills/latex/preamble}`, title page, front matter (Resumen/Abstract — written last — Lista de acrónimos, Glosario), the ordered list of `\include{chapters/...}`, bibliography, appendices. |
 | `STATUS.md` | Per-chapter status tracker — read this, not the chapters, to see where the thesis stands. |
+| `REVISIONES.md` | Log of human review passes (`../skills/revision-humana/`): who reviewed which section, their literal feedback, and what was applied. Append-only. |
+| `CITAS-VERIFICADAS.md` | Ledger of indirect citations checked against the full text of their source (`../skills/reference-writting/source-fidelity.md`): claim as written, literal passage with locator, version consulted, status. A citation not listed is unverified. |
 | `chapters/NN-nombre.tex` | One file per chapter/section (see below). Numbered so the reading/compile order is obvious; `99-anexos.tex` is deliberately last regardless of how many numbered chapters exist. |
 | `references.bib` | The single shared BibTeX database — every citation key used anywhere in `chapters/` must resolve here (see `../skills/latex/references/citations-and-figures.md`). |
 | `imagenes/` | Figures referenced from `chapters/` — descriptive filenames, not `figura1.png` (see `../skills/latex/references/citations-and-figures.md`). |

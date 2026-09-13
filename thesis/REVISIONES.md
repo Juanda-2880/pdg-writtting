@@ -1,0 +1,125 @@
+# Revisiones humanas
+
+Registro de cada pasada de la skill [`revision-humana`](../skills/revision-humana/README.md): quién revisó qué apartado, qué pidió con sus propias palabras y qué se hizo con cada punto.
+
+Cada cambio al texto que aparece aquí tiene un origen humano: **F** es feedback escrito por una persona en el chat y **S** es una sugerencia de la IA que una persona aprobó por su id. Las sugerencias que nadie aprobó también se anotan, para que quede claro que no se aplicaron.
+
+Las entradas van en orden cronológico, la más reciente al final. No se editan una vez escritas; si algo se revierte, se registra en una entrada nueva.
+
+---
+
+### 2026-09-13 · cap01 · Contexto (sección 1.1)
+
+- **Revisó:** Melo088 (feedback dado en el chat, antes de invocar la skill con `/revision-humana`)
+- **F1** (humano, ¶1): «Mezcla afirmaciones correctas con conceptos y términos que no existen en las fuentes […] Ninguno de los documentos de Kreuzberger et al. o Lima et al. menciona el uso de "cuotas" (quotas), "telemetría" (telemetry) o "gobernanza de acceso" (access governance) como prácticas centrales» → aplicado · ¶1 reescrito con lo que dicen las fuentes: Figura 1 y deuda en el nivel del sistema (Sculley et al.), definición de MLOps y componente de monitoreo (Kreuzberger et al.), vacío en el detalle de las actividades para operacionalizar modelos (Lima et al.). Verificado contra el texto completo; ver `CITAS-VERIFICADAS.md`.
+- **F2** (humano, regla general): «es importante de aquí en adelante que las citas si son indirectas no involucren terminos o cosas que no se hayan dicho en el documento como tal» → aplicado · regla nueva `skills/reference-writting/source-fidelity.md`, registro `thesis/CITAS-VERIFICADAS.md`, y enlaces en `CLAUDE.md` regla 6 y en los roles Investigador y Revisor.
+- **Hallazgos al aplicar F1** (misma sección, mismo problema):
+  - ¶3, Gao et al. (2024): la tesis presentaba el umbral de selección (≤ 50 % de utilización) como hallazgo, hablaba de «casos» cuando la fuente cuenta *issues*, y atribuía a la literatura «mecanismos de gobernanza» que la fuente no documenta → corregido.
+  - ¶2: «Sus usuarios» se refería al sistema de la fase previa, pero el hecho de `project-context/documentation.md` habla de la plataforma de este proyecto → corregido.
+- **Extensión:** el cap. 01 llegó a 4 páginas con la primera reescritura. Se condensaron ¶1 a ¶3 sin quitar afirmaciones verificadas; vuelve a 3 páginas (cap. 02 empieza en p. 4).
+- **Pendiente fuera del apartado:** `chapters/05-marco-teorico.tex` `\label{sec:mlops-ciclo-vida}` usa las mismas citas de Sculley et al. y Lima et al. con afirmaciones sin respaldo (registradas en `CITAS-VERIFICADAS.md`). No se tocó.
+
+### 2026-09-13 · cap01 · Contexto (sección 1.1), segunda pasada
+
+- **Revisó:** Melo088 (feedback dado en el chat)
+- **F1** (humano, ¶1): «lo de lima en el primer parrafo no me suena, debido a que es 2026 y esa conclusion de el vacio significativo puede llegar a haber cambiado en estos años» → aplicado · la cita de Lima et al. (2022) sale del cap. 01 y la reemplaza Eken et al. (2026, *ACM Computing Surveys*, revisión multivocal de 150 estudios revisados por pares y 48 de literatura gris): «un cuerpo de conocimiento integrado sobre MLOps sigue sin lograrse». Verificada contra el preprint y contra el resumen publicado (Crossref). Regla nueva en `skills/reference-writting/recency.md`, «Claims about the state of a field».
+- **F2** (humano, fuentes): «la universidad permite la busqueda en los siguientes portales […] se les permite a los agentes buscar algo de ahi y si esta bloqueado, se puede compartir el pdf manualmente en alguna carpeta […] incluye en el repositorio una carpeta que mapee las fuentes con pdfs, es importante» → aplicado · carpeta `fuentes/` con `README.md` (portales de Icesi y su pertinencia, orden de búsqueda, qué hacer cuando un portal bloquea la descarga), `INDEX.md` (las 42 entradas de `references.bib` con su PDF, versión, forma de obtenerla, verificación y SHA-256) y `pdf/` con los 5 PDF leídos hasta ahora.
+- **Decisión técnica a confirmar por los autores:** los PDF quedan **fuera de git** (`fuentes/.gitignore`) porque el repositorio es público en GitHub y la mayoría de los artículos tiene derechos del editor o licencia de la universidad. Se versionan el índice y las huellas SHA-256.
+- **Extensión:** el cap. 01 sigue en 3 páginas.
+
+### 2026-09-13 · cap01 · Contexto (sección 1.1), tercera pasada
+
+- **Revisó:** Melo088 (feedback dado en el chat)
+- **F1** (humano, ¶3): «siento que el 3er parrafo corta completamente lo que se habla en los otros 2, nos vamos a microsoft, hablamos de nvidia, de prometheus... no siento que este haciendo logica con el contexto, corrigelo» → aplicado · el Contexto se reordenó de lo general a lo particular. ¶1 trata MLOps (sin cambios). ¶2 trata el reto de aprovechar GPU **compartidas**, con Gao et al. reducido a lo que sostiene esa idea: advierten sobre la baja utilización en plataformas multiusuario, y se mantienen los 400 trabajos y los 706 problemas. Salen el 84.99 %, Prometheus y DCGM. ¶3 presenta al IAsLab como el caso concreto («Ese reto aparece, a menor escala…»), y ahora incluye la sala 104M con sus 31 estaciones con GPU RTX 4090 que también se usan para clases (`requirements.md` §4), algo que el formato pide en el Contexto (escenario físico).
+- **Confirmación de los autores:** los PDF de `fuentes/pdf/` quedan fuera de git (respuesta «si», 2026-09-13).
+- **Extensión:** el cap. 01 sigue en 3 páginas, tras condensar ¶2 y ¶3.
+- **Pendiente para la revisión de Antecedentes:** el segundo párrafo de esa sección repite «sala 104M» y «31 máquinas», que ahora se presentan en el Contexto.
+
+### 2026-09-13 · cap01 · Contexto (sección 1.1), cuarta pasada
+
+- **Revisó:** Melo088 (feedback dado en el chat)
+- **F1** (humano, ¶1): «El pronombre "que abarca" al final de tu frase genera un poco de ambigüedad» → aplicado · «porque su alcance es amplio: MLOps aborda retos muy diversos para llevar modelos a producción». El sujeto queda explícito.
+- **F2** (humano, ¶2): «"aprovechar bien": Es un término un poco coloquial» → aplicado · «optimizar el uso de sus unidades de procesamiento gráfico (GPU)».
+- **F3** (humano, ¶2): «"bastante baja": Suena subjetivo. Queda mejor "significativamente baja" o "notablemente baja"» → aplicado con la segunda opción, «notablemente baja». La fuente dice *rather low*, y «significativamente» sugeriría una prueba estadística que el estudio no reporta (`skills/reference-writting/source-fidelity.md`, modalidad).
+- **F4** (humano, ¶2): «se genera una pequeña ambigüedad sobre el sujeto de la oración […] Es mejor reestructurarlo para que la acción recaiga claramente en los investigadores» → aplicado · «Los autores analizaron 400 trabajos reales de la plataforma interna de aprendizaje profundo de Microsoft…».
+- **F5** (humano, ¶3): «No es el IASLAB el que se enmarca en el macro proyecto, es nuestro pdg en si» → aplicado · «Este proyecto de grado se enmarca en el macroproyecto…», dentro del cual «un proyecto de grado previo» construyó el plano de control (`project-context/documentation.md`: el macroproyecto se dividió en proyectos de grado separados).
+- **F6** (humano, ¶3): «el último párrafo debe centrarse más en la arquitectura e infraestructura del problema y menos en el inventario del salón. Mencionar la "sala 104M" interrumpe el flujo técnico» → aplicado · sale el inventario (sala 104M, 31 estaciones, RTX 4090, uso en clases). El párrafo describe ahora la infraestructura del problema: el plano de control existente (configuración, ejecución y seguimiento del entrenamiento distribuido, aprovisionamiento de nodos, SAAMFI como proveedor de identidad) y la plataforma de este proyecto operando sobre los mismos nodos con GPU que el entrenamiento (`documentation.md`, *Introduction* y *Scope clarification*).
+- **Recorte por extensión (decisión de la IA, a confirmar):** para volver a 3 páginas se quitó de ¶1 la cláusula de Sculley et al. sobre la deuda técnica difícil de detectar. El pasaje sigue verificado en `CITAS-VERIFICADAS.md` por si se quiere recuperar recortando otra cosa.
+- **Queda sin efecto** la nota de la tercera pasada sobre la repetición de «sala 104M» en Antecedentes: el Contexto ya no la menciona.
+- **Pendiente para Antecedentes:** esa sección abre con «Antes de esta primera fase» y habla de «la brecha que deja la primera fase», pero el Contexto ya no usa «fase»: ahora dice «proyecto de grado previo».
+
+### 2026-09-13 · cap01 · Antecedentes del problema (sección 1.2), y ajuste del Contexto
+
+- **Revisó:** Melo088 (feedback dado en el chat)
+- **F1** (humano, ¶2): «Lo que se menciona de harness de benchmarking no siento que este bien puesto, primero porque dice "construyó", quien? […] no creo que se deba mencionar lo de YAML y en general cosas especificas […] el segundo párrafo desciende abruptamente a un nivel de "bitácora de laboratorio" […] el objetivo es documentar las carencias sistémicas y los esfuerzos previos, no detallar la minucia de las pruebas exploratorias […] distrayendo al lector del verdadero dolor: que los despliegues son manuales» → aplicado · ¶2 reescrito en torno al despliegue manual («Poner un modelo en operación también era un proceso manual…»). Salen el *harness*, YAML, vLLM, llama.cpp, los 20 *tokens* por segundo y los 10 a 15 minutos; esos datos siguen en `project-context/documentation.md`. En el mismo párrafo se integró la brecha del proyecto previo, antes un párrafo aparte.
+- **F2** (humano, regla general): «estoy viendo un patron que no me gusta en muchos parrafos, el usar : dos puntos […] es mejor evitarlo y seguir una secuencia lógica que conecte las ideas» → aplicado · cero dos puntos en Contexto y Antecedentes. Regla nueva en `skills/writting-tools/puntuation.md` §4.3, con su `grep`, y en `CLAUDE.md` regla 8. La tabla de §4.1, que recomendaba reemplazar el guion largo por dos puntos, se corrigió.
+- **F3** (humano, «corregir en la skill de escritura»): los criterios de F1 quedaron como regla en `skills/writting-tools/nivel-de-detalle.md` (nivel de detalle por sección, hilo entre párrafos, sujeto explícito, antecedente único y registro formal, con los ejemplos de esta revisión y la anterior).
+- **Verificación de citas al aplicar F1** (misma sección, `source-fidelity.md`):
+  - Jeon et al. (2019): la tesis decía «localidad de datos», pero el paper estudia la localidad en la ubicación de las GPU → corregido. El párrafo usa ahora sus cifras propias: 52 % de utilización promedio de las GPU en uso y 30 % de trabajos fallidos.
+  - Gu et al. (2019): la tesis sacaba de esa cita una conclusión sobre «orquestación de inferencia» en el IAsLab, cuando el paper trata el entrenamiento → corregido.
+  - Weng et al. (2022): se le atribuía, junto con Liu, que «la telemetría *fine-grained* es la condición necesaria», y no lo dice → corregido a los retos que sí identifica.
+  - Liu et al. (2022): la tesis atribuía la mejora de precisión a los 350 millones de registros, cuando la logran las técnicas propuestas → corregido. Se añade lo que la fuente dice sobre las fallas que hacen caer servicios de inferencia.
+  - Frase retirada por exagerar lo que dice `project-context/`: «el riesgo de monopolización que ya se observa en el laboratorio». `documentation.md` lo describe como riesgo latente.
+- **Contexto (ajuste por F2):** «porque su alcance es amplio: MLOps aborda…» pasa a «porque MLOps tiene un alcance amplio y aborda…», y «del entrenamiento distribuido: centraliza…» se parte en dos oraciones.
+- **Sugerencias de la IA (no aplicadas):**
+  - **S1** (¶1): «Esa restricción respondía, además, a un criterio de equidad económica, dado que no todos los estudiantes pueden sostener una suscripción comercial de cómputo en la nube». La lógica está invertida: la dificultad de pagar la nube explica por qué el laboratorio debería **abrir** su infraestructura, no por qué la restringía. La cita del tutor en el acta del 2026-08-26 va en ese sentido («muchas personas […] no tienen las capacidades económicas para […] pagar mensualmente un agente»). Además, la Justificación ya desarrolla la equidad económica. Propuesta: quitar la frase de Antecedentes y corregir la redacción en `documentation.md` («Behind the restriction sat…»). Pendiente de aprobación.
+- **Extensión:** el cap. 01 sigue en 3 páginas.
+
+### 2026-09-13 · cap01 · Contexto (sección 1.1), quinta pasada
+
+- **Revisó:** Melo088 (feedback dado en el chat, sobre propuestas presentadas antes de aplicar nada)
+- **F1** (humano): «no quiero que nos limitemos por paginas» → aplicado · decisión registrada en `STATUS.md`. La skill `revision-humana` ya no pide recortar por extensión.
+- **F2** (humano, macroproyecto): «no hay link funcional, quedate con el proposito que marcaron en el anteroir proyecto y adecualo a este pdg» → aplicado · propósito tomado del anteproyecto TRAINI (2026-1) y escrito primero en `project-context/documentation.md` como hecho adoptado por los autores. En la tesis, ¶4 presenta el propósito del macroproyecto y ¶5 lo adecua a este PDG: el proyecto previo cubrió el entrenamiento y este aporta la etapa siguiente (despliegue y servicio, gobernanza, observabilidad).
+- **F3** (humano): «no pongas lo de la revista» → aplicado · no se incluye el editorial de *Nature Computational Science*.
+- **F4** (humano, ¶2 nuevo): «un parafraseo mas general puede servir […] no nombrar especificamente lo de canada o cosas por el estilo, usar el estilo de referencia parafraseo y al final entre parentesis el nombre» → aplicado · ¶2 con citas parentéticas (Sevilla et al., 2022; Ahmed et al., 2023) y sin el dato de Canadá. La generalización se apoya en la afirmación general de Ahmed et al. («a shortfall in computing available to academics»), no en extrapolar el dato canadiense.
+- **F5** (humano): «si sientes que se da un buen contexto, que si se esta organizando a modo de filtro la informacion […] que si sea un buen contexto» → aplicado · orden de embudo en seis párrafos: MLOps → cómputo cada vez más escaso para la academia → reto de las GPU compartidas → IAsLab y macroproyecto → proyecto previo y este proyecto → involucrados. La primera frase del párrafo de Gao pasa a «Cuando esa capacidad se comparte entre muchos usuarios…» para enlazar con ¶2.
+- **Decisión de la IA sobre una pregunta sin respuesta:** el párrafo de involucrados (¶6) presenta a los actores **sin** la carencia de visibilidad de los administradores, que ya está en Antecedentes ¶2 (aprobado). Así no se toca lo aprobado ni se repite.
+- **Extensión:** el cap. 01 ocupa 4 páginas (cap. 02 empieza en p. 5), sin límite por F1.
+
+### 2026-09-13 · cap01 · Contexto (sección 1.1), párrafo de Gao et al.
+
+- **Revisó:** Melo088 (feedback dado en el chat)
+- **F1** (humano, ¶3): «pasar de hablar de Microsoft a hablar de la sala 104M puede sentirse como un salto muy brusco […] el truco es quitarle el foco a la marca comercial (Microsoft) y ponérselo a la escala y naturaleza del problema» → aplicado junto con F2.
+- **F2** (humano, ¶3): «junta tu aporte con el mio "Cuando esa capacidad se comparte entre muchos usuarios, optimizar su uso se vuelve un reto estructural. Gao et al. (2024) advierten que, incluso en plataformas industriales de aprendizaje profundo, los trabajos presentan una utilización notablemente baja de las GPU asignadas, lo que desperdicia recursos críticos y reduce la productividad de los equipos. Al evaluar 400 trabajos reales en un entorno corporativo a gran escala —elegidos entre aquellos que usaban en promedio el 50 % o menos de su capacidad—, los autores identificaron 706 problemas asociados a la baja utilización, derivados de la complejidad de gestionar cargas de trabajo concurrentes." obviamente cambiando el estilo con nuestras reglas, lo que si me gusta es el estilo de la cita el criterio de seccion la frase final y sin la mara» → aplicado. Del texto humano se conservan «reto estructural», «incluso en plataformas…», «entorno corporativo a gran escala» y el criterio de selección. De la propuesta de la IA, la cita parentética, la frase final y la ausencia de la marca. Ajustes por las reglas del proyecto:
+  - Guiones largos → comas (`puntuation.md` §4.1).
+  - «los trabajos» → «algunos trabajos», porque la fuente dice *certain jobs* (`source-fidelity.md`, modalidad).
+  - «recursos críticos» → «recursos valiosos» (*precious*); «productividad de los equipos» → «productividad del desarrollo» (*development productivity*).
+  - «derivados de la complejidad de gestionar cargas de trabajo concurrentes» → «originados en el código de los propios trabajos por cómputo insuficiente en la GPU o por interrupciones de tareas ajenas a ella». La fuente atribuye los 706 problemas al código de los trabajos, no a la gestión de cargas concurrentes.
+  - Con la cita parentética al final de la segunda oración, la tercera abre con «Ese mismo estudio…» para que el sujeto quede claro (`nivel-de-detalle.md` §2).
+
+### 2026-09-13 · cap01 · Contexto (sección 1.1), repeticiones
+
+- **Revisó:** Melo088 (feedback dado en el chat; la propuesta se mostró y se aprobó antes de aplicarla)
+- **F1** (humano, todo el Contexto): «se repiten muchas cosas, por ejemplo computo en el segundo parrafo se dice muchas veces, verifica que en general todo el contexto no pase eso con saamfi u otras cosas» → aplicado tras aprobación · se contó la frecuencia de cada término por párrafo y en total. Antes, en todo el Contexto: entrenar/entrenamiento 8 (5 en ¶5), cómputo 7 (4 en ¶2), infraestructura 7, proyecto 7, sistema 6; SAAMFI en dos párrafos seguidos. Después: entrenar/entrenamiento 4, cómputo 3, infraestructura 4, proyecto 3, sistema 3; SAAMFI una sola vez. Ningún término técnico se repite más de dos veces dentro de un párrafo. Las oraciones con cita se reformularon conservando lo que dice cada fuente, y `CITAS-VERIFICADAS.md` se actualizó con la redacción nueva.
+- **F2** (humano, ¶2): «quiero que el segundo parrafo comience asi: sobre la infraestructura mencionada se exige, ademas, una capacidad de procesamiento creciente. o algo por el estilo, infraestructura quedo un poco lejos» → aplicado · «La infraestructura mencionada exige, además, una capacidad de procesamiento creciente.» La sintaxis se ajustó: «sobre… se exige» cambia a sujeto y verbo directos.
+
+### 2026-09-13 · cap01 · Antecedentes del problema (sección 1.2), párrafos 3 y 4
+
+- **Revisó:** Melo088 (feedback dado en el chat; la propuesta se mostró y se aprobó antes de aplicarla)
+- **F1** (humano, ¶3-4): «s un error muy común en los anteproyectos de ingeniería citar problemas de hiperescala (como los clústeres de Microsoft o Alibaba con miles de GPUs) para justificar un problema en un laboratorio universitario (31 GPUs) […] el enfoque (approach) no debe centrarse en "cómo las grandes tecnológicas manejan el Big Data", sino en los desafíos de los clústeres GPU multiusuario (multi-tenant) en entornos académicos e institucionales» → aplicado tras aprobar la propuesta («apruebo») · ¶3 con Xu et al. (2025): clúster universitario compartido de más de 160 GPU, desafíos de gestión, subutilización con herramientas mal configuradas y el esquema de acceso directo por consola, el mismo del IAsLab. ¶4 con Weitzel et al. (2025): reservas en una plataforma académica Kubernetes, utilización del 21.49 % al 31.37 %. Cierra con una frase de los autores que conecta con el IAsLab y con el riesgo de monopolización de `documentation.md`.
+- **F2** (humano): «dejamos pero no se hace estado del arte todavia» → aplicado · Jeon, Gu, Weng y Liu salen del cap. 01. Sus pasajes verificados quedan en `CITAS-VERIFICADAS.md` y figuran como candidatos en la fila del Estado del arte de `STATUS.md`. `fuentes/INDEX.md` se recalculó: Jeon y Gu pasan a «sin citar»; Weng y Liu siguen citados en los cap. 05 y 07.
+- **S1** (IA, aprobada por Melo088 con «si»): se quita de ¶1 «Esa restricción respondía, además, a un criterio de equidad económica…», y se corrige la redacción de origen en `project-context/documentation.md`, que invertía el argumento del tutor.
+- **Otros:** se añade a `references.bib` el DOI de Weitzel et al. (PEARC '25), tomado del propio PDF.
+
+### 2026-09-13 · cap01 · Justificación (sección 1.3)
+
+- **Revisó:** Melo088 (feedback dado en el chat; la propuesta se mostró antes de aplicarla)
+- **F1** (humano): «menciona todo menos el manejo de datos, ese nos lo podemos saltar» → aplicado · entran la pertinencia, el acceso con retorno de inversión, el efecto ambiental (nuevo, con Xu et al., 2025) y la relevancia. Sale el párrafo de Wiest et al. También sale el párrafo de cuantización (Frantar, Lin, Dettmers): tenía detalle de implementación de una capacidad fuera del alcance y afirmaciones sin respaldo («esta evidencia respalda que existen modelos precuantizados»; la aceleración de Lin et al. es de TinyChat, no de AWQ).
+- **F2** (humano): «que no sea subtitulo desarrollo sino un flujo natural» → aplicado · los párrafos se enlazan con transiciones («Ese cambio amplía…», «Ese mejor aprovechamiento tiene, además…», «Por último…») y no con aperturas tipo rótulo.
+- **F3** (humano): «no hables mucho de los proyectos de esalud ni los proyectos que el macroproyecto desarrolla, basta con decir se fortalecen otros proyectos que requieren de los recursos» → aplicado · «y se fortalecen otros proyectos que requieren esos recursos».
+- **Ajustes de la IA:** se quitaron tres repeticiones al aplicar («consumo» 3→1, «acceso» 2→1, «plataforma» 2→1). «La GPU domina el consumo de todo el clúster» pasa a «la GPU representa la mayor parte de la potencia demandada», fiel a *"the GPU power is dominant"*. Sin dos puntos ni guiones largos.
+
+### 2026-09-13 · cap02 · Identificación del problema (sección 2.1)
+
+- **Revisó:** Melo088 (feedback dado en el chat; la propuesta se mostró y se aprobó antes de aplicarla)
+- **Diagnóstico presentado por la IA:** las causas estaban escritas como ausencia de la solución (motor de orquestación, reserva de cupos con prioridad por rol, telemetría), contra la regla del encabezado del capítulo. La jerarquía mezclaba síntomas, causas y efectos. El efecto principal («competencia desordenada») no coincidía con los hechos del cap. 01, que documentan subutilización y exclusión. Quedaban «fase previa» y un uso de dos puntos, y no se identificaba a los involucrados.
+- **F1** (humano): «perfecto. apruebo» → aplicado · nueva estructura: problema central (infraestructura de GPU que no puede aprovecharse de forma compartida, controlada y observable), tres síntomas, causa principal y tres secundarias, efecto principal y efectos secundarios por involucrado. Todo se deriva del cap. 01 y de `project-context/` (*Institutional antecedents*, Glosario, *Scope clarification*, §4, *Problem Description*, FR-03.4). Sin citas nuevas.
+- **Pregunta sin responder, resuelta en conservador:** la IA preguntó si promover a `project-context/` que restringir el acceso era la única forma de evitar la saturación de los equipos (idea del `\todo` del tutor). No hubo respuesta y el texto aprobado no la incluye.
+
+### 2026-09-13 · cap02 · Formulación del problema (sección 2.2)
+
+- **Revisó:** Melo088 (feedback dado en el chat)
+- **F1** (humano): «si la pregunta afecta los objetivos entonces no. se deja la pregunta como antes y solo se modifica lo anterior» → aplicado · el enunciado que precede a la pregunta se reescribió siguiendo la identificación aprobada en 2.1 (causa principal y secundarias en la primera oración, efectos en la segunda). La pregunta del proyecto y la oración final («Responderla consolida…») se conservan palabra por palabra.
+- **Ajustes de la IA para no tocar la pregunta:** «la pregunta del proyecto: ¿cómo construir…» pasa a «la pregunta del proyecto. ¿Cómo construir…», con la regla de dos puntos (`puntuation.md` §4.3) aplicada a la introducción y no a la pregunta. El enunciado nombra «las cargas de inferencia y de entrenamiento» para que «ambos tipos de carga», dentro de la pregunta, tenga referente.
+- **Pendiente señalado, no aplicado:** la pregunta conserva «reserva de cupos con prioridad por rol» (tensión abierta en ADR-032) y «observabilidad avanzada» (adjetivo que las reglas de objetivos marcan como ambiguo). La pertinencia y la relevancia siguen resumidas en la oración final. Se retoma cuando se fije el alcance y se revisen los objetivos.
+- **F2** (humano, misma sección): «cambia prioridad por rol por reglas de reparto» → aplicado · la pregunta dice ahora «reserva de cupos con reglas de reparto y observabilidad avanzada». Con esto deja de depender de la tensión de ADR-032 sobre la prioridad de profesores.
