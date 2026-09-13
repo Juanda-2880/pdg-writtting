@@ -12,7 +12,7 @@ Common failure modes for this specific stack (pdfLaTeX, `babel[spanish]`, `natbi
 ## Citations show up as "?" or `[key?]` after a fresh build
 
 Normal on the **first** `pdflatex` pass — the `.aux`/`.bbl` files don't exist yet. `latexmk` (via `make build`) detects this and reruns `bibtex`/`pdflatex` automatically until it converges (usually 3 passes: pdflatex → bibtex → pdflatex → pdflatex). If it's still broken after a `latexmk` run:
-- Check the citation key actually exists in the `.bib` file (typo, or the Investigador flagged it as `cite_needed` and it was never resolved — see `agent-roles/Investigador.md`).
+- Check the citation key actually exists in the `.bib` file (typo, or the Investigador flagged it as `cite_needed` and it was never resolved — see `../agent-roles/Investigador.md`).
 - Check `compiled-output/latex-build/*.blg` (the bibtex log) for the real error — bibtex failures are otherwise silent in the PDF.
 
 ## `! Argument of \language@active@arg> has an extra }.` when using TikZ (verified)

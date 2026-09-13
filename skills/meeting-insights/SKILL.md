@@ -32,7 +32,7 @@ Writing the insight file is the whole job. In the same run, **do not**:
 A transcript is a lossy, often mis-diarized record. Applying it straight to the document
 would let one garbled sentence become a cited fact. The insight file **names** what should
 change and where; a human approves, and then the normal role workflow
-([`agent-roles/`](../agent-roles/README.md)) applies it.
+([`agent-roles/`](../../agent-roles/README.md)) applies it.
 
 ## Procedure
 

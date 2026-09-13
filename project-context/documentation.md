@@ -46,9 +46,9 @@ Currently, researchers using the platform do not have a mechanism within the web
 
 **General objective.** Build the IAsLab platform for orchestrating and governing artificial intelligence and machine learning workloads, by means of inference-deployment, role-based resource governance and infrastructure observability modules, in order to consolidate the on-premise MLOps lifecycle at Universidad Icesi.
 
-1. **Observability.** Develop an observability module in the IAsLab web system for capturing and visualizing hardware and workload metrics of the compute nodes, aimed at supervising node state regardless of whether a node is running inference or training (FR-03.5). Wording adopted from the tutor's own proposed rewrite (ADR-028).
+1. **Observability.** Develop an observability module **of the platform** for capturing and visualizing hardware and workload metrics of the IAsLab compute nodes, aimed at supervising node state regardless of whether a node is running inference or training (FR-03.5). Wording adopted from the tutor's own proposed rewrite (ADR-028); the phrase "in the IAsLab web system" was removed on 2026-09-13 because **IAsLab is the laboratory, not a web system** (authors, 2026-09-13).
 2. **Governance.** Implement a quota and infrastructure-restriction system, coupled to the roles SAAMFI provides plus a platform administrator role, reserving compute slots for inference and training workloads with professors holding priority over how the room's capacity is allocated, in order to prevent GPU monopolization. It **implements**, it does not merely design (ADR-015); the role taxonomy is SAAMFI's plus one administrator (ADR-022); the model is reservation with role priority, never Fair-Share.
-3. **Orchestration.** Incorporate into the platform an inference orchestration engine that is agnostic to the underlying serving engine and packaged as a container image, able to deploy already-trained models concurrently. No prior IAsLab interface exists to integrate into (ADR-027), and no specific engine is committed to in advance.
+3. **Orchestration (reworded 2026-09-13).** **Implement**, on the IAsLab compute cluster, the concurrent deployment of already-trained artificial-intelligence models **by means of inference engines** packaged as container images, in order to bring the laboratory's models to a consumable serving stage. The verb is *Implementar*, chosen over *Habilitar* per rule 7 of `agent-roles`-adjacent `skills/objectives-writting/objectives-project-rules.md`: the project builds the mechanism, so a weaker verb would give away credit. The authors asked on 2026-09-13 for this objective to speak about *deploying models and inference engines* rather than about an abstract orchestration component. No prior IAsLab interface exists to integrate into (ADR-027), and no specific engine is committed to in advance.
 4. **Evaluation.** Evaluate the platform's performance and acceptance through load testing with **twenty simultaneous users** and usability validations with laboratory users, in order to determine whether it reaches a satisfactory level of operational acceptance (ADR-004).
 
 ## Scope
@@ -71,3 +71,17 @@ As a result of this extension, a new version of the web system is expected to be
 ## Benefits
 
 The development of this extension will maximize the return on investment in institutional hardware. By implementing the quota and governance system, equitable access to critical resources is democratized, preventing hoarding and reducing the need to purchase costly public cloud credits. Academically, enabling the deployment of complex models (such as LLMs) will foster advanced projects in the areas of Industry 4.0 and eHealth, ensuring that processing remains on local servers, which safeguards information privacy. Additionally, the improved interface and in-depth monitoring will drastically reduce cognitive and administrative burden.
+
+---
+
+## Execution-order decisions (authors, 2026-09-13)
+
+Recorded here because they change what the thesis commits to, not merely how it is worded. Source: the authors' own notes of 2026-09-13, given directly in session (the route `ADR.md` allows for an author answering by number).
+
+- **IAsLab is the laboratory, not a web system.** Any wording that makes "IAsLab" the name of a piece of software is wrong. The platform this project builds runs *for* the laboratory.
+- **The cluster comes first.** Kubernetes is deployed, configured and left running with the required technologies applied before the web platform is built. There is **no interface-mockup phase**: it was removed from the methodology and the schedule.
+- **Sprints are three weeks long and start on 2026-09-21.** Deploying and configuring a cluster does not fit a two-week increment. The period from 2026-08-10 to 2026-09-20 is a pre-sprint stage devoted to formulating the anteproyecto and the architecture.
+- **Telemetry is built on Grafana, Loki and Prometheus** (plus the NVIDIA DCGM exporter), named explicitly rather than left generic.
+- **Quotas are the last capability built** before the empirical evaluation.
+- **The anteproyecto is delivered at the beginning of December 2026**, not at the end.
+- **Phase order (confirmed by the authors 2026-09-13):** cluster -> telemetry -> quotas -> web platform -> evaluation. Quota enforcement lives inside the cluster, so it precedes the interface that exposes it.

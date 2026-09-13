@@ -34,7 +34,7 @@ index — not in this folder. Same split as [`latex/`](../latex/README.md) (rule
 
 ## How it fits the harness
 
-- **Role:** this is [`Investigador`](../agent-roles/Investigador.md) work — sourcing and
+- **Role:** this is [`Investigador`](../../agent-roles/Investigador.md) work — sourcing and
   verifying evidence and flagging what it could not verify. No new role was added; a
   transcript is just another source that must be quoted with a locator.
 - **Boundary:** the skill writes **only** into `project-context/meetings/`. It never edits `ADR.md`,

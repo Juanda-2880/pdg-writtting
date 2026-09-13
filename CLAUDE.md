@@ -1,6 +1,6 @@
 # Harness Rules for This Repository
 
-This repository is a writing harness for an academic thesis (PDG, Universidad Icesi) — a set of reference modules plus an agent-role workflow. These rules apply to every agent working in this repo, regardless of which role (see [`skills/agent-roles/`](./skills/agent-roles/README.md)) it is acting as.
+This repository is a writing harness for an academic thesis (PDG, Universidad Icesi) — a set of reference modules plus an agent-role workflow. These rules apply to every agent working in this repo, regardless of which role (see [`agent-roles/`](./agent-roles/README.md)) it is acting as.
 
 ## Structural rules
 
@@ -11,7 +11,7 @@ This repository is a writing harness for an academic thesis (PDG, Universidad Ic
 
 ## Workflow rule
 
-5. **Follow the role workflow in [`skills/agent-roles/`](./skills/agent-roles/README.md)** when doing substantive thesis work: Coordinador plans and assigns, Investigador sources evidence, Redactor drafts, Revisor checks. Don't skip Investigador/Revisor to save a step — the whole point of the split is to prevent invented facts and structural drift.
+5. **Follow the role workflow in [`agent-roles/`](./agent-roles/README.md)** when doing substantive thesis work: Coordinador plans and assigns, Investigador sources evidence, Redactor drafts, Revisor checks. Don't skip Investigador/Revisor to save a step — the whole point of the split is to prevent invented facts and structural drift.
 
 ## Content rules
 

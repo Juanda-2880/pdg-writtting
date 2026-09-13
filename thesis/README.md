@@ -15,7 +15,7 @@ This is where the actual thesis text lives — as opposed to `skills/thesis-writ
 1. **Read `STATUS.md`** — it says what's done, what's in progress, what's untouched. Don't infer status by opening chapter files.
 2. **Read only the chapter file(s) your task is actually about.** Each one opens with a comment block stating what it must contain, what it must *not* contain, and which modules to draft from — that's usually enough context on its own.
 3. **Cross-chapter work is the exception, not the default.** Only open multiple chapter files when the task genuinely requires it:
-   - The Revisor's macro review (`../skills/agent-roles/Revisor.md`) checks flow *between* chapters — that legitimately needs to read the adjacent ones.
+   - The Revisor's macro review (`../agent-roles/Revisor.md`) checks flow *between* chapters — that legitimately needs to read the adjacent ones.
    - Discusión (`chapters/05-discusion.tex`) interprets Resultados and ties back to Marco teórico — drafting it well requires re-reading those two, not just its own stub.
    - Otherwise, a chapter's own header comment + `STATUS.md` should be enough; don't preemptively open the rest of the thesis "just in case."
 
@@ -42,12 +42,15 @@ This is where the actual thesis text lives — as opposed to `skills/thesis-writ
 | 01 | `chapters/01-motivacion-antecedentes.tex` | Motivación y antecedentes (contexto, antecedentes, justificación) | 3 páginas |
 | 02 | `chapters/02-descripcion-problema.tex` | Descripción del problema (identificación y formulación) | 1 página |
 | 04 | `chapters/04-objetivos.tex` | Objetivos (general + específicos) | 1 página |
-| 05 | `chapters/05-marco-teorico.tex` | Marco teórico | 4 páginas |
+| 05 | `chapters/05-marco-teorico.tex` | Marco teórico | 8 páginas (tope propio) |
 | 06 | `chapters/06-estado-del-arte.tex` | Estado del arte | 4 páginas |
 | 07 | `chapters/07-metodologia.tex` | Metodología (esquema de trabajo, fases, riesgos, cronograma, presupuesto) | — |
 | 08 | `chapters/08-contribucion-resultados.tex` | Contribución y resultados del proyecto de grado | 4 páginas |
 | — | `references.bib` → `\bibliography{}` | Referencias bibliográficas | — |
 | 99 | `chapters/99-anexos.tex` | Anexos (análisis de participación, árbol de problemas, árbol de objetivos) | — |
+
+> [!NOTE]
+> **Marco teórico con tope propio.** El formato fija 4 páginas como máximo, pero los autores decidieron el 2026-09-13 sustituir ese límite por uno propio de **8 páginas**, y solo para el capítulo 05. El resto de topes sigue vigente, incluido el del Estado del arte. Ver `STATUS.md`.
 
 > [!NOTE]
 > El capítulo 03 (Hipótesis y restricciones) se eliminó por decisión de los autores; el numerado salta de 02 a 04 a propósito — ver `STATUS.md`. El formato de la facultad sí contempla esa sección, así que esto es una desviación deliberada, no un archivo perdido.
@@ -56,7 +59,7 @@ Cada archivo ya trae un bloque de comentarios que dice exactamente qué debe y q
 
 ## Writing workflow
 
-Follow `../skills/agent-roles/README.md`'s Coordinador → Investigador → Redactor → Revisor loop. In practice, for one chapter:
+Follow `../agent-roles/README.md`'s Coordinador → Investigador → Redactor → Revisor loop. In practice, for one chapter:
 
 1. Coordinador checks `STATUS.md`, assigns the chapter/subsection.
 2. Investigador gathers evidence from `../project-context/` (and literature, for Marco teórico and Estado del arte), flags gaps as `[verify: ...]`/`cite_needed` — never invents.
@@ -74,4 +77,4 @@ See `../skills/latex/README.md` for the TeX Live prerequisites and `../skills/la
 
 ## Adding/renaming a chapter
 
-Goes through the Coordinador (`../skills/agent-roles/Coordinador.md`) — it's a structural change. When it happens, update **together, in the same change**: the chapter file itself, the `\include` list in `main.tex`, the table above, and `STATUS.md`. Adding a new top-level folder or restructuring this one also triggers the repo-wide rule in `../CLAUDE.md` — update the root `README.md` too.
+Goes through the Coordinador (`../agent-roles/Coordinador.md`) — it's a structural change. When it happens, update **together, in the same change**: the chapter file itself, the `\include` list in `main.tex`, the table above, and `STATUS.md`. Adding a new top-level folder or restructuring this one also triggers the repo-wide rule in `../CLAUDE.md` — update the root `README.md` too.

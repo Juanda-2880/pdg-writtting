@@ -26,7 +26,7 @@ En el plano académico, el proyecto habilita la ejecución de proyectos avanzado
 
 \section{Aportes relacionados con el desarrollo de capacidades del investigador}
 
-La ejecución de este proyecto exige y desarrolla competencias profesionales específicas de la disciplina, propias del programa de Ingeniería Telemática. La integración del motor de orquestación de inferencia sobre Kubernetes y KubeRay/Ray, junto con la definición de reglas de selección de nodos y aislamiento de cargas de trabajo, desarrolla competencias de orquestación de contenedores y cómputo distribuido en topologías heterogéneas de CPU y GPU. La adaptación de motores de servicio como vLLM y de esquemas de cuantización de modelos (AWQ, GPTQ, GGUF) para maximizar la concurrencia dentro de la memoria de video disponible desarrolla, adicionalmente, competencias de ingeniería de plataformas de inferencia y de optimización de modelos bajo restricciones de hardware.
+La ejecución de este proyecto exige y desarrolla competencias profesionales específicas de la disciplina, propias del programa de Ingeniería Telemática. El despliegue y la configuración del clúster de Kubernetes sobre las estaciones de trabajo del laboratorio, la integración de KubeRay y del NVIDIA GPU Operator, y la definición de reglas de selección de nodos y aislamiento de cargas de trabajo desarrollan competencias de orquestación de contenedores y cómputo distribuido en topologías heterogéneas de CPU y GPU. La adaptación de motores de servicio como vLLM y de esquemas de cuantización de modelos (AWQ, GPTQ, GGUF) para maximizar la concurrencia dentro de la memoria de video disponible desarrolla, adicionalmente, competencias de ingeniería de plataformas de inferencia y de optimización de modelos bajo restricciones de hardware.
 
 La implementación del sistema de reserva de cupos con prioridad por rol, acoplado a los atributos de rol expuestos por el servicio de identidad institucional SAAMFI, exige competencias de diseño de esquemas de gobernanza y de integración con sistemas de control de acceso basado en roles (RBAC), un dominio propio de la ingeniería de software orientada a sistemas multiusuario. La construcción del módulo de observabilidad, apoyado en Prometheus, Grafana, Loki y el exportador DCGM de NVIDIA, desarrolla competencias de ingeniería de observabilidad de infraestructura distribuida, entendida como la capacidad de instrumentar, recolectar y visualizar métricas de hardware e inferencia en tiempo real. Por último, la evaluación de la plataforma mediante pruebas de carga sobre los nodos de inferencia, un motor de \emph{benchmarking} automatizado y validaciones de usabilidad con usuarios reales desarrolla competencias de diseño y ejecución de evaluación empírica de sistemas de software, indispensables para sustentar decisiones de ingeniería con evidencia.
 
@@ -49,15 +49,15 @@ De acuerdo con el formato institucional del anteproyecto, cada resultado esperad
         \endfoot
         \Cref{obj:telemetria}: desarrollo del módulo de observabilidad &
         Panel de telemetría que muestra, por nodo, métricas de hardware (temperatura, VRAM, consumo energético) y de carga de trabajo (latencia, \emph{tokens} por segundo, saturación de concurrencia), sin importar si el nodo ejecuta inferencia o entrenamiento, mediante visualizaciones gráficas interactivas &
-        Módulo de observabilidad integrado al sistema web (Prometheus, DCGM Exporter, Grafana, Loki) y su documentación de despliegue \\
+        Módulo de observabilidad integrado a la plataforma (Prometheus, DCGM Exporter, Grafana, Loki) y su documentación de despliegue \\
         \addlinespace
         \Cref{obj:gobernanza}: implementación del sistema de cuotas por rol &
         Sistema de cuotas y restricciones de infraestructura que reserva cupos de cómputo para cargas de inferencia y de entrenamiento, con prioridad de los profesores sobre la asignación de la capacidad de la sala, acoplado a los roles provistos por SAAMFI &
         Módulo administrativo de gestión de cuotas integrado a la plataforma web y manual de administración de políticas de cuotas \\
         \addlinespace
-        \Cref{obj:orquestacion}: orquestación de despliegue de inferencia &
-        Motor de orquestación de inferencia, agnóstico al motor subyacente y empaquetado como imagen de contenedor, capaz de desplegar modelos ya entrenados de forma concurrente desde la plataforma &
-        Interfaz de despliegue de modelos integrada a la plataforma y manual de despliegue de modelos \\
+        \Cref{obj:orquestacion}: habilitación del despliegue de modelos &
+        Clúster de cómputo que ejecuta motores de inferencia intercambiables, empaquetados como imágenes de contenedor, sobre el cual un usuario despliega modelos ya entrenados de forma concurrente desde la plataforma &
+        Clúster desplegado con su configuración versionada, interfaz de despliegue de modelos integrada a la plataforma y manual de despliegue \\
         \addlinespace
         \Cref{obj:evaluacion}: evaluación de desempeño y aceptación &
         Reporte de desempeño de la plataforma bajo pruebas de carga con veinte usuarios simultáneos sobre los nodos de inferencia, y de aceptación operacional mediante validaciones de usabilidad con estudiantes, semilleros e investigadores &
