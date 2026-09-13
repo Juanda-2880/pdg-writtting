@@ -36,29 +36,39 @@
 **Ninguna duda abierta quedó respondida.** Una quedó peor de lo que estaba:
 
 - **ADR-013 — ¿Cuál es la VRAM real por nodo?** — **la reunión la contradice en vez de cerrarla.** Alejandro identifica la tarjeta como **RTX 4080** (16 GB), que es lo que ya dice `project-context/requirements.md` y lo contrario de lo que se dijo el 26-ago: «la gráfica, pues, ARTX 4080 [RTX 4080], creo que no recuerdo exactamente la referencia» [7:34]
-  · **sigue abierta**, y ahora con **testimonio contradictorio de dos fuentes**, ambas vacilantes: Pacheco dijo «como de 32 de RAM, **24** de GPU» [2026-08-26, 28:34] y Alejandro dice RTX 4080 «creo que no recuerdo exactamente la referencia» [7:34].
+  · **cerrada el 2026-09-12 por los autores** (commit b9c2943): NVIDIA GeForce RTX 4090 de 24 GB por nodo, **en contra del testimonio de esta reunión** (RTX 4080) · ver `project-context/requirements.md` §4 «Target Accelerator Hardware»; la corrección no registra una medición con `nvidia-smi` · *al registrarse:* sigue abierta, y ahora con **testimonio contradictorio de dos fuentes**, ambas vacilantes: Pacheco dijo «como de 32 de RAM, **24** de GPU» [2026-08-26, 28:34] y Alejandro dice RTX 4080 «creo que no recuerdo exactamente la referencia» [7:34].
   · Hay una tercera cifra, en una frase que la transcripción destroza: «uno puede decir yo puedo modelo y ocupa **23 GB** de RAM y resulta que está RAM 124» [22:18]. No es utilizable como evidencia.
   · **No se resuelve por testimonio.** Cerrarla exige `nvidia-smi` en una máquina de la sala.
 
 - **ADR-004 — criterio cuantitativo de aceptación operacional** — **sigue abierta, pero ya hay línea base medida** (ver *Hechos nuevos*). Alejandro explícitamente no fija umbral: «10, 15 minutos, Es bastante, pero hay que revisar» [7:34].
+  · **cerrada el 2026-09-12 por los autores** (commit 1b671b1): el criterio es soportar 20 usuarios simultáneos · ver `thesis/chapters/04-objetivos.tex` `\label{obj:evaluacion}`, `thesis/chapters/07-metodologia.tex` `\label{sec:estrategia-metodologica}` y `project-context/documentation.md` *Formulation of Objectives* ítem 4; la línea base de esta reunión está en `documentation.md` «Institutional antecedents»
 
 - **ADR-017 — fase de estabilización del backlog heredado** — **segunda reunión consecutiva en la que no se menciona.** Todo lo discutido es infraestructura desde cero. Ver *Contradicciones*.
+  · **cerrada el 2026-09-12 por los autores** (commit 173a68f): no existe backlog heredado · ver la nota inicial de `project-context/documentation.md`
 
 - **ADR-011 (SAAMFI), ADR-016 (DSR+Scrum), ADR-001, ADR-010, ADR-012** — no se tocaron.
+  · estado al 2026-09-12: ADR-011, ADR-016, ADR-001 y ADR-012 cerradas (commit 1b671b1); **ADR-010 sigue abierta** (`project-context/ADR.md`)
 
 ## Contradicciones con `project-context/`
 
 - **El motor de inferencia** — la reunión dice que el laboratorio **no obtuvo buenos resultados con vLLM** y usa llama.cpp [6:23, 6:47, 7:34]; `project-context/technologies.md` registra vLLM en la pila tecnológica, y `thesis/chapters/01-motivacion-antecedentes.tex` construye **el argumento central de viabilidad** sobre él, citando a `kwon-pagedattention-2023` (PagedAttention, mejora de 2 a 4 veces)
-  · **sin resolver.** Es la contradicción más cara de las tres: el capítulo 1 justifica que el despliegue on-premise es viable apoyándose en un motor que el propio laboratorio descartó por resultados. O se documenta por qué no funcionó ahí y se reencuadra el argumento, o el argumento queda desmentido por la evidencia local.
+  · **resuelta el 2026-09-12 por los autores** (ADR-027 y ADR-024, commit 1b671b1): el descarte de vLLM y la compilación de llama.cpp constan como antecedente; el motor se elige por medición, llama.cpp es el candidato preferente y vLLM se cita solo como teoría en el cap. 05 · ver `project-context/documentation.md` «Institutional antecedents», `project-context/requirements.md` FR-01.4, `thesis/chapters/01-motivacion-antecedentes.tex` «Antecedentes del problema» y `thesis/chapters/05-marco-teorico.tex` `\label{sec:servicio-inferencia-motores}` · `technologies.md` §1 y §B.2 se propagaron el 2026-09-12 · *al registrarse:* sin resolver. Es la contradicción más cara de las tres: el capítulo 1 justifica que el despliegue on-premise es viable apoyándose en un motor que el propio laboratorio descartó por resultados. O se documenta por qué no funcionó ahí y se reencuadra el argumento, o el argumento queda desmentido por la evidencia local.
   · Alejandro pide justamente eso, y lo pide como trabajo formal: «lo que también me gustaría es que podrían llegar a ser como una investigación formal» [7:34], sobre el trade-off vLLM / llama.cpp / Ollama: «sabemos que OLAMA [Ollama] es una capa más arriba que LLAMA [llama.cpp] y que ya configura ciertas cosas que uno en LLAMA no puede configurar más […] hay que revisar como esos trade-offs» [7:34]
 
 - **VRAM y modelo de GPU** — ver ADR-013 arriba. La contradicción reportada el 26-ago **no se confirma**: esta reunión respalda los 16 GB de `requirements.md`. Queda un empate entre dos testimonios vacilantes.
+  · **resuelta el 2026-09-12 por los autores (ADR-013, commit b9c2943)**: RTX 4090 de 24 GB, en contra de lo que respalda esta reunión · ver `project-context/requirements.md` §4
 
 - **El AI Gateway: ¿se desarrolla o se usa LiteLLM?** — la reunión dice que **LiteLLM ya está en uso**: «por ahí también estaba como el proxy que estamos usando también, que se llama Light LLM [LiteLLM] […] compatible pues con el API de OpenAI y que permite pues un simple punto, un solo punto de entrada» [7:34]; el tutor había decidido lo contrario el 26-ago: «no tengamos que usar LightLLM, toca hacer el LightLLM pero puramente enfocado a cualquier AI Gateway» [2026-08-26, 49:13]
-  · **sin resolver.** No es contradicción con `project-context/` sino **entre el tutor y el laboratorio**, y decide si el objetivo de gobernanza es desarrollo desde cero o integración sobre algo ya desplegado. Toca ADR-015.
+  · **resuelta el 2026-09-12 por los autores (ADR-024, commit 1b671b1)**: LiteLLM no se adopta como AI Gateway; si el marco teórico encuentra una tecnología que imponga cuotas sobre cargas arbitrarias se adopta, y si no la capa se construye · ver `project-context/technologies.md` §B.1 y `project-context/requirements.md` FR-01.4 · *al registrarse:* sin resolver. No es contradicción con `project-context/` sino **entre el tutor y el laboratorio**, y decide si el objetivo de gobernanza es desarrollo desde cero o integración sobre algo ya desplegado. Toca ADR-015.
 
 - **La fase de estabilización del backlog heredado** — `project-context/documentation.md` la exige y `thesis/chapters/07-metodologia.tex` abre las fases con ella; **en esta reunión tampoco aparece**, y De La Pava describe el proyecto como greenfield: «lo que se quiere realizar con este PDG es volver utilizables y medibles los computadores del 104M […] instalar dentro de todos esos computadores un clúster de Kubernetes» [2:09]
-  · **sin resolver** — refuerza ADR-017 con una segunda ausencia, esta vez en boca de los propios autores.
+  · **resuelta el 2026-09-12 por los autores (ADR-017, commit 173a68f)**: no existe backlog heredado · ver la nota inicial de `project-context/documentation.md` y `thesis/chapters/07-metodologia.tex` `\label{sec:fases-desarrollo}` · *al registrarse:* sin resolver — refuerza ADR-017 con una segunda ausencia, esta vez en boca de los propios autores.
+
+- *(Anotación de revisión, 2026-09-12)* **El harness de benchmarks del laboratorio frente al que describe la tesis** — esta reunión dice que el harness ya existe [14:59] y deja para el tutor si entra en el alcance [17:58, 20:32]; `project-context/documentation.md` «Institutional antecedents» ya registra ese harness, mientras `requirements.md` FR-04 lo trata como requisito del proyecto y `thesis/chapters/07-metodologia.tex` (`tab:cronograma`, *Sprint* 15) programa su «Diseño y ejecución»; ninguna decisión escrita dice si se reutiliza o se construye
+  · **abierta como ADR-031**
+
+- *(Anotación de revisión, 2026-09-12)* **Hechos de esta reunión usados en la tesis sin respaldo en `project-context/`** — `thesis/chapters/07-metodologia.tex`, riesgo «Saturación de VRAM y congelamiento de nodos GPU», afirma el rango de 90 % a 95 % de uso de GPU y la fuente de poder como causa [22:18]; `requirements.md` FR-03.4 solo recoge «90%+» y no menciona la fuente de poder (regla 9 de `CLAUDE.md`)
+  · **abierta como ADR-030**
 
 ## Hechos nuevos del proyecto (candidatos a `project-context/`)
 

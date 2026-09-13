@@ -1,6 +1,6 @@
 # Technical Stack & Architectural Ecosystem: IAsLab PDG
 
-This document defines the technology stack, architectural layers, orchestration frameworks, and telemetry tooling selected for the **IAsLab Web Extension Project of Degree (PDG)** at Universidad Icesi.
+This document defines the technology stack, architectural layers, orchestration frameworks, and telemetry tooling selected for the **IAsLab ORCHID Project of Degree (PDG)** at Universidad Icesi (title propagado de ADR-001 and of the 2026-09-12 decision that the project builds the platform instead of extending a prior system; formerly "IAsLab Web Extension").
 
 ---
 
@@ -21,10 +21,11 @@ The system architecture is structured across four primary layers:
 │    • KubeRay / Ray Core (Distributed AI compute & worker scaling)      │
 │    • NVIDIA GPU Operator (Hardware passthrough & driver provisioning)  │
 ├────────────────────────────────────────────────────────────────────────┤
-│ 3. INFERENCE SERVING ENGINES & OPTIMIZATION (Hardware Acceleration)    │
-│    • vLLM (PagedAttention, continuous batching, high-throughput)       │
-│    • Ollama / Llama.cpp (Low-overhead quantized GGUF execution)        │
-│    • Quantization Kernels (AWQ, GPTQ, bitsandbytes 4-bit/8-bit)        │
+│ 3. INFERENCE ENGINES (candidates, one container image each; chosen by  │
+│    measurement, none committed in advance, see FR-01.4 and B.2)        │
+│    • llama.cpp (current front-runner; quantized GGUF execution)        │
+│    • Ollama, vLLM (vLLM gave poor results in the lab's own trials)     │
+│    • Pre-quantized weights (AWQ/GPTQ/GGUF): consumed, not built (B.3)  │
 ├────────────────────────────────────────────────────────────────────────┤
 │ 4. OBSERVABILITY, LOGGING & BENCHMARKING (Telemetry & Validation)      │
 │    • PLG / LGP Stack (Prometheus, Loki / Fluentd, Grafana)             │
@@ -32,6 +33,8 @@ The system architecture is structured across four primary layers:
 │    • Automated Python Benchmark Engine (YAML-driven test harness)      │
 └────────────────────────────────────────────────────────────────────────┘
 ```
+
+> Layer 3 propagated 2026-09-12 (propagado de FR-01.4 / ADR-024, ADR-027 y ADR-021, 2026-09-12): the earlier diagram listed vLLM first as the primary engine and "Quantization Kernels" as a component of the stack. Neither holds any more: the engine is chosen by measurement with llama.cpp as front-runner, and the platform consumes pre-quantized weights instead of running quantization itself.
 
 ---
 
@@ -45,6 +48,7 @@ The system architecture is structured across four primary layers:
   - **Node Selectors & Taints/Tolerations:** Directing GPU-heavy pods specifically to RTX 4090 nodes while isolating control services on legacy CPU machines.
   - **Resource Quotas & Limits:** Enforcing physical memory and CPU constraints per container.
   - **Persistent Volume Claims (PVCs):** Mounting high-speed NVMe storage partitions dedicated to model repositories and checkpoints.
+- **Control-plane placement, options not yet decided (promoted by the authors 2026-09-13, from `meetings/2026-08-26-tutor-arquitectura.md` [50:33]):** the tutor listed three possible locations for the master node: workstation 01 of room 104M, a separate server, or a GPU-less machine from room 205 that is free most of the time (*"pueden agarrar un computador del 205 como nodo máster, que no tiene GPU y está libre casi todo el tiempo"*). The remaining workstations act as the processing cluster. None has been chosen; `requirements.md` §4 "Cluster Control Plane" states the requirement the chosen location must meet.
 
 #### 2. KubeRay & Ray Core
 - **Role:** Distributed runtime designed specifically for scalable Python and AI workloads.
@@ -69,6 +73,7 @@ The system architecture is structured across four primary layers:
 - **Status in the thesis:** LiteLLM belongs in the *estado del arte* as prior art, not in the architecture as a dependency (tutor, 2026-08-26: *"Puede ir en el documento como, por ejemplo, estado de la práctica"*).
 
 #### 2. High-Performance Inference Engines
+- **Status (propagado de FR-01.4 y de `documentation.md` "Institutional antecedents", 2026-09-12):** these are **candidate** engines, each packaged as a container image; none is committed in advance, and the engine used for LLM serving is chosen by measurement. **llama.cpp is the current front-runner**, because a purpose-compiled build is what gave the laboratory its best results; **vLLM did not produce good results in the laboratory's own trials**. The strengths and target workloads below describe each engine's design point, not a decided allocation of workloads to engines.
 - **vLLM:**
   - *Strengths:* Implements PagedAttention to eliminate memory fragmentation in KV-cache; supports continuous request batching and high-concurrency throughput.
   - *Target Workloads:* Multi-user concurrent access during elective courses and high-load empirical tests.
@@ -86,8 +91,8 @@ The system architecture is structured across four primary layers:
 ### C. Governance, Identity & Access
 
 #### 1. SAAMFI (Universidad Icesi)
-- **Role:** Institutional authentication and authorization directory.
-- **Integration:** Maps authenticated student and faculty credentials directly to internal platform roles (Undergraduate Thesis, AI Elective, Research Faculty, Lab Admin), controlling access permissions and reservation-based GPU allocation, with professors holding priority to claim resources and control room-level allocation (corrected 2026-09-12, see `requirements.md` FR-02.7 — not a Fair-Share scheme).
+- **Role:** Institutional identity provider (IdP), integrated purely as such (propagado de `documentation.md` *Introduction*, 2026-09-12).
+- **Integration:** The platform's users carry **whatever roles SAAMFI provides**, and on top of them the platform defines **one administrator role** that manages the platform itself (propagado de FR-02.4 / ADR-022, 2026-09-12; this replaces the earlier mapping to "Undergraduate Thesis, AI Elective, Research Faculty, Lab Admin"). Those roles control access permissions and reservation-based GPU allocation, with professors holding priority to claim resources and control room-level allocation (corrected 2026-09-12, see `requirements.md` FR-02.7 — not a Fair-Share scheme).
 
 ---
 
