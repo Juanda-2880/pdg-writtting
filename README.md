@@ -28,6 +28,7 @@ The repository separates *how to write* from *what is true about the project*: e
 pdg-writtting/
 ├── CLAUDE.md                # Harness-wide rules every agent must follow
 ├── compiled-output/          # Scratch directory for generated/compiled artifacts (gitignored)
+├── fuentes/                  # PDFs behind the citations (local only) + INDEX.md mapping each BibTeX key to its file
 ├── thesis/                   # The actual thesis document — one file per chapter, see thesis/README.md
 ├── project-context/          # Institutional PDG charter, requirements, tech stack & open questions (ADR.md)
 │   └── meetings/              # Meeting insights: one traceable record per meeting, plus INDEX.md
@@ -36,6 +37,7 @@ pdg-writtting/
     ├── agent-roles/           # Multi-agent workflow: Coordinador, Investigador, Redactor, Revisor
     ├── latex/                 # LaTeX config, build rules & skill (preamble, Makefile, citation setup)
     ├── meeting-insights/      # Turns a pasted meeting transcript into a record in project-context/meetings/
+    ├── revision-humana/       # /revision-humana: applies only a person's feedback to one section, logs it in thesis/REVISIONES.md
     ├── thesis-writing/        # Global thesis orchestration & end-to-end workflow (from upstream)
     ├── objectives-writting/   # Formulation & audit of research objectives
     ├── parragraph-structure/  # Academic paragraph architecture & typologies
@@ -56,6 +58,7 @@ The empirical ground truth and architectural specifications for the IAsLab Degre
 - **System Requirements:** Functional requirements (model provisioning, Fair-Share quotas, 20% overbooking, SAAMFI RBAC, hardware telemetry, benchmark harness) and non-functional constraints.
 - **Technology Stack:** Multi-tiered architecture encompassing Kubernetes, KubeRay, NVIDIA GPU Operator, LiteLLM Proxy, vLLM, Ollama, LGP monitoring stack (Loki/Prometheus/Grafana), and DCGM telemetry.
 - **Anteproyecto Format:** The faculty's official section-by-section format the thesis document follows.
+- **`alcance-moscow.md` — Scope ladder:** capabilities ordered from foundations to future work with a proposed MoSCoW category and their evidence, so the team and the tutor can fix the project's scope with a single cut line (ADR-032). A proposal, not scope, until that line is written.
 - **`ADR.md` — Open-questions register:** The single list of unresolved doubts blocking the document, each recorded with the exact file and marker where it is used so another agent can apply the answer with a `grep` instead of re-reading the thesis. Entries are deleted, not archived, once resolved.
 - **`meetings/`** (see module 11 below): meeting evidence lives here, nested under project-context, because it is project-related material, but it stays *proposed* evidence until a human promotes a claim into `requirements.md`/`technologies.md` — never treat a row in `meetings/` as an established project fact.
 
@@ -84,6 +87,7 @@ Ethical and technical standards for attributing external scholarship under APA 7
 - **Direct Quotations:** Explicit guidelines for short in-text quotes (<40 words) and indented block quotations ($\ge 40$ words) with mandatory locators (`p.`, `pp.`, `para.`).
 - **Indirect Citations & Paraphrasing:** Synthesis of single and multi-source literature, narrative vs. parenthetical citations, and reporting verb taxonomies.
 - **Error Avoidance:** Preventing patchwriting, quote over-reliance, and attribution boundaries blurring.
+- **Source fidelity (`source-fidelity.md`, project rule):** an indirect citation attributes only what the source says in its own terms, checked against the full text and recorded with the literal passage in `thesis/CITAS-VERIFICADAS.md`.
 
 ### 6. [`skills/agent-roles/`](./skills/agent-roles/README.md)
 The multi-agent workflow that turns the modules above into a repeatable writing process:
@@ -113,7 +117,9 @@ Technical reference manuals and orthographic conventions:
 - **APA 7th Standard:** Margins, font recommendations, 5-level heading hierarchy, empirical table/figure structures, and reference lists.
 - **Paragraph Integration:** Informational flow, the Given-New principle, and avoiding loose demonstratives.
 - **Punctuation Precision:** Mandatory rules for *Punto y Seguido*, *Punto y Aparte*, citation punctuation, comma splices, semicolons, and dashes.
-- **Banned AI tells (§4):** the em dash (`—`) as a parenthetical, and the antithetical `no es X, es Y` construction — both prohibited in the thesis text, with the substitution table and the `grep` checks that verify it.
+- **RAE Orthography (`ortografia-rae.md`):** prefixes joined to a one-word base (*macroproyecto*), unadapted foreign words in italics as the DLE marks them, and the project rule of using the italic anglicism instead of a literal calque (*fine-grained*, not *de grano fino*).
+- **Banned AI tells (§4):** the em dash (`—`) as a parenthetical, the antithetical `no es X, es Y` construction, and the colon used to splice two ideas. All three are prohibited in the thesis text, with the substitution tables and the `grep` checks that verify them.
+- **Level of detail (`nivel-de-detalle.md`):** what each section admits (Antecedentes documents systemic gaps and prior efforts, not lab logs), the thread between paragraphs, explicit subjects, unambiguous relative clauses and formal register.
 
 ### 11. [`skills/meeting-insights/`](./skills/meeting-insights/README.md)
 Turns a meeting transcript, pasted into the chat and never committed, into a durable record in `project-context/meetings/`:
@@ -124,6 +130,21 @@ Turns a meeting transcript, pasted into the chat and never committed, into a dur
 
 ### 12. [`project-context/meetings/`](./project-context/meetings/README.md)
 The output of the module above: one Markdown file per meeting (`AAAA-MM-DD-<slug>.md`) plus `INDEX.md`, the one-row-per-meeting summary an agent reads before opening any full record. Raw transcripts are deliberately not versioned. Nested under `project-context/` because it is project-related evidence, but see module 1's note above: it is *proposed*, not established, until a human promotes it.
+
+
+### 13. [`skills/revision-humana/`](./skills/revision-humana/README.md)
+A correction pass over one specific part of the thesis where only a person's feedback changes the text:
+- **Invoked by a person only:** `/revision-humana <apartado> [feedback]`; the skill sets `disable-model-invocation`, so an agent cannot start it on its own.
+- **Human items apply, AI suggestions wait:** the feedback written in the chat becomes items F1…Fn and is applied; the AI's own observations go in a separate block (S1…Sn) and apply only when the person approves each one by id.
+- **Scope-locked and verified:** edits stay inside the named section, then the build, the chapter's page limit and the style `grep` checks are re-run.
+- **Sweep mode:** `/revision-humana cap05` walks a chapter section by section; `--continuar` resumes where the log stopped.
+- **Traceable:** every item, applied or not, is logged with the person's literal words in `thesis/REVISIONES.md`.
+
+### 14. [`fuentes/`](./fuentes/README.md)
+The literature behind the thesis citations:
+- **`INDEX.md`:** one row per `thesis/references.bib` entry with where it is cited, DOI/URL, local PDF, which version the PDF is (published, preprint, author version), how to obtain it, whether it is verified, and the SHA-256 of each file.
+- **`pdf/<bibtex-key>.pdf`:** local only. The repository is public and most papers are licensed, so PDFs are gitignored and shared among authors privately.
+- **Where to look:** open access, then the Universidad Icesi licensed portals (ACM Digital Library first), then preprints; when a portal blocks an agent, a person downloads the file.
 
 ---
 

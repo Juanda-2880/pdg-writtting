@@ -58,6 +58,9 @@ The period represents the highest-level syntactic delimiter within a paragraph.
   - ✔️ *"La arquitectura implementa tres capas fundamentales: presentación, lógica de negocio y persistencia de datos."*
   - ❌ *"Las tres capas son: presentación, lógica y datos."* (Do not break the predicate).
 
+> [!IMPORTANT]
+> The uses above are valid general Spanish, but **this project restricts the colon in thesis prose** (§4.3). Read that section before using one.
+
 ---
 
 ## 3. Em-Dash (—), En-Dash (–), and Hyphens (-)
@@ -72,7 +75,7 @@ The period represents the highest-level syntactic delimiter within a paragraph.
 
 ## 4. Markers of Machine-Written Prose
 
-Two patterns are **banned** from this project's document. They are not grammar errors: they
+Three patterns are **banned** from this project's document. They are not grammar errors: they
 are style markers an evaluator associates with AI-generated text, and the tutor flagged the
 first one explicitly as a risk of being misread as such.
 
@@ -91,7 +94,7 @@ How to replace it, in order of preference:
 | :--- | :--- | :--- |
 | A short aside | Commas | *La telemetría, medida cada cinco minutos, alimenta el panel.* |
 | A long or technical aside | Parentheses | *El motor de inferencia (vLLM en la propuesta inicial, llama.cpp en la práctica) determina el rendimiento.* |
-| A clarification closing the sentence | Colon | *El cuello de botella es uno solo: la velocidad de la red.* |
+| A clarification closing the sentence | Full stop, or a connector that states the relation (*porque*, *ya que*, *de modo que*) | *El cuello de botella está en la red, cuya velocidad limita la carga.* Never a colon (§4.3). |
 | Two ideas forced into one sentence | Full stop | *El clúster reparte la carga. Cada nodo sirve un modelo distinto.* |
 
 If the sentence turns confusing once the dash is gone, that almost always means it was
@@ -120,7 +123,7 @@ carries weight, develop it as an argument with its evidence, not as a rhetorical
 
 | Instead of | Write |
 | :--- | :--- |
-| *No es un problema de red, es un problema de memoria.* | *El cuello de botella está en la memoria de video: la saturación de VRAM precede al congelamiento del nodo (\citealp{...}).* |
+| *No es un problema de red, es un problema de memoria.* | *El cuello de botella está en la memoria de video, porque la saturación de VRAM precede al congelamiento del nodo (\citealp{...}).* |
 | *El objetivo no es describir, sino justificar.* | *El objetivo es justificar la elección metodológica.* |
 | *No solo reduce la latencia, sino que también mejora la equidad.* | *Reduce la latencia. Además, distribuye el acceso entre roles con cuotas distintas.* |
 
@@ -129,6 +132,34 @@ for instance), the correct form is the **Comparación y Contraste** pattern from
 [`../parragraph-structure/paragraph-types.md`](../parragraph-structure/paragraph-types.md):
 present the alternative, evaluate it against evidence, and explain why it does not solve
 the problem. That is a paragraph, not a sentence with a comma.
+
+### 4.3 The colon as a sentence splice (`idea: explicación`)
+
+**Banned in thesis prose** (authors, 2026-09-13). The authors saw it across many paragraphs and
+asked to avoid it: *"es mejor evitarlo y seguir una secuencia lógica que conecte las ideas y
+que no parezcan cortadas"*. Examples taken from this document:
+
+- *Detrás de la restricción operaba un criterio de equidad económica: no todos los estudiantes pueden…*
+- *El laboratorio cuenta, además, con un antecedente técnico directo: antes de este proyecto…*
+- *…porque su alcance es amplio: MLOps aborda retos muy diversos…*
+
+The colon cuts the sentence in two and leaves the reader to work out how the halves relate.
+It is the same kind of shortcut as the em dash (§4.1) and the antithesis (§4.2): the rhythm
+looks deliberate, but the logical connection that academic prose owes the reader never gets
+written. A string of these reads as a list of fragments, not an argument.
+
+**How to fix it.** Write the relation the colon was hiding:
+
+| The colon was introducing… | Write | Example |
+| :--- | :--- | :--- |
+| a cause or reason | *porque*, *ya que*, *dado que* | *Esa restricción respondía a un criterio de equidad económica, dado que no todos los estudiantes pueden…* |
+| a consequence | *de modo que*, *por lo que*, *así que* | *…sin ninguna plataforma que automatizara el proceso, de modo que solo quienes tenían acceso podían hacerlo.* |
+| an explanation of the same idea | a new sentence that names the subject again | *…construyó un sistema web que actúa como plano de control. Ese sistema centraliza…* |
+| a list | the list as part of the clause (*entre ellas*, *que son*, *como*) | *…retos como la baja utilización de las GPU y las largas demoras en cola.* |
+
+**Still allowed:** introducing a block quotation (APA 7th), inside direct quotations and work
+titles, which keep their original punctuation, and in labels outside running prose (table
+headers, LaTeX comments).
 
 ---
 
@@ -146,4 +177,7 @@ Before submitting drafts, verify these mechanical checkpoints:
       `grep -nE 'no (es|son|solo|se trata)[^.;]{3,80}(sino|, (es|son))' thesis/chapters/*.tex`
       The cases no pattern catches (`Esto no es una limitación; es una decisión`) are only
       found by reading.
+- [ ] **No colon splices in prose** (§4.3). First filter only: it skips LaTeX comments, but it
+      still flags colons inside quotations and titles, so review each hit by hand:
+      `grep -nE '[^:0-9]: [[:alpha:]¿«\\]' thesis/chapters/*.tex | grep -vE ':[0-9]+:\s*%'`
 - [ ] In English prose adhering to APA 7, the Oxford comma is consistently applied.

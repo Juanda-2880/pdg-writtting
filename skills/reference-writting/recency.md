@@ -33,6 +33,31 @@ this project's claims, even when it is well-cited in the broader literature.
 - Does not retroactively invalidate `project-context/` facts or `[verify: ADR-NNN]`
   markers — this is about literature citations, not project data.
 
+## Claims about the state of a field
+
+Added by the authors on 2026-09-13, after reviewing chapter 01. A source can be within the
+age limit and still be out of date **for one kind of claim**: statements about what the
+literature has or lacks. Examples: *"there is a significant gap in…"*, *"no consensus exists
+on…"*, *"few studies address…"*, *"it remains an open challenge"*. Each one is a snapshot of a
+field at the moment of the review, and in this project's fields that moment passes quickly.
+
+The chapter 01 draft cited Lima et al. (2022) for a *"significant gap in the detailing of
+activities related to operationalizing machine learning models"*. The authors pointed out that
+by 2026 that conclusion may no longer hold. It was replaced by a 2026 review (Eken et al.,
+*ACM Computing Surveys*) that makes a comparable claim with newer evidence.
+
+For these claims:
+
+1. **Search for the most recent review first**, in the licensed portals listed in
+   `../../fuentes/README.md` (ACM Digital Library first). Don't stop at the first review that
+   says what the paragraph needs.
+2. **Cite the newest review that actually makes the claim.** An older one can add to it, but it
+   never carries the claim alone when a newer review exists.
+3. If a newer review **contradicts or narrows** the older claim, the text follows the newer
+   one, even if it weakens the argument.
+4. If no recent review makes the claim, flag it to the Coordinador instead of keeping the
+   older one silently.
+
 ## Checking a source before citing it
 
 1. Check the `year` field before adding a `\citep{}`/`\citet{}` — don't rely on memory of

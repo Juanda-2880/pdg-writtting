@@ -1,0 +1,4 @@
+# PDFs are local only: the repository is public and most papers are licensed.
+# See README.md, "Git policy".
+pdf/*
+!pdf/.gitkeep
