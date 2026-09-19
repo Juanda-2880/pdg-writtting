@@ -29,7 +29,7 @@ Medido, no supuesto. Reproducible con los `grep` de `../skills/writting-tools/pu
 - `make build` compila limpio: **cero** `Citation ... undefined`, **cero** `Reference ... undefined`, ningún `??` en el PDF.
 - **Cero em dash (`—`)** en prosa renderizada, en los ocho capítulos y en `main.tex`. Es la regla 8 de `../CLAUDE.md` y el tutor la pidió tres veces.
 - **Cero construcciones antitéticas** `no es X, es Y` y variantes.
-- **Cero `\todo{}`**: los 18 comentarios del tutor están aplicados y borrados.
+- **Cero `\todo{}`**: pendiente 1, sobre figuras en cap05 (diferido 2026-09-19).
 - **Cero menciones** a *Fair-Share*, *backlog heredado*, "lenguaje extenso" y *Design Science Research*.
 - **Cero fuentes anteriores a 2015** citadas, conforme a `../skills/reference-writting/recency.md`.
 - **Cero dos puntos como empalme en prosa** (`puntuation.md` §4.3); los que quedan están en rótulos de tabla y comentarios. Verificado 2026-09-13 tras la integración.
