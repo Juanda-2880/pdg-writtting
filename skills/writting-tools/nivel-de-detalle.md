@@ -72,7 +72,24 @@ When the qualifier describes a finding from a source, take its strength from the
 (`../reference-writting/source-fidelity.md`, modality). *Significativamente* suggests a
 statistical test, so use it only when the source reports one.
 
-## 5. Checklist for a reviewed section
+## 5. Internal identifiers stay out of the prose (added 2026-09-19)
+
+Harness artifacts — requirement IDs (`FR-03.4`, `NFR-01`), ADR numbers, internal file names —
+belong to the agents' context, not to the thesis reader. In rendered prose, **describe the
+behavior or the decision**; the identifier lives only in `% [verify: ADR-NNN: ...]` comments,
+where a `grep` can find it. A parenthetical pointing at "los requisitos del sistema" is the
+same leak in disguise: the reader cannot open `requirements.md`, and requirement IDs mean
+nothing in a document that ships on its own.
+
+| Before | Problem | After |
+| :--- | :--- | :--- |
+| *…genere las alertas de diagnóstico automatizado que exige FR-03.4…* | Reader meets an ID that doesn't exist in their world. | *…genere alertas tempranas y active el diagnóstico automatizado de salud de los nodos…* |
+| *…niveles de saturación críticos (definido en los requisitos del sistema para umbrales de VRAM superiores al 90 %)…* | The parenthesis cites an internal file as authority. | *…niveles de saturación críticos de la VRAM…* (the threshold, if it is ever decided, becomes prose of its own or a `[verify]` marker) |
+
+The checklist grep catches raw IDs; the disguised ones (parentheticals, "conforme a
+FR-…", "definido en los requisitos") are caught only by reading.
+
+## 6. Checklist for a reviewed section
 
 - [ ] Every detail passes the test in §1 for **this** section.
 - [ ] Each paragraph follows from the previous one, with no jump to an unrelated actor or tool.
@@ -80,3 +97,4 @@ statistical test, so use it only when the source reports one.
 - [ ] No relative clause (*que*, *cuyo*, *el cual*) can be attached to two antecedents.
 - [ ] No colloquial phrasing, and every qualifier on a cited finding is as strong as the source's.
 - [ ] No colon splices (`puntuation.md` §4.3), em dashes (§4.1) or antithetical constructions (§4.2).
+- [ ] No internal identifier (`FR-xx`, `NFR-xx`, `ADR-NNN`) or pointer to the harness files appears in the prose (§5).

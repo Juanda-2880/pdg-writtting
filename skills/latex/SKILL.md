@@ -50,6 +50,13 @@ Use the LaTeX construct that matches what the content *is*, not just how it shou
 
 Never hand-type `Figura~\ref{...}`, `Sección~\ref{...}`, `Capítulo~\ref{...}`. See `references/citations-and-figures.md` for the full pattern and label-naming convention.
 
+### Hyperref presentation is fixed: invisible clickable links (added 2026-09-19)
+
+`hyperref` loads with `colorlinks=false, pdfborder={0 0 0}` — the links work in the PDF
+viewer but the text keeps the document's ink color. Do **not** change presentation options of
+`preamble.tex` (link colors, borders, margin geometry, fonts) to satisfy a functional request:
+when a person asks for "un hipervínculo", deliver the *link*, not a new look. Any presentational change needs the explicit approval of an author, the same as a content change.
+
 ### Citations: always a `\cite*` command
 
 Never hand-type `(Autor, 2024)`. See `references/citations-and-figures.md` for `\citet`/`\citep`/`\citeyearpar` usage and how it maps to the APA rules in `reference-writting/`.

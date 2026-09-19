@@ -161,6 +161,24 @@ written. A string of these reads as a list of fragments, not an argument.
 titles, which keep their original punctuation, and in labels outside running prose (table
 headers, LaTeX comments).
 
+### 4.4 The scaffolded enumeration repeated across paragraphs (added 2026-09-19)
+
+**Banned in thesis prose** (authors, 2026-09-19). An explicit enumeration (*En primer lugar…
+En segundo lugar… En tercer lugar…*) may open **one** paragraph, but once the items are on the
+table, the following paragraphs may not rebuild the same scaffold out of filler connectors
+(*Asimismo*, *Por último*, *Finalmente*, *además* in slot after slot). The scaffold does the
+paragraph's job for it, and three paragraphs in a row read as generated prose.
+
+Example from this document (§2.1 as drafted): ¶1 carried the numbered symptoms, and ¶2 and ¶3
+each opened their items with *Asimismo… Por último…* / *Finalmente…*. Fixed by keeping the
+numbered form only in ¶1 and letting the later paragraphs carry each item with a plain
+subject (*La carencia de…*, *Asimismo, la falta de…* → *Asimismo* once, then *Además*) — one
+connective of that family per paragraph, and no numbered scaffold twice.
+
+**How to fix it.** Keep the enumeration in the paragraph that presents the items. In the later
+paragraphs, name the item directly (*Para los administradores…*, *Sobre la infraestructura
+compartida…*) and use at most one *asimismo/por último*-type connector per paragraph.
+
 ---
 
 ## 5. Punctuation Diagnostic Checklist
@@ -180,4 +198,7 @@ Before submitting drafts, verify these mechanical checkpoints:
 - [ ] **No colon splices in prose** (§4.3). First filter only: it skips LaTeX comments, but it
       still flags colons inside quotations and titles, so review each hit by hand:
       `grep -nE '[^:0-9]: [[:alpha:]¿«\\]' thesis/chapters/*.tex | grep -vE ':[0-9]+:\s*%'`
+- [ ] **No scaffolded enumeration repeated across paragraphs** (§4.4): at most one numbered
+      scaffold (*En primer lugar…*), and no more than one *asimismo/por último*-type connector
+      per paragraph.
 - [ ] In English prose adhering to APA 7, the Oxford comma is consistently applied.

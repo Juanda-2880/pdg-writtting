@@ -69,6 +69,15 @@ To maintain effortless readability across complex technical sections:
 3. **Pacing & Break Points:**
    - Standard academic paragraph size: **4 to 8 sentences** (approx. **100 to 250 words**).
    - If a paragraph exceeds 250 words or 8 sentences, find the pivot point where the claim branches and split it into two dedicated paragraphs with an explicit transition.
+4. **No word echoes (added 2026-09-19):**
+   - Do not repeat the same distinctive noun two or more times in nearby sentences (the same paragraph, or the closing of one and the opening of the next). Distinctive means it carries the section's meaning: a repeated *nodos*, *sistema operativo* or *manual* reads as a draft that wasn't re-read.
+   - The catch is the rule the author caught twice in one revision: a generic word (*nodos*, *sistema*) repeated is noise; a technical term used once and then referred back with a pronoun or a plain substitute (*las máquinas*, *el anfitrión*) keeps the flow.
+   - When the repetition is across a paragraph boundary, the substitute belongs in the sentence that re-mentions the concept, so each boundary carries exactly one naming of the idea.
+
+   | Before | After |
+   | :--- | :--- |
+   | *…se realiza mediante procedimientos manuales directamente en los nodos físicos. …la supervisión carece de telemetría en tiempo real sobre el consumo y el estado de los nodos.* | *…directamente sobre las máquinas físicas. …el consumo y el estado de los nodos.* |
+   | *…ejecutando a mano scripts… directamente sobre el sistema operativo de las estaciones. …no podía gestionarse de forma desacoplada del sistema operativo.* | *…directamente sobre el sistema operativo de las estaciones. …no podía gestionarse de forma desacoplada del anfitrión.* |
 
 ---
 
@@ -79,3 +88,4 @@ To maintain effortless readability across complex technical sections:
 - [ ] Are all numerical values, equations, or external theories properly cited and contextualized?
 - [ ] Is there an interpretive closing sentence answering *"So what?"*?
 - [ ] Does the paragraph avoid beginning with a bare quotation or uncontextualized data table?
+- [ ] No distinctive noun repeats in nearby sentences (§3.4); a re-mention uses a plain substitute.
