@@ -97,7 +97,7 @@
   · **resuelta el 2026-09-12 por los autores (ADR-023, commit 1b671b1)**: la red de la sala opera a 10 Gbit/s y el proyecto no requiere más, porque la inferencia distribuida por red está fuera de alcance; 25 y 200 Gbit/s no son objetivos del proyecto · ver `project-context/requirements.md` §4 «Network bandwidth» · *al registrarse:* sin resolver: 25 y 200 Gbit/s no son el mismo requisito. Ninguna cifra tiene fuente escrita todavía.
 
 - *(Anotación de revisión, 2026-09-12)* **Cuotas por curso y horario** — la decisión de esta reunión que las deja fuera del PDG [19:22] (ver *Decisiones tomadas*) choca con `project-context/requirements.md` FR-02.2, que exige prioridad de reserva configurable para los cursos académicos, y ninguna decisión escrita de los autores la zanja
-  · **abierta como ADR-029**
+  · **resuelta el 2026-09-20 por los autores (ADR-029 cerrada)**: la prioridad de reserva por curso académico queda **fuera del documento de grado** y **dentro del desarrollo**, como requerimiento marcado *Sin compromiso* · ver `project-context/requirements.md` sección 8.2 (RF-5.2.1, RF-5.2.2) · *al registrarse:* abierta como ADR-029
 
 - *(Anotación de revisión, 2026-09-12)* **«La plataforma no se enfoca en LLM»** [25:18] frente a la Justificación del cap. 01, que argumenta la relevancia con modelos de lenguaje ya cuantizados
   · **resuelta con puntero:** el alcance no limitado a LLM ya está escrito en `project-context/requirements.md` FR-01.4 y `project-context/technologies.md` §B.1 (ADR-024), y la nota de FR-01.3 respalda que el cap. 01 conserve las citas de cuantización como argumento de capacidad · la frase de cierre del cap. 01, que resumía el aporte como «técnicas de despliegue de LLM», se corrigió en la tesis el 2026-09-12

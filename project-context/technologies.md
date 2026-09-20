@@ -76,7 +76,7 @@ The system architecture is structured across four primary layers:
 - **Status (propagado de FR-01.4 y de `documentation.md` "Institutional antecedents", 2026-09-12):** these are **candidate** engines, each packaged as a container image; none is committed in advance, and the engine used for LLM serving is chosen by measurement. **llama.cpp is the current front-runner**, because a purpose-compiled build is what gave the laboratory its best results; **vLLM did not produce good results in the laboratory's own trials**. The strengths and target workloads below describe each engine's design point, not a decided allocation of workloads to engines.
 - **vLLM:**
   - *Strengths:* Implements PagedAttention to eliminate memory fragmentation in KV-cache; supports continuous request batching and high-concurrency throughput.
-  - *Target Workloads:* Multi-user concurrent access during elective courses and high-load empirical tests.
+  - *Target Workloads:* Multi-user concurrent access and high-load empirical tests. (Corrected 2026-09-20 with ADR-029: course-level reservation priority is no longer a commitment of the thesis document; it is a `Sin compromiso` requirement, see `requirements.md` section 8.2.)
 - **Ollama / Llama.cpp:**
   - *Strengths:* Minimal runtime overhead, native support for quantized GGUF weights, and CPU offloading fallback.
   - *Target Workloads:* Single-user lightweight sessions and lower-spec exploratory models.

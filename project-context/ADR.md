@@ -75,22 +75,6 @@ Responder **en una reunión** también vale, con una condición: que la respuest
 - **Qué se necesita para cerrarla:** la decisión de formato (TikZ o imagen) y la confirmación de que los tres anexos son obligatorios en esta entrega.
 - **Al resolver:** crear los anexos con sus `\label{}`, y sustituir el marcador del capítulo 2 por un `\cref{}` real al árbol de problemas.
 
-### ADR-029 — ¿Sigue siendo requisito de este PDG la prioridad de reserva de los cursos académicos (FR-02.2), después de que el tutor dejara fuera las cuotas por curso y horario?
-
-- **Estado:** abierta
-- **Abierta por:** Revisor · 2026-09-12
-- **A quién corresponde:** autores / tutor
-- **Dónde se usa:**
-  - `project-context/requirements.md` — FR-02.2 · texto literal: `Academic courses (e.g., the 24-student AI elective) must have configurable reservation priority over individual thesis or exploratory tasks.`
-  - `project-context/requirements.md` — FR-02.7, que lo cita como nivel de prioridad aparte · texto literal: `This is a separate priority tier from FR-02.2's course-vs-individual priority`
-  - `project-context/requirements.md` — §1 "Context & Operational Vision" · texto literal: `enabling students, researchers, and elective courses to deploy`
-  - `project-context/technologies.md` — §B.2, vLLM · texto literal: `Multi-user concurrent access during elective courses`
-  - `project-context/meetings/2026-09-09-tutor-alcance-y-revision.md` — sección "Contradicciones", anotación «Cuotas por curso y horario» · marcada `abierta como ADR-029`
-  - `thesis/` — no aparece hoy (`grep -n -i 'curso\|electiva' thesis/chapters/*.tex` no devuelve ninguna prioridad por curso); `\label{obj:gobernanza}` solo compromete la prioridad de profesores
-- **Contexto:** en la reunión del 2026-09-09 el tutor dejó fuera de este PDG el sistema de cuotas por curso y horario («yo no tenía planeado que en este PDG el sistema de, por ejemplo, de cursos y cuándo el curso se va a dar y que esté conectado como con ICESI», [19:22]), y registró que la gestión de cursos no vive en SAAMFI. FR-02.2 sigue exigiendo que los cursos tengan prioridad de reserva sobre las tareas individuales, lo que obliga a la plataforma a saber a qué curso pertenece una reserva. La decisión de roles de los autores (ADR-022, FR-02.4) retiró la enumeración académica de roles y FR-02.7 añadió la prioridad de profesores, pero ninguna de las dos dice si FR-02.2 sobrevive al recorte. La tesis no lo usa, así que hoy no se rompe nada en el documento; el riesgo es que un agente redacte la gobernanza a partir de FR-02.2 y reintroduzca un compromiso que el tutor retiró.
-- **Qué se necesita para cerrarla:** un sí/no a «¿FR-02.2 (prioridad de reserva por curso académico) es compromiso de este PDG?», y, si es sí, cómo conoce la plataforma el curso de una reserva sin la integración con horarios que el tutor excluyó.
-- **Al resolver:** si es no, marcar FR-02.2 como fuera de alcance, quitar su mención en FR-02.7 y ajustar §1 de `requirements.md` y §B.2 de `technologies.md`; si es sí, anotar en FR-02.2 el mecanismo; en ambos casos, actualizar la anotación del acta del 2026-09-09 y la fila de `meetings/INDEX.md`.
-
 ### ADR-030 — ¿Se escriben en `project-context/` los hechos de reunión que la tesis ya afirma, o se retiran del texto?
 
 - **Estado:** abierta
@@ -129,13 +113,13 @@ Responder **en una reunión** también vale, con una condición: que la respuest
 - **Abierta por:** Coordinador · 2026-09-13
 - **A quién corresponde:** autores proponen · tutor decide
 - **Dónde se usa:**
-  - `project-context/alcance-moscow.md` — sección «Línea de corte» · texto literal: `**Pendiente (ADR-032).**`
+  - `project-context/requirements.md` — sección 2, las cuatro tablas por objetivo · y sección 4, viñeta ADR-032
   - `thesis/chapters/04-objetivos.tex` — los cuatro `\label{obj:...}`: cada objetivo debe comprometer solo filas por encima de la línea
   - `thesis/chapters/07-metodologia.tex` — `tab:fases-desarrollo` y `tab:cronograma` (ver ADR-033)
   - `thesis/chapters/08-contribucion-resultados.tex` — `tab:objetivos-entregables`
   - `project-context/requirements.md` — FR de las filas que queden fuera
-- **Contexto:** el tutor pidió el 2026-09-09 ordenar los requerimientos con MoSCoW y que el equipo proponga hasta dónde llega, reservándose la decisión («ustedes me proponen hasta qué punto quieren llegar y yo les digo si hasta ahí o no», [55:28]). `alcance-moscow.md` ordena 38 capacidades de los cimientos al trabajo futuro, con una propuesta MoSCoW y seis tensiones. Tres afectaban los objetivos: la prioridad de profesores (A-18), las cargas de entrenamiento del proyecto hermano (A-16, A-17) y el *System Usability Scale* (A-15). **Avance (2026-09-13):** los autores sacaron del alcance el soporte a entrenamiento; A-16 y A-17 pasan a *Won't*, `requirements.md` FR-02.6 y FR-03.5 quedan fuera de alcance y los objetivos 1 y 2 ya no los prometen. Siguen abiertas A-18 y A-15. Mientras no haya línea, los objetivos del cap. 04 prometen filas que la propuesta marca como Should.
-- **Qué se necesita para cerrarla:** la última fila dentro del alcance, las filas que cambian de categoría y la conformidad del tutor, anotadas en la sección «Línea de corte» de `alcance-moscow.md`.
+- **Contexto:** el tutor pidió el 2026-09-09 ordenar los requerimientos con MoSCoW y que el equipo proponga hasta dónde llega, reservándose la decisión («ustedes me proponen hasta qué punto quieren llegar y yo les digo si hasta ahí o no», [55:28]). La escalera de 38 capacidades que vivía en `alcance-moscow.md` se refundió el 2026-09-20 en `requirements.md`, donde cada requerimiento va bajo el objetivo que lo compromete y con su prioridad. **Avance (2026-09-13):** los autores sacaron del documento el soporte a entrenamiento, y el 2026-09-20 pasó a `requirements.md` §3.1 como requerimiento sin compromiso. Siguen abiertas la prioridad de profesores (hoy ADR-034) y el *System Usability Scale*. Mientras no haya corte acordado, los objetivos del cap. 04 prometen capacidades que el tutor no ha confirmado.
+- **Qué se necesita para cerrarla:** los requerimientos de `requirements.md` §2 que el tutor confirma como compromiso del PDG y los que pasan a §3 o a trabajo futuro.
 - **Al resolver:** reescribir los objetivos afectados (y su espejo en `documentation.md`), marcar fuera de alcance los FR de las filas excluidas, cerrar ADR-029 y ADR-031 con la misma decisión y abrir el trabajo de ADR-033.
 
 ### ADR-033 — ¿Cómo se reparten las fases entre PDG1 y PDG2 con el calendario real?
@@ -149,4 +133,20 @@ Responder **en una reunión** también vale, con una condición: que la respuest
 - **Contexto:** los autores fijaron el 2026-09-13 que PDG1 termina en los primeros días de diciembre de 2026 y PDG2 va de febrero a mayo de 2027 (`project-context/README.md`, «Academic calendar»). El cronograma actual se armó suponiendo PDG1 hasta finales de diciembre y PDG2 desde enero: los *sprints* 8 y 9 terminan el 13 de diciembre y los *sprints* 10 y 11 empiezan el 11 de enero, fuera de ambos cursos. Además, las fases salen de los objetivos actuales, que pueden cambiar con ADR-032. Replanificar antes de fijar el alcance obligaría a hacerlo dos veces.
 - **Avance (2026-09-13):** JDLP rehízo el cronograma con *sprints* de tres semanas desde el 21 de septiembre, etapa previa del 10 de agosto al 20 de septiembre y orden clúster → telemetría → cuotas → plataforma → evaluación (`documentation.md`, «Execution-order decisions»). Con ese plan el *sprint* 4 (23 nov – 13 dic) termina después del cierre de PDG1 y el *sprint* 5 (11–31 ene) cae antes de PDG2, y el segundo párrafo del cronograma dice «PDG2, entre enero y mayo de 2027». Los tres marcadores anteriores se reemplazaron por uno solo.
 - **Qué se necesita para cerrarla:** ADR-032 cerrada, y la decisión de si entre diciembre y febrero se trabaja o no (hoy ese periodo no pertenece a ningún curso).
-- **Al resolver:** reconstruir `tab:fases-desarrollo` y `tab:cronograma` desde las filas de `alcance-moscow.md` dentro del alcance, ajustar el segundo párrafo de `\label{sec:cronograma}` y borrar el marcador.
+- **Al resolver:** reconstruir `tab:fases-desarrollo` y `tab:cronograma` desde los requerimientos de `requirements.md` §2, ajustar el segundo párrafo de `\label{sec:cronograma}` y borrar el marcador.
+
+### ADR-034 — ¿Es compromiso del PDG el nivel de prioridad profesor sobre estudiante, si el modelo de roles vigente solo tiene administrador y usuario?
+
+- **Estado:** abierta
+- **Abierta por:** Coordinador · 2026-09-20
+- **A quién corresponde:** autores / tutor
+- **Dónde se usa:**
+  - `project-context/requirements.md` — seccion 2 «Roles de usuario», nota final · marcador literal: `*[verify: ADR-034]*`
+  - `project-context/requirements.md` — RF-2.3.2, columna de criterio de aceptación · marcador literal: `*[verify: ADR-034]*`
+  - `thesis/chapters/04-objetivos.tex` — `\label{obj:gobernanza}` · texto literal: `con prioridad de los profesores sobre la asignación de la capacidad de la sala`
+  - `thesis/chapters/07-metodologia.tex` — `tab:fases-desarrollo`, fila «Gobernanza de cuotas», y `tab:cronograma`, *Sprint* 6 · texto literal: `prioridad de los profesores sobre la capacidad de la sala`
+  - `thesis/chapters/08-contribucion-resultados.tex` — primer párrafo de «Aportes relacionados con el objeto del proyecto» y fila `obj:gobernanza` de `tab:objetivos-entregables`
+  - `project-context/requirements.md` — R2-22, columna de requerimiento · marcador literal: `*[verify: ADR-034]*`
+- **Contexto:** los autores fijaron el 2026-09-20 que el modelo de roles es el que dejó el tutor el 2026-09-09, «administrador y usuario, de momento». Con dos roles no existe un nivel profesor/estudiante, de modo que RF-2.3.2 solo puede implementarse como un atributo de prioridad configurable. Pero el objetivo específico 2 del anteproyecto sí promete «prioridad de los profesores sobre la asignación de la capacidad de la sala», y los capítulos 07 y 08 lo repiten. O el objetivo se reescribe en términos de prioridad por rol, o se agrega el nivel profesor/estudiante al modelo de roles. Es la tensión que ADR-032 no resolvió.
+- **Qué se necesita para cerrarla:** una de dos: (a) el PDG compromete el nivel profesor/estudiante y el modelo de roles pasa a tres; (b) el PDG compromete solo prioridad configurable entre los roles que provea SAAMFI, y el objetivo 2 se reescribe sin nombrar a los profesores.
+- **Al resolver:** aplicar la opción elegida en R2-22 de `requirements.md`, borrar el marcador, y reescribir `obj:gobernanza` y sus ecos en los capítulos 07 y 08 si aplica.

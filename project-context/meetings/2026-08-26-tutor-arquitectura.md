@@ -31,7 +31,7 @@
 
 - **Meta de PDG1, para finales de diciembre: infraestructura configurada + AI Gateway + autenticación SAAMFI funcionando de extremo a extremo.** — «Lo principal que esperamos de este, lo que yo esperaría, por ejemplo, de este PDG 1, es que la infraestructura esté configurada y de que el AI Gateway por lo menos esté configurado, ya tengan la autenticación con Xamppi [SAAMFI]» [52:07]; «cuando le doy a ingresar, me redirija al dashboard de la aplicación de ustedes. Que, por ejemplo, no tenga nada, no pasa nada. Pero que por lo menos ya esté el flujo de autenticación instalado en su servicio backend y frontend» [52:07]; «Esperamos para finales de diciembre» [53:57] `[hablante incierto]`
   · ver ADR-008 abajo
-  · **no promovido (autores, 2026-09-13)**: el alcance lo fijan el equipo y el tutor · ver `project-context/alcance-moscow.md` y ADR-032 · R0826-07
+  · **no promovido (autores, 2026-09-13)**: el alcance lo fijan el equipo y el tutor · ver `project-context/requirements.md` §2 y ADR-032 · R0826-07
 
 - **El soporte posterior lo asume el IAsLab, no los autores.** — «se encarga como ese proyecto está dentro de parte del laboratorio de lab le caerá a mí alejandro o al profesor Juan carlos y a los monitores que tengamos dentro del laboratorio de lab pero usted no debería preocuparse la parte de soporte posterior» [9:27]
   · afecta: `thesis/chapters/07-metodologia.tex`, análisis de riesgos y limitaciones
