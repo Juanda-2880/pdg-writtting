@@ -207,3 +207,51 @@ Los pasajes van en el idioma original y sin traducir. Las páginas son las del P
 - **Versión consultada:** `fuentes/pdf/wiest-privacypreservingllm-2024.pdf`, versión publicada en *npj Digital Medicine* 7, 257 (acceso abierto), <https://www.nature.com/articles/s41746-024-01233-2.pdf> (2026-09-13).
 - **Usos:**
   - `chapters/01-motivacion-antecedentes.tex` · *Justificación* · **retirada el 2026-09-13**: los autores decidieron omitir el impacto en el manejo de datos. Pasajes verificados por si se retoma: "these LLMs run as cloud services and using them requires the transfer of privileged information to remote servers. This brings along immense legal and ethical challenges, especially in the European Union (EU), where the export of personal health data is not legally permitted. Ideally, LLMs should run on-premise of healthcare institutions" y "Quantized models have lower numerical precision of the model parameters and have lower graphics processing unit (GPU) memory consumption than unquantized models, allowing for easier integration with existing hospital hardware." (p. 2). La tesis decía «riesgos»; la fuente dice *challenges*.
+
+## `mahajan-themis-2020`
+* **Ubicación:** Cap. 06, §6.2
+* **Afirmación:** propusieron Themis con el fin de garantizar equidad de largo plazo en clústeres de aprendizaje profundo.
+* **Original:** "To achieve both fairness in the long-term and placement efficiency in the short-term, Themis..." (p. 2)
+* **Versión:** PDF USENIX NSDI '20.
+
+## `narayanan-gavel-2020`
+* **Ubicación:** Cap. 06, §6.2
+* **Afirmación:** formularon Gavel, un programador consciente de la heterogeneidad de los aceleradores que optimiza políticas de reparto global.
+* **Original:** "Heterogeneity-Aware Cluster Scheduling Policies for Deep Learning Workloads" (Título) y "Gavel is a heterogeneity-aware cluster scheduler" (Abstract).
+* **Versión:** PDF USENIX OSDI '20.
+
+## `kwon-pagedattention-2023`
+* **Ubicación:** Cap. 06, §6.6
+* **Afirmación:** elimina casi en su totalidad la fragmentación interna y externa de la memoria de video.
+* **Original:** "Moreover, it eliminates external fragmentation as all blocks have the same size." y "This design alleviates internal fragmentation by using relatively small blocks and allocating them on demand." (p. 2)
+* **Versión:** PDF ACM SOSP '23.
+
+## `yu-orca-2022`
+* **Ubicación:** Cap. 06, §6.6
+* **Afirmación:** planificación a nivel de iteración.
+* **Original:** "In this paper, we propose iteration-level scheduling, a new scheduling mechanism that schedules execution at the granularity of iteration..." (p. 1)
+* **Versión:** PDF USENIX OSDI '22.
+
+## `miao-llmservingsurvey-2025`
+* **Ubicación:** Cap. 06, §6.6
+* **Afirmación:** procesamiento de lotes continuo (continuous batching) combinado con planificación a nivel de iteración.
+* **Original:** "Plenty of following approaches inherit the selective-batching and iteration-level scheduling policy, such as continuous batching in vLLM and RayLLM..."
+* **Versión:** ACM Computing Surveys 2025.
+
+## `montesi-apigatewaypatterns-2016`
+* **Ubicación:** Cap. 06, §6.5
+* **Afirmación:** patrones reconocidos de microservicios mediante pasarelas API.
+* **Original:** "Circuit Breakers, Discovery, and API Gateways in Microservices" (Título).
+* **Versión:** arXiv:1609.05830.
+
+## `muiruri-mlinferenceserving-2026`
+* **Ubicación:** Cap. 06, §6.1 y §6.4
+* **Afirmación:** Kubeflow y TensorFlow Serving representan alternativas comunes en el despliegue sobre Kubernetes.
+* **Original:** Revisión sistemática multivocal del servicio de inferencia de aprendizaje automático en entornos reales, analizando ecosistemas de contenedores.
+* **Versión:** Software: Practice and Experience 2026.
+
+## `chen-llmquantizationsurvey-2026`
+* **Ubicación:** Cap. 06, §6.6
+* **Afirmación:** formatos de cuantización posentrenamiento que conservan la fidelidad de inferencia.
+* **Original:** "A Survey of Quantization in LLM: Unlocking Potential Hardware Efficiency" - examina métodos post-training quantization (PTQ) y su balance con la fidelidad del modelo.
+* **Versión:** Journal of Computer Science and Technology 2026.
