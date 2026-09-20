@@ -87,6 +87,16 @@
 \usepackage{sectsty}
 \allsectionsfont{\sffamily\mdseries\upshape}
 
+% --- Chapter title format (fixed by the authors, 2026-09-20) -----------------
+% El tutor pidió que el título de capítulo no lleve la palabra "Capítulo"
+% encima, sino solo su número: "6. Metodología". Es un cambio puramente
+% estético del ENCABEZADO; las referencias cruzadas en la prosa siguen
+% diciendo "Capítulo 6" (\cref, más abajo), que es lo que el tutor aceptó.
+% No lo revierta sin autorización de un autor (ver ../SKILL.md).
+\usepackage{titlesec}
+\titleformat{\chapter}[hang]{\sffamily\huge\bfseries}{\thechapter.}{0.5em}{}
+\titlespacing*{\chapter}{0pt}{0pt}{20pt}
+
 % --- Citations: APA 7 via natbib + apalike ----------------------------------
 % \citet{key}  -> Autor (Año)      \citep{key} -> (Autor, Año)
 % See references/citations-and-figures.md for the full cheat sheet and for

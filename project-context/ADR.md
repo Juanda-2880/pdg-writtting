@@ -96,7 +96,7 @@ Responder **en una reunión** también vale, con una condición: que la respuest
 - **Abierta por:** Revisor · 2026-09-12
 - **A quién corresponde:** autores / tutor
 - **Dónde se usa:**
-  - `thesis/chapters/07-metodologia.tex` — `tab:cronograma`, fila *Sprint* 10 (cronograma rehecho por los autores el 2026-09-13) · texto literal: `Ejecución del motor de \emph{benchmarking} automatizado bajo carga de 20 usuarios simultáneos` · marcador literal: `% [verify: ADR-031: diseño propio o reutilización del harness del laboratorio]`
+  - `thesis/chapters/07-metodologia.tex` — `tab:cronograma`, fila *Sprint* 10 (cronograma rehecho por los autores el 2026-09-13) · texto literal: `Ejecución del motor de \emph{benchmarking} automatizado bajo carga de usuarios concurrentes` · marcador literal: `% [verify: ADR-031: diseño propio o reutilización del harness del laboratorio]`
   - `thesis/chapters/07-metodologia.tex` — `\label{sec:estrategia-metodologica}` («los resultados que genera el motor de \emph{benchmarking} automatizado») y fila «Evaluación empírica» de `tab:fases-desarrollo`
   - `thesis/chapters/08-contribucion-resultados.tex` — segundo párrafo de «Aportes relacionados con el desarrollo de capacidades del investigador» y fila `obj:evaluacion` de `tab:objetivos-entregables`
   - `project-context/requirements.md` — FR-04.1 a FR-04.3

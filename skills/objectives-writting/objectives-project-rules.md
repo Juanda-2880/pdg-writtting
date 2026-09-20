@@ -47,9 +47,27 @@ against the authors at the end.
    commitment postponed.
 
 6. **Measurable means a number or an observable artifact.** *"niveles satisfactorios de
-   aceptación operacional"* is not measurable; *"soportar 20 usuarios simultáneos"* is. If the
-   objective promises an evaluation, the criterion it will be evaluated against has to be in
-   the sentence.
+   aceptación operacional"* is not measurable. If the objective promises an evaluation, the
+   criterion it will be evaluated against has to be in the sentence: a nameable artifact, a
+   published reference scale, or a magnitude the project will *measure*.
+
+   **Amended 2026-09-20, and it narrows this rule.** The tutor ruled that the document may
+   **not state a number of users the platform will support**: *"En el documento no se puede
+   mencionar un numero de usuario a soportar... simplemente lo vamos a mencionar como usuarios
+   concurrentes sin poner un numero de cuantos vamos a soportar"* (authors, relaying the tutor,
+   2026-09-20). The earlier version of this rule used *"soportar 20 usuarios simultáneos"* as
+   its example of a good criterion; that example is now **forbidden**, and the number came out
+   of `obj:evaluacion` and of chapters 05, 07 and 08.
+
+   The way out of the apparent contradiction: a committed **capacity** and a measured
+   **result** are different things. An objective may not promise *"soportar N usuarios"*,
+   because that fixes a capacity the project has not measured yet and will be graded against.
+   It may promise to *determine* how far the concurrency goes, which is still measurable and
+   still gradeable, because the deliverable is the measurement. `obj:evaluacion` now reads
+   *"determinar hasta qué nivel de concurrencia sostiene el servicio y en qué banda de
+   referencia publicada se ubica su usabilidad percibida"*: the SUS reference band is the
+   nameable criterion, the concurrency level is the magnitude measured. Do not reintroduce a
+   user count anywhere in `thesis/`.
 
 7. **The verb must match what the project really does.** The tutor's warning, verbatim:
    *"hay como unas ligerezas en verbos que ustedes utilicen y tengan cuidado porque va a haber
@@ -74,5 +92,6 @@ against the authors at the end.
 - [ ] No date, duration, or deadline.
 - [ ] No `[verify:]` / `\todo{}` marker.
 - [ ] The measurable criterion is present, as a number or a nameable artifact.
+- [ ] No committed user count (rule 6, amendment of 2026-09-20): concurrency is measured, never promised.
 - [ ] The verb states neither more nor less than the project will actually deliver.
 - [ ] Taken together, the specific objectives cover the general objective, and none exceeds it.

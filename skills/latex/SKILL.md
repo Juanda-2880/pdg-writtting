@@ -57,6 +57,16 @@ viewer but the text keeps the document's ink color. Do **not** change presentati
 `preamble.tex` (link colors, borders, margin geometry, fonts) to satisfy a functional request:
 when a person asks for "un hipervínculo", deliver the *link*, not a new look. Any presentational change needs the explicit approval of an author, the same as a content change.
 
+### Chapter-title presentation is fixed: number only, no "Capítulo" (added 2026-09-20)
+
+`titlesec` formats the chapter heading as `6. Metodología`, without the `report` class's
+default `Capítulo 6` line above the title. The tutor asked for it and the authors classed the
+change as purely presentational. **Cross-references in prose are unaffected and stay as they
+are**: `\cref{cha:metodologia}` still prints "Capítulo 6", which is what the tutor accepted.
+Do not remove the `\titleformat`/`\titlespacing` lines from `preamble.tex`, and do not
+extend this to `\cref`, without an author's approval — same standing as the `hyperref`
+options above.
+
 ### Citations: always a `\cite*` command
 
 Never hand-type `(Autor, 2024)`. See `references/citations-and-figures.md` for `\citet`/`\citep`/`\citeyearpar` usage and how it maps to the APA rules in `reference-writting/`.

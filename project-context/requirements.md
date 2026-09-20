@@ -40,6 +40,7 @@ La plataforma debe servir **dos clases de carga de trabajo**: modelos grandes de
 - **Entrenamiento o *fine-tuning* de modelos como funcionalidad del documento de grado.** El soporte de cargas de entrenamiento se construye, pero está en la [sección 3](#3-requerimientos-sin-compromiso).
 - Inferencia distribuida entre nodos por red. La red de 10 Gbit/s de la sala no la sostiene y un modelo corre en una sola máquina.
 - Cuantización de modelos como proceso propio de la plataforma. La plataforma despliega pesos que ya vienen cuantizados, y puede apoyarse en la cuantización que el motor aplique al cargar el modelo.
+- Soporte para aceleradores de fabricantes distintos de NVIDIA. Los nodos de trabajo del laboratorio son equipos con GPU NVIDIA, y tanto el aprovisionamiento (NVIDIA GPU Operator) como la telemetría de hardware de bajo nivel (exportador DCGM) dependen de esa arquitectura. La plataforma se diseña solo para ella (autores, 2026-09-20).
 - Nube privada con OpenStack por debajo de la plataforma.
 - Soporte y mantenimiento de la plataforma después del cierre del proyecto, que queda a cargo del IAsLab.
 
