@@ -41,10 +41,10 @@ Medido, no supuesto. Reproducible con los `grep` de `../skills/writting-tools/pu
 Viven en [`../project-context/ADR.md`](../project-context/ADR.md), no aquí. **Quedan seis** (al 2026-09-13):
 
 - **ADR-010**: qué anexos se incluyen y si los árboles de problemas y objetivos se dibujan en TikZ o se insertan como imagen.
-- **ADR-029**: si la prioridad de reserva por curso académico (`requirements.md` FR-02.2) sigue siendo requisito después de que el tutor dejara fuera las cuotas por curso y horario el 2026-09-09. No toca la tesis hoy.
+- **ADR-034**: si el nivel de prioridad profesor sobre estudiante es compromiso del PDG, dado que el modelo de roles quedó en administrador y usuario el 2026-09-20. Toca `obj:gobernanza` y sus ecos en los capítulos 07 y 08. (ADR-029, sobre la prioridad por curso, se cerró el 2026-09-20: pasa a requerimiento *Sin compromiso*.)
 - **ADR-030**: si los hechos de reunión que el cap. 07 todavía afirma sin respaldo (Jira y Bitbucket; rango de 90 % a 95 % y fuente de poder; advertencia del tutor y compromiso GitOps) se escriben en `project-context/` o se retiran. Tres marcadores `% [verify: ADR-030: ...]` en `chapters/07-metodologia.tex`. El 2026-09-13 los autores promovieron los *sprints* 1 y 2, el calendario de PDG1 y PDG2 y el uso compartido con las clases.
 - **ADR-031**: si el motor de *benchmarking* lo construye el proyecto o se reutiliza el harness del laboratorio. Un marcador en la fila *Sprint* 10 de `tab:cronograma`.
-- **ADR-032**: dónde cae la línea de corte de la escalera de alcance [`../project-context/alcance-moscow.md`](../project-context/alcance-moscow.md). La proponen los autores y la decide el tutor. Puede cambiar los cuatro objetivos específicos. Las filas de entrenamiento (A-16, A-17) ya quedaron resueltas como *Won't* el 2026-09-13.
+- **ADR-032**: hasta dónde llega el alcance comprometido con el tutor, sobre [`../project-context/requirements.md`](../project-context/requirements.md) §2. Lo proponen los autores y lo decide el tutor. Puede cambiar los cuatro objetivos específicos. El soporte de entrenamiento ya salió del documento el 2026-09-13 y desde el 2026-09-20 vive en §3 como requerimiento sin compromiso.
 - **ADR-033**: cómo se reparten las fases entre PDG1 (hasta los primeros días de diciembre de 2026) y PDG2 (febrero a mayo de 2027). Un marcador en `chapters/07-metodologia.tex` tras el cronograma rehecho por JDLP; depende de ADR-032.
 
 ## Decisiones estructurales vigentes
@@ -71,14 +71,14 @@ Viven en [`../project-context/ADR.md`](../project-context/ADR.md), no aquí. **Q
 - **2026-09-13 — Orden de fases: clúster → telemetría → cuotas → plataforma web → evaluación.** El clúster se deja funcionando antes de construir la plataforma web, **no hay fase de mockups de interfaz**, y las cuotas se implementan dentro del clúster antes de la interfaz que las expone.
 - **2026-09-13 — La entrega del anteproyecto es a inicios de diciembre de 2026** (antes decía "finales de diciembre").
 - **2026-09-13 — La telemetría se nombra explícitamente sobre Grafana, Loki y Prometheus**, más el exportador DCGM de NVIDIA.
-- **2026-09-13 — El proyecto NO soporta cargas de entrenamiento.** Decisión de los autores («no se incluye la parte de soportar entrenamiento»). La plataforma no gobierna, no cuenta ni clasifica los trabajos de entrenamiento del proyecto hermano; las cuotas cubren las cargas de inferencia que ella despliega y la telemetría reporta el estado de los nodos sin rotular clases de carga. Revierte la decisión del 2026-09-12. Aplicado en los objetivos 1 y 2, en los capítulos 01, 02, 05, 07 y 08, en `requirements.md` (FR-02.6 y FR-03.5 fuera de alcance), en `documentation.md` y en `alcance-moscow.md` (A-16 y A-17 pasan a *Won't*). **Ningún agente debe reintroducir gobierno ni telemetría de entrenamiento.**
+- **2026-09-13 — El proyecto NO soporta cargas de entrenamiento.** Decisión de los autores («no se incluye la parte de soportar entrenamiento»). La plataforma no gobierna, no cuenta ni clasifica los trabajos de entrenamiento del proyecto hermano; las cuotas cubren las cargas de inferencia que ella despliega y la telemetría reporta el estado de los nodos sin rotular clases de carga. Revierte la decisión del 2026-09-12. Aplicado en los objetivos 1 y 2, en los capítulos 01, 02, 05, 07 y 08, en `requirements.md` (FR-02.6 y FR-03.5 fuera de alcance), y en `documentation.md`. **Matizado el 2026-09-20:** el módulo de entrenamiento sí se desarrolla, como requerimiento sin compromiso (`requirements.md` §3.1), pero sigue sin escribirse en la tesis. **Ningún agente debe reintroducir gobierno ni telemetría de entrenamiento en el documento.**
 - **Los nombres de los autores van en orden ALFABÉTICO en el PDF compilado, no por rol.** Ya aplicado: De La Pava, Melo, Pacheco.
 
 ## Lo que sigue
 
 1. **Redactar el Estado del arte** (cap. 06), el único capítulo del cuerpo que falta. Debe recoger TensorFlow Serving y Kubeflow, y la comparación vLLM contra llama.cpp que salió del Marco teórico.
 2. **Resolver ADR-010** y construir los anexos.
-3. **Fijar la línea de corte del alcance con el tutor (ADR-032)** usando `../project-context/alcance-moscow.md`. Cierra con ella ADR-029 y ADR-031, y desbloquea la replanificación del cronograma (ADR-033) y la posible reescritura de objetivos.
+3. **Fijar el alcance comprometido con el tutor (ADR-032)** sobre `../project-context/requirements.md` §2. Cierra con ella ADR-031, y desbloquea la replanificación del cronograma (ADR-033) y la posible reescritura de objetivos.
 4. **Terminar la promoción de hechos de las actas** del 2026-09-04 y del 2026-09-09 (cierra ADR-030). La del 2026-08-26 quedó revisada el 2026-09-13.
 5. **Resumen y Abstract**, que por indicación del formato se escriben al final.
 6. Una pasada del **Revisor** sobre el documento completo antes de entregarlo.
