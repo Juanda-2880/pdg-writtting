@@ -22,7 +22,8 @@ The system architecture is structured across four primary layers:
 │    • NVIDIA GPU Operator (Hardware passthrough & driver provisioning)  │
 ├────────────────────────────────────────────────────────────────────────┤
 │ 3. INFERENCE ENGINES (candidates, one container image each; chosen by  │
-│    measurement, none committed in advance, see FR-01.4 and B.2)        │
+│    measurement, none committed in advance, see requirements.md §2.3.3  │
+│    and B.2)                                                            │
 │    • llama.cpp (current front-runner; quantized GGUF execution)        │
 │    • Ollama, vLLM (vLLM gave poor results in the lab's own trials)     │
 │    • Pre-quantized weights (AWQ/GPTQ/GGUF): consumed, not built (B.3)  │
@@ -34,7 +35,7 @@ The system architecture is structured across four primary layers:
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
-> Layer 3 propagated 2026-09-12 (propagado de FR-01.4 / ADR-024, ADR-027 y ADR-021, 2026-09-12): the earlier diagram listed vLLM first as the primary engine and "Quantization Kernels" as a component of the stack. Neither holds any more: the engine is chosen by measurement with llama.cpp as front-runner, and the platform consumes pre-quantized weights instead of running quantization itself.
+> Layer 3 propagated 2026-09-12 (propagado de `requirements.md` §2.3.3 / ADR-024, ADR-027 y ADR-021, 2026-09-12): the earlier diagram listed vLLM first as the primary engine and "Quantization Kernels" as a component of the stack. Neither holds any more: the engine is chosen by measurement with llama.cpp as front-runner, and the platform consumes pre-quantized weights instead of running quantization itself.
 
 ---
 
@@ -48,7 +49,7 @@ The system architecture is structured across four primary layers:
   - **Node Selectors & Taints/Tolerations:** Directing GPU-heavy pods specifically to RTX 4090 nodes while isolating control services on legacy CPU machines.
   - **Resource Quotas & Limits:** Enforcing physical memory and CPU constraints per container.
   - **Persistent Volume Claims (PVCs):** Mounting high-speed NVMe storage partitions dedicated to model repositories and checkpoints.
-- **Control-plane placement, options not yet decided (promoted by the authors 2026-09-13, from `meetings/2026-08-26-tutor-arquitectura.md` [50:33]):** the tutor listed three possible locations for the master node: workstation 01 of room 104M, a separate server, or a GPU-less machine from room 205 that is free most of the time (*"pueden agarrar un computador del 205 como nodo máster, que no tiene GPU y está libre casi todo el tiempo"*). The remaining workstations act as the processing cluster. None has been chosen; `requirements.md` §4 "Cluster Control Plane" states the requirement the chosen location must meet.
+- **Control-plane placement, options not yet decided (promoted by the authors 2026-09-13, from `meetings/2026-08-26-tutor-arquitectura.md` [50:33]):** the tutor listed three possible locations for the master node: workstation 01 of room 104M, a separate server, or a GPU-less machine from room 205 that is free most of the time (*"pueden agarrar un computador del 205 como nodo máster, que no tiene GPU y está libre casi todo el tiempo"*). The remaining workstations act as the processing cluster. None has been chosen; `requirements.md` R3-02 states the requirement the chosen location must meet.
 
 #### 2. KubeRay & Ray Core
 - **Role:** Distributed runtime designed specifically for scalable Python and AI workloads.
@@ -56,6 +57,7 @@ The system architecture is structured across four primary layers:
   - **Ray Actors & Serves:** Managing dynamic lifecycle of inference workers without Kubernetes container recreation overhead.
   - **Heterogeneous Cluster Scheduling:** Seamlessly executing distributed tasks across mixed CPU and GPU topologies.
   - **Cluster State Tracking:** Detecting disconnected nodes and rescheduling pending jobs automatically.
+- **Single-node and cross-node inference (authors, 2026-09-21, from the tutor's review of `requirements.md`):** Ray Serve deploys a model on a single node and can also spread it across several nodes through tensor and pipeline parallelism when the network allows it. The platform commits to single-node serving today and must stay prepared to enable the cross-node mode (see `requirements.md` R3-17).
 
 #### 3. NVIDIA GPU Operator
 - **Role:** Automates the management of all NVIDIA software components needed to provision GPUs in Kubernetes.
@@ -73,18 +75,18 @@ The system architecture is structured across four primary layers:
 - **Status in the thesis:** LiteLLM belongs in the *estado del arte* as prior art, not in the architecture as a dependency (tutor, 2026-08-26: *"Puede ir en el documento como, por ejemplo, estado de la práctica"*).
 
 #### 2. High-Performance Inference Engines
-- **Status (propagado de FR-01.4 y de `documentation.md` "Institutional antecedents", 2026-09-12):** these are **candidate** engines, each packaged as a container image; none is committed in advance, and the engine used for LLM serving is chosen by measurement. **llama.cpp is the current front-runner**, because a purpose-compiled build is what gave the laboratory its best results; **vLLM did not produce good results in the laboratory's own trials**. The strengths and target workloads below describe each engine's design point, not a decided allocation of workloads to engines.
+- **Status (propagado de `requirements.md` §2.3.3 y de `documentation.md` "Institutional antecedents", 2026-09-12):** these are **candidate** engines, each packaged as a container image; none is committed in advance, and the engine used for LLM serving is chosen by measurement. **llama.cpp is the current front-runner**, because a purpose-compiled build is what gave the laboratory its best results; **vLLM did not produce good results in the laboratory's own trials**. The strengths and target workloads below describe each engine's design point, not a decided allocation of workloads to engines.
 - **vLLM:**
   - *Strengths:* Implements PagedAttention to eliminate memory fragmentation in KV-cache; supports continuous request batching and high-concurrency throughput.
-  - *Target Workloads:* Multi-user concurrent access and high-load empirical tests. (Corrected 2026-09-20 with ADR-029: course-level reservation priority is no longer a commitment of the thesis document; it is a `Sin compromiso` requirement, see `requirements.md` section 8.2.)
+  - *Target Workloads:* Multi-user concurrent access and high-load empirical tests. (Corrected 2026-09-20 with ADR-029: course-level reservation priority is no longer a commitment of the thesis document; it is a `Sin compromiso` requirement, see `requirements.md` §3.3.)
 - **Ollama / Llama.cpp:**
   - *Strengths:* Minimal runtime overhead, native support for quantized GGUF weights, and CPU offloading fallback.
   - *Target Workloads:* Single-user lightweight sessions and lower-spec exploratory models.
 
 #### 3. Quantization Technologies (consumed, not implemented — ADR-021 closed 2026-09-12)
 - **AWQ / GPTQ / GGUF:**
-  - *Purpose:* 4-bit/8-bit representations of 7B, 13B and 14B parameter models are what let a model instance fit inside the 24 GB VRAM of an RTX 4090 node (confirmed 2026-09-12 by the authors — see `requirements.md` §4).
-  - *Project boundary:* **the platform does not run a quantization process of its own.** It deploys weights that already come quantized, and it may rely on whatever quantization the serving engine applies natively at load time (`llama.cpp` does this when a model is selected and deployed). A model that would require a separate, project-run quantization step is out of scope and must be supplied pre-quantized. See FR-01.3.
+  - *Purpose:* 4-bit/8-bit representations of 7B, 13B and 14B parameter models are what let a model instance fit inside the 24 GB VRAM of an RTX 4090 node (confirmed 2026-09-12 by the authors — see `requirements.md` §1.3 and R3-04).
+  - *Project boundary:* **the platform does not run a quantization process of its own.** It deploys weights that already come quantized, and it may rely on whatever quantization the serving engine applies natively at load time (`llama.cpp` does this when a model is selected and deployed). A model that would require a separate, project-run quantization step is out of scope and must be supplied pre-quantized. See R3-26.
 
 ---
 
@@ -92,7 +94,7 @@ The system architecture is structured across four primary layers:
 
 #### 1. SAAMFI (Universidad Icesi)
 - **Role:** Institutional identity provider (IdP), integrated purely as such (propagado de `documentation.md` *Introduction*, 2026-09-12).
-- **Integration:** The platform's users carry **whatever roles SAAMFI provides**, and on top of them the platform defines **one administrator role** that manages the platform itself (propagado de FR-02.4 / ADR-022, 2026-09-12; this replaces the earlier mapping to "Undergraduate Thesis, AI Elective, Research Faculty, Lab Admin"). Those roles control access permissions and reservation-based GPU allocation, with professors holding priority to claim resources and control room-level allocation (corrected 2026-09-12, see `requirements.md` FR-02.7 — not a Fair-Share scheme).
+- **Integration:** The platform's users carry **whatever roles SAAMFI provides**, and on top of them the platform defines **one administrator role** that manages the platform itself (propagado de `requirements.md` R2-04 / ADR-022, 2026-09-12; this replaces the earlier mapping to "Undergraduate Thesis, AI Elective, Research Faculty, Lab Admin"). Those roles control access permissions and reservation-based GPU allocation, with professors holding priority to claim resources and control room-level allocation (corrected 2026-09-12, see `requirements.md` R2-19 — not a Fair-Share scheme).
 
 ---
 

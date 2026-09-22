@@ -9,7 +9,7 @@
 > 2. **Solo** los requerimientos de la [sección 2](#2-requerimientos-por-objetivo) pueden escribirse en `thesis/`. Los de la [sección 3](#3-requerimientos-sin-compromiso) se construyen, pero **no se mencionan en el documento de grado**, no aparecen en los objetivos, ni en la metodología, ni en la trazabilidad de resultados.
 > 3. Un requerimiento de la sección 3 **no amplía el alcance del PDG**. Si algún texto del documento de grado empieza a depender de uno de ellos, eso es un error de redacción, no un cambio de alcance.
 
-**Proyecto:** *IAsLab ORCHID: Plataforma de Orquestación y Gobernanza de Cargas de IA/ML en la Infraestructura de la Universidad Icesi*, Universidad Icesi.
+**Proyecto:** *IAsLab ORCHID: Plataforma de Orquestación y Gobernanza de Cargas de IA/ML en la Infraestructura de la Universidad Icesi*.
 
 **Reglas de escritura:** las restricciones de estilo de `../CLAUDE.md` (regla 8) aplican a `thesis/` y **no** a este documento.
 
@@ -25,7 +25,7 @@ La plataforma debe servir **dos clases de carga de trabajo**: modelos grandes de
 
 ### 1.2 Incluye
 
-- Despliegue de un clúster Kubernetes sobre las estaciones de trabajo de la sala 104M, con soporte de GPU.
+- Despliegue de un clúster Kubernetes sobre las estaciones de trabajo de un laboratorio de cómputo, con soporte de GPU, desplegado inicialmente en la sala 104M y extensible a otras salas del laboratorio.
 - Módulo de observabilidad de hardware, de logs y de carga servida, basado en Prometheus, Thanos, Loki, Grafana y el exportador DCGM de NVIDIA.
 - Sistema de gobernanza de recursos y cuotas por rol, integrado con el servicio institucional SAAMFI vía OAuth2/OIDC, con admisión, encolamiento, prioridad y reservas anticipadas.
 - Orquestación de motores de inferencia empaquetados como imágenes de contenedor y declarados sobre el clúster.
@@ -38,7 +38,7 @@ La plataforma debe servir **dos clases de carga de trabajo**: modelos grandes de
 ### 1.3 No incluye
 
 - **Entrenamiento o *fine-tuning* de modelos como funcionalidad del documento de grado.** El soporte de cargas de entrenamiento se construye, pero está en la [sección 3](#3-requerimientos-sin-compromiso).
-- Inferencia distribuida entre nodos por red. La red de 10 Gbit/s de la sala no la sostiene y un modelo corre en una sola máquina.
+- Inferencia distribuida entre nodos como compromiso con la red actual. La red de 10 Gbit/s de la sala no la sostiene y un modelo corre en una sola máquina; la plataforma debe quedar preparada para habilitarla cuando la infraestructura lo permita.
 - Cuantización de modelos como proceso propio de la plataforma. La plataforma despliega pesos que ya vienen cuantizados, y puede apoyarse en la cuantización que el motor aplique al cargar el modelo.
 - Soporte para aceleradores de fabricantes distintos de NVIDIA. Los nodos de trabajo del laboratorio son equipos con GPU NVIDIA, y tanto el aprovisionamiento (NVIDIA GPU Operator) como la telemetría de hardware de bajo nivel (exportador DCGM) dependen de esa arquitectura. La plataforma se diseña solo para ella (autores, 2026-09-20).
 - Nube privada con OpenStack por debajo de la plataforma.
@@ -102,9 +102,9 @@ Cada requerimiento es una unidad de trabajo asignable. La columna **Prioridad** 
 | R1-27 | El sistema debe ofrecer un panel de hardware filtrable por nodo, con temperatura, VRAM, potencia, PCIe, CPU y RAM, para diagnosticar el estado de un equipo concreto. | Alta |
 | R1-28 | El sistema debe ofrecer un panel de carga servida filtrable por modelo y por despliegue, con tiempo al primer *token*, latencia, *throughput* y saturación, para comparar el comportamiento entre despliegues. | Alta |
 | R1-29 | El sistema debe ofrecer un panel de consumo por usuario para que el administrador vea cuánta cuota consume cada uno sin recurrir a la línea de comandos. | Alta |
-| R1-30 | El sistema debe permitir definir reglas de alerta sobre cualquiera de las métricas recolectadas, con umbrales configurables, para anticipar condiciones de riesgo sin vigilancia manual. | Alta |
-| R1-31 | El sistema debe notificar las alertas al administrador por un canal configurable para que no dependan de que alguien esté mirando el panel. | Media |
-| R1-32 | El sistema debe reiniciar automáticamente el contenedor de inferencia que deja de responder para recuperar el servicio sin intervención manual. | Media |
+| R1-30 | El sistema debe dejar configuradas reglas de alerta sobre cualquiera de las métricas recolectadas, con umbrales ajustables, apoyadas en la capacidad de alertas del stack de observabilidad, para anticipar condiciones de riesgo sin vigilancia manual. | Alta |
+| R1-31 | El sistema debe notificar las alertas al administrador por un canal configurable para que no dependan de que alguien esté mirando el panel. | Baja |
+| R1-32 | El sistema debe reiniciar automáticamente el contenedor de inferencia que deja de responder para recuperar el servicio sin intervención manual. | Baja |
 | R1-33 | El sistema debe conservar los registros y la telemetría previos a un fallo de nodo para permitir el diagnóstico posterior de un modo de fallo que el laboratorio reporta como frecuente. | Media |
 
 ### 2.2 Objetivo 2 — Gobernanza de recursos y cuotas por rol
@@ -175,7 +175,7 @@ Cada requerimiento es una unidad de trabajo asignable. La columna **Prioridad** 
 
 | ID | Requerimiento | Prioridad |
 | :--- | :--- | :--- |
-| R3-01 | El sistema debe correr sobre un clúster de Kubernetes instalado en las estaciones de trabajo de la sala 104M, con un nodo de control y el resto como nodos de trabajo, para convertir equipos sueltos en capacidad agregada. | Alta |
+| R3-01 | El sistema debe correr sobre un clúster de Kubernetes instalado en las estaciones de trabajo de un laboratorio de cómputo, con un nodo de control y el resto como nodos de trabajo, desplegado inicialmente en la sala 104M y extensible a otras salas del laboratorio, para convertir equipos sueltos en capacidad agregada. | Alta |
 | R3-02 | El sistema debe alojar el nodo de control en una máquina que permanezca encendida sin reinicios no anunciados para que la caída de una estación de la sala no tumbe el plano de control. | Alta |
 | R3-03 | El sistema debe configurar la red del clúster con un CNI para que los *pods* de distintos nodos se comuniquen entre sí según la política de red definida. | Alta |
 | R3-04 | El sistema debe desplegar el NVIDIA GPU Operator para aprovisionar controladores, *runtime* y complemento de dispositivo de forma declarativa, de modo que los nodos expongan el recurso `nvidia.com/gpu`. | Alta |
@@ -196,7 +196,7 @@ Cada requerimiento es una unidad de trabajo asignable. La columna **Prioridad** 
 | :--- | :--- | :--- |
 | R3-15 | El sistema debe declarar cada servicio de inferencia como un recurso del clúster gestionado por un controlador, para que su ciclo de vida se administre de forma declarativa y no con pasos manuales. | Alta |
 | R3-16 | El sistema debe traducir la petición de despliegue de un usuario en la declaración que el clúster aplica, para que el usuario no escriba manifiestos. | Alta |
-| R3-17 | El sistema debe desplegar cada modelo dentro de un solo nodo, sin repartirlo entre máquinas, porque la red de la sala no sostiene la inferencia distribuida. | Alta |
+| R3-17 | El sistema debe desplegar un modelo tanto dentro de un solo nodo como repartido entre varios cuando la infraestructura de red lo permita, apoyándose en Ray y limitándose a las capacidades que este ofrezca, para cubrir ambas escalas sin comprometer el cronograma. | Alta |
 | R3-18 | El sistema debe sostener varios despliegues concurrentes de distintos usuarios sobre el clúster sin degradación significativa dentro de los límites de cuota, para que la sala se use de verdad en paralelo. | Alta |
 | R3-19 | El sistema debe reflejar el estado real de cada despliegue, distinguiendo al menos pendiente, en ejecución, fallido y detenido, para que el usuario sepa qué está pasando con su carga. | Alta |
 | R3-20 | El sistema debe exponer al usuario los registros de su propio despliegue para que diagnostique un fallo sin pedir acceso al clúster. | Media |
@@ -235,17 +235,17 @@ Cada requerimiento es una unidad de trabajo asignable. La columna **Prioridad** 
 
 | ID | Requerimiento | Prioridad |
 | :--- | :--- | :--- |
-| R4-01 | El sistema debe contar con un motor de medición automatizado que ejecute escenarios de prueba declarados en un archivo de especificación, para que una prueba sea repetible sin reconstruirla a mano. | Alta *[verify: ADR-031]* |
-| R4-02 | El sistema debe permitir configurar el número de usuarios simultáneos del escenario de carga para observar el comportamiento de la plataforma a distintos niveles de concurrencia. | Alta |
-| R4-03 | El sistema debe generar peticiones de inferencia concurrentes contra los despliegues activos para reproducir el uso real de varios usuarios a la vez. | Alta |
+| R4-01 | El proyecto debe contar con un motor de medición automatizado que ejecute escenarios de prueba declarados en un archivo de especificación, para que una prueba sea repetible sin reconstruirla a mano. | Alta *[verify: ADR-031]* |
+| R4-02 | El motor de medición debe permitir configurar el número de usuarios simultáneos del escenario de carga para observar el comportamiento de la plataforma a distintos niveles de concurrencia. | Alta |
+| R4-03 | El motor de medición debe generar peticiones de inferencia concurrentes contra los despliegues activos mediante un harness externo a la aplicación, para reproducir el uso real de varios usuarios a la vez sin complejizar la plataforma. | Alta |
 | R4-04 | El sistema debe medir en cada ejecución el tiempo al primer *token*, la latencia entre *tokens*, los *tokens* por segundo de entrada y de salida, el tiempo total de respuesta y la tasa de error, para sostener con datos la comparación entre escenarios. | Alta |
 | R4-05 | El sistema debe correlacionar los resultados de la prueba con la telemetría de hardware del mismo periodo para explicar una degradación por el estado de los nodos. | Alta |
 | R4-06 | El sistema debe registrar las métricas de red durante la prueba para descartar explícitamente el ancho de banda de la sala como cuello de botella silencioso. | Alta |
 | R4-07 | El sistema debe permitir ejecutar el mismo escenario contra motores de inferencia distintos en condiciones idénticas para que la comparación entre ellos sea válida. | Media |
-| R4-08 | El sistema debe exportar los resultados en un formato comparable entre ejecuciones para que las mediciones de fases distintas puedan contrastarse. | Media |
-| R4-09 | El sistema debe permitir programar la ejecución de las pruebas fuera del horario de clases, porque toda prueba que degrade el rendimiento de los equipos debe correr cuando la sala está libre. | Alta |
-| R4-10 | El sistema debe evaluar la calidad del código que generan los modelos servidos, para complementar la velocidad de generación con una medida de utilidad. | Baja |
-| R4-11 | El proyecto debe producir un reporte que compare latencias y *throughput* entre escenarios de carga y entre motores, para sustentar con evidencia la evaluación de desempeño técnico. | Alta |
+| R4-08 | El sistema debe permitir programar la ejecución de las pruebas fuera del horario de clases, porque toda prueba que degrade el rendimiento de los equipos debe correr cuando la sala está libre. | Alta |
+| R4-09 | El sistema debe evaluar la calidad del código que generan los modelos servidos, para complementar la velocidad de generación con una medida de utilidad. | Baja |
+| R4-10 | El proyecto debe producir un reporte que compare latencias y *throughput* entre escenarios de carga y entre motores, para sustentar con evidencia la evaluación de desempeño técnico. | Alta |
+| R4-11 | El sistema debe medir, para cargas que no son modelos de lenguaje, la cantidad de solicitudes concurrentes que soporta cada nodo y cómo crece esa capacidad al aumentar el número de nodos conectados, para caracterizar el escalamiento horizontal de la plataforma. | Alta |
 
 ---
 
