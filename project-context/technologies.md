@@ -94,7 +94,7 @@ The system architecture is structured across four primary layers:
 
 #### 1. SAAMFI (Universidad Icesi)
 - **Role:** Institutional identity provider (IdP), integrated purely as such (propagado de `documentation.md` *Introduction*, 2026-09-12).
-- **Integration:** The platform's users carry **whatever roles SAAMFI provides**, and on top of them the platform defines **one administrator role** that manages the platform itself (propagado de `requirements.md` R2-04 / ADR-022, 2026-09-12; this replaces the earlier mapping to "Undergraduate Thesis, AI Elective, Research Faculty, Lab Admin"). Those roles control access permissions and reservation-based GPU allocation, with professors holding priority to claim resources and control room-level allocation (corrected 2026-09-12, see `requirements.md` R2-19 — not a Fair-Share scheme).
+- **Integration:** The platform's users carry **whatever roles SAAMFI provides**, and on top of them the platform defines **one administrator role** that manages the platform itself (propagado de `requirements.md` R2-04 / ADR-022, 2026-09-12; this replaces the earlier mapping to "Undergraduate Thesis, AI Elective, Research Faculty, Lab Admin"). Those roles control access permissions and reservation-based GPU allocation, with a priority level declared per role that resolves contention (`requirements.md` R2-19, R2-20; the professor-over-student priority was removed on 2026-09-27, ADR-034 closed). Not a Fair-Share scheme.
 
 ---
 

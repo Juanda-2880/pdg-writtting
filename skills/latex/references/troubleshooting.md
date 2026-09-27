@@ -22,11 +22,14 @@ Hit this compiling a plain `\draw[->] (a) -- (b);` inside a `tikzpicture` with `
 ## `cleveref` prints the wrong word (e.g. "Cuadro" instead of "Tabla")
 
 - Confirm `\usepackage[spanish,capitalize]{cleveref}` loads **after** `hyperref` in the preamble — reversed order is the most common cause of broken cross-references.
-- **Verified**: cleveref's Spanish name set prints `Figura`/`Capítulo`/`Sección`/`Ecuación` correctly out of the box, but its default word for the `table` type is `Cuadro`, not `Tabla` — `../preamble.tex` already overrides this to match `writting-tools/normas-APA.md`:
+- **Verified** (corrected 2026-09-27): cleveref's Spanish name set prints `Figura`/`Capítulo`/`Ecuación` correctly out of the box, but its defaults for `table` (`Cuadro`) and for `section`/`subsection` (`Apartado`, which made the PDF read «la Apartado 4.7») don't match this thesis. `../preamble.tex` overrides both to match `writting-tools/normas-APA.md` and the feminine article the prose uses:
   ```latex
   \crefname{table}{Tabla}{Tablas}
   \Crefname{table}{Tabla}{Tablas}
+  \crefname{section}{Sección}{Secciones}
+  \Crefname{section}{Sección}{Secciones}
   ```
+- The **caption label** of a table is a different mechanism: babel's `\tablename`, which `babel[spanish]` sets to «Cuadro». `../preamble.tex` redefines it with `\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}`, so caption and prose agree.
   If another type's printed word doesn't match this thesis's own terminology, override it the same way (see `citations-and-figures.md`).
 
 ## `\enquote{...}` renders as « guillemets » instead of "double quotes"

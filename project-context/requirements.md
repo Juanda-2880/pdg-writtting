@@ -31,7 +31,7 @@ La plataforma debe servir **dos clases de carga de trabajo**: modelos grandes de
 - Orquestación de motores de inferencia empaquetados como imágenes de contenedor y declarados sobre el clúster.
 - Ejecución de cargas de IA que no son modelos de lenguaje sobre el mismo flujo de despliegue.
 - Interfaz web para desplegar modelos y administrar cuotas.
-- Motor de medición automatizado para las pruebas de carga.
+- *Scripts* sencillos de Python, externos a la plataforma, para las pruebas de carga.
 - Configuración del clúster versionada y automatizada, redesplegable en otra sala del laboratorio.
 - Documentación técnica y de usuario.
 
@@ -144,7 +144,7 @@ Cada requerimiento es una unidad de trabajo asignable. La columna **Prioridad** 
 | R2-17 | El sistema debe encolar la solicitud que no encuentra capacidad disponible, en lugar de descartarla, para que el trabajo se ejecute cuando la capacidad se libere. | Alta |
 | R2-18 | El sistema debe informar al usuario su posición en la cola y una estimación de espera para que sepa si conviene esperar o reservar. | Baja |
 | R2-19 | El sistema debe asociar un nivel de prioridad a cada rol para que la contención de recursos se resuelva por una regla declarada y no por orden de llegada. | Alta |
-| R2-20 | El sistema debe permitir que una solicitud de rol prioritario expropie los recursos de una carga de menor prioridad cuando no haya capacidad libre, para garantizar el acceso de la clase superior. | Alta *[verify: ADR-034]* |
+| R2-20 | El sistema debe permitir que una solicitud de rol prioritario expropie los recursos de una carga de menor prioridad cuando no haya capacidad libre, para garantizar el acceso de la clase superior. | Alta |
 | R2-21 | El sistema debe avisar al usuario cuya carga fue expropiada y conservar sus registros de sesión para que la expropiación no se traduzca en pérdida de trabajo silenciosa. | Media |
 | R2-22 | El sistema debe permitir reservar cupos de GPU por adelantado para una ventana de tiempo definida, para que un usuario asegure capacidad antes de necesitarla. | Media |
 | R2-23 | El sistema debe iniciar y terminar la reserva de forma automática en las horas declaradas para que nadie dependa de una acción manual en el límite de la ventana. | Media |
@@ -229,15 +229,15 @@ Cada requerimiento es una unidad de trabajo asignable. La columna **Prioridad** 
 
 ### 2.4 Objetivo 4 — Evaluación de desempeño y aceptación
 
-> Evaluar el desempeño y la aceptación de la plataforma mediante pruebas de carga y la aplicación del *System Usability Scale* a usuarios del laboratorio.
+> Evaluar el desempeño y la aceptación de la plataforma mediante pruebas de carga con usuarios concurrentes y la aplicación del *System Usability Scale* a usuarios del laboratorio, con el fin de determinar hasta qué nivel de concurrencia sostiene el servicio y en qué banda de referencia publicada se ubica su usabilidad percibida.
 
 #### 2.4.1 Medición de desempeño
 
 | ID | Requerimiento | Prioridad |
 | :--- | :--- | :--- |
-| R4-01 | El proyecto debe contar con un motor de medición automatizado que ejecute escenarios de prueba declarados en un archivo de especificación, para que una prueba sea repetible sin reconstruirla a mano. | Alta *[verify: ADR-031]* |
-| R4-02 | El motor de medición debe permitir configurar el número de usuarios simultáneos del escenario de carga para observar el comportamiento de la plataforma a distintos niveles de concurrencia. | Alta |
-| R4-03 | El motor de medición debe generar peticiones de inferencia concurrentes contra los despliegues activos mediante un harness externo a la aplicación, para reproducir el uso real de varios usuarios a la vez sin complejizar la plataforma. | Alta |
+| R4-01 | El proyecto debe contar con *scripts* sencillos de Python, externos a la plataforma, que ejecuten escenarios de prueba declarados en un archivo de especificación, para que una prueba sea repetible sin reconstruirla a mano y sin complejizar la aplicación ni su desarrollo. | Alta *[verify: ADR-031]* |
+| R4-02 | Los *scripts* de medición deben permitir configurar el número de usuarios simultáneos del escenario de carga para observar el comportamiento de la plataforma a distintos niveles de concurrencia. | Alta |
+| R4-03 | Los *scripts* de medición deben generar peticiones de inferencia concurrentes contra los despliegues activos desde fuera de la aplicación, para reproducir el uso real de varios usuarios a la vez sin complejizar la plataforma. | Alta |
 | R4-04 | El sistema debe medir en cada ejecución el tiempo al primer *token*, la latencia entre *tokens*, los *tokens* por segundo de entrada y de salida, el tiempo total de respuesta y la tasa de error, para sostener con datos la comparación entre escenarios. | Alta |
 | R4-05 | El sistema debe correlacionar los resultados de la prueba con la telemetría de hardware del mismo periodo para explicar una degradación por el estado de los nodos. | Alta |
 | R4-06 | El sistema debe registrar las métricas de red durante la prueba para descartar explícitamente el ancho de banda de la sala como cuello de botella silencioso. | Alta |

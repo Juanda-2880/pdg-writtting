@@ -13,191 +13,13 @@
 % NO debe contener: teoría de base (eso es 05-marco-teorico.tex) ni
 % literatura gris sin filtro. Fuentes: IEEE, ACM, libros acreditados.
 %
-% Candidata ya identificada por los autores (2026-09-12), pendiente de
-% investigar con fuente citable real, NO redactar todavía a partir de esta
-% nota: las plataformas MLOps gestionadas en la nube (TrueFoundry, Amazon
-% SageMaker, Microsoft Azure Machine Learning, Google Vertex AI) resuelven
-% entrenamiento gestionado, registro de modelos, pipelines y despliegue con
-% autoescalado, pero no sirven para el problema del IAsLab por una razón
-% estructural, no técnica: son servicios en la nube, y el proyecto exige
-% operar estrictamente on-premise sobre el hardware ya instalado en la sala
-% 104M (restricción confirmada en project-context/documentation.md, sección
-% Scope). El Investigador debe traer una fuente real (documentación oficial
-% de cada plataforma, o una comparativa académica) antes de que esto entre
-% como afirmación citada — ver skills/reference-writting/recency.md para el
-% corte de antigüedad (2015 en adelante) también aplicado aquí.
+% Las plataformas MLOps gestionadas en la nube (Amazon SageMaker, Microsoft
+% Azure Machine Learning, Google Vertex AI) se citan en §6.4 con fuentes
+% verificadas (Kreuzberger et al., Eken et al.); ver ../CITAS-VERIFICADAS.md.
+% La guía de normasapa.in que vivía en comentarios se retiró el 2026-09-27
+% (el repositorio es público y era texto copiado).
 % ==========================================================================
 \chapter{Estado del arte}\label{cha:estado-del-arte}
-
-% [CONTEXTO Y GUÍA COMPLETA PARA REDACTAR EL ESTADO DEL ARTE]
-% 
-% Bienvenido(a) a la guía definitiva para elaborar el estado del arte, si eres estudiante o investigador, sabes que esta sección es crucial en cualquier trabajo académico o científico, ya que te permite conocer y analizar las fuentes existentes sobre un tema de investigación.
-% 
-% El estado del arte sirve al investigador como referencia para adoptar una postura crítica sobre lo que se ha hecho y lo que aún falta por hacer en relación con una temática o problemática específica. La búsqueda de evidencias, es decir, referencias a trabajos similares, se convierte en el punto de partida del estado del arte.
-% 
-% Guía APA aquí: https://normasapa.in/estado-del-arte/
-% 
-% ¿Qué es el estado del arte?
-% 
-% El estado del arte es un tipo de investigación documental que consiste en examinar la literatura disponible sobre un tema específico. En palabras más sencillas, el estado del arte es un proceso de investigación que implica leer y analizar diferentes textos académicos para conocer lo que se ha investigado sobre un tema en particular. Al hacer un estado del arte, aprendes sobre los avances, desafíos y tendencias de la investigación en ese tema. De esta manera, puedes desarrollar un conocimiento crítico basado en la revisión y análisis de distintos tipos de textos.Lee Revistas Científicas
-% 
-% Es importante destacar que un estado del arte no es simplemente una lista de textos con resúmenes cortos de cada uno, sino que implica la selección y análisis de las partes más relevantes para la investigación. Además, se debe establecer un sistema de parámetros de descarte e inclusión de los textos consultados para garantizar la sistemática y replicabilidad del proceso.
-% Estado del arte: Mapa mental
-% Estado del arte: Mapa mental
-% 
-% Guía APA aquí: https://normasapa.in/estado-del-arte/
-% 
-% ¿Cómo escribir el estado del arte?
-% 
-% El estado del arte permite dar validez a cualquier investigación; esta parte del trabajo proporciona una visión general del conocimiento existente sobre un tema específico le sirve al indagador como referencia. Sigue los siguientes pasos (Junto con ejemplos) para incluir el estado del arte en cualquier trabajo escrito:
-% Identificar el tema de investigación
-% 
-% El primer paso para hacer el estado del arte es identificar el tema de investigación. El tema debe ser específico y estar claramente definido. Esto permitirá al investigador enfocarse en la literatura relevante y evitar la revisión de información no pertinente. El investigador también debe tener un conocimiento previo sobre el tema, ya que esto puede facilitar la identificación de lo relevante.
-% Por ejemplo: Supongamos que estás interesado en investigar sobre el efecto de la música en la memoria a corto plazo. El primer paso sería identificar el tema de investigación a fondo; en pocas palabras, se debe conocer o buscar información relacionados con la música y la memoria a corto plazo.Citas bibliográficas guía
-% Definir la estrategia de búsqueda
-% 
-% La estrategia de búsqueda debe incluir palabras clave relevantes y criterios de inclusión y exclusión. Las palabras clave deben ser específicas y relevantes para el tema de investigación y deben cubrir todas las posibles variaciones de la terminología utilizada en el campo.
-% 
-%     Los criterios de inclusión y exclusión deben ser claros y deben definir claramente los tipos de documentos que se incluirán y excluirán de la revisión bibliográfica.
-% 
-% Por ejemplo: Para definir la estrategia de búsqueda implica determinar las palabras clave y los términos de búsqueda que se utilizarán para encontrar la información relevante. Por ejemplo, en nuestro ejemplo, se podrían utilizar términos como «música», «memoria a corto plazo», «estudios de investigación», etc.
-% 
-% Guía APA aquí: https://normasapa.in/estado-del-arte/
-% 
-% Identificar las fuentes de información
-% 
-% El investigador debe ser lo más exhaustivo posible al identificar las fuentes relevantes. Recuerda que no todas las fuentes de información son iguales y que algunas pueden ser más confiables que otras.
-% 
-%     Puede que hayan 1000, incluso más investigaciones que traten sobre un tema; para evitar aburrimiento al lector y hojas sin leer, incluye únicamente aquellas relevantes o que aporten y/o atraigan.
-% 
-% Por ejemplo: Es importante identificar las fuentes de información relevantes. Estas pueden incluir bases de datos académicas, revistas científicas, libros, tesis doctorales, entre otros. Algunas de las fuentes de información relevantes para este tema podrían ser la base de datos de PsycINFO, la revista Memory and Cognition y el libro «The Cognitive Neuroscience of Music».
-% Realizar la revisión bibliográfica
-% 
-% Se deben revisar todos los documentos identificados para determinar su relevancia para el tema de investigación. La revisión bibliográfica debe incluir la lectura completa de los documentos relevantes y la extracción de información relevante. Intenta resumir la información extraída pues cada fuente debe incluir los objetivos, la metodología utilizada, los resultados y las conclusiones.Marco teórico guía
-% 
-%     Si en una búsqueda encontraste 1000 fuentes y del filtrado sacaste 5 o 10 confiables, verificables y que respondan el punto de inicio; debes considerarlo como un excelente inicio.
-% 
-% Por ejemplo: En este caso, se podría leer el estudio «Effects of Music on Memory for Text» de Wallace y otros (1994) para obtener información sobre el efecto de la música en la memoria a corto plazo. Para éste punto es necesario que el investigador lea y analice los materiales relevantes para el tema.
-% 
-% Guía APA aquí: https://normasapa.in/estado-del-arte/
-% 
-% Sintetizar la información
-% 
-% Una vez que se han revisado todos los documentos relevantes, el siguiente paso es sintetizar la información. La información extraída de los documentos relevantes debe agruparse según temas y subtemas. El investigador debe determinar las tendencias actuales y los vacíos en la investigación.
-% 
-%     La información sintetizada debe ser lo más clara posible y debe permite comprender fácilmente el estado actual del conocimiento en el campo.
-%     Esto puede implicar resumir los resultados de los estudios de investigación relevantes, identificar tendencias en el campo y discutir los hallazgos clave.
-% 
-% Por ejemplo: Se podría sintetizar la información encontrada en los estudios de investigación relevantes para identificar los efectos de la música en la memoria a corto plazo y discutir las tendencias en el campo.
-% Escribir el estado del arte
-% 
-% El siguiente paso es escribir el estado del arte; está sección debe incluir una introducción al tema de investigación y una breve descripción de la metodología utilizada para realizar la revisión bibliográfica.Consulta Enciclopedias Digitales
-% 
-%     La sección principal debe presentar los resultados de la revisión bibliográfica. Los resultados deben presentarse de manera lógica y organizada, utilizando subtemas y secciones.
-%     Es importante que el estado del arte sea lo más claro y conciso posible, utilizando un lenguaje técnico y científico adecuado para el tema de investigación.
-% 
-% Por ejemplo: En este caso, se podría escribir un estado del arte que incluya una introducción al tema de la música y la memoria a corto plazo, una descripción de la estrategia de búsqueda utilizada y los resultados de la revisión bibliográfica.
-% 
-% Guía APA aquí: https://normasapa.in/estado-del-arte/
-% 
-% Revisar y actualizar el estado del arte
-% 
-% Una vez que se ha escrito el estado del arte, el siguiente paso es revisarlo y actualizarlo regularmente. El estado del arte debe revisarse antes de la presentación del trabajo de investigación final para asegurarse de que toda la información sea relevante y esté actualizada.
-% Por ejemplo: Si se encuentra un nuevo estudio de investigación relevante para el tema, se deberá agregar la información pertinente al estado del arte existente y actualizar la lista de referencias.
-% ¿Cuál es la estructura del estado del arte?
-% 
-% El estado del arte no es obligatorio de incluir en los trabajos escritos, es decisión de la institución o educador el que lo debas poner o no; si éste es tu caso debes tener en cuenta que la estructura puede variar según el campo de estudio, pero por norma general debe incluir la siguiente información:Asesoría bibliográfica
-% Introducción
-% 
-% La introducción debe presentar una breve presentación del tema a tratar y su importancia en el campo de estudio. Además de la relevancia, antecedentes, objetivos generales del problema a tratar; es recomendable responder las siguientes preguntas para contextualizar al lector:
-% 
-%     ¿Por qué he decidido indagar sobre éste problema?
-%     ¿Cómo se definieron los problemas?
-%     ¿Qué contenidos, tópicos o dimensiones, se han definido como prioritarios?
-%     ¿Cuáles son las características principales del tema?
-%     ¿Es relevante el problema/tema elegido?
-% 
-% Guía APA aquí: https://normasapa.in/estado-del-arte/
-% 
-% Investigaciones (Antecedentes)
-% 
-% Un trabajo escrito sin otras fuentes de investigación NO es confiable ante los ojos del lector o cualquier otro investigador. Los antecedentes deben incluir una revisión de la literatura existente sobre el tema, incluyendo trabajos previos relevantes y teorías relacionadas.
-% 
-% El estado del arte es una parte del proyecto que presenta el punto de vista y resultados obtenidos por otros indagadores, eso si, con relación con el tema a tratar. Incluye fuentes, resultados y problemas:
-% 
-% Guía APA aquí: https://normasapa.in/estado-del-arte/
-% 
-% Debes agregar referencias directas a estás investigaciones agregando una descripción de los resultados obtenidos; recuerda dar orden a cada fuente agregada, puede ser: Cronológico, geográfico o por palabras claves; para contextualizar más puedes agregar los siguientes elementos:
-% 
-%     ¿Qué evidencias empíricas y metodológicas se utilizaron?
-%     Una descripción de los métodos utilizados para llevar a cabo la revisión de los datos.
-%     Una síntesis de los resultados de la revisión de la literatura, identificando los avances más significativos en el campo y las áreas donde se necesita más investigación.
-%     ¿Qué temas de indagación se han definido como relacionados con el tema de la investigación?
-%     Marco teórico guía
-% 
-% Conclusiones
-% 
-% Describe los resultados, descubrimientos, discusiones, limitaciones, problemas indagados, dudas sin aclarar. Un buen párrafo de conclusión debe responder las siguientes preguntas e incluir:
-% 
-%     ¿Cuál es el resultado esperado de las investigaciones?
-%     ¿Cuántas limitaciones hubieron para la búsqueda de resultados?
-%     ¿Cuáles fueron las fortalezas y debilidades de los estudios revisados?
-%     ¿Qué problemas quedan por resolver o salieron en el proceso?
-%     ¿Fueron los resultados esperados?
-% 
-% Guía APA aquí: https://normasapa.in/estado-del-arte/
-% 
-% Inicio
-% ›
-% Estructura
-% › Guía completa para escribir un Estado del Arte, con ejemplos prácticos
-% Guía completa para escribir un Estado del Arte, con ejemplos prácticos
-% marzo 20, 2023 por Andrés Rivas	
-% 
-% Bienvenido(a) a la guía definitiva para elaborar el estado del arte, si eres estudiante o investigador, sabes que esta sección es crucial en cualquier trabajo académico o científico, ya que te permite conocer y analizar las fuentes existentes sobre un tema de investigación.
-% 
-% El estado del arte sirve al investigador como referencia para adoptar una postura crítica sobre lo que se ha hecho y lo que aún falta por hacer en relación con una temática o problemática específica. La búsqueda de evidencias, es decir, referencias a trabajos similares, se convierte en el punto de partida del estado del arte.
-% 
-% También te recomendamos: Cómo escribir el marco teórico en una investigación
-% 
-% ÍNDICE DE CONTENIDOS (Omitido por brevedad en los comentarios, referirse a la guía completa arriba)
-% 
-% ¿Cómo realizar la búsqueda de antecedentes para escribir el estado del arte?
-% 
-% Es importante tener en cuenta que la búsqueda de fuentes para un estado del arte es un proceso iterativo y continuo, por lo que es recomendable revisar y actualizar la búsqueda de manera regular.Lee Revistas Científicas
-% 
-%     Define el tema: Es importante tener claridad sobre el tema o campo de estudio que se va a investigar, ya que esto ayudará a enfocar la búsqueda de fuentes de información.
-%     Identifica las palabras clave: Estos términos deben ser relevantes al tema de investigación.
-%     Utiliza bases de datos académicas: Existen diversas bases de datos académicas que contienen una gran cantidad de información científica y técnica, tales como Scopus, Web of Science, PubMed, etc. Estas bases de datos permiten realizar búsquedas avanzadas utilizando diferentes criterios, tales como palabras clave, fecha de publicación, tipo de documento, entre otros.
-%     Revisa revistas científicas: Aquellas especializadas en el área de estudio son una excelente fuente de información. Es necesario revisar los últimos números de las revistas y buscar artículos relevantes al tema de investigación.
-%     Consulta bibliografías de artículos y libros: Las bibliografías en cualquier tipo de trabajo escrito pueden ser una excelente fuente para encontrar referencias adicionales y ampliar la búsqueda.
-%     Utiliza herramientas de búsqueda en línea: Las herramientas en línea como Google Académico, ResearchGate, Academia.edu, entre otras, pueden ser útiles para encontrar información adicional.
-%     Consulta a expertos en el tema: Es importante consultar a expertos en el área de estudio para obtener información adicional y recomendaciones de fuentes de información relevantes.
-% 
-% Guía APA aquí: https://normasapa.in/estado-del-arte/
-% 
-% ¿Porqué es necesario incluir el estado del arte en una investigación?
-% 
-% El estado del arte es importante porque proporciona contexto, identifica vacíos, valida la relevancia y originalidad del trabajo, identifica metodologías y técnicas, y proporciona una lista de referencias útiles para otros investigadores o futuras investigaciones del tema a tratar; además:
-% 
-%     Contextualiza: El estado del arte proporciona contexto sobre el tema que se está tratando en el trabajo. Esto permite a los lectores comprender la evolución histórica del tema y las tendencias actuales.
-%     Identifica los vacíos: Estos vacíos pueden ser oportunidades para futuras investigaciones y pueden ser el punto de partida para nuevos proyectos.
-%     Valida la relevancia: Esto ayuda a los autores a demostrar que su trabajo es una contribución significativa al conocimiento existente.
-%     Brinda metodologías: El estado del arte también puede proporcionar información sobre las metodologías y técnicas que se han utilizado en investigaciones anteriores sobre el tema. Esto puede ayudar a los autores a seleccionar las metodologías y técnicas adecuadas para su trabajo.
-%      Referencias bibliográficas: El estado del arte también puede servir como una lista de referencias bibliográficas útiles para otros investigadores interesados en el tema. Esto ayuda a establecer una red de conocimientos y fomenta la colaboración entre investigadores.
-% 
-% ¿Cuáles son los objetivos de un estado del arte?
-% 
-% Como mencionamos al principio de este artículo, el estado del arte es un tipo de investigación documental acerca de la forma en que diferentes autores han tratado un tema específico; si aún no te queda clara su importancia, te recomendamos leer los siguientes objetivos:Consulta Enciclopedias Digitales
-% 
-% Guía APA aquí: https://normasapa.in/estado-del-arte/
-% 
-% Amplia el conocimiento: El estado del arte es la investigación de otra investigación, es decir, cada proyecto saliente de un mismo tema ofrecerá distintas hipótesis, problemas, resultados o conclusiones
-% Fuente de referencias: Para que una investigación sea confiable, es necesario aportar referencias del mismo tema/área. Un proyecto, tesis o trabajo escrito con estado del arte debe adjuntar todas las fuentes necesarias y esto será un aporte de investigación para el próximo indagador
-% Relevancia: Cuando existe mucha información, referencias o indagadores en un mismo tema, eso demuestra el grado de importancia/relevancia del tema
-% Diferentes puntos de vista: No todos los escritores llegarán a la misma conclusión del tema o problema indagado, muchos ni siquiera tendrán resultados y lanzarán críticas o diferentes puntos de vista; al final, el propósito de toda investigación es ofrecer algo más al lector
-% Plantea otros problemas: Muchas investigaciones hoy en día tienen problemas de un mismo tema que aún están sin resolver. Incluir el estado del arte le permite al lector conocer las limitaciones y dudas sin aclarar; además de aquellas preguntas que surgen al realizar la investigación
-% Al realizar el estado del arte, el indagador/estudiante consolida un conocimiento crítico basado en la lectura y el análisis de diferentes tipos de textos
 
 \section{Estrategia de revisión documental}\label{sec:estrategia-revision}
 
@@ -207,41 +29,40 @@ Los criterios de selección documental privilegiaron estudios empíricos, caract
 
 \section{Gestión y planificación en clústeres de aceleradores a gran escala}\label{sec:clusteres-industriales}
 
-La administración de aceleradores en clústeres multiusuario de gran tamaño ha sido abordada de manera extensa por la industria tecnológica y la investigación en sistemas distribuidos. \citet{jeon-philly-2019} analizaron una traza de dos meses de Philly, la plataforma de Microsoft para el entrenamiento de modelos de aprendizaje profundo, que procesó cerca de 100\,000 trabajos de cientos de usuarios. Los autores evidenciaron que, a pesar de que la mayoría de las GPU figuraban asignadas a los usuarios, la utilización real del \emph{hardware} en uso alcanzaba únicamente cerca del 52\,\% en promedio, al tiempo que cerca del 30\,\% de las tareas se cancelaba o terminaba de forma anómala debido a fallos. Este desajuste entre la asignación nominal y la utilización efectiva demuestra que la reserva estática de recursos en entornos compartidos induce una subutilización severa del equipamiento instalado.
+La administración de aceleradores en clústeres multiusuario de gran tamaño ha sido abordada de manera extensa por la industria tecnológica y la investigación en sistemas distribuidos. \citet{jeon-philly-2019} analizaron una traza de dos meses de Philly, la plataforma de Microsoft para el entrenamiento de modelos de aprendizaje profundo, que procesó cerca de 100\,000 trabajos de cientos de usuarios. Los autores evidenciaron que, a pesar de que la mayoría de las GPU figuraban asignadas a los usuarios, la utilización real del \emph{hardware} en uso alcanzaba únicamente cerca del 52\,\% en promedio, al tiempo que cerca del 30\,\% de las tareas se cancelaba o terminaba de forma anómala debido a fallos. Ese desajuste muestra que una GPU asignada no equivale a una GPU aprovechada.
 
-En un sentido similar, \citet{gu-tiresias-2019} evaluaron el comportamiento de un clúster de producción y observaron que los planificadores tradicionales concebidos para el procesamiento de grandes volúmenes de datos provocan prolongadas demoras en cola y un bajo desempeño global cuando ejecutan tareas de aprendizaje profundo. Para contrarrestar esta limitación, desarrollaron Tiresias, un gestor de clúster que incorpora planificación bidimensional basada en el índice de Gittins sin requerir que los usuarios declaren la duración exacta de sus ejecuciones. Por su parte, \citet{weng-mlaasinthewild-2022} analizaron una traza de dos meses en un clúster de producción con más de 6\,000 GPU heterogéneas en Alibaba, e identificaron que los principales desafíos de la planificación radican en la baja utilización del procesador, los largos retardos en cola y la fragmentación sustancial de la memoria del acelerador. Para abordar la gobernanza y equidad en el reparto de recursos heterogéneos, \citet{mahajan-themis-2020} propusieron Themis con el fin de garantizar equidad de largo plazo en clústeres de aprendizaje profundo, mientras que \citet{narayanan-gavel-2020} formularon Gavel, un programador consciente de la heterogeneidad de los aceleradores que optimiza políticas de reparto global. Asimismo, \citet{gao-lowgpuutilization-2024} identificaron que la baja utilización de las GPU obedece predominantemente a fallas lógicas en los \emph{scripts} y a interrupciones por tareas fuera del acelerador, detectables mediante instrumentación con Prometheus y el exportador DCGM de NVIDIA.
+En un sentido similar, \citet{gu-tiresias-2019} evaluaron el comportamiento de un clúster de producción y observaron que los planificadores tradicionales concebidos para el procesamiento de grandes volúmenes de datos provocan prolongadas demoras en cola y un bajo desempeño global cuando ejecutan tareas de aprendizaje profundo. Para contrarrestar esta limitación, desarrollaron Tiresias, un gestor de clúster que reduce el tiempo de finalización de los trabajos con dos algoritmos bidimensionales, uno basado en el índice de Gittins cuando se dispone de información parcial y otro que no requiere información alguna sobre su duración. Por su parte, \citet{weng-mlaasinthewild-2022} analizaron una traza de dos meses en un clúster de producción con más de 6\,000 GPU heterogéneas en Alibaba, y explicaron los desafíos que esa carga plantea a la planificación, entre ellos la baja utilización de las GPU, los largos retardos en cola, las tareas difíciles de ubicar por exigir GPU de gama alta, el desbalance de carga entre máquinas heterogéneas y un posible cuello de botella en los procesadores. Para abordar la gobernanza y equidad en el reparto de recursos heterogéneos, \citet{mahajan-themis-2020} propusieron Themis con el fin de garantizar equidad de largo plazo en clústeres de aprendizaje profundo, mientras que \citet{narayanan-gavel-2020} formularon Gavel, un programador consciente de la heterogeneidad de los aceleradores que optimiza políticas de reparto global. Asimismo, \citet{gao-lowgpuutilization-2024} encontraron que los problemas de baja utilización de las GPU se originan en la lógica del código de los trabajos, por cómputo insuficiente en la GPU o por interrupciones de tareas ajenas a ella, en una plataforma que obtiene la utilización de cada GPU del gestor DCGM de NVIDIA a través de Prometheus.
 
-A pesar de sus aportes matemáticos y arquitectónicos, estas propuestas industriales no resuelven el problema que enfrenta el IAsLab. Dichos sistemas fueron diseñados para centros de datos empresariales de hiperescala, provistos de cientos o miles de procesadores homogéneos enlazados por redes de conmutación de alta velocidad, condiciones ausentes en un laboratorio académico que opera 31 estaciones de trabajo en una sala física (104M) sobre una red de área local estándar. En segundo término, estos gestores se enfocan primordialmente en la fase de entrenamiento distribuido por lotes (\emph{batch}), orientando sus heurísticas a maximizar el tiempo de finalización de trabajos largos. Por el contrario, la necesidad del IAsLab radica en la etapa posterior del ciclo, consistente en el despliegue interactivo y continuo de modelos para su consumo mediante llamadas a servicios de red con latencias acotadas. Finalmente, la complejidad operativa de estas arquitecturas exige equipos especializados de soporte de infraestructura a tiempo completo, lo que excede las capacidades de un laboratorio universitario administrado por monitores y profesores.
+A pesar de sus aportes matemáticos y arquitectónicos, estas propuestas industriales no resuelven el problema que enfrenta el IAsLab. Dichos sistemas fueron diseñados para centros de datos empresariales de hiperescala, provistos de cientos o miles de aceleradores enlazados por redes de conmutación de alta velocidad, condiciones ausentes en un laboratorio académico que opera 31 estaciones de trabajo en una sala física (104M) sobre una red de área local estándar. En segundo término, estos gestores se enfocan primordialmente en la fase de entrenamiento distribuido por lotes (\emph{batch}), orientando sus heurísticas a minimizar el tiempo de finalización de trabajos largos. Por el contrario, la necesidad del IAsLab radica en la etapa posterior del ciclo, consistente en el despliegue interactivo y continuo de modelos para su consumo mediante llamadas a servicios de red con latencias acotadas. Finalmente, operar estas arquitecturas requiere personal especializado, un recurso escaso en los laboratorios universitarios, que suelen administrar sus clústeres compartidos con personal limitado \citep{xu-sing-2025}.
 
 \section{Infraestructuras de aceleración en entornos universitarios}\label{sec:entornos-universitarios}
 
-En el ámbito académico, las universidades han recurrido históricamente a herramientas consolidadas de computación de alto rendimiento para compartir recursos escasos. El esquema más extendido consiste en otorgar a los usuarios acceso directo por consola a través de SSH sobre máquinas administradas mediante Slurm o configuraciones locales básicas. Sin embargo, \citet{xu-sing-2025} advierten que muchas instituciones carecen de la experiencia técnica necesaria para optimizar estos clústeres compartidos y adoptan herramientas convencionales con configuraciones subóptimas, lo que conduce a una subutilización marcada de los equipos. Según los autores, el acceso nativo por consola carece de mecanismos adecuados de aislamiento y gestión, suscita inquietudes de seguridad y estabilidad, obliga a los usuarios a configurar manualmente sus entornos y a coordinar los turnos de las GPU por canales informales, lo que dificulta un reparto equitativo e introduce conflictos recurrentes entre sesiones concurrentes.
+En el ámbito académico, las universidades han recurrido históricamente a herramientas consolidadas de computación de alto rendimiento (HPC, \emph{High Performance Computing}) para compartir recursos escasos. Un esquema simple y común consiste en otorgar a los usuarios acceso directo por consola a las máquinas con GPU a través de SSH (\emph{Secure Shell}), y otro, en administrar las máquinas con un planificador de colas como Slurm. \citet{xu-sing-2025} advierten que muchas universidades carecen de la experiencia necesaria para aprovechar estos clústeres compartidos y adoptan una herramienta conocida con configuraciones subóptimas, con lo que terminan subutilizando recursos ya limitados. Según los autores, el acceso directo por consola carece de mecanismos de aislamiento y gestión de recursos, suscita inquietudes de estabilidad y seguridad, y obliga a los usuarios a configurar a mano sus entornos y a coordinar el uso de las GPU por otros canales, lo que puede producir conflictos entre sesiones concurrentes y dificulta un reparto equitativo.
 
-Para superar estas fallas en campus educativos, la literatura reciente documenta plataformas adaptadas a la comunidad universitaria. \citet{xu-sing-2025} presentaron SING, un clúster de aprendizaje automático en campus que gestiona más de 160 GPU para más de 480 usuarios activos. Su evaluación demostró que compartir los recursos mediante abstracciones adecuadas es indispensable para maximizar el acceso, y resaltó que la potencia eléctrica en reposo de los equipos se mantiene relativamente constante, de manera que un acelerador asignado sin actividad real genera un consumo energético estéril. En una escala geográfica mayor, la National Research Platform reúne infraestructura multiusuario sobre Kubernetes que atiende a investigadores de 50 campus universitarios \citep{weitzel-nrpreservation-2025}. En dicha plataforma, la incorporación de un sistema de reservas sobre las tarjetas de alta gama elevó la utilización promedio de las GPU del 21.49\,\% al 31.37\,\%, lo que confirma experimentalmente que la asignación basada en reservas formales aventaja a los esquemas de acceso libre y desregulado.
+Para superar estas fallas en campus educativos, la literatura reciente documenta plataformas adaptadas a la comunidad universitaria. \citet{xu-sing-2025} presentaron SING, un clúster de aprendizaje automático en campus que gestiona más de 160 GPU para más de 480 usuarios activos, y señalan que compartir estos recursos de forma efectiva es esencial para maximizar tanto su utilización como su accesibilidad. En una escala geográfica mayor, la National Research Platform reúne infraestructura multiusuario sobre Kubernetes que atiende a investigadores de 50 campus universitarios \citep{weitzel-nrpreservation-2025}. En dicha plataforma, la incorporación de un sistema de reservas sobre las tarjetas de alta gama elevó la utilización promedio de las GPU del 21.49\,\% al 31.37\,\%, mejora que sus operadores presentan como evidencia de la efectividad del sistema de reservas.
 
-Aunque estas soluciones se aproximan al contexto académico, no resultan directamente aplicables ni suficientes para los requerimientos del IAsLab. Los sistemas basados en Slurm fueron concebidos para procesar trabajos científicos encolados por lotes y carecen de primitivas para el despliegue persistente de microservicios de inferencia desacoplados en contenedores con puntos de acceso de red protegidos. Por otra parte, infraestructuras de gran envergadura como la National Research Platform operan como federaciones científicas complejas que no contemplan la realidad de una sala de docencia que debe compartir sus estaciones de trabajo con clases académicas presenciales en horarios diurnos. Asimismo, ninguna de estas plataformas enlaza sus políticas de cuotas con los proveedores institucionales de identidad propios de las universidades latinoamericanas, en particular con el servicio SAAMFI de la Universidad Icesi, ni incorpora reglas de prioridad que otorguen a los profesores la capacidad de gobernar el aula y sobreponerse a las reservas estudiantiles ante prácticas pedagógicas programadas.
+Aunque estas soluciones se aproximan al contexto académico, no resultan directamente aplicables a los requerimientos del IAsLab, y cada una resuelve una parte del problema. La National Research Platform autentica a sus usuarios con identidad federada y los restringe a los espacios de nombres de sus grupos de investigación \citep{weitzel-nrpreservation-2025}, SING aplica cuotas de recursos por usuario \citep{xu-sing-2025}, y el clúster que describe \citet{george-hpcgpuclassroom-2020} limita los trabajos de cada estudiante y da a los profesores una prioridad algo mayor. Los planificadores de tipo Slurm, sin embargo, están orientados a trabajos encolados por lotes, más que al despliegue persistente de servicios de inferencia en contenedores. La National Research Platform, por su parte, opera como una federación científica de gran escala que no contempla una sala de docencia cuyas estaciones de trabajo deben seguir disponibles para las clases presenciales. Ninguna de estas soluciones reúne en una sola plataforma el despliegue de servicios de inferencia, la reserva de cupos con prioridad según los roles que entrega el proveedor de identidad de cada institución y la convivencia con las clases en las mismas estaciones, que es la combinación que requiere el IAsLab.
 
 \section{Ecosistemas de MLOps y plataformas de ciclo de vida}\label{sec:ecosistemas-mlops}
 
-La identificación de los costos ocultos de mantener sistemas de aprendizaje automático en producción \citep{sculley-hiddentechnicaldebt-2015} motivó la posterior formalización del ciclo de vida bajo el paradigma de MLOps \citep{kreuzberger-mlopsoverview-2023, eken-mlopsmultivocalreview-2026}. En el mercado comercial predominan las soluciones gestionadas en la nube pública. % pendiente de investigar con fuente citable real: "tales como Amazon SageMaker, Google Vertex AI y Microsoft Azure Machine Learning"
-Estas plataformas resuelven con madurez el seguimiento de experimentos, el registro centralizado de modelos, la orquestación de flujos de trabajo y el autoescalado de puntos de conexión para inferencia mediante microservicios en contenedores.
+Tras la identificación de los costos ocultos de mantener sistemas de aprendizaje automático en producción \citep{sculley-hiddentechnicaldebt-2015}, la literatura formalizó el ciclo de vida bajo el paradigma de MLOps \citep{kreuzberger-mlopsoverview-2023, eken-mlopsmultivocalreview-2026}. \citet{kreuzberger-mlopsoverview-2023} recogen, entre los servicios en la nube para poner modelos en servicio, Microsoft Azure ML, AWS SageMaker, IBM Watson Studio y Google Vertex AI, y \citet{eken-mlopsmultivocalreview-2026} señalan, con base en uno de los estudios que revisan, que las plataformas gestionadas en la nube, como Amazon SageMaker, dan soporte a la preparación de datos, el entrenamiento y el seguimiento de experimentos, el despliegue automatizado sobre infraestructura gestionada y el monitoreo durante todo el ciclo de vida.
 
-A pesar de su funcionalidad integral, las plataformas en nube comercial quedan descartadas para el IAsLab por una razón estructural y por barreras económicas directas. En el aspecto estructural, el proyecto exige operar de forma estricta en modalidad local (\emph{on-premise}) sobre el \emph{hardware} físico ya instalado en la sala 104M del laboratorio. En el aspecto económico, los esquemas de facturación por consumo en nube imponen costos recurrentes que la comunidad estudiantil y los grupos de investigación no pueden financiar de manera continua, lo que marginaría a los usuarios con menores recursos. A ello se suma la soberanía y confidencialidad de la información, dado que los proyectos del macroproyecto en áreas de e-Salud e Industria 4.0 manejan registros clínicos y procesos industriales sensibles cuya exportación a centros de datos externos contravendría regulaciones institucionales y normativas vigentes de protección de datos personales.
+A pesar de su funcionalidad integral, las plataformas en nube comercial quedan descartadas para el IAsLab por una razón estructural y por barreras económicas directas. En el aspecto estructural, el proyecto exige operar de forma estricta en modalidad local (\emph{on-premise}) sobre el \emph{hardware} físico ya instalado en la sala 104M del laboratorio. En el aspecto económico, los esquemas de facturación por consumo en nube imponen costos recurrentes que la comunidad estudiantil y los grupos de investigación no pueden financiar de manera continua, lo que marginaría a los usuarios con menores recursos. A ello se suma que mantener el procesamiento en servidores propios resguarda la privacidad de la información de los proyectos del macroproyecto en e-Salud e Industria 4.0. \citet{eken-mlopsmultivocalreview-2026} recogen, además, que usar plataformas completamente gestionadas implica perder control \emph{fine-grained} sobre la pila tecnológica, y que sus servicios pueden no cubrir los requisitos especializados de muchas organizaciones.
 
-En el ámbito del \emph{software} libre desplegable sobre Kubernetes, Kubeflow y TensorFlow Serving representan las alternativas más citadas \citep{sculley-hiddentechnicaldebt-2015, muiruri-mlinferenceserving-2026}. TensorFlow Serving sentó un estándar temprano para servir modelos serializados con soporte para concurrencia y versionado automático. Sin embargo, su arquitectura está acoplada al formato de grafo de TensorFlow, lo que ofrece un soporte restringido frente a los modelos generativos contemporáneos sustentados en Transformers y formatos de compresión comunitarios. Por su lado, Kubeflow agrupa un ecosistema modular extenso para aprendizaje automático en Kubernetes, pero introduce un \emph{footprint} basal desmedido y una elevada complejidad operativa de instalación y mantenimiento. Dicha suite concentra su esfuerzo en la automatización de canalizaciones de entrenamiento distribuido, sin suministrar una interfaz liviana orientada al autoservicio de inferencia de modelos cuantizados ni un mecanismo de gobernanza de cuotas por rol acoplado a la infraestructura de una sala de cómputo universitaria.
+En el ámbito del \emph{software} libre desplegable sobre Kubernetes, \citet{kreuzberger-mlopsoverview-2023} mencionan KServing de Kubeflow, TensorFlow Serving y Seldon como marcos de servicio de modelos compatibles con Kubernetes, y describen Kubeflow como una plataforma de aprendizaje automático de extremo a extremo basada en Kubernetes, en la que cada componente se empaqueta en un contenedor. Estas herramientas cubren el servicio de modelos, pero su adopción tiene un costo. \citet{eken-mlopsmultivocalreview-2026} recogen que, pese a la potencia de herramientas como Kubeflow, el alto costo de infraestructura, la experiencia que exige operar sus canalizaciones y la sobrecarga de instalación y mantenimiento frenan su adopción, en especial en las etapas iniciales de los proyectos y en organizaciones pequeñas. Ninguna de ellas incorpora, por sí sola, la reserva de cupos con prioridad por rol que requiere la sala.
 
 \section{Pasarelas de inferencia y gobernanza de interfaces de programación}\label{sec:pasarelas-inferencia}
 
-Con la proliferación de modelos de lenguaje de gran escala, surgieron herramientas intermediarias enfocadas en estandarizar el consumo de servicios de inferencia mediante pasarelas de interfaz de programación de aplicaciones (\emph{API Gateways}), entre las que destaca LiteLLM. Este enfoque se sustenta en patrones reconocidos de microservicios \citep{montesi-apigatewaypatterns-2016}, e implementa un componente intermediario (\emph{proxy}) que traduce peticiones heterogéneas al esquema estandarizado de la API de OpenAI, distribuye el tráfico entre diversos proveedores y ejecuta mecanismos de control de tasa de peticiones (\emph{rate limiting}) y balanceo de carga.
+Con la proliferación de los LLM, surgieron herramientas intermediarias enfocadas en estandarizar el consumo de servicios de inferencia mediante pasarelas de interfaz de programación de aplicaciones (\emph{API Gateways}), entre las que destaca LiteLLM. Este enfoque se sustenta en patrones reconocidos de microservicios \citep{montesi-apigatewaypatterns-2016}, e implementa un componente intermediario (\emph{proxy}) que traduce peticiones heterogéneas al esquema estandarizado de la API de OpenAI, distribuye el tráfico entre diversos proveedores y ejecuta mecanismos de control de tasa de peticiones (\emph{rate limiting}) y balanceo de carga.
 
-La evaluación técnica realizada durante la formulación de la arquitectura del IAsLab determinó que una pasarela como LiteLLM no puede constituir el núcleo de la plataforma y fue descartada como solución central. % [verify: ADR-024]
-LiteLLM opera exclusivamente en la capa de aplicación sobre el protocolo HTTP, lo que presupone que los modelos ya se encuentran desplegados, activos y accesibles en algún punto de red externo o local. En consecuencia, carece de capacidades para interactuar con el orquestador de contenedores de Kubernetes, no puede crear, reiniciar ni destruir instancias de servicio, desconoce el estado térmico y la disponibilidad de memoria de video en las tarjetas aceleradoras, y no interactúa con la infraestructura de telemetría de bajo nivel (DCGM). Adicionalmente, restringe su ámbito de operación a los modelos de lenguaje basados en texto, dejando desprovistas de soporte a las cargas de aprendizaje automático clásico, análisis tabular y visión artificial que también forman parte del ecosistema del laboratorio.
+La evaluación técnica realizada durante la formulación de la arquitectura de la plataforma determinó que una pasarela como LiteLLM no puede constituir el núcleo de la plataforma y fue descartada como solución central.
+LiteLLM opera exclusivamente en la capa de aplicación sobre el protocolo de transferencia de hipertexto (HTTP, \emph{Hypertext Transfer Protocol}), lo que presupone que los modelos ya se encuentran desplegados, activos y accesibles en algún punto de red externo o local. En consecuencia, carece de capacidades para interactuar con el orquestador de contenedores de Kubernetes, no puede crear, reiniciar ni destruir instancias de servicio, desconoce el estado térmico y la disponibilidad de memoria de video en las tarjetas aceleradoras, y no interactúa con la infraestructura de telemetría de bajo nivel (DCGM). Adicionalmente, restringe su ámbito de operación a los modelos de lenguaje basados en texto, dejando desprovistas de soporte a las cargas de aprendizaje automático clásico, análisis tabular y visión artificial que también forman parte del ecosistema del laboratorio.
 
 \section{Compromisos de ingeniería en motores de inferencia especializados}\label{sec:motores-inferencia}
 
 El despliegue eficiente de modelos de lenguaje sobre aceleradores con memoria limitada exige técnicas avanzadas de administración de memoria y planificación de peticiones. En la literatura especializada se identifican dos vertientes con compromisos de diseño marcadamente diferenciados, representadas por vLLM y \emph{llama.cpp}. Por una parte, vLLM introduce el algoritmo PagedAttention, que gestiona el almacén de claves y valores (KV \emph{cache}) mediante principios análogos a la paginación de memoria virtual en sistemas operativos, con lo cual elimina casi en su totalidad la fragmentación interna y externa de la memoria de video \citep{kwon-pagedattention-2023}. Al combinarse con planificación a nivel de iteración (\emph{iteration-level scheduling}) y procesamiento de lotes continuo \citep{yu-orca-2022, miao-llmservingsurvey-2025}, este motor maximiza la tasa de procesamiento global (\emph{throughput}) cuando atiende múltiples peticiones concurrentes.
 
-No obstante, vLLM paga esa alta tasa de procesamiento con una asignación estática y sustancial de memoria de video reservada para los bloques de la memoria intermedia KV. En estaciones de trabajo equipadas con una única GPU de 24\,GB (como las tarjetas NVIDIA RTX 4090 de la sala 104M), esta reserva previa de VRAM restringe severamente el espacio restante para cargar los pesos del modelo, lo que incrementa el riesgo de agotamiento de memoria (\emph{out of memory}) al ejecutar modelos medianos o impide levantar múltiples servicios concurrentes en la misma máquina. En contraste, \emph{llama.cpp} adopta una arquitectura minimalista desarrollada en C/C++, desprovista de las capas de sobrecarga del entorno de ejecución de Python, lo que reduce drásticamente el \emph{footprint} basal de memoria y la latencia en la generación de flujos unitarios de \emph{tokens}. Además, su integración nativa con formatos de cuantización posentrenamiento como GGUF permite alojar modelos de 7\,000 a 14\,000 millones de parámetros con una reducción de precisión numérica que conserva la fidelidad de inferencia \citep{frantar-gptq-2023, chen-llmquantizationsurvey-2026}. Sin embargo, \emph{llama.cpp} carece de orquestación distribuida nativa, soporte para políticas multiusuario de reparto y herramientas de gobernanza de clúster.
+No obstante, en las pruebas que el laboratorio realizó sobre las estaciones de la sala 104M, equipadas cada una con una GPU NVIDIA RTX 4090 de 24\,GB, vLLM no produjo buenos resultados, y la mejor opción fue una compilación de \emph{llama.cpp} ajustada a ese \emph{hardware}. \emph{llama.cpp} tiene una sobrecarga de ejecución mínima y ejecuta de forma nativa pesos cuantizados en formato GGUF, lo que permite alojar modelos de 7\,000 a 14\,000 millones de parámetros dentro de esa memoria. La cuantización posentrenamiento en la que se apoya reduce la precisión numérica de los pesos con una pérdida de calidad acotada \citep{frantar-gptq-2023, chen-llmquantizationsurvey-2026}. Sin embargo, \emph{llama.cpp} carece de orquestación distribuida nativa, soporte para políticas multiusuario de reparto y herramientas de gobernanza de clúster.
 
 Este análisis comparativo sustenta una decisión central de ingeniería para el proyecto. En lugar de acoplar la arquitectura a un motor específico, la plataforma debe tratar a los motores de inferencia como componentes empaquetados en imágenes de contenedor e intercambiables según el perfil de la carga solicitada. Esta modularidad permite aprovechar la baja latencia y el consumo reducido de \emph{llama.cpp} para sesiones interactivas individuales o modelos cuantizados en GGUF, al tiempo que conserva la capacidad de incorporar vLLM u otros motores especializados cuando la concurrencia o la naturaleza del modelo así lo demanden.
 
@@ -249,31 +70,32 @@ Este análisis comparativo sustenta una decisión central de ingeniería para el
 
 La \cref{tab:estado-del-arte-comparacion} resume la caracterización de las alternativas de solución analizadas en las secciones previas frente a los requerimientos operacionales y contextuales de la infraestructura del IAsLab en la Universidad Icesi. La evaluación contempla cinco criterios técnicos y organizacionales determinantes para la viabilidad de la plataforma en este escenario, que comprenden la capacidad de operar de forma estricta en infraestructura local (\emph{on-premise}) sin dependencia de nubes comerciales, el soporte agnóstico para cargas diversas de inteligencia artificial (tanto modelos de lenguaje como arquitecturas tradicionales de aprendizaje automático), la existencia de un sistema de gobernanza de cuotas acoplado a la identidad académica institucional (SAAMFI), la observabilidad de aceleradores \emph{fine-grained} en tiempo real basada en métricas de \emph{hardware}, y el desacoplamiento arquitectónico frente al motor de inferencia subyacente.
 
-{\small
-\begin{xltabular}{\textwidth}{p{0.24\textwidth} p{0.14\textwidth} p{0.13\textwidth} p{0.14\textwidth} p{0.14\textwidth} X}
-        \caption{Comparación de alternativas previas frente a los requerimientos de la plataforma IAsLab ORCHID.}
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{xltabular}{\textwidth}{>{\raggedright\arraybackslash}p{0.19\textwidth} >{\raggedright\arraybackslash}p{0.12\textwidth} >{\raggedright\arraybackslash}p{0.13\textwidth} >{\raggedright\arraybackslash}p{0.15\textwidth} >{\raggedright\arraybackslash}p{0.14\textwidth} >{\raggedright\arraybackslash}X}
+        \caption[Comparación de alternativas previas frente a los requerimientos de la plataforma]{Comparación de alternativas previas frente a los requerimientos de la plataforma IAsLab ORCHID. Valoración de los autores a partir de las \crefrange{sec:clusteres-industriales}{sec:motores-inferencia}.}
         \label{tab:estado-del-arte-comparacion} \\
         \toprule
-        \textbf{Enfoque o solución} & \textbf{Operación \emph{on-premise}} & \textbf{Cargas LLM y ML} & \textbf{Gobernanza por rol (SAAMFI)} & \textbf{Telemetría GPU en tiempo real} & \textbf{Desacoplamiento de motor} \\
+        \textbf{Enfoque o solución} & \textbf{Operación \emph{on-premise}} & \textbf{Cargas LLM y ML} & \textbf{Gobernanza por rol} & \textbf{Telemetría GPU en tiempo real} & \textbf{Desacoplamiento de motor} \\
         \midrule
         \endfirsthead
         \toprule
-        \textbf{Enfoque o solución} & \textbf{Operación \emph{on-premise}} & \textbf{Cargas LLM y ML} & \textbf{Gobernanza por rol (SAAMFI)} & \textbf{Telemetría GPU en tiempo real} & \textbf{Desacoplamiento de motor} \\
+        \textbf{Enfoque o solución} & \textbf{Operación \emph{on-premise}} & \textbf{Cargas LLM y ML} & \textbf{Gobernanza por rol} & \textbf{Telemetría GPU en tiempo real} & \textbf{Desacoplamiento de motor} \\
         \midrule
         \endhead
         \bottomrule
         \endfoot
-        Clústeres HPC tradicionales (Slurm) \citep{xu-sing-2025} & Total & Parcial (foco en \emph{batch}) & Nula (acceso Unix manual) & Limitada (sin DCGM integrado) & Nulo (ejecución directa) \\
-        Gestores industriales de hiperescala \citep{jeon-philly-2019, gu-tiresias-2019} & Inviable (requiere gran escala) & Parcial (foco en entrenamiento) & Incompatible (cuotas corporativas) & Avanzada (Prometheus/DCGM) & Parcial \\
-        Plataformas MLOps en nube comercial \citep{eken-mlopsmultivocalreview-2026} & Nula (exclusivo nube) & Total & Incompatible (costos por uso) & Avanzada (propietaria) & Total \\
-        Ecosistemas MLOps en Kubernetes \citep{muiruri-mlinferenceserving-2026} & Total & Parcial (TF o pipelines pesados) & Nula (sin roles académicos) & Media (requiere configuración) & Parcial \\
-        Pasarelas de inferencia API \citep{montesi-apigatewaypatterns-2016} & Total & Solo LLM (a nivel HTTP) & Parcial (límites de tasa HTTP) & Nula (ciega al \emph{hardware}) & Nulo (solo redirige peticiones) \\
+        Clústeres HPC tradicionales (Slurm) & Total & Parcial (foco en \emph{batch}) & Parcial (límites y prioridad por usuario) & Limitada (sin DCGM integrado) & Nulo (ejecución directa) \\
+        Gestores industriales de hiperescala & Inviable (requiere gran escala) & Parcial (foco en entrenamiento) & Incompatible (cuotas corporativas) & Avanzada (Prometheus y DCGM) & Parcial \\
+        Plataformas MLOps en nube comercial & Nula (exclusivo nube) & Total & Incompatible (costos por uso) & Avanzada (propietaria) & Total \\
+        Ecosistemas MLOps en Kubernetes & Total & Parcial (TensorFlow o \emph{pipelines} pesados) & Nula (sin roles académicos) & Media (requiere configuración) & Parcial \\
+        Pasarelas de inferencia API & Total & Solo LLM (a nivel HTTP) & Parcial (límites de tasa HTTP) & Nula (ciega al \emph{hardware}) & Nulo (solo redirige peticiones) \\
         \midrule
         \textbf{IAsLab ORCHID (Propuesta)} & \textbf{Total (sala 104M)} & \textbf{Total (LLM y ML)} & \textbf{Total (reserva por rol SAAMFI)} & \textbf{Total (DCGM, Prometheus, Loki)} & \textbf{Total (contenedores intercambiables)} \\
 \end{xltabular}
 }
 
-A partir de la comparación efectuada, se identifican tres vacíos primordiales en el conocimiento aplicado y en las herramientas de ingeniería existentes. El primero radica en que la literatura y los productos comerciales ofrecen soluciones polarizadas entre los macroclústeres de centros de datos industriales y los servidores HPC clásicos de investigación por lotes, desatendiendo la realidad intermedia de los laboratorios universitarios que operan estaciones de trabajo de cómputo con aceleradores de gama media-alta destinadas a un uso dual entre docencia presencial e investigación aplicada. El segundo es la ausencia de una plataforma que integre la gobernanza del acceso mediante reserva de cupos orientada a roles académicos (priorizando a los profesores en el control del aula frente a las solicitudes de los estudiantes) con el aprovisionamiento de microservicios de inferencia desacoplados. Las soluciones existentes o bien ignoran la capa de identidad institucional al apoyarse en acceso por consola, o bien delegan la tarificación a costes económicos por consumo en la nube pública. El tercero consiste en una desconexión empírica entre los mecanismos de telemetría de \emph{hardware} a bajo nivel y las interfaces de autoservicio de despliegue. Mientras herramientas como Prometheus y DCGM recolectan métricas especializadas en clústeres empresariales, dicha observabilidad rara vez se expone de forma directa y comprensible para administradores de salas académicas que requieren vigilar la saturación de memoria de video y el estado térmico de los nodos compartidos.
+A partir de la comparación efectuada, se identifican tres vacíos en el conocimiento aplicado y en las herramientas de ingeniería existentes. El primero es que las soluciones revisadas se reparten entre los clústeres industriales de gran escala, los clústeres HPC de investigación por lotes y los clústeres dedicados de campus, como SING o la National Research Platform, y ninguna aborda el caso de un laboratorio cuyas estaciones de trabajo con aceleradores de gama media-alta se reparten entre la docencia presencial y la investigación aplicada. El segundo es la ausencia de una plataforma que integre la gobernanza del acceso mediante reserva de cupos con prioridad por rol con el aprovisionamiento de servicios de inferencia desacoplados. Las soluciones revisadas resuelven por separado la identidad, las cuotas o la prioridad, sin reunirlas alrededor del servicio de inferencia. El tercero es acercar la telemetría de \emph{hardware} de bajo nivel, que herramientas como Prometheus y DCGM ya recolectan en clústeres empresariales, a una interfaz de autoservicio con la que los administradores de una sala académica puedan vigilar la saturación de la memoria de video y el estado térmico de los nodos compartidos.
 
-La plataforma IAsLab ORCHID se proyecta precisamente para cerrar estos vacíos en la Universidad Icesi. Al orquestar contenedores sobre Kubernetes en la sala 104M, implementar un sistema de reserva de cupos vinculado a los roles de SAAMFI con prioridad docente, instrumentar el clúster con Prometheus, Loki, Grafana y el exportador DCGM de NVIDIA, y mantener desacoplado el motor de servicio de inferencia, la propuesta articula las fortalezas observadas en el estado del arte y resuelve las limitaciones estructurales que impiden a las soluciones preexistentes operar en este contexto institucional.
+La plataforma IAsLab ORCHID se proyecta precisamente para cerrar estos vacíos en la Universidad Icesi. Al orquestar contenedores sobre Kubernetes en la sala 104M, implementar un sistema de reserva de cupos vinculado a los roles de SAAMFI con prioridad por rol, instrumentar el clúster con Prometheus, Thanos, Loki, Grafana y el exportador DCGM de NVIDIA, y mantener desacoplado el motor de servicio de inferencia, la propuesta articula las fortalezas observadas en el estado del arte y busca resolver las limitaciones estructurales que impiden a las soluciones preexistentes operar en este contexto institucional.
 

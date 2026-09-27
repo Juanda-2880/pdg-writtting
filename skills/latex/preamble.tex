@@ -25,6 +25,9 @@
 % --- Language ---------------------------------------------------------------
 \usepackage[spanish]{babel}
 \addto\captionsspanish{\renewcommand{\listtablename}{Índice de tablas}}
+% El rótulo de las tablas dice «Tabla», igual que la prosa y que \cref (más
+% abajo). Sin esto babel[spanish] imprime «Cuadro» (autores, 2026-09-27).
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}
 % babel[spanish] makes "<" and ">" active shorthands for guillemets (« »),
 % which breaks TikZ arrow tips such as \draw[->] with a cryptic
 % "\language@active@arg has an extra }" error. We use \enquote{...} from
@@ -107,11 +110,13 @@
 % --- Cross-references: hyperref THEN cleveref (order matters) --------------
 \usepackage[plainpages=false, colorlinks=false, pdfborder={0 0 0}]{hyperref}
 \usepackage[spanish,capitalize]{cleveref}
-% cleveref's Spanish set already prints "Figura"/"Capítulo"/"Sección"/"Ecuación"
-% correctly (capitalized even mid-sentence, which is the Spanish academic
-% convention this cleveref set follows for reference words), but its default
-% word for the `table` type is "Cuadro", not "Tabla" — override it to match
-% normas-APA.md and this thesis's own usage, capitalized the same way.
+% cleveref's Spanish set prints "Figura"/"Capítulo"/"Ecuación" correctly
+% (capitalized even mid-sentence, the convention this cleveref set follows),
+% but its defaults for `table` ("Cuadro") and `section`/`subsection`
+% ("Apartado") don't match this thesis: the prose writes «la \cref{sec:...}»
+% and «la \cref{tab:...}», so both are overridden to the feminine "Tabla" and
+% "Sección" (the section override was added 2026-09-27, after the PDF printed
+% «la Apartado 4.7»).
 % Los objetivos específicos viven en un `enumerate` (thesis/chapters/
 % 04-objetivos.tex) y se referencian desde otros capítulos. Por defecto
 % cleveref los nombraría "Punto N"; ese enumerate declara localmente
@@ -120,6 +125,10 @@
 \AtBeginDocument{%
   \crefname{table}{Tabla}{Tablas}%
   \Crefname{table}{Tabla}{Tablas}%
+  \crefname{section}{Sección}{Secciones}%
+  \Crefname{section}{Sección}{Secciones}%
+  \crefname{subsection}{Sección}{Secciones}%
+  \Crefname{subsection}{Sección}{Secciones}%
 }
 \crefname{objesp}{objetivo específico}{objetivos específicos}
 \Crefname{objesp}{Objetivo específico}{Objetivos específicos}
