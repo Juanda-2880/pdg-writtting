@@ -67,7 +67,7 @@ Accepted forms, all matched against `thesis/chapters/*.tex`:
 | Form | Example |
 | :--- | :--- |
 | Chapter number or file | `cap05`, `05-marco-teorico` |
-| `\label` | `sec:gobernanza-recursos-compartidos`, `obj:gobernanza`, `tab:cronograma` |
+| `\label` | `sec:gobernanza-recursos-compartidos`, `obj:gobernanza`, `tab:fases-desarrollo` |
 | Section title fragment | `"Justificación"`, `"riesgos"` |
 | Paragraph inside a section | `sec:identidad-rbac ¶2` |
 

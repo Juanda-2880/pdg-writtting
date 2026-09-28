@@ -6,9 +6,9 @@ Mapa de cada entrada de [`../thesis/references.bib`](../thesis/references.bib) a
 - **Versión del PDF:** si es la versión publicada, un preprint o una versión de autor. Una cita textual se comprueba siempre contra la versión publicada.
 - **Verificada:** si la entrada ya tiene usos comprobados en [`../thesis/CITAS-VERIFICADAS.md`](../thesis/CITAS-VERIFICADAS.md). «sí (parcial)» significa que hay usos verificados, no que todos lo estén.
 
-Actualizado: 2026-09-27 (revisión completa del documento: 26 fuentes nuevas en `pdf/`, verificación de los caps. 05, 06 y 07).
+Actualizado: 2026-09-27 (revisión completa del documento: 26 fuentes nuevas en `pdf/`, verificación de los caps. 05, 06 y 07). El mismo día salió `lewis-susbenchmarks-2018` de `references.bib`, junto con el *System Usability Scale* del objetivo 4.
 
-## Citadas en la tesis (43)
+## Citadas en la tesis (42)
 
 | Clave BibTeX | Año | Citada en | Referencia | PDF | Versión del PDF | Cómo obtenerla | Verificada |
 | :--- | :---: | :--- | :--- | :--- | :--- | :--- | :---: |
@@ -45,7 +45,6 @@ Actualizado: 2026-09-27 (revisión completa del documento: 26 fuentes nuevas en 
 | `li-rbaccloudsurvey-2015` | 2015 | cap. 05 | [DOI](https://doi.org/10.1007/978-3-319-11104-9_95) | [`pdf/li-rbaccloudsurvey-2015.pdf`](./pdf/li-rbaccloudsurvey-2015.pdf) | Publicada (Springer, CENet 2014), descargada por los autores | Por determinar | sí |
 | `fett-oauth2security-2016` | 2016 | cap. 05 | [DOI](https://doi.org/10.1145/2976749.2978385) | [`pdf/fett-oauth2security-2016.pdf`](./pdf/fett-oauth2security-2016.pdf) | Versión extendida arXiv 1601.01229v4 (la de CCS '16 es abreviada) | ACM Digital Library (portal Icesi) | sí |
 | `montesi-apigatewaypatterns-2016` | 2016 | cap. 05, cap. 06 | [URL](https://arxiv.org/abs/1609.05830) | [`pdf/montesi-apigatewaypatterns-2016.pdf`](./pdf/montesi-apigatewaypatterns-2016.pdf) | **Preprint** arXiv 1609.05830 | Acceso abierto: arXiv | sí |
-| `lewis-susbenchmarks-2018` | 2018 | cap. 05 | — | [`pdf/lewis-susbenchmarks-2018.pdf`](./pdf/lewis-susbenchmarks-2018.pdf) | Publicada (*Journal of Usability Studies*) | Por determinar | sí |
 | `chen-llmquantizationsurvey-2026` | 2026 | cap. 05, cap. 06 | [DOI](https://doi.org/10.1007/s11390-026-5979-1) | [`pdf/chen-llmquantizationsurvey-2026.pdf`](./pdf/chen-llmquantizationsurvey-2026.pdf) | Publicada (*JCST*), descargada por los autores | Por determinar | sí |
 | `sevilla-computetrends-2022` | 2022 | cap. 01 | [DOI](https://doi.org/10.1109/IJCNN55064.2022.9891914) | [`pdf/sevilla-computetrends-2022.pdf`](./pdf/sevilla-computetrends-2022.pdf) | **Preprint** arXiv 2202.05924v2, no la versión de IJCNN que cita el `.bib` | Acceso abierto: arXiv. Versión publicada en IEEE Xplore | sí |
 | `ahmed-industryinfluence-2023` | 2023 | cap. 01 | [DOI](https://doi.org/10.1126/science.ade2420) | [`pdf/ahmed-industryinfluence-2023.pdf`](./pdf/ahmed-industryinfluence-2023.pdf) | Copia del MIT IDE con la maquetación de *Science*, previa a la impresión final | Acceso abierto: ide.mit.edu. Versión publicada en *Science* (no está en los portales listados) | sí |
@@ -101,7 +100,6 @@ Para comprobar que el archivo de otro autor es el mismo que se verificó: `sha25
 | `jiang-loadtestingsurvey-2015.pdf` | `b9092f02571b4356455675936c625ec679a036cbff37f890cd5abcbc321ded1b` |
 | `kreuzberger-mlopsoverview-2023.pdf` | `680907b6ee15a9ca113c33acfc981988dc6dc7fcf06c337a2e112dd5d7aff319` |
 | `kwon-pagedattention-2023.pdf` | `55b3b324d779a67c59dac2519445e3b07c14e6ff5c656fadb47a3d7b5997469e` |
-| `lewis-susbenchmarks-2018.pdf` | `c8024ecb14ab4fb0381b0e6fbab5c34fc6c7976e8018492ccf4dcae148464340` |
 | `li-observabilitysurvey-2021.xml` | `faf5c3de1429ca014be28748626a1ad0ac1fb69e36634b6d7a87d210adf522e6` |
 | `li-rbaccloudsurvey-2015.pdf` | `e1e5ef475d1a40f85078b96446a660ef16740cec4347628d39981e8fdd07147b` |
 | `lima-mlopspractices-2022.pdf` | `fc686dd9c238f9be3e6e985e9e7a46376061930dd1172ad1e703d446725d80be` |

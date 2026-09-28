@@ -64,10 +64,14 @@ against the authors at the end.
    because that fixes a capacity the project has not measured yet and will be graded against.
    It may promise to *determine* how far the concurrency goes, which is still measurable and
    still gradeable, because the deliverable is the measurement. `obj:evaluacion` now reads
-   *"determinar hasta qué nivel de concurrencia sostiene el servicio y en qué banda de
-   referencia publicada se ubica su usabilidad percibida"*: the SUS reference band is the
-   nameable criterion, the concurrency level is the magnitude measured. Do not reintroduce a
-   user count anywhere in `thesis/`.
+   *"determinar hasta qué nivel de concurrencia sostiene el servicio"*: the concurrency level
+   is the magnitude measured. Do not reintroduce a user count anywhere in `thesis/`.
+
+   **Amended 2026-09-27.** The authors removed *aceptación* and the *System Usability Scale*
+   from `obj:evaluacion`: no requirement in `project-context/requirements.md` §2.4 measured
+   acceptance, and an objective part that no requirement lets an evaluator check fails this
+   rule. The objective names no usability framework. Before an objective promises a quality,
+   check that `requirements.md` §2 has the requirements that verify it.
 
 7. **The verb must match what the project really does.** The tutor's warning, verbatim:
    *"hay como unas ligerezas en verbos que ustedes utilicen y tengan cuidado porque va a haber

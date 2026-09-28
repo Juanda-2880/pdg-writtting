@@ -21,7 +21,7 @@
 % ==========================================================================
 \chapter{Metodología}\label{cha:metodologia}
 
-Este capítulo formula y justifica la metodología de ingeniería adoptada para resolver el problema planteado en el \cref{cha:descripcion-problema}, describe la estructura lógica del proceso de investigación, desde la recolección de datos hasta la presentación de resultados, define las fases de desarrollo del proyecto en relación directa con los objetivos específicos del \cref{cha:objetivos}, presenta el cronograma del proyecto y analiza los riesgos y limitaciones que pueden afectar su alcance, cronograma y calidad.
+Este capítulo formula y justifica la metodología de ingeniería adoptada para resolver el problema planteado en el \cref{cha:descripcion-problema}, describe la estructura lógica del proceso de investigación, desde la recolección de datos hasta la presentación de resultados, presenta los requerimientos que permiten verificar el cumplimiento de cada objetivo específico, define las fases de desarrollo del proyecto en relación directa con esos objetivos, presenta el cronograma del proyecto y analiza los riesgos y limitaciones que pueden afectar su alcance, cronograma y calidad.
 
 \section{Estrategia metodológica}\label{sec:estrategia-metodologica}
 
@@ -32,14 +32,215 @@ La duración de tres semanas por \emph{sprint} responde a la naturaleza del trab
 % [verify: ADR-030: Jira y Bitbucket salen del acta 2026-08-26 (Compromisos), no de project-context]
 Los artefactos y ceremonias que el equipo emplea de forma efectiva son un tablero en Jira para el \emph{backlog} y el seguimiento de las iteraciones, un repositorio Bitbucket para el control de versiones y los archivos de configuración de la infraestructura, y una reunión semanal de seguimiento con el tutor del proyecto, en la que se revisa el avance de la iteración en curso y se ajusta el alcance de la siguiente. No se documentan otras ceremonias de Scrum, por ejemplo el \emph{daily scrum} o las retrospectivas formales, porque el equipo no las practica de forma sistemática; el punto de control periódico del proyecto es la reunión semanal con el tutor.
 
-La estructura lógica del proceso de investigación se organiza en cuatro etapas. La recolección de datos se apoya en tres fuentes instrumentadas por el propio sistema, que son la telemetría de \emph{hardware} e inferencia que produce el módulo de observabilidad, los resultados de las pruebas de carga que ejecutan \emph{scripts} de Python externos a la plataforma sobre los nodos de inferencia, y los instrumentos de usabilidad aplicados a los usuarios finales de la plataforma. La organización y sistematización de estos datos consiste en consolidar las métricas de \emph{hardware}, de inferencia y de percepción de usuario en formatos comparables entre fases y entre motores de inferencia evaluados. El análisis contrasta estas métricas contra los objetivos específicos formulados, determinando en qué medida cada módulo construido resuelve la carencia que motivó su desarrollo. Finalmente, la interpretación y presentación de resultados traduce los hallazgos del análisis en conclusiones sobre el nivel de aceptación operacional de la plataforma.
+La estructura lógica del proceso de investigación se organiza en cuatro etapas. La recolección de datos se apoya en dos fuentes instrumentadas por el propio sistema, que son la telemetría de \emph{hardware} e inferencia que produce el módulo de observabilidad y los resultados de las pruebas de carga que ejecutan \emph{scripts} de Python externos a la plataforma sobre los nodos de inferencia. La organización y sistematización de estos datos consiste en consolidar las métricas de \emph{hardware} y de inferencia en formatos comparables entre fases y entre motores de inferencia evaluados. El análisis contrasta estas métricas contra los objetivos específicos formulados, determinando en qué medida cada módulo construido resuelve la carencia que motivó su desarrollo. Finalmente, la interpretación y presentación de resultados traduce los hallazgos del análisis en conclusiones sobre el nivel de concurrencia que la plataforma sostiene.
 
-La evaluación empírica prevista en el \cref{obj:evaluacion} combina pruebas de carga con usuarios concurrentes, generadas con \emph{scripts} de Python externos a la plataforma para no complejizar su desarrollo, y la aplicación del \emph{System Usability Scale} a los usuarios del laboratorio. La \cref{sec:fases-desarrollo} ubica ambas en la fase de evaluación empírica, y el \cref{cha:marco-teorico} presenta el respaldo metodológico de cada instrumento.
+La evaluación empírica prevista en el \cref{obj:evaluacion} ejecuta pruebas de carga con usuarios concurrentes mediante \emph{scripts} de Python externos a la plataforma, para no complejizar su desarrollo. La \cref{sec:fases-desarrollo} ubica esa evaluación en la fase correspondiente, y el \cref{cha:marco-teorico} presenta el respaldo metodológico de la prueba de carga.
+
+\section{Requerimientos por objetivo}
+\label{sec:requerimientos-objetivo}
+
+Esta sección reúne los requerimientos del proyecto, agrupados por el objetivo específico que cada uno sustenta. Son los requerimientos que permiten a un evaluador verificar el cumplimiento de cada objetivo; los entregables de cada objetivo se presentan en el \cref{cha:contribucion-resultados}. Las \cref{sec:req-telemetria,sec:req-gobernanza,sec:req-orquestacion,sec:req-evaluacion} presentan estos requerimientos en los mismos subsistemas funcionales con los que se especificó el proyecto, en el orden de los objetivos específicos del \cref{cha:objetivos}.
+
+\subsection{Módulo de observabilidad (\cref{obj:telemetria})}
+\label{sec:req-telemetria}
+
+Estos requerimientos permiten verificar el cumplimiento del \cref{obj:telemetria}.
+
+\noindent\textbf{Infraestructura base de telemetría}
+\begin{itemize}
+\setlength{\itemsep}{4pt}
+  \item Despliega Prometheus dentro del clúster como servicio permanente que centraliza la recolección de métricas de todos sus componentes.
+  \item Recolecta las métricas nativas de Kubernetes de nodos, \emph{pods} y despliegues mediante kube-state-metrics y node-exporter, sin instrumentación adicional.
+  \item Despliega Thanos sobre Prometheus, con las series temporales conservadas a largo plazo y consultables desde un punto único, sin que la retención dependa del disco de una sola instancia.
+  \item Despliega Loki junto con un agente de recolección en cada nodo que centraliza la salida estándar y de error de todos los \emph{pods} del clúster.
+  \item Despliega Grafana con Prometheus, Thanos y Loki registrados como fuentes de datos, consultables desde una sola interfaz.
+  \item Permite configurar la ventana de retención de métricas y registros.
+  \item Etiqueta métricas y registros con las mismas etiquetas de nodo, espacio de nombres, \emph{pod} y despliegue.
+  \item Refleja la telemetría con una latencia de actualización suficiente para detectar una condición de riesgo mientras aún puede evitarse.
+\end{itemize}
+
+\noindent\textbf{Telemetría de \emph{hardware}}
+\begin{itemize}
+\setlength{\itemsep}{4pt}
+  \item Ejecuta el exportador DCGM de NVIDIA como \emph{DaemonSet} en los nodos con GPU y expone sus métricas a Prometheus.
+  \item Recolecta la temperatura del núcleo y de la memoria de cada GPU.
+  \item Recolecta la utilización de VRAM de cada GPU, en valor absoluto y en porcentaje.
+  \item Recolecta el consumo de potencia en vatios de cada GPU.
+  \item Recolecta los estados de limitación térmica y de potencia (\emph{throttling}) de cada GPU.
+  \item Recolecta el \emph{throughput} del bus PCIe de cada GPU.
+  \item Recolecta el uso del procesador (CPU, \emph{Central Processing Unit}), la memoria de acceso aleatorio (RAM, \emph{Random Access Memory}) y la entrada y salida (E/S) de disco de cada nodo.
+  \item Recolecta el espacio disponible en la partición dedicada a pesos de modelos.
+  \item Recolecta el estado de alcanzabilidad de cada nodo, y distingue un equipo apagado de uno encendido que dejó de responder.
+  \item Captura la telemetría de \emph{hardware} de un nodo sin importar qué carga esté corriendo en él.
+\end{itemize}
+
+\noindent\textbf{Telemetría de la carga servida}
+\begin{itemize}
+\setlength{\itemsep}{4pt}
+  \item Expone un punto \texttt{/metrics} en cada \emph{pod} de motor de inferencia y lo registra como objetivo de recolección de Prometheus.
+  \item Mide el tiempo hasta el primer \emph{token} por despliegue y por modelo.
+  \item Mide la latencia entre \emph{tokens} consecutivos por despliegue.
+  \item Mide los \emph{tokens} por segundo de entrada y de salida por despliegue.
+  \item Mide la cantidad de peticiones en cola y el nivel de saturación de concurrencia de cada motor.
+  \item Mide la latencia de petición y la tasa de peticiones atendidas de las cargas de inteligencia artificial que no son de lenguaje, sin depender de métricas de \emph{tokens}.
+  \item Mide la tasa de errores y de peticiones rechazadas por despliegue.
+  \item Asocia cada métrica de carga al usuario y al despliegue que la originó.
+\end{itemize}
+
+\noindent\textbf{Visualización y alertas}
+\begin{itemize}
+\setlength{\itemsep}{4pt}
+  \item Ofrece un panel de \emph{hardware} filtrable por nodo, con temperatura, VRAM, potencia, PCIe, CPU y RAM.
+  \item Ofrece un panel de carga servida filtrable por modelo y por despliegue, con tiempo al primer \emph{token}, latencia, \emph{throughput} y saturación.
+  \item Ofrece un panel de consumo por usuario, accesible sin recurrir a la línea de comandos.
+  \item Deja configuradas reglas de alerta sobre cualquiera de las métricas recolectadas, con umbrales ajustables, apoyadas en la capacidad de alertas del conjunto de observabilidad.
+  \item Conserva los registros y la telemetría previos a un fallo de nodo.
+\end{itemize}
+
+\subsection{Gobernanza de recursos y cuotas por rol (\cref{obj:gobernanza})}
+\label{sec:req-gobernanza}
+
+Estos requerimientos permiten verificar el cumplimiento del \cref{obj:gobernanza}. El grupo de identidad y acceso se presenta primero porque la plataforma necesita saber quién solicita el recurso antes de aplicarle una cuota; los grupos de cuotas, admisión y el módulo administrativo que los opera siguen a continuación.
+
+\noindent\textbf{Identidad y control de acceso}
+\begin{itemize}
+\setlength{\itemsep}{4pt}
+  \item Autentica a los usuarios contra SAAMFI mediante OAuth 2.0 y OIDC (\emph{OpenID Connect}).
+  \item Redirige al usuario autenticado al panel principal de la aplicación.
+  \item Traduce los atributos del \emph{token} de SAAMFI a los roles de la plataforma en un componente aislado.
+  \item Define un rol de administrador propio, gestionable de forma independiente de SAAMFI.
+  \item Asigna el rol de usuario por defecto a toda identidad autenticada que no sea administradora.
+  \item Deriva del rol de la plataforma los permisos con los que el usuario opera sobre el clúster.
+  \item Registra quién desplegó, detuvo o modificó cada recurso y cada cuota.
+\end{itemize}
+
+\noindent\textbf{Cuotas y aislamiento}
+\begin{itemize}
+\setlength{\itemsep}{4pt}
+  \item Cuenta con un mecanismo de cuotas que acota el consumo de CPU, memoria y GPU de cada usuario.
+  \item Aísla los recursos de cada usuario, de modo que la carga de uno no interfiere con el desempeño ni con los despliegues de otro.
+  \item Acota también el consumo de un despliegue individual.
+  \item Rechaza o encola la solicitud que excede la cuota del usuario, con un mensaje que explica cuál límite se alcanzó.
+  \item Define las cuotas como plantillas por rol, con la posibilidad de sobrescribirlas para un usuario concreto.
+  \item Reserva CPU y memoria para los componentes de la propia plataforma y deja la GPU para los motores de inferencia.
+  \item Permite una sobreasignación configurable entre el 10\,\% y el 20\,\% sobre la capacidad nominal.
+  \item Impide que la sobreasignación lleve un nodo más allá de su capacidad física real.
+  \item Garantiza que la falla o el congelamiento del contenedor de un usuario no desestabilice los contenedores vecinos ni el nodo anfitrión.
+\end{itemize}
+
+\noindent\textbf{Admisión, prioridad y reservas}
+\begin{itemize}
+\setlength{\itemsep}{4pt}
+  \item Encola la solicitud que no encuentra capacidad disponible, en lugar de descartarla.
+  \item Asocia un nivel de prioridad a cada rol.
+  \item Permite que una solicitud de rol prioritario expropie los recursos de una carga de menor prioridad cuando no haya capacidad libre.
+  \item Avisa al usuario cuya carga fue expropiada y conserva sus registros de sesión.
+  \item Permite reservar cupos de GPU por adelantado para una ventana de tiempo definida.
+  \item Inicia y termina la reserva de forma automática en las horas declaradas.
+  \item Avisa al usuario antes del vencimiento de su reserva.
+  \item Guarda los registros y el estado de la sesión al vencer la reserva, antes de liberar o congelar el contenedor.
+  \item Libera los recursos de una reserva vencida.
+  \item Rechaza la reserva que exceda la capacidad disponible de la sala en esa ventana.
+  \item Expone una API con operaciones de creación, consulta, modificación y borrado sobre cuotas y reservas.
+  \item Aplica las cuotas, la prioridad y la contabilidad de consumo a cualquier carga de inteligencia artificial, sea o no un modelo de lenguaje.
+\end{itemize}
+
+\noindent\textbf{Módulo administrativo}
+\begin{itemize}
+\setlength{\itemsep}{4pt}
+  \item Ofrece una interfaz administrativa web que cubre toda la operación de gobernanza.
+  \item Permite al administrador modificar los límites de cuota de un rol o de un usuario y aplicar el cambio al clúster sin reiniciar nada.
+  \item Permite al administrador asignar y retirar el rol de administrador a otra identidad.
+  \item Muestra al administrador todos los despliegues en ejecución, sin importar de qué usuario sean.
+  \item Permite al administrador encender, apagar o deshabilitar cualquier despliegue.
+  \item Muestra al administrador el consumo de cuota de cada usuario en un periodo consultable.
+  \item Muestra al administrador la capacidad libre y comprometida por nodo.
+\end{itemize}
+
+\subsection{Despliegue de modelos y ejecución de cargas de IA (\cref{obj:orquestacion})}
+\label{sec:req-orquestacion}
+
+Estos requerimientos permiten verificar el cumplimiento del \cref{obj:orquestacion}, en el orden en que el clúster necesita quedar operable, desde su base hasta la interfaz con la que un usuario lo consume, pasando por la orquestación de cargas y los motores que soporta.
+
+\noindent\textbf{Clúster base}
+\begin{itemize}
+\setlength{\itemsep}{4pt}
+  \item Corre sobre un clúster de Kubernetes instalado en las estaciones de trabajo de un laboratorio de cómputo, con un nodo de control y el resto como nodos de trabajo, desplegado inicialmente en la sala 104M y extensible a otras salas del laboratorio.
+  \item Aloja el nodo de control en una máquina que permanece encendida sin reinicios no anunciados.
+  \item Configura la red del clúster mediante una interfaz de red de contenedores (CNI, \emph{Container Network Interface}) que permite la comunicación entre los \emph{pods} de distintos nodos según la política de red definida.
+  \item Despliega el NVIDIA GPU Operator para aprovisionar controladores, \emph{runtime} y complemento de dispositivo de forma declarativa, de modo que los nodos expongan el recurso \texttt{nvidia.com/gpu}.
+  \item Dirige las cargas aceleradas únicamente a los nodos con GPU mediante selectores de nodo, marcas y tolerancias.
+  \item Etiqueta cada nodo con sus capacidades de \emph{hardware}.
+  \item Permite incorporar o retirar un nodo del clúster sin reinstalar los demás.
+  \item Limita los recursos que toma de cada estación, de modo que los equipos sigan siendo utilizables en las clases de la sala.
+  \item Permite marcar un nodo como no planificable y desalojar sus cargas de forma ordenada.
+  \item Mantiene toda la configuración del clúster versionada en un repositorio y aplicable de forma automatizada.
+  \item Funciona por completo sobre la infraestructura del laboratorio, sin depender de servicios de nube pública.
+  \item Almacena los pesos de los modelos en una partición de disco dedicada, separada del disco raíz y de los registros del sistema.
+  \item Expone esa partición al clúster como volumen persistente reclamable por los despliegues.
+  \item Conserva los pesos descargados entre reinicios de \emph{pod}.
+\end{itemize}
+
+\noindent\textbf{Orquestación de cargas}
+\begin{itemize}
+\setlength{\itemsep}{4pt}
+  \item Declara cada servicio de inferencia como un recurso del clúster gestionado por un controlador.
+  \item Traduce la petición de despliegue de un usuario en la declaración que el clúster aplica.
+  \item Despliega un modelo tanto dentro de un solo nodo como repartido entre varios cuando la infraestructura de red lo permita, apoyándose en Ray y limitándose a las capacidades que este ofrezca.
+  \item Sostiene varios despliegues concurrentes de distintos usuarios sobre el clúster sin degradación significativa dentro de los límites de cuota.
+  \item Refleja el estado real de cada despliegue, distinguiendo al menos pendiente, en ejecución, fallido y detenido.
+  \item Expone al usuario los registros de su propio despliegue.
+  \item Deja el modelo desplegado accesible dentro del clúster para las pruebas de carga del \Cref{obj:evaluacion}.
+\end{itemize}
+
+\noindent\textbf{Motores y modelos}
+\begin{itemize}
+\setlength{\itemsep}{4pt}
+  \item Empaqueta cada motor de inferencia como imagen de contenedor versionada en un registro accesible desde el clúster.
+  \item Incluye una imagen de \emph{llama.cpp} compilada para el \emph{hardware} de la sala, capaz de ejecutar pesos GGUF cuantizados dentro de los 24\,GB de VRAM de una RTX 4090.
+  \item Permite añadir un motor de inferencia nuevo sin modificar el resto de la plataforma.
+  \item Despliega modelos cuyos pesos ya vienen cuantizados y se apoya en la cuantización que el motor aplica al cargarlos, sin ejecutar un proceso de cuantización propio.
+  \item Ejecuta cargas de inteligencia artificial que no son modelos de lenguaje, entregadas como archivo de pesos más un servidor propio, por el mismo camino de despliegue que un modelo de lenguaje.
+  \item Rechaza, con un mensaje explicativo, el despliegue de un modelo que no cabe en la memoria de video de un nodo.
+  \item Permite dar de alta un modelo nuevo indicando un identificador de repositorio externo o subiendo el archivo de pesos.
+\end{itemize}
+
+\noindent\textbf{Interfaz de despliegue}
+\begin{itemize}
+\setlength{\itemsep}{4pt}
+  \item Ofrece al usuario un catálogo de los modelos ya entrenados disponibles.
+  \item Permite al usuario elegir el motor de ejecución entre los habilitados antes de desplegar.
+  \item Permite al usuario fijar el nodo de despliegue o dejar la decisión al planificador del clúster.
+  \item Permite al usuario iniciar y detener su despliegue desde la interfaz.
+  \item Muestra al usuario su cuota asignada y su consumo actual.
+  \item Es operable por un estudiante sin conocimientos de línea de comandos ni de Kubernetes.
+\end{itemize}
+
+\subsection{Evaluación de desempeño (\cref{obj:evaluacion})}
+\label{sec:req-evaluacion}
+
+Estos requerimientos permiten verificar el cumplimiento del \cref{obj:evaluacion}.
+
+\noindent\textbf{Medición de desempeño}
+\begin{itemize}
+\setlength{\itemsep}{4pt}
+% [verify: ADR-031: diseño propio o reutilización del harness del laboratorio]
+  \item Cuenta con \emph{scripts} sencillos de Python, externos a la plataforma, que ejecutan escenarios de prueba declarados en un archivo de especificación.
+  \item Permite configurar el número de usuarios simultáneos del escenario de carga.
+  \item Genera peticiones de inferencia concurrentes contra los despliegues activos desde fuera de la aplicación.
+  \item Mide en cada ejecución el tiempo al primer \emph{token}, la latencia entre \emph{tokens}, los \emph{tokens} por segundo de entrada y de salida, el tiempo total de respuesta y la tasa de error.
+  \item Correlaciona los resultados de la prueba con la telemetría de \emph{hardware} del mismo periodo.
+  \item Registra las métricas de red durante la prueba y descarta explícitamente el ancho de banda de la sala como cuello de botella silencioso.
+  \item Permite ejecutar el mismo escenario contra motores de inferencia distintos en condiciones idénticas.
+  \item Permite programar la ejecución de las pruebas fuera del horario de clases.
+  \item Produce un reporte que compara latencias y \emph{throughput} entre escenarios de carga y entre motores.
+  \item Mide, para cargas que no son modelos de lenguaje, la cantidad de solicitudes concurrentes que soporta cada nodo y cómo crece esa capacidad al aumentar el número de nodos conectados.
+\end{itemize}
 
 \section{Fases de desarrollo del proyecto}
 \label{sec:fases-desarrollo}
 
-Las fases de desarrollo del proyecto guardan correspondencia directa con los objetivos específicos formulados en el \cref{cha:objetivos} y se estructuran según una cadena estricta de dependencias técnicas. El proceso inicia con la puesta en marcha del clúster sobre las estaciones de la sala 104M y el despliegue de los motores de inferencia. Sobre esa infraestructura se instrumenta el módulo de observabilidad, necesario para recolectar telemetría y métricas operativas antes de aplicar restricciones de recursos. Posteriormente, se implementa la gobernanza de cuotas dentro del clúster y se construye la plataforma web de despliegue y administración, la cual expone y gestiona las capacidades previamente estabilizadas. El ciclo culmina con la evaluación empírica del sistema integrado mediante pruebas de carga y valoración de usabilidad. La \cref{tab:fases-desarrollo} sintetiza esta secuencia, detallando las actividades principales de cada fase, su articulación con los objetivos específicos y su duración estimada en \emph{sprints} de tres semanas.
+Las fases de desarrollo del proyecto guardan correspondencia directa con los objetivos específicos formulados en el \cref{cha:objetivos} y se estructuran según una cadena estricta de dependencias técnicas. El proceso inicia con la puesta en marcha del clúster sobre las estaciones de la sala 104M (\cref{sec:req-orquestacion}, grupo «Clúster base») y el despliegue de los motores de inferencia. Sobre esa infraestructura se instrumenta el módulo de observabilidad (\cref{sec:req-telemetria}), necesario para recolectar telemetría y métricas operativas antes de aplicar restricciones de recursos. Posteriormente, se implementa la gobernanza de cuotas dentro del clúster (\cref{sec:req-gobernanza}, grupos «Identidad y control de acceso», «Cuotas y aislamiento» y «Admisión, prioridad y reservas») y se construye la plataforma web de despliegue y administración, la cual expone la interfaz de despliegue del \cref{obj:orquestacion} y el módulo administrativo del \cref{obj:gobernanza} sobre las capacidades ya estabilizadas. El ciclo culmina con la evaluación empírica del sistema integrado mediante las pruebas de carga del grupo «Medición de desempeño» (\cref{sec:req-evaluacion}). La \cref{tab:fases-desarrollo} sintetiza esta secuencia con la duración estimada de cada fase en \emph{sprints} de tres semanas.
 
 \begin{xltabular}{\textwidth}{p{0.2\textwidth} X p{0.14\textwidth} p{0.11\textwidth}}
         \caption{Fases de desarrollo del proyecto, su correspondencia con los objetivos específicos y su duración.}
@@ -55,173 +256,130 @@ Las fases de desarrollo del proyecto guardan correspondencia directa con los obj
         \bottomrule
         \endfoot
         Puesta en marcha del clúster &
-        Despliegue y configuración de Kubernetes sobre las estaciones de trabajo de la sala 104M, aprovisionamiento de las unidades de procesamiento gráfico mediante el NVIDIA GPU Operator, integración de KubeRay y despliegue de los motores de inferencia como imágenes de contenedor &
+        Grupos «Clúster base», «Orquestación de cargas» y «Motores y modelos» de la \cref{sec:req-orquestacion} &
         \Cref{obj:orquestacion} & 2 \emph{sprints} \\
         \addlinespace
         Observabilidad de infraestructura &
-        Instrumentación de métricas de \emph{hardware} y de carga de trabajo por nodo con Prometheus, Thanos, el exportador DCGM, Loki y Grafana &
+        Los cuatro grupos de la \cref{sec:req-telemetria} &
         \Cref{obj:telemetria} & 2 \emph{sprints} \\
         \addlinespace
         Gobernanza de cuotas &
-        Implementación del esquema de reserva de cupos y de las restricciones de infraestructura dentro del clúster, con prioridad por rol y acoplamiento a los atributos de rol de SAAMFI &
+        Grupos «Identidad y control de acceso», «Cuotas y aislamiento» y «Admisión, prioridad y reservas» de la \cref{sec:req-gobernanza} &
         \Cref{obj:gobernanza} & 2 \emph{sprints} \\
         \addlinespace
         Plataforma de despliegue y administración &
-        Construcción del servicio y la interfaz web con los que un usuario despliega modelos entrenados de forma concurrente, y del módulo administrativo que gestiona las políticas de cuota y presenta la telemetría recolectada &
+        Grupo «Interfaz de despliegue» de la \cref{sec:req-orquestacion} y grupo «Módulo administrativo» de la \cref{sec:req-gobernanza} &
         \Cref{obj:orquestacion}, \cref{obj:gobernanza} & 3 \emph{sprints} \\
         \addlinespace
         Evaluación empírica &
-        Ejecución de pruebas de carga con usuarios concurrentes sobre los nodos de inferencia, incluidos los modelos que no son de lenguaje, mediante \emph{scripts} de Python externos a la plataforma, y aplicación del \emph{System Usability Scale} con usuarios finales &
+        Grupo «Medición de desempeño» de la \cref{sec:req-evaluacion} &
         \Cref{obj:evaluacion} & 1 \emph{sprint} \\
 \end{xltabular}
 
 \section{Cronograma}
 \label{sec:cronograma}
 
-El proyecto inicia el 10 de agosto de 2026 y finaliza en mayo de 2027. Entre el 10 de agosto y el 20 de septiembre de 2026 el equipo dedica una etapa previa a la formulación del anteproyecto, el levantamiento de requisitos con el laboratorio y la definición de la arquitectura propuesta. Los \emph{sprints} de desarrollo comienzan el 21 de septiembre de 2026 y se suceden en ciclos de tres semanas. Las actividades del cronograma se derivan de los objetivos específicos del \cref{cha:objetivos} con un nivel de detalle mayor, y la \cref{tab:cronograma} las presenta con las fechas de inicio y fin de cada \emph{sprint} y su entregable. La tabla omite la columna de responsable porque todas las actividades las asume el equipo del proyecto en su conjunto.
+El proyecto inicia el 10 de agosto de 2026 y finaliza el 31 de mayo de 2027. Entre el 10 de agosto y el 20 de septiembre de 2026 el equipo dedica una etapa previa a la formulación del anteproyecto, el levantamiento de requisitos con el laboratorio y la definición de la arquitectura propuesta. Los \emph{sprints} de desarrollo comienzan el 21 de septiembre de 2026 y se suceden en ciclos de tres semanas hasta el cierre del proyecto. Las actividades de cada \emph{sprint} se derivan de los grupos de requerimientos presentados en las \cref{sec:req-telemetria,sec:req-gobernanza,sec:req-orquestacion,sec:req-evaluacion}, y las asume el equipo del proyecto en su conjunto, razón por la cual el cronograma omite una columna de responsable. La \cref{fig:gantt} presenta el cronograma completo, con las fechas de cada \emph{sprint}, los grupos de requerimientos que atiende y el hito de entrega del anteproyecto. Como cada fase depende de que la anterior quede estable, las cinco fases forman una sola cadena que constituye en conjunto la ruta crítica del proyecto, de modo que el retraso de cualquier \emph{sprint} desplaza el cierre.
 
 % [verify: ADR-033: el sprint 4 termina el 13-dic, y el sprint 5 (11-31 ene) inicia en enero]
 La ejecución del proyecto se estructura en dos grandes etapas consecutivas. La primera etapa abarca de agosto a diciembre de 2026, periodo en el que se consolida la formulación del anteproyecto y se ejecutan los cuatro primeros \emph{sprints} de desarrollo, correspondientes a la puesta en marcha del clúster de cómputo y a la instrumentación de observabilidad de infraestructura. La segunda etapa comprende de enero a mayo de 2027, periodo durante el cual se implementan el sistema de gobernanza de cuotas, la plataforma de despliegue y administración, y la evaluación empírica del sistema, culminando con el informe final del proyecto.
 
-\begin{xltabular}{\textwidth}{p{0.13\textwidth} X p{0.16\textwidth} p{0.21\textwidth}}
-        \caption{Cronograma del proyecto, por \emph{sprints} de tres semanas, con entregables asociados.}
-        \label{tab:cronograma} \\
-        \toprule
-        \textbf{\emph{Sprint}} & \textbf{Actividad} & \textbf{Fechas} & \textbf{Entregable} \\
-        \midrule
-        \endfirsthead
-        \toprule
-        \textbf{\emph{Sprint}} & \textbf{Actividad} & \textbf{Fechas} & \textbf{Entregable} \\
-        \midrule
-        \endhead
-        \bottomrule
-        \endfoot
-        Etapa previa &
-        Formulación del anteproyecto, levantamiento de requisitos con el laboratorio y definición de la arquitectura propuesta &
-        10 ago -- 20 sep 2026 &
-        Documento de arquitectura y especificación de requisitos \\
-        \addlinespace
-        \emph{Sprint} 1 &
-        Despliegue de Kubernetes sobre las estaciones de trabajo de la sala 104M, con configuración de red, nodo de control y nodos de trabajo &
-        21 sep -- 11 oct 2026 &
-        Clúster Kubernetes operativo y su configuración versionada \\
-        \addlinespace
-        \emph{Sprint} 2 &
-        Aprovisionamiento de las GPU mediante el NVIDIA GPU Operator, integración de KubeRay y despliegue de los motores de inferencia como imágenes de contenedor &
-        12 oct -- 1 nov 2026 &
-        Modelo desplegado y consumible sobre el clúster \\
-        \addlinespace
-        \emph{Sprint} 3 &
-        Instrumentación de métricas de \emph{hardware} por nodo (temperatura, VRAM, consumo energético, PCIe) y agregación centralizada de registros &
-        2 nov -- 22 nov 2026 &
-        Prometheus, Thanos, exportador DCGM y Loki desplegados en el clúster \\
-        \addlinespace
-        \emph{Sprint} 4 &
-        Instrumentación de métricas de inferencia y construcción de los paneles de visualización &
-        23 nov -- 13 dic 2026 &
-        Panel de telemetría en Grafana (\cref{obj:telemetria}) \\
-        \addlinespace
-        Hito &
-        Entrega y formalización del documento de anteproyecto &
-        Inicios de dic. 2026 &
-        Documento de anteproyecto \\
-        \addlinespace
-        \emph{Sprint} 5 &
-        Implementación del esquema de reserva de cupos y de las restricciones de recursos dentro del clúster &
-        11 ene -- 31 ene 2027 &
-        Mecanismo de cuotas operativo en el clúster \\
-        \addlinespace
-        \emph{Sprint} 6 &
-        Acoplamiento de las cuotas a los atributos de rol de SAAMFI y prioridad por rol &
-        1 feb -- 21 feb 2027 &
-        Sistema de gobernanza por rol (\cref{obj:gobernanza}) \\
-        \addlinespace
-        \emph{Sprint} 7 &
-        Construcción del servicio de la plataforma que expone el despliegue de modelos sobre el clúster &
-        22 feb -- 14 mar 2027 &
-        Servicio de despliegue de modelos \\
-        \addlinespace
-        \emph{Sprint} 8 &
-        Interfaz web de despliegue concurrente de modelos, con selección de nodo y de motor de inferencia &
-        15 mar -- 4 abr 2027 &
-        Interfaz de despliegue de modelos (\cref{obj:orquestacion}) \\
-        \addlinespace
-        \emph{Sprint} 9 &
-        Módulo administrativo de gestión de políticas de cuota y presentación de la telemetría dentro de la plataforma &
-        5 abr -- 25 abr 2027 &
-        Módulo administrativo de la plataforma \\
-        \addlinespace
-        % [verify: ADR-031: diseño propio o reutilización del harness del laboratorio]
-        \emph{Sprint} 10 &
-        Ejecución de pruebas de carga con usuarios concurrentes mediante \emph{scripts} de Python y aplicación del \emph{System Usability Scale} &
-        26 abr -- 16 may 2027 &
-        Reportes de pruebas de carga y de usabilidad (\cref{obj:evaluacion}) \\
-        \addlinespace
-        Cierre &
-        Ampliación del documento del anteproyecto con el desarrollo realizado y los resultados obtenidos, y redacción del informe final &
-        17 may -- 31 may 2027 &
-        Informe final del proyecto \\
-\end{xltabular}
-
-La \cref{fig:gantt} presenta el mismo cronograma como diagrama de Gantt. Como cada fase depende de que la anterior quede estable, las fases forman una sola cadena y todas pertenecen a la ruta crítica, de modo que el retraso de cualquier \emph{sprint} desplaza el cierre del proyecto.
-
-\begin{figure}[H]
+\begin{landscape}
+\begin{figure}[p]
   \centering
-  \begin{tikzpicture}[font=\footnotesize]
-    \draw[black!25] (0.000,0.10) -- (0.000,-6.50);
-    \node[anchor=south] at (0.612,0.10) {ago};
-    \draw[black!25] (1.224,0.10) -- (1.224,-6.50);
-    \node[anchor=south] at (1.816,0.10) {sep};
-    \draw[black!25] (2.408,0.10) -- (2.408,-6.50);
-    \node[anchor=south] at (3.020,0.10) {oct};
-    \draw[black!25] (3.632,0.10) -- (3.632,-6.50);
-    \node[anchor=south] at (4.224,0.10) {nov};
-    \draw[black!25] (4.816,0.10) -- (4.816,-6.50);
-    \node[anchor=south] at (5.428,0.10) {dic};
-    \draw[black!25] (6.039,0.10) -- (6.039,-6.50);
-    \node[anchor=south] at (6.651,0.10) {ene};
-    \draw[black!25] (7.263,0.10) -- (7.263,-6.50);
-    \node[anchor=south] at (7.816,0.10) {feb};
-    \draw[black!25] (8.368,0.10) -- (8.368,-6.50);
-    \node[anchor=south] at (8.980,0.10) {mar};
-    \draw[black!25] (9.592,0.10) -- (9.592,-6.50);
-    \node[anchor=south] at (10.184,0.10) {abr};
-    \draw[black!25] (10.776,0.10) -- (10.776,-6.50);
-    \node[anchor=south] at (11.388,0.10) {may};
-    \draw[black!25] (12.000,0.10) -- (12.000,-6.50);
-    \node[anchor=south] at (3.020,0.55) {2026};
-    \node[anchor=south] at (9.020,0.55) {2027};
-    \node[anchor=east] at (-0.15,-0.25) {Etapa previa};
-    \fill[black!12] (0.355,-0.42) rectangle (2.013,-0.08);
-    \node[anchor=east] at (-0.15,-0.75) {\emph{Sprint} 1 · Clúster};
-    \fill[black!45] (2.013,-0.92) rectangle (2.842,-0.58);
-    \node[anchor=east] at (-0.15,-1.25) {\emph{Sprint} 2 · Clúster};
-    \fill[black!45] (2.842,-1.42) rectangle (3.671,-1.08);
-    \node[anchor=east] at (-0.15,-1.75) {\emph{Sprint} 3 · Observabilidad};
-    \fill[black!45] (3.671,-1.92) rectangle (4.500,-1.58);
-    \node[anchor=east] at (-0.15,-2.25) {\emph{Sprint} 4 · Observabilidad};
-    \fill[black!45] (4.500,-2.42) rectangle (5.329,-2.08);
-    \node[anchor=east] at (-0.15,-2.75) {Entrega del anteproyecto};
-    \node[draw, fill=black, diamond, inner sep=2pt] at (4.934,-2.75) {};
-    \node[anchor=east] at (-0.15,-3.25) {\emph{Sprint} 5 · Cuotas};
-    \fill[black!45] (6.434,-3.42) rectangle (7.263,-3.08);
-    \node[anchor=east] at (-0.15,-3.75) {\emph{Sprint} 6 · Cuotas};
-    \fill[black!45] (7.263,-3.92) rectangle (8.092,-3.58);
-    \node[anchor=east] at (-0.15,-4.25) {\emph{Sprint} 7 · Plataforma};
-    \fill[black!45] (8.092,-4.42) rectangle (8.921,-4.08);
-    \node[anchor=east] at (-0.15,-4.75) {\emph{Sprint} 8 · Plataforma};
-    \fill[black!45] (8.921,-4.92) rectangle (9.750,-4.58);
-    \node[anchor=east] at (-0.15,-5.25) {\emph{Sprint} 9 · Plataforma};
-    \fill[black!45] (9.750,-5.42) rectangle (10.579,-5.08);
-    \node[anchor=east] at (-0.15,-5.75) {\emph{Sprint} 10 · Evaluación};
-    \fill[black!45] (10.579,-5.92) rectangle (11.408,-5.58);
-    \node[anchor=east] at (-0.15,-6.25) {Cierre};
-    \fill[black!12] (11.408,-6.42) rectangle (12.000,-6.08);
-    \draw (0,0.00) -- (12.000,0.00);
+  \begin{tikzpicture}[font=\small, yscale=0.92]
+    % --- Eje de meses ---------------------------------------------------
+    \draw[black!25] (0.000,0.20) -- (0.000,-13.00);
+    \node[anchor=south] at (0.869,0.20) {ago};
+    \draw[black!25] (1.738,0.20) -- (1.738,-13.00);
+    \node[anchor=south] at (2.579,0.20) {sep};
+    \draw[black!25] (3.419,0.20) -- (3.419,-13.00);
+    \node[anchor=south] at (4.288,0.20) {oct};
+    \draw[black!25] (5.157,0.20) -- (5.157,-13.00);
+    \node[anchor=south] at (5.998,0.20) {nov};
+    \draw[black!25] (6.839,0.20) -- (6.839,-13.00);
+    \node[anchor=south] at (7.708,0.20) {dic};
+    \draw[black!25] (8.575,0.20) -- (8.575,-13.00);
+    \node[anchor=south] at (9.444,0.20) {ene};
+    \draw[black!25] (10.313,0.20) -- (10.313,-13.00);
+    \node[anchor=south] at (11.099,0.20) {feb};
+    \draw[black!25] (11.883,0.20) -- (11.883,-13.00);
+    \node[anchor=south] at (12.752,0.20) {mar};
+    \draw[black!25] (13.621,0.20) -- (13.621,-13.00);
+    \node[anchor=south] at (14.461,0.20) {abr};
+    \draw[black!25] (15.302,0.20) -- (15.302,-13.00);
+    \node[anchor=south] at (16.171,0.20) {may};
+    \draw[black!25] (17.040,0.20) -- (17.040,-13.00);
+    \node[anchor=south] at (4.288,0.65) {\textbf{2026}};
+    \node[anchor=south] at (12.808,0.65) {\textbf{2027}};
+    \draw (0,0.00) -- (17.040,0.00);
+
+    % --- Bandas de fase (tono por fase, ver leyenda), a la izquierda de
+    % las etiquetas de fila, que a su vez quedan junto al eje -----------
+    \fill[black!25] (-3.6,-1.0) rectangle (-3.1,-3.0);
+    \node[rotate=90, font=\scriptsize] at (-3.35,-2.0) {F1};
+    \fill[black!40] (-3.6,-3.0) rectangle (-3.1,-5.0);
+    \node[rotate=90, font=\scriptsize] at (-3.35,-4.0) {F2};
+    \fill[black!55] (-3.6,-6.0) rectangle (-3.1,-8.0);
+    \node[rotate=90, font=\scriptsize] at (-3.35,-7.0) {F3};
+    \fill[black!70] (-3.6,-8.0) rectangle (-3.1,-11.0);
+    \node[rotate=90, font=\scriptsize] at (-3.35,-9.5) {F4};
+    \fill[black!85] (-3.6,-11.0) rectangle (-3.1,-12.0);
+    \node[rotate=90, font=\scriptsize, text=white] at (-3.35,-11.5) {F5};
+
+    % --- Etiquetas de fila (número de \emph{sprint} y grupos que atiende) --
+    \node[anchor=east, align=right, font=\scriptsize, text width=2.9cm] at (-0.2,-0.5) {Etapa previa};
+    \node[anchor=east, align=right, font=\scriptsize, text width=2.9cm] at (-0.2,-1.5) {\emph{Sprint} 1\\Clúster base};
+    \node[anchor=east, align=right, font=\scriptsize, text width=2.9cm] at (-0.2,-2.5) {\emph{Sprint} 2\\Orquestación y motores};
+    \node[anchor=east, align=right, font=\scriptsize, text width=2.9cm] at (-0.2,-3.5) {\emph{Sprint} 3\\Telemetría (infra. y \emph{hardware})};
+    \node[anchor=east, align=right, font=\scriptsize, text width=2.9cm] at (-0.2,-4.5) {\emph{Sprint} 4\\Telemetría de carga y paneles};
+    \node[anchor=east, align=right, font=\scriptsize, text width=2.9cm] at (-0.2,-5.5) {Hito\\Entrega del anteproyecto};
+    \node[anchor=east, align=right, font=\scriptsize, text width=2.9cm] at (-0.2,-6.5) {\emph{Sprint} 5\\Identidad y acceso};
+    \node[anchor=east, align=right, font=\scriptsize, text width=2.9cm] at (-0.2,-7.5) {\emph{Sprint} 6\\Cuotas, admisión y reservas};
+    \node[anchor=east, align=right, font=\scriptsize, text width=2.9cm] at (-0.2,-8.5) {\emph{Sprint} 7\\Interfaz de despliegue (servicio)};
+    \node[anchor=east, align=right, font=\scriptsize, text width=2.9cm] at (-0.2,-9.5) {\emph{Sprint} 8\\Interfaz de despliegue (UI)};
+    \node[anchor=east, align=right, font=\scriptsize, text width=2.9cm] at (-0.2,-10.5) {\emph{Sprint} 9\\Módulo administrativo};
+    % [verify: ADR-031: diseño propio o reutilización del harness del laboratorio]
+    \node[anchor=east, align=right, font=\scriptsize, text width=2.9cm] at (-0.2,-11.5) {\emph{Sprint} 10\\Medición de desempeño};
+    \node[anchor=east, align=right, font=\scriptsize, text width=2.9cm] at (-0.2,-12.5) {Cierre};
+
+    % --- Barras, con las fechas de inicio y fin junto a cada una -----------
+    \fill[black!10] (0.504,-0.84) rectangle (2.858,-0.16);
+    \node[anchor=south, font=\tiny] at (1.681,-0.12) {10 ago -- 20 sep};
+    \fill[black!25] (2.858,-1.84) rectangle (4.036,-1.16);
+    \node[anchor=south, font=\tiny] at (3.447,-1.12) {21 sep -- 11 oct};
+    \fill[black!25] (4.036,-2.84) rectangle (5.213,-2.16);
+    \node[anchor=south, font=\tiny] at (4.625,-2.12) {12 oct -- 1 nov};
+    \fill[black!40] (5.213,-3.84) rectangle (6.390,-3.16);
+    \node[anchor=south, font=\tiny] at (5.802,-3.12) {2 nov -- 22 nov};
+    \fill[black!40] (6.390,-4.84) rectangle (7.567,-4.16);
+    \node[anchor=south, font=\tiny] at (6.979,-4.12) {23 nov -- 13 dic};
+    \node[draw, fill=black, diamond, inner sep=2pt] at (7.006,-5.5) {};
+    \node[anchor=west, font=\tiny] at (7.15,-5.5) {Inicios de dic. 2026};
+    \fill[black!55] (9.136,-6.84) rectangle (10.313,-6.16);
+    \node[anchor=south, font=\tiny] at (9.725,-6.12) {11 ene -- 31 ene};
+    \fill[black!55] (10.313,-7.84) rectangle (11.491,-7.16);
+    \node[anchor=south, font=\tiny] at (10.902,-7.12) {1 feb -- 21 feb};
+    \fill[black!70] (11.491,-8.84) rectangle (12.668,-8.16);
+    \node[anchor=south, font=\tiny] at (12.080,-8.12) {22 feb -- 14 mar};
+    \fill[black!70] (12.668,-9.84) rectangle (13.845,-9.16);
+    \node[anchor=south, font=\tiny] at (13.257,-9.12) {15 mar -- 4 abr};
+    \fill[black!70] (13.845,-10.84) rectangle (15.022,-10.16);
+    \node[anchor=south, font=\tiny] at (14.434,-10.12) {5 abr -- 25 abr};
+    \fill[black!85] (15.022,-11.84) rectangle (16.199,-11.16);
+    \node[anchor=south, font=\tiny] at (15.611,-11.12) {26 abr -- 16 may};
+    \fill[black!10] (16.199,-12.84) rectangle (17.040,-12.16);
+    \node[anchor=south, font=\tiny] at (16.620,-12.12) {17 -- 31 may};
+
+    % --- Leyenda de fases -----------------------------------------------
+    \node[anchor=north west, font=\scriptsize, text width=17.5cm] at (-3.6,-13.35)
+      {F1 Puesta en marcha del clúster \quad F2 Observabilidad de infraestructura \quad F3 Gobernanza de cuotas\\
+       F4 Plataforma de despliegue y administración \quad F5 Evaluación empírica};
   \end{tikzpicture}
-  \caption[Diagrama de Gantt del proyecto]{Diagrama de Gantt del proyecto, con las mismas fechas de la \cref{tab:cronograma}. Cada \emph{sprint} indica la fase a la que pertenece; el rombo marca la entrega del anteproyecto a inicios de diciembre de 2026. Elaboración propia.}
+  \caption[Diagrama de Gantt del proyecto]{Diagrama de Gantt del proyecto. Cada barra indica sus fechas y, para los \emph{sprints}, el grupo de requerimientos que atiende, en el orden de las \cref{sec:req-telemetria,sec:req-gobernanza,sec:req-orquestacion,sec:req-evaluacion}; el tono lateral identifica la fase (leyenda F1--F5) y el rombo marca la entrega del anteproyecto a inicios de diciembre de 2026. Las cinco fases forman una sola cadena de dependencias y constituyen en conjunto la ruta crítica del proyecto. Elaboración propia.}
   \label{fig:gantt}
 \end{figure}
+\end{landscape}
 
 \section{Análisis de riesgos y limitaciones}
 

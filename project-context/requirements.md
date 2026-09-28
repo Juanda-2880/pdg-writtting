@@ -227,9 +227,11 @@ Cada requerimiento es una unidad de trabajo asignable. La columna **Prioridad** 
 | R3-35 | El sistema debe mostrar al usuario su cuota asignada y su consumo actual para que sepa cuánto le queda antes de que se lo rechacen. | Alta |
 | R3-36 | El sistema debe ser operable por un estudiante sin conocimientos de línea de comandos ni de Kubernetes, para no reproducir la barrera de acceso que motivó el proyecto. | Alta |
 
-### 2.4 Objetivo 4 — Evaluación de desempeño y aceptación
+### 2.4 Objetivo 4 — Evaluación de desempeño
 
-> Evaluar el desempeño y la aceptación de la plataforma mediante pruebas de carga con usuarios concurrentes y la aplicación del *System Usability Scale* a usuarios del laboratorio, con el fin de determinar hasta qué nivel de concurrencia sostiene el servicio y en qué banda de referencia publicada se ubica su usabilidad percibida.
+> Evaluar el desempeño de la plataforma mediante pruebas de carga con usuarios concurrentes, con el fin de determinar hasta qué nivel de concurrencia sostiene el servicio.
+>
+> Sin aceptación ni *System Usability Scale* desde el 2026-09-27 (autores): ningún requerimiento de esta sección medía la aceptación, de modo que el objetivo solo compromete lo que R4-01 a R4-11 permiten verificar.
 
 #### 2.4.1 Medición de desempeño
 

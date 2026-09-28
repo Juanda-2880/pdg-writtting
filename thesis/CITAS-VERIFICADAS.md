@@ -544,15 +544,6 @@ Los pasajes van en el idioma original y sin traducir. Las páginas son las del P
     - **Estado:** verificada · 2026-09-27
   - `chapters/07-metodologia.tex` · `\label{sec:estrategia-metodologica}` ¶5 · **uso retirado el 2026-09-27** al condensar el párrafo por pedido de los autores. La fuente sigue citada en el cap. 05 §5.8.
 
-## lewis-susbenchmarks-2018
-
-- **Versión consultada:** `fuentes/pdf/lewis-susbenchmarks-2018.pdf`, versión publicada en *Journal of Usability Studies* 13(3), pp. 158–167. Páginas del PDF.
-- **Usos:**
-  - `chapters/05-marco-teorico.tex` · `\label{sec:marco-conceptual}` ¶2 · «cuestionario estandarizado de diez ítems para el que desarrollaron ecuaciones que calculan valores de referencia por ítem a partir del puntaje global, con datos de más de un centenar de estudios industriales, y revisaron las escalas de calificación publicadas para ese puntaje»
-    - Pasaje: "The SUS (Figure 1) is a standardized questionnaire designed to assess perceived usability […] The standard version of the SUS has 10 items" (p. 2); "We have developed regression equations that compute benchmarks for SUS items based on an overall SUS score. A review of the SUS literature on published benchmarks for the means of overall SUS scores" (p. 1, *Abstract*); "We compiled data from 166 unpublished industrial usability studies/surveys. Thus, the data set included 166 sets of means, with those means based on scores from 11,855 individual SUS questionnaires." (p. 5). La versión anterior decía «recalibraron… 446 estudios y más de cinco mil respuestas», cifras que no están en la fuente. Los autores pidieron no escribir cifras exactas (2026-09-27). **El mismo error sigue en el cap. 07**, pendiente de ese capítulo.
-    - **Estado:** verificada · 2026-09-27
-  - `chapters/07-metodologia.tex` · `\label{sec:estrategia-metodologica}` ¶5 · **uso retirado el 2026-09-27**: el párrafo se condensó por pedido de los autores (la evaluación se detalla en las fases) y ya no cita la fuente. Se fue con él el mismo error de cifras corregido en el cap. 05.
-
 ## schwaber-scrumguide-2020
 
 - **Versión consultada:** `fuentes/pdf/schwaber-scrumguide-2020.pdf`, versión oficial de noviembre de 2020 publicada en scrumguides.org. Páginas del PDF.
