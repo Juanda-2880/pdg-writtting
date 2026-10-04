@@ -38,7 +38,7 @@ Las ideas que ordenan el diseño:
 - **Adoptar antes que construir** (capítulo 05). El código propio (`orchid-app/`) solo traduce lo que pide el usuario a objetos de las piezas adoptadas (Kueue, KubeRay y cuotas nativas de Kubernetes). No reimplementa admisión ni *serving*.
 - **Separación física:**
   - La sala 205 aloja el control y los servicios.
-  - Los 31 PCs de la 104M solo ejecutan modelos y pueden apagarse sin afectar a nadie más que al modelo que tenían.
+  - Los PCs de la 104M solo ejecutan modelos y pueden apagarse sin afectar a nadie más que al modelo que tenían.
 - **Pocas piezas.** Cada componente responde a un requerimiento. Lo que ningún requerimiento pide queda fuera.
 
 ## 2. Topología física
@@ -46,14 +46,29 @@ Las ideas que ordenan el diseño:
 | Grupo | Máquinas | Qué corre |
 | :--- | :--- | :--- |
 | Control | 1 PC de la sala 205 | RKE2 *server* con etcd embebido. *Snapshots* de etcd a Garage. |
-| Servicios | 3 PCs de la sala 205, *taint* `node-role=infra` | Entrada, componentes propios, gobernanza, datos, entrega y observabilidad |
-| GPU | 31 PCs de la sala 104M (RTX 4090, 24 GB), *taint* `nvidia.com/gpu` | Agente RKE2, componentes del GPU Operator, DCGM, node-exporter, Alloy y los `RayService` de los usuarios |
+| Servicios | PCs de la sala 205, *taint* `node-role=infra`; **cantidad por definir** (mínimo recomendado: 3) | Entrada, componentes propios, gobernanza, datos, entrega y observabilidad |
+| GPU | PCs de la sala 104M (RTX 4090, 24 GB), *taint* `nvidia.com/gpu`; **cantidad por definir** | Agente RKE2, componentes del GPU Operator, DCGM, node-exporter, Alloy y los `RayService` de los usuarios |
 | Fuera del clúster | `grid100`/`grid101` o el portátil de quien opera | Ansible y los *scripts* de carga, en contenedores (regla de uso de los grid) |
 
+- **Lo decidido es el rol de cada sala y que haya un solo nodo de control; no las cantidades.** Según `acceso-infraestructura-iaslab.md`, la 104M tiene hasta 31 PCs con GPU (`192.168.131.101` a `.131`) y la 205 hasta 22 sin GPU (`.61` a `.82`). Al 2026-10-04 solo un PC de cada sala respondió a `ping` desde los *grid*: cuántos estarán disponibles para el clúster está por verificar.
 - **Inventario.** El número de PCs de cada grupo es un valor del inventario de Ansible por sala, no del diseño (R3-10).
+- **Mínimos del diseño.** 3 nodos de servicios para Garage con factor de réplica 3 y para Argo CD en alta disponibilidad, y 2 para la réplica de PostgreSQL. Con menos, se baja el factor de réplica de Garage (nunca puede superar el número de nodos) y Argo CD va sin alta disponibilidad.
 - **Nodo de control.** La tesis pide «un nodo de control» en «una máquina que permanece encendida sin reinicios no anunciados» (capítulo 07). Con un solo *server*, si ese PC se apaga, la API de Kubernetes deja de responder: no se pueden crear ni cambiar despliegues, pero los que ya corren siguen sirviendo. Hay que acordar con el laboratorio qué PC cumple esa condición (P-3).
 
 ## 3. Componentes
+
+### 3.0 Externo
+
+| Componente | Papel |
+| :--- | :--- |
+| Usuario / administrador | Usa `orchid-web` por HTTPS, a través del `NodePort` de Envoy Gateway |
+| SAAMFI | Proveedor de identidad OAuth 2.0 / OIDC (§3.2) |
+| Repositorio externo de modelos (p. ej. Hugging Face) | `orchid-model-importer` descarga de ahí los pesos cuando el usuario da un identificador (R3-29). Solo se usa al dar de alta un modelo; después los pesos se sirven desde Garage. |
+| Bitbucket (Git) | Repositorio de IaC y manifiestos que aplica Argo CD |
+| Ansible (desde un *grid* o un portátil) | Aprovisiona los nodos; corre fuera del clúster |
+| *Scripts* de carga | Pruebas de rendimiento externas a la plataforma, fuera del horario de clases |
+| Canal de notificaciones | Correo o chat donde `orchid-api` envía los avisos |
+| Proyecto anterior (plano de control de entrenamiento) | Usa los mismos PCs (cap. 01); convivencia por definir (P-12) |
 
 ### 3.1 Aprovisionamiento y clúster
 
@@ -114,7 +129,7 @@ Cada motor es una imagen en zot que contiene Ray y un adaptador de Ray Serve. El
 | Componente | Versión | Para qué |
 | :--- | :--- | :--- |
 | CloudNativePG | 1.30.1 | PostgreSQL de la plataforma y de Grafana: primaria + réplica, respaldo a Garage |
-| Garage | v2.4.1 | Almacén S3 en los 3 PCs de servicios, factor de réplica 3: `models`, `thanos`, `loki`, `pg-backups`, `etcd-snapshots`, `session-logs`, `bench-results`, `registry`. Reemplaza a MinIO, cuyo repositorio quedó archivado el 2026-04-25. |
+| Garage | v2.4.1 | Almacén S3 en los PCs de servicios, factor de réplica 3 si hay al menos 3: `models`, `thanos`, `loki`, `pg-backups`, `etcd-snapshots`, `session-logs`, `bench-results`, `registry`. Reemplaza a MinIO, cuyo repositorio quedó archivado el 2026-04-25. |
 
 ### 3.8 Entrega
 
@@ -281,9 +296,9 @@ Antes de escribir los ADR definitivos, conviene comprobar en **1 PC de la 104M y
 | # | Pregunta | Corresponde a |
 | :--- | :--- | :--- |
 | P-1 | ¿Se corrige el encabezado de la sección 3 de `requirements.md` («se construyen») para que diga que no se programan en este PDG? ¿Se alinea la sección 3.1 (entrenamiento) con el capítulo 01? | autores |
-| P-3 | ¿Qué PC de la 205 es el nodo de control y el laboratorio se compromete a no reiniciarlo sin aviso? | autores + laboratorio |
+| P-3 | ¿Cuántos PCs de cada sala están disponibles para el clúster? ¿Qué PC de la 205 es el nodo de control y el laboratorio se compromete a no reiniciarlo sin aviso? | autores + laboratorio |
 | P-6 | Si los PCs necesitan el driver del host para las clases, ¿se ajusta el texto de la tesis sobre el GPU Operator (capítulos 05 y 07)? | autores (tras la prueba) |
-| P-12 | ¿Cómo usa el proyecto anterior (plano de control de entrenamiento) los mismos 31 PCs? Si usa la GPU fuera de este clúster, Kueue no lo ve. | autores + laboratorio |
+| P-12 | ¿Cómo usa el proyecto anterior (plano de control de entrenamiento) los mismos PCs? Si usa la GPU fuera de este clúster, Kueue no lo ve. | autores + laboratorio |
 | P-13 | ¿Se nombra Kueue en `technologies.md`? (El capítulo 05 lo deja pendiente.) | autores |
 | P-F | ¿Hay un nombre DNS institucional para la plataforma? | laboratorio |
 | R1-10, R1-14 | Si la prueba confirma que la RTX 4090 no da temperatura de memoria ni PCIe, ¿se ajustan esos requerimientos y la frase del capítulo 05? | autores (tras la prueba) |
