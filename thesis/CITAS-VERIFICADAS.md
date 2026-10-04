@@ -164,24 +164,17 @@ Los pasajes van en el idioma original y sin traducir. Las páginas son las del P
     - Pasaje: "a two-month workload trace collected from a production MLaaS cluster with over 6,000 GPUs in Alibaba. We explain the challenges posed to cluster scheduling, including the low GPU utilization, the long queueing delays, the presence of hard-to-schedule tasks demanding high-end GPUs with picky scheduling requirements, the imbalance load across heterogeneous machines, and the potential bottleneck on CPUs." (p. 945 impresa, *Abstract*). La versión anterior decía «baja utilización del procesador» y «fragmentación sustancial de la memoria del acelerador», que no están en la fuente.
     - **Estado:** verificada · 2026-09-27
 
-## liu-gpufailureprediction-2022
+## liu-gpufailureprediction-2023
 
-- **Versión consultada:** `fuentes/pdf/liu-gpufailureprediction-2022.pdf`, preprint de arXiv 2201.11853v1 (2022-01-27), <https://arxiv.org/pdf/2201.11853> (2026-09-13). `references.bib` también lo cita como preprint de arXiv.
-- **Retirada del cap. 01 el 2026-09-13** (decisión de los autores). El cambio de escala (clústeres industriales de miles de GPU) rompía el hilo de Antecedentes, y ahí la reemplazan fuentes académicas (`xu-sing-2025`, `weitzel-nrpreservation-2025`). Los pasajes de abajo siguen verificados y quedan como **candidatos para el Estado del arte**, que todavía no se redacta. Los usos del cap. 01 listados abajo ya no están en el texto.
+- **Versión consultada:** `fuentes/pdf/liu-gpufailureprediction-2023.pdf`, versión publicada en las actas de SYSTOR '23 (ACM), <https://doi.org/10.1145/3579370.3594777>, obtenida por un autor con acceso institucional el 2026-10-04. Sustituye al preprint de arXiv 2201.11853v1 (título «Prediction of GPU Failures Under Deep Learning Workloads»), que quedó en `fuentes/pdf/preprints-superseded/`. Páginas del PDF.
+- **Retirada del cap. 01 el 2026-09-13** (decisión de los autores). Los usos del cap. 01 ya no están en el texto. **Cambio entre versiones:** la precisión de predicción pasa «del 46.3 % al 84.0 %» (preprint) «al 85.4 %» (publicada, p. 1), por si alguna cifra vuelve a citarse.
 - **Usos:**
-  - `chapters/01-motivacion-antecedentes.tex` · *Antecedentes* ¶4 · «las fallas de GPU interrumpen entrenamientos distribuidos, hacen caer servicios de inferencia y provocan incumplimientos de los acuerdos de nivel de servicio»
-    - Pasaje: "GPU failures, which are inevitable, cause severe consequences in DL tasks: they disrupt distributed trainings, crash inference services, and result in service level agreement violations." (p. 1, *Abstract*)
-    - **Estado:** verificada · 2026-09-13
-  - `chapters/01-motivacion-antecedentes.tex` · *Antecedentes* ¶4 · «proponen predecirlas con modelos entrenados sobre datos recolectados de GPU en producción, y sus técnicas elevan la precisión de la predicción del 46.3 % al 84.0 % en un conjunto de 350 millones de registros de cuatro meses»
-    - Pasaje: "we propose to predict failures by using ML models. […] We evaluate the performances of our various techniques on a four-month production dataset including 350 million entries. The results show that our proposed techniques improve the prediction precision from 46.3% to 84.0%." (p. 1, *Abstract*)
-    - **Estado:** verificada · 2026-09-13
-  - Uso anterior **corregido** el 2026-09-13: la tesis decía que «trescientos cincuenta millones de registros de telemetría […] elevan la precisión». La mejora la producen las técnicas que proponen los autores (ensambles de modelos y entrenamiento deslizante), no el volumen de datos.
-  - `chapters/05-marco-teorico.tex` · `\label{sec:observabilidad-telemetria}` ¶2 · «proponen predecirlas con modelos entrenados sobre datos recolectados de GPU en producción, entre ellos la temperatura, el consumo de potencia y la utilización de la GPU y de su memoria»
-    - Pasaje: "we propose to predict failures by using ML models" (p. 1, *Abstract*) y la Tabla 1 (p. 3), cuyos datos dinámicos son *temperature*, *power consumption*, *GPU SM utilization* y *GPU mem utilization*, tomados de `nvidia-smi`. Sustituye la versión anterior («un volumen extenso de telemetría… eleva la precisión»), el mismo error ya corregido en el cap. 01.
-    - **Estado:** verificada · 2026-09-27
+  - `chapters/05-marco-teorico.tex` · `\label{sec:observabilidad-telemetria}` ¶2 · «estudian cómo predecirlas con modelos entrenados sobre datos recolectados de GPU en producción, entre ellos la temperatura, el consumo de potencia y la utilización de la GPU y de su memoria»
+    - Pasaje: "we study the problem of predicting GPU failures using machine learning (ML) models to mitigate their damages. We train prediction models on a four-month production dataset with 350 million entries at ByteDance." (p. 1, *Abstract*) y la Tabla 1 (p. 3), cuyos datos dinámicos son *temperature*, *power consumption*, *GPU SM utilization* y *GPU mem utilization*, tomados de `nvidia-smi`. **Cambio:** la versión publicada dice «study the problem of predicting», así que el texto pasó de «proponen predecirlas» (redacción del preprint) a «estudian cómo predecirlas».
+    - **Estado:** verificada en la versión publicada · 2026-10-04
   - `chapters/07-metodologia.tex` · §«Análisis de riesgos y limitaciones», ítem «Saturación de VRAM y congelamiento de nodos GPU» · «muestran que las fallas de GPU bajo cargas de aprendizaje profundo pueden predecirse con modelos entrenados sobre datos recolectados en producción»
-    - Pasaje: el título ("Prediction of GPU Failures Under Deep Learning Workloads") y el *Abstract* registrados arriba (p. 1). La versión anterior («este tipo de fallos es predecible con telemetría suficiente») extendía el hallazgo al congelamiento por la fuente de poder, que la fuente no estudia.
-    - **Estado:** verificada · 2026-09-27
+    - Pasaje: el título publicado ("Predicting GPU Failures With High Precision Under Deep Learning Workloads") y el *Abstract* (p. 1): "The results show that our proposed techniques improve the prediction precision from 46.3% to 85.4% on production workloads." No estudian el congelamiento por la fuente de poder.
+    - **Estado:** verificada en la versión publicada · 2026-10-04
 
 ## sevilla-computetrends-2022
 
@@ -393,22 +386,22 @@ Los pasajes van en el idioma original y sin traducir. Las páginas son las del P
     - Pasaje: el mismo pasaje del *Abstract* registrado para el cap. 05 (p. 1). La fuente no menciona GGUF ni *llama.cpp*; la versión anterior la citaba para GGUF y se corrigió.
     - **Estado:** verificada · 2026-10-04. «Pérdida acotada» pasó a «procurando mantener una pérdida mínima de rendimiento» (Chen et al.: «while striving to maintain minimal performance loss»). La frase sobre *llama.cpp* que la antecede no lleva cita.
 
-## gao-dlschedulingtaxonomy-2022
+## ye-dlschedulingsurvey-2024
 
-- **Versión consultada:** `fuentes/pdf/gao-dlschedulingtaxonomy-2022.pdf`, preprint de arXiv 2205.11913v3 (2022-06-01). Publicado después en *ACM Computing Surveys* (2024) con otro título; `references.bib` cita el preprint. Páginas del PDF.
+- **Versión consultada:** `fuentes/pdf/ye-dlschedulingsurvey-2024.pdf`, versión publicada en *ACM Computing Surveys* 56(6), art. 146 (enero de 2024), <https://doi.org/10.1145/3638757>, obtenida por un autor con acceso institucional el 2026-10-04. Sustituye al preprint de arXiv 2205.11913v3 (título «…: Taxonomy, Challenges and Vision»), que quedó en `fuentes/pdf/preprints-superseded/`. La clave pasó de `gao-dlschedulingtaxonomy-2022` a esta porque el primer autor de la versión publicada es Ye. Páginas del PDF.
 - **Usos:**
-  - `chapters/05-marco-teorico.tex` · `\label{sec:mlops-ciclo-vida}` ¶2 · «describen el entrenamiento como cargas de larga duración que se ejecutan fuera de línea, para las que el planificador busca un buen desempeño de cada trabajo, una alta utilización del centro de datos y equidad entre usuarios, y la inferencia como un servicio en línea que atiende las solicitudes de los usuarios, con exigencias mayores de latencia y con peticiones en ráfagas difíciles de predecir. Por esa diferencia, los autores estudian por separado los planificadores de cada fase»
-    - Pasaje: "for model training, the scheduler allocates resources requested by the users to support the long-running offline training workloads. The scheduler needs to achieve high performance for each individual workload, high resource utilization for the entire datacenter, and high fairness among different users" (p. 1); "For model inference, DL applications often serve as online services to answer users' requests. They often have a higher expectation on the response latency" (p. 2); "it is common for the inference application to receive bursty and fluctuating requests, which are unpredictable" (p. 8, C7); "The schedulers for model training and model inference share similar logic flows but have totally different scheduling objectives […] So our survey will investigate them separately" (p. 6, §2.2)
-    - **Estado:** verificada · 2026-09-27
+  - `chapters/05-marco-teorico.tex` · `\label{sec:mlops-ciclo-vida}` ¶2 · «describen el entrenamiento como cargas de larga duración que se ejecutan fuera de línea, para las que el planificador busca un buen desempeño de cada trabajo, una alta utilización del centro de datos y equidad entre usuarios, y la inferencia como un servicio en línea […], con exigencias mayores de latencia y con peticiones en ráfagas difíciles de predecir. Por esa diferencia, los autores estudian por separado los planificadores de cada fase»
+    - Pasaje: "for model training, the scheduler allocates resources requested by the users to support the long-running offline training workloads. The scheduler needs to achieve high performance for each individual workload, high resource utilization for the entire datacenter, and fairness among different users" (p. 2); "For model inference, DL applications often serve as online services to answer users' requests. They often have a higher expectation on the response latency and inference accuracy" (p. 2); "it is common for the inference application to receive bursty and fluctuating requests, which are unpredictable" (p. 6). El resumen dice además que el artículo estudia «both training and inference workloads».
+    - **Estado:** verificada en la versión publicada · 2026-10-04 (antes verificada contra el preprint, 2026-09-27). «Equidad entre usuarios» coincide con *fairness among different users*; el preprint decía *high fairness*.
   - `chapters/05-marco-teorico.tex` · `\label{sec:despliegue-inferencia}` ¶1 · «ubicar varias cargas de inferencia en un mismo equipo o aumentar el tamaño del lote mejora la utilización y el *throughput*, pero puede elevar la latencia»
-    - Pasaje: "To improve the resource utilization and cluster-wide job throughput, we can colocate multiple inference jobs or increase the batch size. However, this can increase the inference latency." (p. 8)
-    - **Estado:** verificada · 2026-09-27
+    - Pasaje: "to improve the resource utilization and cluster-wide job throughput, we can colocate multiple inference jobs or increase the batch size. However, this can increase the inference latency." (p. 6)
+    - **Estado:** verificada en la versión publicada · 2026-10-04
   - `chapters/05-marco-teorico.tex` · `\label{sec:crd-operadores}` ¶3 · «describen ese requisito en el entrenamiento distribuido, cuyos trabajos necesitan todas sus GPU asignadas a la vez, en la modalidad de todo o nada conocida como *gang scheduling*»
-    - Pasaje: "gang scheduling is that DL training requires all the GPUs to be allocated simultaneously in an all-or-nothing manner" (p. 5, T6). Sustituye «sitúan ese mecanismo entre las políticas de admisión y expropiación», sin respaldo.
-    - **Estado:** verificada · 2026-09-27
+    - Pasaje: "gang scheduling is that DL training requires all the GPUs to be allocated simultaneously in an all-or-nothing manner" (p. 5)
+    - **Estado:** verificada en la versión publicada · 2026-10-04
   - `chapters/05-marco-teorico.tex` · `\label{sec:gobernanza-recursos-compartidos}` ¶1 · «agrupan los objetivos de estos planificadores en eficiencia, equidad y cumplimiento de plazos»
-    - Pasaje: "Different schedulers are designed to achieve different objectives, including efficiency, fairness and deadline guarantee." (p. 9, §3.1). Sustituye la afirmación de que la taxonomía trata «ambas familias por separado porque persiguen objetivos incompatibles», sin respaldo.
-    - **Estado:** verificada · 2026-09-27
+    - Pasaje: "Different schedulers are designed to achieve different objectives, including efficiency, fairness, and deadline guarantee." (p. 9, §3.1)
+    - **Estado:** verificada en la versión publicada · 2026-10-04
 
 ## carrion-k8sbibliometric-2022
 

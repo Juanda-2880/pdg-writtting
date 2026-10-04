@@ -18,7 +18,7 @@ Actualizado: 2026-10-04 (cap. 06: cinco páginas de documentación oficial añad
 | `lima-mlopspractices-2022` | 2022 | cap. 05 | [DOI](https://doi.org/10.5220/0010997300003179) | [`pdf/lima-mlopspractices-2022.pdf`](./pdf/lima-mlopspractices-2022.pdf) | Publicada (SciTePress, pp. 308–320) | Acceso abierto: scitepress.org | sí |
 | `weng-mlaasinthewild-2022` | 2022 | cap. 05, cap. 06 | [URL](https://www.usenix.org/conference/nsdi22/presentation/weng) | [`pdf/weng-mlaasinthewild-2022.pdf`](./pdf/weng-mlaasinthewild-2022.pdf) | Publicada (actas USENIX NSDI 2022) | Acceso abierto: usenix.org | sí |
 | `gao-lowgpuutilization-2024` | 2024 | cap. 01, cap. 05, cap. 06 | [DOI](https://doi.org/10.1145/3597503.3639232) | [`pdf/gao-lowgpuutilization-2024.pdf`](./pdf/gao-lowgpuutilization-2024.pdf) | Versión de autor (Microsoft Research), no la de ACM | Acceso abierto: microsoft.com/research. Versión publicada en ACM DL | sí |
-| `liu-gpufailureprediction-2022` | 2022 | cap. 05 | [URL](https://arxiv.org/abs/2201.11853) | [`pdf/liu-gpufailureprediction-2022.pdf`](./pdf/liu-gpufailureprediction-2022.pdf) | **Preprint** arXiv 2201.11853v1, igual que cita el `.bib` | Acceso abierto: arXiv | sí |
+| `liu-gpufailureprediction-2023` | 2023 | cap. 05, cap. 07 | [DOI](https://doi.org/10.1145/3579370.3594777) | [`pdf/liu-gpufailureprediction-2023.pdf`](./pdf/liu-gpufailureprediction-2023.pdf) | Publicada (SYSTOR '23, ACM), obtenida por un autor con acceso institucional | ACM Digital Library (portal Icesi) | sí |
 | `mahajan-themis-2020` | 2020 | cap. 05, cap. 06 | [URL](https://www.usenix.org/conference/nsdi20/presentation/mahajan) | [`pdf/mahajan-themis-2020.pdf`](./pdf/mahajan-themis-2020.pdf) | Publicada (actas USENIX NSDI 2020) | Acceso abierto: usenix.org | sí |
 | `narayanan-gavel-2020` | 2020 | cap. 05, cap. 06 | [URL](https://www.usenix.org/conference/osdi20/presentation/narayanan-deepak) | [`pdf/narayanan-gavel-2020.pdf`](./pdf/narayanan-gavel-2020.pdf) | Publicada (actas USENIX OSDI 2020) | Acceso abierto: usenix.org | sí |
 | `qiao-pollux-2021` | 2021 | cap. 05 | [URL](https://www.usenix.org/conference/osdi21/presentation/qiao) | [`pdf/qiao-pollux-2021.pdf`](./pdf/qiao-pollux-2021.pdf) | Publicada (actas USENIX OSDI 2021) | Acceso abierto: usenix.org | sí |
@@ -38,7 +38,7 @@ Actualizado: 2026-10-04 (cap. 06: cinco páginas de documentación oficial añad
 | `burns-borgomegak8s-2016` | 2016 | cap. 05 | [DOI](https://doi.org/10.1145/2898442.2898444) | [`pdf/burns-borgomegak8s-2016.pdf`](./pdf/burns-borgomegak8s-2016.pdf) | Versión de *ACM Queue* en acceso abierto (Google Research) | ACM Digital Library (portal Icesi); *ACM Queue* también la publica en acceso abierto | sí |
 | `xu-k8soperatorbugs-2024` | 2024 | cap. 05 | [DOI](https://doi.org/10.1145/3650212.3680396) | [`pdf/xu-k8soperatorbugs-2024.pdf`](./pdf/xu-k8soperatorbugs-2024.pdf) | Publicada (actas ISSTA '24, CC BY 4.0) | ACM Digital Library (portal Icesi) | sí |
 | `weitzel-nrpreservation-2025` | 2025 | cap. 05, cap. 06 | [URL](https://arxiv.org/abs/2505.22864) | [`pdf/weitzel-nrpreservation-2025.pdf`](./pdf/weitzel-nrpreservation-2025.pdf) | **Preprint** arXiv 2505.22864v1 con referencia de PEARC '25 | Acceso abierto: arXiv. Versión publicada en ACM DL (portal Icesi) | sí |
-| `gao-dlschedulingtaxonomy-2022` | 2022 | cap. 05 | [URL](https://arxiv.org/abs/2205.11913) | [`pdf/gao-dlschedulingtaxonomy-2022.pdf`](./pdf/gao-dlschedulingtaxonomy-2022.pdf) | **Preprint** arXiv 2205.11913v3; publicado después en *ACM Computing Surveys* (2024) con otro título | Acceso abierto: arXiv | sí |
+| `ye-dlschedulingsurvey-2024` | 2024 | cap. 05 | [DOI](https://doi.org/10.1145/3638757) | [`pdf/ye-dlschedulingsurvey-2024.pdf`](./pdf/ye-dlschedulingsurvey-2024.pdf) | Publicada (*ACM Computing Surveys* 56(6), art. 146), obtenida por un autor con acceso institucional | ACM Digital Library (portal Icesi) | sí |
 | `cohen-cloudovercommit-2019` | 2019 | cap. 05 | [DOI](https://doi.org/10.1287/mnsc.2018.3091) | [`pdf/cohen-cloudovercommit-2019.pdf`](./pdf/cohen-cloudovercommit-2019.pdf) | Versión de autor con la maquetación de *Management Science* | Por determinar | sí |
 | `bashir-peakovercommit-2021` | 2021 | cap. 05 | [DOI](https://doi.org/10.1145/3447786.3456259) | [`pdf/bashir-peakovercommit-2021.pdf`](./pdf/bashir-peakovercommit-2021.pdf) | Versión de autor (noman-bashir.github.io) | ACM Digital Library (portal Icesi) | sí |
 | `li-observabilitysurvey-2021` | 2021 | cap. 05 | [DOI](https://doi.org/10.1007/s10664-021-10063-9) | [`pdf/li-observabilitysurvey-2021.xml`](./pdf/li-observabilitysurvey-2021.xml) | Publicada; texto completo XML de Europe PMC (PMC8629732), sin paginación | Por determinar | sí |
@@ -97,7 +97,7 @@ Para comprobar que el archivo de otro autor es el mismo que se verificó: `sha25
 | `eken-mlopsmultivocalreview-2026.pdf` | `b67b11c977f032658881ab4e889b20fe5c4de33e637af1900ac43dc4b7a80f5a` |
 | `fett-oauth2security-2016.pdf` | `153f4c68a3be5cd4f12be91c1882014ecd4579204a40189fba6a9feb4d8ed2f6` |
 | `frantar-gptq-2023.pdf` | `35e339171cd48bbf8dda246bd018b11aa33a5cda0c4a1587cdae574208f56396` |
-| `gao-dlschedulingtaxonomy-2022.pdf` | `6e78ba0ffa7830392bc6498fd33459cc289ac7c7f0a6176425857a1872fc80b2` |
+| `ye-dlschedulingsurvey-2024.pdf` | `b278c6934bf5702e8c49e0f4334bdbca7105923e460552a9d0d714e034c96410` |
 | `gao-lowgpuutilization-2024.pdf` | `84f075ff5f1ddffb46498d830d0ce9e9be15c8aa304ec857818a75129db34bdb` |
 | `george-hpcgpuclassroom-2020.pdf` | `2084864b166a335a311563d24a82d06e05b93d94d10b7f823f7809ca192d517f` |
 | `gu-tiresias-2019.pdf` | `09cda6426c5130f7df1386953640bd4d513f4946c0c7bf178d9219adca71e245` |
@@ -109,7 +109,7 @@ Para comprobar que el archivo de otro autor es el mismo que se verificó: `sha25
 | `li-rbaccloudsurvey-2015.pdf` | `e1e5ef475d1a40f85078b96446a660ef16740cec4347628d39981e8fdd07147b` |
 | `lima-mlopspractices-2022.pdf` | `fc686dd9c238f9be3e6e985e9e7a46376061930dd1172ad1e703d446725d80be` |
 | `lin-awq-2024.pdf` | `cd7b88325267627b7159dfc32d3ee3fc5430718bd722afee6da25e14ff7525d6` |
-| `liu-gpufailureprediction-2022.pdf` | `8dc3b1068ad178e0dccd4c5cb0406cde446aec44b5ce04b847a79a257f8ef968` |
+| `liu-gpufailureprediction-2023.pdf` | `58bc86102ff08ae967d417d338f62d9f887b6283be1fe5af269812af16643b46` |
 | `mahajan-themis-2020.pdf` | `45f460204a73fc2627fdbc8ee85c79391a2f93715e8b35f806c0c6737d584afa` |
 | `miao-llmservingsurvey-2025.pdf` | `a522d1fe410927d135a9447a265072d2bef2e43ee41165a5b7bdda927528c953` |
 | `montesi-apigatewaypatterns-2016.pdf` | `d07c7f229da87cf680c00c71259a27b22dbd87aae33e8c22e0ff3085edb1f1a5` |
