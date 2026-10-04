@@ -6,9 +6,9 @@ Mapa de cada entrada de [`../thesis/references.bib`](../thesis/references.bib) a
 - **Versión del PDF:** si es la versión publicada, un preprint o una versión de autor. Una cita textual se comprueba siempre contra la versión publicada.
 - **Verificada:** si la entrada ya tiene usos comprobados en [`../thesis/CITAS-VERIFICADAS.md`](../thesis/CITAS-VERIFICADAS.md). «sí (parcial)» significa que hay usos verificados, no que todos lo estén.
 
-Actualizado: 2026-09-27 (revisión completa del documento: 26 fuentes nuevas en `pdf/`, verificación de los caps. 05, 06 y 07). El mismo día salió `lewis-susbenchmarks-2018` de `references.bib`, junto con el *System Usability Scale* del objetivo 4.
+Actualizado: 2026-10-04 (cap. 06: cinco páginas de documentación oficial añadidas, 47 citadas); anterior: 2026-09-27 (revisión completa del documento: 26 fuentes nuevas en `pdf/`, verificación de los caps. 05, 06 y 07). El mismo día salió `lewis-susbenchmarks-2018` de `references.bib`, junto con el *System Usability Scale* del objetivo 4.
 
-## Citadas en la tesis (42)
+## Citadas en la tesis (47)
 
 | Clave BibTeX | Año | Citada en | Referencia | PDF | Versión del PDF | Cómo obtenerla | Verificada |
 | :--- | :---: | :--- | :--- | :--- | :--- | :--- | :---: |
@@ -54,6 +54,11 @@ Actualizado: 2026-09-27 (revisión completa del documento: 26 fuentes nuevas en 
 | `xiao-gandiva-2018` | 2018 | cap. 05 | [URL](https://www.usenix.org/conference/osdi18/presentation/xiao) | [`pdf/xiao-gandiva-2018.pdf`](./pdf/xiao-gandiva-2018.pdf) | Publicada (actas USENIX OSDI 2018) | Acceso abierto: usenix.org | sí |
 | `cortez-resourcecentral-2017` | 2017 | cap. 05 | [DOI](https://doi.org/10.1145/3132747.3132772) | [`pdf/cortez-resourcecentral-2017.pdf`](./pdf/cortez-resourcecentral-2017.pdf) | Versión de Microsoft Research del artículo de SOSP '17 | ACM Digital Library (portal Icesi) | sí |
 | `george-hpcgpuclassroom-2020` | 2020 | cap. 05, cap. 06 | [URL](https://arxiv.org/abs/2005.07598) | [`pdf/george-hpcgpuclassroom-2020.pdf`](./pdf/george-hpcgpuclassroom-2020.pdf) | **Preprint** arXiv 2005.07598v1 (informe, sin revisión por pares) | Acceso abierto: arXiv | sí |
+| `litellm-overview-2026` | 2026 | cap. 06 | [URL](https://docs.litellm.ai/docs/) | [`pdf/litellm-overview-2026.html`](./pdf/litellm-overview-2026.html) | Página web (documentación oficial), no producción arbitrada | Acceso abierto: docs.litellm.ai | sí |
+| `litellm-proxyusers-2026` | 2026 | cap. 06 | [URL](https://docs.litellm.ai/docs/proxy/users) | [`pdf/litellm-proxyusers-2026.html`](./pdf/litellm-proxyusers-2026.html) | Página web (documentación oficial) | Acceso abierto: docs.litellm.ai | sí |
+| `kubeflow-profiles-2026` | 2026 | cap. 06 | [URL](https://www.kubeflow.org/docs/components/central-dash/profiles/) | [`pdf/kubeflow-profiles-2026.html`](./pdf/kubeflow-profiles-2026.html) | Página web (documentación oficial) | Acceso abierto: kubeflow.org | sí |
+| `slurm-overview-2026` | 2026 | cap. 06 | [URL](https://slurm.schedmd.com/overview.html) | [`pdf/slurm-overview-2026.html`](./pdf/slurm-overview-2026.html) | Página web (documentación oficial) | Acceso abierto: slurm.schedmd.com | sí |
+| `llamacpp-readme-2026` | 2026 | cap. 06 | [URL](https://github.com/ggml-org/llama.cpp) | [`pdf/llamacpp-readme-2026.md`](./pdf/llamacpp-readme-2026.md) | Página web (README oficial del repositorio, rama principal) | Acceso abierto: github.com | sí |
 
 ## En `references.bib` pero sin citar (3)
 
@@ -124,3 +129,8 @@ Para comprobar que el archivo de otro autor es el mismo que se verificó: `sha25
 | `xu-k8soperatorbugs-2024.pdf` | `def7dad86280b95858743ea9c1d99cc2030ae3aa576e40d8f3db91b7484e2ace` |
 | `xu-sing-2025.pdf` | `213a59c0489bfa986e249a6b9f54888f9198a830b4e1a1689990a8eb72fdb82c` |
 | `yu-orca-2022.pdf` | `b8038438ad8ff99bb131c1a6e16f7df10cf2f962aeb1bf4f1c00cc37e70658ca` |
+| `kubeflow-profiles-2026.html` | `cff218623bb2bbf19e9114a1441158dfe0776624636d7adf91d06dc3ff851b78` |
+| `litellm-overview-2026.html` | `f6b924e38c7015efd0984c1a4201661ad3be2d0c12bdf0d50bec64f67f4c2b37` |
+| `litellm-proxyusers-2026.html` | `a59d5aefc4e4fc6c084a612e694cfd6c7865e7ba4d698d8494b8b844bf1036ee` |
+| `slurm-overview-2026.html` | `95a38035cae196a4ff790022d2125cfabcee618485a415233a345f4144756e93` |
+| `llamacpp-readme-2026.md` | `dc2d34687c844ecf929d9e9a9c9c78e8023b52abf3b2b3d039600c79016673b6` |

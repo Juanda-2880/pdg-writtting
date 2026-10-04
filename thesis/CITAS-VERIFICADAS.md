@@ -45,9 +45,9 @@ Los pasajes van en el idioma original y sin traducir. Las páginas son las del P
   - `chapters/05-marco-teorico.tex` · `\label{sec:mlops-ciclo-vida}` ¶1 · «MLOps designa un paradigma que reúne buenas prácticas, conceptos y una cultura de desarrollo para la conceptualización, implementación, monitoreo, despliegue y escalabilidad de extremo a extremo de los productos de aprendizaje automático, y que se apoya en tres disciplinas, el aprendizaje automático, la ingeniería de *software* (en particular DevOps) y la ingeniería de datos» (reescrita el 2026-09-13; la versión anterior le atribuía una lista de prácticas que el pasaje de definición no enumera así)
     - Pasaje: el de p. 8, §6 citado arriba, que continúa: "Most of all, it is an engineering practice that leverages three contributing disciplines: machine learning, software engineering (especially DevOps), and data engineering."
     - **Estado:** verificada · 2026-09-13
-  - `chapters/06-estado-del-arte.tex` · `\label{sec:ecosistemas-mlops}` ¶1 · «formalizó el ciclo de vida bajo el paradigma de MLOps»
-    - Pasaje: el pasaje de definición de p. 8, §6, registrado arriba
-    - **Estado:** verificada · 2026-09-27
+  - `chapters/06-estado-del-arte.tex` · `\label{sec:ecosistemas-mlops}` ¶1 · «la literatura propuso el paradigma de MLOps para el ciclo de vida de estos sistemas […], aunque [Eken et al.] advierten que su conceptualización unificada sigue sin lograrse»
+    - Pasaje: "The paradigm of Machine Learning Operations (MLOps) addresses this issue. MLOps includes several aspects, such as best practices, sets of concepts, and development culture. However, MLOps is still a vague term" (*Abstract*); y, en Eken et al., "an evidence-based body of knowledge regarding MLOps practices and tools grounded in a unified conceptualization of the MLOps concept remains elusive" (introducción)
+    - **Estado:** verificada · 2026-10-04. «Formalizó el ciclo de vida» se cambió porque las fuentes no dicen que lo formalizaran; ambas hablan de un paradigma todavía sin conceptualización unificada.
   - `chapters/06-estado-del-arte.tex` · `\label{sec:ecosistemas-mlops}` ¶1 · «recogen, entre los servicios en la nube para poner modelos en servicio, Microsoft Azure ML, AWS SageMaker, IBM Watson Studio y Google Vertex AI»
     - Pasaje: "Examples of cloud services include Microsoft Azure ML REST API [ε], AWS SageMaker Endpoints [α, β], IBM Watson Studio [γ], and Google Vertex AI prediction service [δ]." (p. 4, §4.2, C8)
     - **Estado:** verificada · 2026-09-27
@@ -66,17 +66,17 @@ Los pasajes van en el idioma original y sin traducir. Las páginas son las del P
     - **Estado:** verificada · 2026-09-13
   - Aviso de atribución para usos futuros: en §5 (desafíos) muchas afirmaciones concretas se apoyan en un solo estudio primario (por ejemplo, el costo de infraestructura en §5.2.1 se atribuye a [PS129]). Citar a Eken et al. por esas afirmaciones exige decir que la revisión las recoge de un estudio, o ir al estudio original.
   - `chapters/06-estado-del-arte.tex` · `\label{sec:estrategia-revision}` ¶2 · «(criterio de selección desde 2015) \citep{eken, muiruri}»
-    - Pasaje: ninguno; la revisión no respalda el criterio de este capítulo. Los autores decidieron conservar la frase (C6-2 no aprobada, 2026-09-27).
-    - **Estado:** sin respaldo (conservada por decisión de los autores) · 2026-09-27
+    - Pasaje: ninguno; la revisión no respalda el criterio de este capítulo.
+    - **Estado:** uso retirado el 2026-10-04 (revisión del cap. 06 pedida por un autor). La frase conserva el criterio de selección y quedó sin cita. El 2026-09-27 los autores habían decidido conservar la cita (C6-2 no aprobada).
   - `chapters/06-estado-del-arte.tex` · `\label{sec:ecosistemas-mlops}` ¶1 · «señalan, con base en uno de los estudios que revisan, que las plataformas gestionadas en la nube, como Amazon SageMaker, dan soporte a la preparación de datos, el entrenamiento y el seguimiento de experimentos, el despliegue automatizado sobre infraestructura gestionada y el monitoreo durante todo el ciclo de vida»
     - Pasaje: "Managed cloud-based platforms such as Amazon SageMaker [PS108] and IBM Watson [PS115] provide support for data preparation, model training and experiment tracking, automated deployment on managed infrastructure and monitoring throughout the life cycle." (p. 24, §4.7). Atribuida a estudios primarios, como lo dice la frase.
     - **Estado:** verificada · 2026-09-27
-  - `chapters/06-estado-del-arte.tex` · `\label{sec:ecosistemas-mlops}` ¶2 · «recogen, además, que usar plataformas completamente gestionadas implica perder control *fine-grained* sobre la pila tecnológica, y que sus servicios pueden no cubrir los requisitos especializados de muchas organizaciones»
+  - `chapters/06-estado-del-arte.tex` · `\label{sec:ecosistemas-mlops}` ¶2 · «recogen, además, que usar plataformas completamente gestionadas implica perder control *fine-grained* sobre la pila tecnológica, y que sus servicios pueden no cubrir los requisitos especializados de muchas empresas»
     - Pasaje: "using fully managed MLOps platforms means the practitioners would lose fine-grained control over the technology stack and the services supported by the platform may not meet specialized requirements of many businesses [PS108]." (p. 28, §5.3.1)
-    - **Estado:** verificada · 2026-09-27
-  - `chapters/06-estado-del-arte.tex` · `\label{sec:ecosistemas-mlops}` ¶3 · «pese a la potencia de herramientas como Kubeflow, el alto costo de infraestructura, la experiencia que exige operar sus canalizaciones y la sobrecarga de instalación y mantenimiento frenan su adopción, en especial en las etapas iniciales de los proyectos y en organizaciones pequeñas»
+    - **Estado:** verificada · 2026-10-04. «Organizaciones» pasó a «empresas», como dice la fuente (*many businesses*).
+  - `chapters/06-estado-del-arte.tex` · `\label{sec:ecosistemas-mlops}` ¶3 · «pese a la potencia de herramientas como Kubeflow, el alto costo de infraestructura, la experiencia que exige operar sus canalizaciones y la sobrecarga de instalación y mantenimiento frenan su adopción, en especial en las etapas iniciales de los proyectos y en proyectos impulsados por empresas pequeñas»
     - Pasaje: "While there are many powerful tools such as Kubeflow, FedML, Polyaxon for creating MLOps pipelines, high infrastructure cost, high expertise required for pipelines operation, high setup and maintenance overhead of the pipelines slows down their adoptions [PS129]. This is prevalent especially during the initial stages of ML projects or during ML projects driven by small companies." (p. 27, §5.2.1). Recogida de un estudio primario, como lo dice la frase («recogen»).
-    - **Estado:** verificada · 2026-09-27
+    - **Estado:** verificada · 2026-10-04. «Organizaciones pequeñas» pasó a «proyectos impulsados por empresas pequeñas» (*projects driven by small companies*).
 
 ## lima-mlopspractices-2022
 
@@ -233,6 +233,13 @@ Los pasajes van en el idioma original y sin traducir. Las páginas son las del P
   - `chapters/06-estado-del-arte.tex` · `\label{sec:entornos-universitarios}` ¶3 · «SING aplica cuotas de recursos por usuario»
     - Pasaje: "while SING enforces user resource quotas" (p. 9)
     - **Estado:** verificada · 2026-09-27
+  - `chapters/06-estado-del-arte.tex` · `\label{sec:entornos-universitarios}` ¶3 · «Slurm […] ofrece encolamiento y planificación de trabajos, y [Xu et al.] señalan que carece de soporte para aprovisionar los entornos de dependencias que exigen los trabajos de aprendizaje automático, que su nodo de acceso puede convertirse en un punto único de falla y que su asignación de recursos de grano grueso puede fragmentarlos»
+    - Pasaje: "Slurm provides job queueing and scheduling capabilities in clusters." y "Slurm lacks support for provisioning the complex dependency environments required by ML jobs […] the login node often becomes a single point of failure […] Slurm's coarse-grained resource allocation mechanisms may lead to resource fragmentations and underutilization under certain submission orders and job characteristics" (§2.1.2, *Traditional HPC Solution*, *Analysis*)
+    - **Estado:** verificada · 2026-10-04
+  - `chapters/06-estado-del-arte.tex` · `\label{sec:ecosistemas-mlops}` ¶3 · «Kubernetes carece de soporte nativo para el control de acceso por usuario y el encolamiento de trabajos, que exigen herramientas adicionales»
+    - Pasaje: "Kubernetes lacks native support for user-level access control and job queuing essential for shared ML clusters, each requiring a separate set of tools and configurations [30] to be added on top of Kubernetes." (§2.1.3, *Container Platforms*, *Analysis*)
+    - **Estado:** verificada · 2026-10-04
+  - `fuentes/` · tabla comparativa · «Clústeres de campus: monitoreo de utilización de GPU» · Pasaje: "GPU Utilization Monitoring. We closely monitor GPU utilization in SING to identify cases of underutilized resources" (§5). **Estado:** verificada · 2026-10-04
 
 ## weitzel-nrpreservation-2025
 
@@ -262,9 +269,9 @@ Los pasajes van en el idioma original y sin traducir. Las páginas son las del P
   - `chapters/05-marco-teorico.tex` · `\label{sec:despliegue-inferencia}` ¶3 · «La técnica reduce la precisión numérica con la que se representan los pesos, con una degradación de calidad acotada y medida experimentalmente»
     - Pasaje: "reducing the bitwidth down to 3 or 4 bits per weight, with negligible accuracy degradation relative to the uncompressed baseline" (p. 1, *Abstract*)
     - **Estado:** verificada · 2026-09-27
-  - `chapters/06-estado-del-arte.tex` · `\label{sec:motores-inferencia}` ¶2 · «La cuantización posentrenamiento […] reduce la precisión numérica de los pesos con una pérdida de calidad acotada»
+  - `chapters/06-estado-del-arte.tex` · `\label{sec:motores-inferencia}` ¶2 · «La cuantización posentrenamiento […] reduce la precisión numérica de los pesos procurando mantener una pérdida mínima de rendimiento»
     - Pasaje: el pasaje del *Abstract* (p. 1) registrado arriba. La versión anterior lo citaba para GGUF, que la fuente no trata; GPTQ es otro método.
-    - **Estado:** verificada · 2026-09-27
+    - **Estado:** verificada · 2026-10-04. «Pérdida acotada» pasó a «procurando mantener una pérdida mínima de rendimiento» (Chen et al.: «while striving to maintain minimal performance loss»). La frase sobre *llama.cpp* que la antecede no lleva cita.
 
 ## lin-awq-2024
 
@@ -298,9 +305,9 @@ Los pasajes van en el idioma original y sin traducir. Las páginas son las del P
   - `chapters/05-marco-teorico.tex` · `\label{sec:gobernanza-recursos-compartidos}` ¶1 · «incorporan la equidad entre trabajos o usuarios, con una noción de equidad en el tiempo de finalización»
     - Pasaje: "Its GPU allocation policy enforces that ML workloads complete in a finish-time fair manner, a new notion we introduce." (p. 2, *Abstract*). PDF: `fuentes/pdf/mahajan-themis-2020.pdf`, actas de USENIX NSDI 2020.
     - **Estado:** verificada · 2026-09-27
-  - `chapters/06-estado-del-arte.tex` · `\label{sec:clusteres-industriales}` ¶2 · «propusieron Themis con el fin de garantizar equidad de largo plazo en clústeres de aprendizaje profundo»
+  - `chapters/06-estado-del-arte.tex` · `\label{sec:clusteres-industriales}` ¶2 · «Themis, un esquema de subastas que busca asegurar a largo plazo la equidad en el tiempo de finalización de las cargas de aprendizaje automático»
     - Pasaje: "Our auction design allocates GPUs to winning bids by trading off fairness for efficiency in the short term, but ensuring finish-time fairness in the long term." (p. 2, *Abstract*; la p. 1 del PDF es la portada de USENIX)
-    - **Estado:** verificada · 2026-09-27
+    - **Estado:** verificada · 2026-10-04. Redactada de nuevo con los términos del pasaje (*auction*, *finish-time fairness*, *long term*).
 
 ## narayanan-gavel-2020
 
@@ -309,9 +316,10 @@ Los pasajes van en el idioma original y sin traducir. Las páginas son las del P
   - `chapters/05-marco-teorico.tex` · `\label{sec:gobernanza-recursos-compartidos}` ¶1 · «(equidad) con políticas adaptadas a aceleradores heterogéneos»
     - Pasaje: "Gavel expresses these policies as optimization problems and then systematically transforms these problems into heterogeneity-aware versions" (p. 2) y "heterogeneity-aware versions of fair sharing / least attained service" (p. 3). Gavel también admite políticas jerárquicas ("hierarchical policies that divide resources among high-level entities", p. 3), por eso ya no se agrupa con un supuesto de «mismo derecho». PDF: `fuentes/pdf/narayanan-gavel-2020.pdf`, actas de USENIX OSDI 2020.
     - **Estado:** verificada · 2026-09-27
-  - `chapters/06-estado-del-arte.tex` · `\label{sec:clusteres-industriales}` ¶2 · «formularon Gavel, un programador consciente de la heterogeneidad de los aceleradores que optimiza políticas de reparto global»
+  - `chapters/06-estado-del-arte.tex` · `\label{sec:clusteres-industriales}` ¶2 · «Gavel, un planificador consciente de la heterogeneidad de los aceleradores que generaliza distintas políticas de planificación al expresarlas como problemas de optimización»
     - Pasaje: "we proposed Gavel, a heterogeneity-aware cluster scheduler that is able to optimize for many high-level" metrics (conclusión, p. 15). La cita que figuraba antes («Gavel is a heterogeneity-aware cluster scheduler») no es literal.
-    - **Estado:** verificada · 2026-09-27
+    - Pasaje añadido el 2026-10-04: "we propose Gavel, a heterogeneity-aware scheduler that systematically generalizes a wide range of existing scheduling policies. Gavel expresses these policies as optimization problems" (p. 1, *Abstract*).
+    - **Estado:** verificada · 2026-10-04. Se retiró «optimiza políticas de reparto global», que la fuente no dice.
 
 ## kwon-pagedattention-2023
 
@@ -321,9 +329,9 @@ Los pasajes van en el idioma original y sin traducir. Las páginas son las del P
     - Pasaje: "the key-value cache (KV cache) memory for each request is huge and grows and shrinks dynamically. When managed inefficiently, this memory can be significantly wasted by fragmentation and redundant duplication, limiting the batch size. To address this problem, we propose PagedAttention, an attention algorithm inspired by the classical virtual memory and paging techniques in operating systems" (p. 1, *Abstract*). **Matiz:** la fuente habla de la memoria de la caché KV, no de «la capacidad instalada»; los autores decidieron conservar la redacción (C5-3 no aprobada, 2026-09-27). PDF: preprint arXiv 2309.06180.
     - **Estado:** verificada con matiz · 2026-09-27
   - `chapters/05-marco-teorico.tex` · `\label{sec:despliegue-inferencia}` ¶4 · **uso anterior retirado el 2026-09-27**: atribuía a Kwon et al. que vLLM «paga ese *throughput* con mayor latencia», cuando la fuente reporta "throughput […] by 2-4× with the same level of latency" (p. 1).
-  - `chapters/06-estado-del-arte.tex` · `\label{sec:motores-inferencia}` ¶1 · «PagedAttention, que gestiona el almacén de claves y valores (KV *cache*) mediante principios análogos a la paginación de memoria virtual en sistemas operativos, con lo cual elimina casi en su totalidad la fragmentación interna y externa de la memoria de video»
+  - `chapters/06-estado-del-arte.tex` · `\label{sec:motores-inferencia}` ¶1 · «PagedAttention, que gestiona el almacén de claves y valores (KV *cache*) mediante principios análogos a la paginación de memoria virtual en sistemas operativos, con lo cual alivia la fragmentación interna, elimina la externa y logra un desperdicio casi nulo de la memoria de la caché»
     - Pasaje: "PagedAttention, an attention algorithm inspired by the classical virtual memory and paging techniques in operating systems. On top of it, we build vLLM, an LLM serving system that achieves (1) near-zero waste in KV cache memory" (p. 1, *Abstract*); "This design alleviates internal fragmentation by using relatively small blocks and allocating them on demand. Moreover, it eliminates external fragmentation as all blocks have the same size." (p. 2)
-    - **Estado:** verificada · 2026-09-27
+    - **Estado:** verificada · 2026-10-04. La versión anterior decía que eliminaba «casi en su totalidad la fragmentación interna y externa». La fuente dice que alivia la interna y elimina la externa, y el «casi nulo» se refiere al desperdicio de la caché KV.
 
 ## yu-orca-2022
 
@@ -369,9 +377,9 @@ Los pasajes van en el idioma original y sin traducir. Las páginas son las del P
 - **Versión consultada:** `fuentes/pdf/muiruri-mlinferenceserving-2026.pdf`, versión publicada en *Software: Practice and Experience* (acceso abierto), descargada por los autores el 2026-09-27.
 - **Usos:**
   - `chapters/05-marco-teorico.tex` · `\label{sec:mlops-ciclo-vida}` ¶2 y `\label{sec:despliegue-inferencia}` ¶1 · **usos retirados el 2026-09-27**. Se le atribuían los objetivos de cada fase (*throughput*, tiempo hasta converger, latencia, estabilidad bajo carga variable) y ser «el punto donde se concentran las decisiones de rendimiento». El PDF (versión publicada, acceso abierto, descargado por los autores) es un estudio multicaso de ocho sistemas y solo respalda la distinción básica: "The two distinct phases of the ML workflow-training and inference-focus on conducting different experiments offline to build an ML model and querying the trained ML model for prediction, respectively." (p. 2, §2). Los reemplazan `gao-dlschedulingtaxonomy-2022` y `miao-llmservingsurvey-2025`.
-  - `chapters/06-estado-del-arte.tex` · `\label{sec:estrategia-revision}` ¶2 · «publicadas a partir del año 2015, en concordancia con la regla de vigencia temporal de este proyecto y con la evolución reciente del aprendizaje profundo contemporáneo \citep{eken, muiruri}»
-    - Pasaje: ninguno. Es un estudio multicaso de ocho sistemas de aprendizaje automático sobre prácticas de despliegue; no trata criterios de selección de literatura. Los autores decidieron conservar la frase (C6-2 no aprobada, 2026-09-27).
-    - **Estado:** sin respaldo (conservada por decisión de los autores) · 2026-09-27
+  - `chapters/06-estado-del-arte.tex` · `\label{sec:estrategia-revision}` ¶2 · «publicadas a partir del año 2015, \citep{eken, muiruri} [retirado]»
+    - Pasaje: ninguno. Es un estudio multicaso de ocho sistemas de aprendizaje automático sobre prácticas de despliegue; no trata criterios de selección de literatura.
+    - **Estado:** uso retirado el 2026-10-04 (revisión del cap. 06 pedida por un autor), con la misma salvedad que Eken et al.
   - `chapters/06-estado-del-arte.tex` · `\label{sec:ecosistemas-mlops}` ¶3 y tabla comparativa · **usos retirados el 2026-09-27**. Se le atribuía que «Kubeflow y TensorFlow Serving representan las alternativas más citadas»; la fuente no menciona Kubeflow. Los reemplazan `kreuzberger-mlopsoverview-2023` y `eken-mlopsmultivocalreview-2026`.
 
 ## chen-llmquantizationsurvey-2026
@@ -381,9 +389,9 @@ Los pasajes van en el idioma original y sin traducir. Las páginas son las del P
   - `chapters/05-marco-teorico.tex` · `\label{sec:despliegue-inferencia}` ¶3 · «La técnica reduce la precisión numérica con la que se representan los pesos, con una degradación de calidad acotada»
     - Pasaje: "Model quantization, as an effective model compression technique, significantly reduces LLMs' memory footprint and computational requirements by lowering the numerical precision of model parameters and/or activations, while striving to maintain minimal performance loss." (p. 1, *Abstract*). PDF: versión publicada en *Journal of Computer Science and Technology* 41(1), descargada por los autores. **Autores en `references.bib` incorrectos** (el PDF dice Yi-Dong Chen, Kai-Jun Zheng, Zhen-Hua Guo, Qi-Hao Zhang, Yong-Hua Zhang y Ji-Dong Zhai); pendiente de corregir en el paso de bibliografía.
     - **Estado:** verificada · 2026-09-27
-  - `chapters/06-estado-del-arte.tex` · `\label{sec:motores-inferencia}` ¶2 · «La cuantización posentrenamiento […] reduce la precisión numérica de los pesos con una pérdida de calidad acotada»
+  - `chapters/06-estado-del-arte.tex` · `\label{sec:motores-inferencia}` ¶2 · «La cuantización posentrenamiento […] reduce la precisión numérica de los pesos procurando mantener una pérdida mínima de rendimiento»
     - Pasaje: el mismo pasaje del *Abstract* registrado para el cap. 05 (p. 1). La fuente no menciona GGUF ni *llama.cpp*; la versión anterior la citaba para GGUF y se corrigió.
-    - **Estado:** verificada · 2026-09-27
+    - **Estado:** verificada · 2026-10-04. «Pérdida acotada» pasó a «procurando mantener una pérdida mínima de rendimiento» (Chen et al.: «while striving to maintain minimal performance loss»). La frase sobre *llama.cpp* que la antecede no lleva cita.
 
 ## gao-dlschedulingtaxonomy-2022
 
@@ -551,4 +559,48 @@ Los pasajes van en el idioma original y sin traducir. Las páginas son las del P
   - `chapters/07-metodologia.tex` · `\label{sec:estrategia-metodologica}` ¶1 · «proceso de desarrollo iterativo e incremental de tipo Scrum, siguiendo la *Scrum Guide* […], organizado en *sprints* de tres semanas»
     - Pasaje: "Scrum employs an iterative, incremental approach to optimize predictability and to control risk." (p. 4) y "They are fixed length events of one month or less to create consistency." (p. 8, *The Sprint*). **Matiz:** la guía también dice "The Scrum framework, as outlined herein, is immutable. While implementing only parts of Scrum is possible, the result is not Scrum." (p. 14), y el capítulo reconoce que el equipo no practica el *daily scrum* ni las retrospectivas. Los autores decidieron conservar la redacción (C7-1 no aprobada, 2026-09-27).
     - **Estado:** verificada con matiz · 2026-09-27
+
+## litellm-overview-2026
+
+- **Versión consultada:** `fuentes/pdf/litellm-overview-2026.html`, página *Getting Started* de la documentación oficial (<https://docs.litellm.ai/docs/>), descargada el 2026-10-04. Es documentación técnica, no producción arbitrada.
+- **Usos:**
+  - `chapters/06-estado-del-arte.tex` · `\label{sec:pasarelas-inferencia}` ¶2 · «biblioteca de código abierto que ofrece una interfaz unificada para invocar más de cien modelos de lenguaje con el formato de OpenAI, con lógica de reintentos y de respaldo entre varios despliegues, y […] una pasarela autoalojada con llaves virtuales, seguimiento de costos y presupuestos por llave, equipo o usuario»
+    - Pasaje: "LiteLLM is an open-source library that gives you a single, unified interface to call 100+ LLMs (OpenAI, Anthropic, Vertex AI, Bedrock, and more) using the OpenAI format."; "Built-in retry / fallback logic across multiple deployments via the Router"; "Self-hosted LLM Gateway (Proxy) with virtual keys, cost tracking, and an admin UI"; "Virtual keys with per-key/team/user budgets"
+    - **Estado:** verificada · 2026-10-04
+  - `chapters/06-estado-del-arte.tex` · tabla comparativa y `\label{sec:pasarelas-inferencia}` ¶3 · «sin describir el despliegue ni la gestión de las instancias que los sirven» · **lectura de los autores**: es una ausencia en la documentación, no una afirmación de la fuente, y el texto la declara así.
+    - **Estado:** lectura propia, sin cita de la ausencia · 2026-10-04
+
+## litellm-proxyusers-2026
+
+- **Versión consultada:** `fuentes/pdf/litellm-proxyusers-2026.html`, página *Budgets, Rate Limits* (<https://docs.litellm.ai/docs/proxy/users>), descargada el 2026-10-04.
+- **Usos:**
+  - `chapters/06-estado-del-arte.tex` · `\label{sec:pasarelas-inferencia}` ¶2 · «límites de tokens por minuto, de peticiones por minuto y de peticiones en paralelo por llave o equipo»
+    - Pasaje: "You can set: tpm limits (tokens per minute) rpm limits (requests per minute) max parallel requests rpm / tpm limits per model for a given key or team"
+    - **Estado:** verificada · 2026-10-04
+
+## kubeflow-profiles-2026
+
+- **Versión consultada:** `fuentes/pdf/kubeflow-profiles-2026.html`, página *Profiles and Namespaces* de la documentación oficial (<https://www.kubeflow.org/docs/components/central-dash/profiles/>), descargada el 2026-10-04.
+- **Usos:**
+  - `chapters/06-estado-del-arte.tex` · `\label{sec:ecosistemas-mlops}` ¶3 · «perfiles que envuelven un espacio de nombres de Kubernetes, con un propietario y colaboradores de solo lectura o de edición, y permite crear opcionalmente una cuota de recursos para cada perfil»
+    - Pasaje: "A Kubeflow Profile is a Kubernetes CRD introduced by Kubeflow that wraps a Kubernetes Namespace. Profiles are owned by a single user, and can have multiple contributors with view or modify access."; "optionally create a ResourceQuota for the profile" (manifiesto de ejemplo, campo `resourceQuotaSpec`)
+    - **Estado:** verificada · 2026-10-04
+  - mismo lugar · «Su documentación no describe niveles de prioridad por rol ni reservas de cupos» · **lectura de los autores** sobre esa página; no se revisó el resto de la documentación de Kubeflow.
+    - **Estado:** lectura propia, alcance limitado a esta página · 2026-10-04
+
+## slurm-overview-2026
+
+- **Versión consultada:** `fuentes/pdf/slurm-overview-2026.html`, página *Overview* de la documentación oficial de SchedMD (<https://slurm.schedmd.com/overview.html>), descargada el 2026-10-04.
+- **Usos:**
+  - `chapters/06-estado-del-arte.tex` · `\label{sec:entornos-universitarios}` ¶1 · «un sistema de gestión de clústeres y planificación de trabajos que asigna recursos y arbitra su disputa mediante una cola de trabajos pendientes»
+    - Pasaje: "Slurm is an open source, fault-tolerant, and highly scalable cluster management and job scheduling system for large and small Linux clusters."; "it allocates exclusive and/or non-exclusive access to resources (compute nodes) to users for some duration of time"; "it arbitrates contention for resources by managing a queue of pending work."
+    - **Estado:** verificada · 2026-10-04
+
+## llamacpp-readme-2026
+
+- **Versión consultada:** `fuentes/pdf/llamacpp-readme-2026.md`, archivo *README* de la rama principal de <https://github.com/ggml-org/llama.cpp>, descargado el 2026-10-04. Es documentación técnica, no producción arbitrada.
+- **Usos:**
+  - `chapters/06-estado-del-arte.tex` · `\label{sec:motores-inferencia}` ¶2 · «se plantea como objetivo la inferencia de modelos con una configuración mínima, y su implementación en C/C++ no tiene dependencias y admite cuantización a enteros de entre 1,5 y 8 bits, con núcleos CUDA propios para las GPU de NVIDIA»
+    - Pasaje: "The main goal of `llama.cpp` is to enable LLM (and VLM) inference with minimal setup and state-of-the-art performance on a wide range of hardware"; "Plain C/C++ implementation without any dependencies"; "1.5-bit, 2-bit, 3-bit, 4-bit, 5-bit, 6-bit, and 8-bit integer quantization for faster inference and reduced memory use"; "Custom CUDA kernels for running LLMs on NVIDIA GPUs"
+    - **Estado:** verificada · 2026-10-04. **Matices:** el README no describe el formato GGUF ni el tamaño de los modelos que caben en 24 GB, y esas dos afirmaciones quedan sin cita como hechos del proyecto (`project-context/technologies.md`). Tampoco dice «sobrecarga mínima», por lo que se retiró esa expresión. La frase anterior «carece de orquestación distribuida nativa» se retiró porque el README lista un *backend* RPC; la nueva frase sobre políticas multiusuario es una lectura de los autores sobre la documentación.
 
