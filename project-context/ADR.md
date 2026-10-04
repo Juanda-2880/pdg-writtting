@@ -138,3 +138,16 @@ Responder **en una reunión** también vale, con una condición: que la respuest
 - **Avance (2026-09-13):** JDLP rehízo el cronograma con *sprints* de tres semanas desde el 21 de septiembre, etapa previa del 10 de agosto al 20 de septiembre y orden clúster → telemetría → cuotas → plataforma → evaluación (`documentation.md`, «Execution-order decisions»). Con ese plan el *sprint* 4 (23 nov – 13 dic) termina después del cierre de PDG1 y el *sprint* 5 (11–31 ene) cae antes de PDG2, y el segundo párrafo del cronograma decía «PDG2, entre enero y mayo de 2027» (desde el 2026-09-17 dice «La segunda etapa comprende de enero a mayo de 2027», sin nombrar los cursos). Los tres marcadores anteriores se reemplazaron por uno solo.
 - **Qué se necesita para cerrarla:** ADR-032 cerrada, y la decisión de si entre diciembre y febrero se trabaja o no (hoy ese periodo no pertenece a ningún curso).
 - **Al resolver:** reconstruir `tab:fases-desarrollo` y `fig:gantt` desde las tablas `tab:req-*` del cap. 07 (que ya siguen `requirements.md` §2), ajustar el segundo párrafo de `\label{sec:cronograma}` y borrar el marcador.
+
+### ADR-035 — ¿Se validan los niveles de poder e interés propuestos y la ausencia de actores regulatorios o legales en el análisis de participación?
+
+- **Estado:** abierta
+- **Abierta por:** Redactor · 2026-10-04
+- **A quién corresponde:** autores
+- **Dónde se usa:**
+  - `thesis/chapters/99-anexos.tex` — `\label{anx:analisis-participacion}`, sección «Identificación de los interesados» · marcador literal: `% [verify: ADR-035: confirmar que ningún actor regulatorio o legal tiene influencia directa sobre el proyecto]`
+  - `thesis/chapters/99-anexos.tex` — `\label{tab:matriz-poder-interes}` y `\label{fig:matriz-poder-interes}` · marcador literal: `% [verify: ADR-035: los niveles de poder e interés y los cuadrantes de la \cref{tab:matriz-poder-interes} son una propuesta pendiente de validación por los autores]`
+- **Contexto:** la guía de identificación de interesados de la asignatura pide ubicar a cada interesado en la matriz poder-interés, y esa ubicación es un juicio de los autores que ningún documento del proyecto fija. La lista de interesados sale de los capítulos 1, 2 y 7 y de `project-context/`; la ausencia de actores regulatorios o legales no tiene respaldo documental. Los apartados de riesgos por uso de datos y de decisiones automatizadas parten de los requerimientos de gobernanza y observabilidad del capítulo 7.
+- **Qué se necesita para cerrarla:** que los autores confirmen o corrijan, interesado por interesado, el poder (alto o bajo) y el interés (alto o bajo), y que confirmen si algún actor regulatorio o legal debe figurar. La guía también exige llevar un registro de las interacciones con la IA generativa (nivel 3 de uso), que corresponde a los autores.
+- **Al resolver:** ajustar `tab:interesados`, `tab:matriz-poder-interes` y la matriz según la respuesta, y quitar ambos marcadores.
+

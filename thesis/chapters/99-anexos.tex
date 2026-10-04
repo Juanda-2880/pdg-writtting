@@ -12,7 +12,119 @@
 %     ideas del cuerpo del documento.
 % ==========================================================================
 
-% [verify: ADR-010 — pendiente: el anexo de análisis de participación]
+\chapter{Análisis de participación}\label{anx:analisis-participacion}
+
+Este anexo identifica a los interesados del proyecto, los clasifica según su poder para influir en las decisiones y su interés en la plataforma, y analiza los efectos éticos y de impacto sobre los más afectados. Para ello aplica el mapeo de interesados con la matriz poder-interés, que ubica a cada actor en uno de cuatro cuadrantes. El poder expresa la capacidad de un actor para influir en las decisiones del proyecto, y el interés expresa el grado en que la plataforma lo afecta.
+
+\section{Identificación de los interesados}
+
+El proyecto desarrolla una plataforma de \emph{software} para una infraestructura de cómputo universitaria, en un contexto académico, y los interesados se derivan de los actores descritos en el \cref{cha:motivacion-antecedentes} y en el \cref{cha:descripcion-problema}. La \cref{tab:interesados} los agrupa en las categorías de usuarios finales, cliente, equipo técnico, institución, actores externos y actores potencialmente impactados.
+
+% [verify: ADR-035: confirmar que ningún actor regulatorio o legal tiene influencia directa sobre el proyecto]
+No se identificaron actores regulatorios ni legales con influencia directa sobre las decisiones del proyecto, de modo que esa categoría no aparece en la tabla.
+
+\begin{xltabular}{\textwidth}{>{\raggedright\arraybackslash}p{0.27\textwidth} >{\raggedright\arraybackslash}p{0.2\textwidth} X}
+  \caption{Interesados del proyecto, su categoría y su relación con la plataforma.}
+  \label{tab:interesados} \\
+  \toprule
+  \textbf{Interesado} & \textbf{Categoría} & \textbf{Relación con el proyecto} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Interesado} & \textbf{Categoría} & \textbf{Relación con el proyecto} \\
+  \midrule
+  \endhead
+  \bottomrule
+  \endfoot
+  Estudiantes y profesores de la universidad & Usuarios finales & Requieren GPU para sus proyectos e investigaciones, se identifican por sus roles institucionales y son quienes consumirán el servicio de despliegue de modelos. \\
+  \addlinespace
+  Usuarios del plano de control de entrenamiento & Usuarios finales & Entrenan modelos con el sistema web del proyecto anterior sobre las mismas estaciones de trabajo que usará la plataforma. \\
+  \addlinespace
+  Personal administrador del IAsLab & Cliente & Opera los equipos, aporta los requerimientos del laboratorio y asumirá el soporte y el mantenimiento de la plataforma cuando termine el proyecto. \\
+  \addlinespace
+  Autores del proyecto & Equipo técnico & Diseñan, construyen y evalúan la plataforma. \\
+  \addlinespace
+  Tutor del proyecto & Equipo técnico & Orienta el desarrollo del proyecto y responde académicamente por él. \\
+  \addlinespace
+  Universidad Icesi & Organización o institución & Es propietaria de la infraestructura en la que invirtió y cuyo aprovechamiento busca mejorar el proyecto. \\
+  \addlinespace
+  Servicio institucional de identidad (SAAMFI) & Actores externos & Provee las identidades y los roles de los que dependen el control de acceso y la gobernanza de cuotas. \\
+  \addlinespace
+  Docentes y estudiantes de las clases que usan la sala 104M & Actores potencialmente impactados & Usan las mismas estaciones para actividades académicas, que deben seguir siendo utilizables mientras el clúster opera. \\
+\end{xltabular}
+
+\section{Clasificación en la matriz poder-interés}
+
+% [verify: ADR-035: los niveles de poder e interés y los cuadrantes de la \cref{tab:matriz-poder-interes} son una propuesta pendiente de validación por los autores]
+La \cref{tab:matriz-poder-interes} estima el poder y el interés de cada interesado y le asigna la estrategia que corresponde a su cuadrante, y la \cref{fig:matriz-poder-interes} presenta el resultado en la matriz. Los interesados de alto poder y alto interés, y los de bajo poder y alto interés, se consideran críticos y son los que se analizan en la sección siguiente.
+
+\begin{xltabular}{\textwidth}{>{\raggedright\arraybackslash}p{0.2\textwidth} >{\raggedright\arraybackslash}p{0.08\textwidth} >{\raggedright\arraybackslash}p{0.08\textwidth} >{\raggedright\arraybackslash}p{0.15\textwidth} X}
+  \caption{Poder, interés y estrategia asignada a cada interesado.}
+  \label{tab:matriz-poder-interes} \\
+  \toprule
+  \textbf{Interesado} & \textbf{Poder} & \textbf{Interés} & \textbf{Estrategia} & \textbf{Justificación} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Interesado} & \textbf{Poder} & \textbf{Interés} & \textbf{Estrategia} & \textbf{Justificación} \\
+  \midrule
+  \endhead
+  \bottomrule
+  \endfoot
+  Autores del proyecto & Alto & Alto & Gestionar de cerca & Toman las decisiones de diseño y construcción, y responden por el resultado. \\
+  \addlinespace
+  Tutor del proyecto & Alto & Alto & Gestionar de cerca & Orienta el desarrollo del proyecto y responde académicamente por él. \\
+  \addlinespace
+  Personal administrador del IAsLab & Alto & Alto & Gestionar de cerca & Define los requerimientos operativos, opera los equipos y asumirá la operación posterior. \\
+  \addlinespace
+  Universidad Icesi & Alto & Bajo & Mantener satisfecho & Decide sobre la inversión en equipos, pero el proyecto afecta su operación solo de forma indirecta. \\
+  \addlinespace
+  Servicio institucional de identidad (SAAMFI) & Alto & Bajo & Mantener satisfecho & Sus cambios o su caída condicionan el control de acceso y las cuotas, pero el servicio no depende del proyecto. \\
+  \addlinespace
+  Estudiantes y profesores de la universidad & Bajo & Alto & Mantener informado & Usan la plataforma y sus cupos los afectan directamente, pero no deciden sobre su diseño. \\
+  \addlinespace
+  Usuarios del plano de control de entrenamiento & Bajo & Alto & Mantener informado & Comparten el mismo \emph{hardware}, por lo que cualquier regla de reparto de las GPU los afecta. \\
+  \addlinespace
+  Docentes y estudiantes de las clases de la sala 104M & Bajo & Alto & Mantener informado & Sus clases comparten las estaciones que usa la plataforma, y esta debe dejarlas utilizables. \\
+\end{xltabular}
+
+Ningún interesado identificado queda en el cuadrante de bajo poder y bajo interés, por lo que ese cuadrante permanece vacío en la \cref{fig:matriz-poder-interes}.
+
+\begin{figure}[htbp]
+  \centering
+  \hyphenpenalty=10000 \exhyphenpenalty=10000
+  \begin{tikzpicture}[
+      font=\footnotesize,
+      quad/.style={draw, align=left, inner sep=6pt, text width=4.9cm, minimum height=3.7cm, anchor=north west},
+      title/.style={font=\footnotesize\bfseries, align=center}
+    ]
+    % --- Cuadrantes (poder en vertical, interés en horizontal) --------------
+    \node[quad, fill=black!10] (q1) at (0,0)     {\textbf{Mantener satisfecho}\\[3pt] Universidad Icesi\\ Servicio institucional de identidad (SAAMFI)};
+    \node[quad, fill=black!22] (q2) at (5.3,0)   {\textbf{Gestionar de cerca}\\[3pt] Autores del proyecto\\ Tutor del proyecto\\ Personal administrador del IAsLab};
+    \node[quad, fill=white]    (q3) at (0,-4.0)  {\textbf{Monitorear}\\[3pt] \emph{Ningún interesado}};
+    \node[quad, fill=black!10] (q4) at (5.3,-4.0){\textbf{Mantener informado}\\[3pt] Estudiantes y profesores\\ Usuarios del plano de control de entrenamiento\\ Docentes y estudiantes de las clases de la sala 104M};
+    % --- Ejes ------------------------------------------------------------------
+    \draw[-{Latex[length=2.2mm]}, thick] (0,-8.2) -- (10.9,-8.2);
+    \node[title, anchor=north] at (5.45,-8.3) {Interés (de bajo a alto)};
+    \draw[-{Latex[length=2.2mm]}, thick] (-0.3,-7.9) -- (-0.3,0);
+    \node[title, rotate=90, anchor=south] at (-0.4,-3.95) {Poder (de bajo a alto)};
+  \end{tikzpicture}
+  \caption[Matriz poder-interés]{Matriz poder-interés de los interesados del proyecto. Elaboración propia a partir de la \cref{tab:matriz-poder-interes}.}
+  \label{fig:matriz-poder-interes}
+\end{figure}
+
+\section{Análisis ético y de impacto}
+
+Los interesados críticos son los autores, el tutor, el personal administrador del IAsLab, los estudiantes y profesores, los usuarios del plano de control de entrenamiento y los docentes y estudiantes de las clases de la sala 104M. El análisis de sus riesgos se organiza en los tres aspectos que corresponden a todo proyecto, seguidos de dos que se aplican porque la plataforma registra el uso individual y toma decisiones automáticas sobre los recursos.
+
+\begin{description}
+  \item[Riesgos de exclusión o mala usabilidad] La plataforma autentica a los usuarios contra el servicio institucional de identidad, de modo que queda fuera del servicio quien no cuente con una identidad institucional vigente. Entre quienes sí acceden, las cuotas y las prioridades por rol pueden dejar sin cupo o interrumpir la carga de un usuario de menor prioridad cuando no hay capacidad libre. Este riesgo se atenúa porque la plataforma explica al usuario qué límite alcanzó cuando rechaza o encola su solicitud, y le muestra su cuota asignada y su consumo actual. Además, la plataforma se diseña para que un estudiante la opere sin conocimientos de línea de comandos ni de Kubernetes, de modo que no reproduzca la barrera de acceso que motivó el proyecto.
+  \item[Impactos organizacionales] La plataforma sustituye la entrega manual de credenciales y la atención individual de cada solicitud, ya que todo usuario autenticado recibe un rol por defecto sin configuración manual por persona, lo que reduce la carga operativa de los administradores. A cambio, el soporte y el mantenimiento de la plataforma pasan al personal administrador del laboratorio cuando termina el proyecto. Para facilitar esa transición, la configuración del clúster se versiona y se automatiza, de modo que el laboratorio pueda redesplegarla en otra sala sin reconstruirla.
+  \item[Dependencia tecnológica] El control de acceso y las cuotas por rol dependen del servicio institucional de identidad, de modo que un cambio en su interfaz o una caída afecta el uso de la plataforma. Además, la plataforma se diseña solo para nodos con aceleradores de un único fabricante, y desplegarla sobre equipos de otro proveedor exigiría sustituir las capas de aprovisionamiento y de telemetría. El análisis de riesgos del \cref{cha:metodologia} recoge ambas dependencias, y la plataforma aísla la traducción de los roles del servicio de identidad en un componente propio, de modo que un cambio en ese servicio obligue a ajustar solo ese componente.
+  \item[Riesgos por uso de datos] La plataforma asocia las métricas de carga al usuario y al despliegue que las originó, de modo que genera datos de uso individual. El panel de consumo por usuario está destinado al administrador, mientras que cada usuario ve su propia cuota y su consumo. El procesamiento de inferencia ocurre en servidores propios de la universidad, por lo que los datos de las consultas no salen a plataformas de terceros.
+  \item[Decisiones automatizadas que afectan a las personas] La plataforma rechaza o encola las solicitudes que exceden una cuota y expropia los recursos de una carga de menor prioridad cuando una solicitud de rol prioritario lo requiere. Estas decisiones afectan el trabajo de los usuarios, y se atenúan porque cada rol tiene un nivel de prioridad declarado, de modo que la contención de recursos se resuelve por una regla conocida en lugar de por orden de llegada.
+\end{description}
+
 
 \chapter{Árbol de problemas}\label{anx:arbol-problemas}
 
