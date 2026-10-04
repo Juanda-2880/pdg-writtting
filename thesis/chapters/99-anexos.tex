@@ -12,7 +12,7 @@
 %     ideas del cuerpo del documento.
 % ==========================================================================
 
-% [verify: ADR-010 — pendiente: los anexos de análisis de participación y de árbol de objetivos]
+% [verify: ADR-010 — pendiente: el anexo de análisis de participación]
 
 \chapter{Árbol de problemas}\label{anx:arbol-problemas}
 
@@ -74,3 +74,64 @@ La \cref{fig:arbol-problemas} se lee de abajo hacia arriba, y las flechas indica
   \caption[Árbol de problemas]{Árbol de problemas del proyecto. Las flechas indican la relación causal y el diagrama se lee de abajo hacia arriba. Elaboración propia a partir del \cref{cha:descripcion-problema}.}
   \label{fig:arbol-problemas}
 \end{figure}
+
+\chapter{Árbol de objetivos}\label{anx:arbol-objetivos}
+
+Este anexo presenta el árbol de objetivos que respalda la formulación de los objetivos del \cref{cha:objetivos}. Se obtuvo al plantear en positivo cada elemento del árbol de problemas del Anexo~\labelcref{anx:arbol-problemas}, de modo que cada factor causal se convierte en un medio, el problema central en el objetivo central y los efectos en fines.
+
+La \cref{fig:arbol-objetivos} se lee de abajo hacia arriba. Cada medio conduce a uno de los tres objetivos específicos de construcción, y el conjunto de medios conduce al objetivo general, del que se derivan los fines principales y los fines secundarios. Las columnas conservan el orden del Anexo~\labelcref{anx:arbol-problemas}, de modo que cada medio queda frente a la causa que atiende. Los textos de los objetivos específicos dentro de las cajas están resumidos, y su redacción completa se encuentra en la \cref{sec:objetivos-especificos}.
+
+El \cref{obj:evaluacion} no aparece en el árbol porque ninguna causa del árbol de problemas se asocia a él. Ese objetivo verifica el desempeño de la plataforma una vez construida.
+
+\begin{landscape}
+\begin{figure}[p]
+  \centering
+  \hyphenpenalty=10000 \exhyphenpenalty=10000
+  \begin{tikzpicture}[
+      font=\footnotesize,
+      box/.style={draw, rounded corners=2pt, align=center, inner sep=4pt, text width=5.5cm},
+      fin/.style={box, fill=black!6},
+      fin2/.style={box, fill=black!12, text width=7.4cm},
+      cen/.style={box, fill=black!22, very thick, text width=16.2cm},
+      med/.style={box, fill=white},
+      rowlabel/.style={font=\scriptsize\bfseries, rotate=90, anchor=center, align=center},
+      flow/.style={-{Latex[length=2.2mm]}, thick}
+    ]
+    % --- Fines secundarios -----------------------------------------------
+    \node[fin, minimum height=2.3cm] (a1) at (-5.9,0) {\textbf{Estudiantes y profesores}\\[2pt] Validación práctica de sus investigaciones sobre infraestructura propia, sin costos de plataformas comerciales de nube};
+    \node[fin, minimum height=2.3cm] (a2) at (0,0)    {\textbf{Administradores}\\[2pt] Menor sobrecarga operativa en la gestión de credenciales y solicitudes};
+    \node[fin, minimum height=2.3cm] (a3) at (5.9,0)  {\textbf{Infraestructura compartida}\\[2pt] Menor riesgo de saturación desordenada de las GPU y de fallas no detectadas, con la disponibilidad de los nodos preservada};
+    % --- Fines principales -----------------------------------------------
+    \node[fin2, minimum height=1.3cm] (b1) at (-4.1,-3.0) {Aprovechamiento sostenido de una infraestructura en la que la universidad ya invirtió};
+    \node[fin2, minimum height=1.3cm] (b2) at (4.1,-3.0)  {Continuidad del ciclo de vida de los modelos tras la etapa de entrenamiento};
+    % --- Objetivo central --------------------------------------------------
+    \node[cen, minimum height=2.3cm] (c) at (0,-5.9) {\textbf{Objetivo central y objetivo general}\\[2pt] La infraestructura de cómputo del IAsLab opera como un entorno multiusuario compartido, gobernado y observable. Para lograrlo, el proyecto busca construir la plataforma de orquestación y gobernanza de cargas de inteligencia artificial y aprendizaje automático del IAsLab, para consolidar el ciclo de vida de MLOps \emph{on-premise} en la Universidad Icesi};
+    % --- Medios y objetivos específicos ---------------------------------------
+    \node[med, minimum height=3.6cm] (m1) at (-5.9,-10.1) {\textbf{Plano de servicio que gestiona motores de inferencia}\\[3pt] \Cref{obj:orquestacion}. Implementar el despliegue concurrente de modelos de inteligencia artificial ya entrenados, mediante motores de inferencia empaquetados como imágenes de contenedor};
+    \node[med, minimum height=3.6cm] (m2) at (0,-10.1)    {\textbf{Integración entre el proveedor de identidad (SAAMFI) y políticas de cuotas}\\[3pt] \Cref{obj:gobernanza}. Implementar un sistema de cuotas y restricciones acoplado a los roles de SAAMFI, que reserve cupos de cómputo para las cargas de inferencia};
+    \node[med, minimum height=3.6cm] (m3) at (5.9,-10.1)  {\textbf{Sistema de observabilidad centralizado}\\[3pt] \Cref{obj:telemetria}. Desarrollar un módulo de observabilidad para capturar y visualizar métricas de \emph{hardware} y de carga de trabajo de los nodos de cómputo};
+
+    % --- Relaciones (de abajo hacia arriba) ------------------------------------
+    \foreach \m in {m1,m2,m3} {
+      \draw[flow] (\m.north) -- (\m.north |- c.south);
+    }
+    \draw[flow] (c.north -| b1.south) -- (b1.south);
+    \draw[flow] (c.north -| b2.south) -- (b2.south);
+    \coordinate (bus) at (0,-1.75);
+    \draw[thick] (b1.north) -- (b1.north |- bus);
+    \draw[thick] (b2.north) -- (b2.north |- bus);
+    \draw[thick] (a1.south |- bus) -- (a3.south |- bus);
+    \foreach \a in {a1,a2,a3} {
+      \draw[flow] (\a.south |- bus) -- (\a.south);
+    }
+
+    % --- Etiquetas de nivel ------------------------------------------------------
+    \node[rowlabel] at (-9.35,0)    {Fines secundarios};
+    \node[rowlabel] at (-9.35,-3.0) {Fines principales};
+    \node[rowlabel] at (-9.35,-5.9) {Objetivo central};
+    \node[rowlabel] at (-9.35,-10.1) {Medios y objetivos específicos};
+  \end{tikzpicture}
+  \caption[Árbol de objetivos]{Árbol de objetivos del proyecto. Las flechas indican que cada medio conduce al objetivo central y que este conduce a los fines, de modo que el diagrama se lee de abajo hacia arriba. Elaboración propia a partir del Anexo~\labelcref{anx:arbol-problemas} y del \cref{cha:objetivos}.}
+  \label{fig:arbol-objetivos}
+\end{figure}
+\end{landscape}
