@@ -32,6 +32,7 @@ pdg-writtting/
 ├── fuentes/                  # PDFs behind the citations (local only) + INDEX.md mapping each BibTeX key to its file
 ├── thesis/                   # The actual thesis document — one file per chapter, see thesis/README.md
 ├── project-context/          # Institutional PDG charter, requirements, tech stack & open questions (ADR.md)
+│   ├── infraestructura/       # Proposed cluster infrastructure (v3.1): README + exported diagram images
 │   └── meetings/              # Meeting insights: one traceable record per meeting, plus INDEX.md
 └── skills/                   # Every reference/procedure module an agent applies while writing
     ├── README.md              # Loading index: which modules a given task needs, and which it doesn't
@@ -60,6 +61,7 @@ The empirical ground truth and architectural specifications for the IAsLab Degre
 - **Anteproyecto Format:** The faculty's official section-by-section format the thesis document follows.
 - **`requirements.md` — the single requirements document:** every requirement the team builds, grouped under the specific objective it serves, phrased as "El sistema debe ... para ...". It absorbed the former `alcance-moscow.md` scope ladder (deleted 2026-09-20), both source PDFs and the requirements that only existed in the meeting records. Its section 3 holds the `Sin compromiso` requirements, which get built but never written into `thesis/`.
 - **`ADR.md` — Open-questions register:** The single list of unresolved doubts blocking the document, each recorded with the exact file and marker where it is used so another agent can apply the answer with a `grep` instead of re-reading the thesis. Entries are deleted, not archived, once resolved.
+- **`infraestructura/`:** the proposed cluster infrastructure (v3.1): each component with its version, purpose and reason, its coverage of the thesis requirements (section 6.2) and the exported diagram pages. It guides the review of the code repository (`orchid/backend`).
 - **`meetings/`** (see module 11 below): meeting evidence lives here, nested under project-context, because it is project-related material, but it stays *proposed* evidence until a human promotes a claim into `requirements.md`/`technologies.md` — never treat a row in `meetings/` as an established project fact.
 
 ### 2. [`skills/thesis-writing/`](./skills/thesis-writing/README.md)
