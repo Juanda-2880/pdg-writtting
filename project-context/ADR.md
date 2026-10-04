@@ -70,7 +70,6 @@ Responder **en una reunión** también vale, con una condición: que la respuest
 - **A quién corresponde:** autores
 - **Dónde se usa:**
   - `thesis/chapters/99-anexos.tex` — archivo completo
-  - `thesis/chapters/02-descripcion-problema.tex` — final del capítulo · marcador literal: `% [verify: ADR-010: enlazar al árbol de problemas cuando exista en 99-anexos.tex]`
 - **Contexto:** el formato exige como anexos el análisis de participación, el árbol de problemas y el árbol de objetivos. El capítulo 2 ya tiene identificadas causas y efectos jerarquizados, de modo que el árbol puede derivarse de ese texto; falta decidir si se dibuja en TikZ dentro del documento o se inserta como imagen en `thesis/imagenes/`.
 - **Qué se necesita para cerrarla:** la decisión de formato (TikZ o imagen) y la confirmación de que los tres anexos son obligatorios en esta entrega.
 - **Al resolver:** crear los anexos con sus `\label{}`, y sustituir el marcador del capítulo 2 por un `\cref{}` real al árbol de problemas.

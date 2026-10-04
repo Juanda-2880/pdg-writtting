@@ -12,4 +12,65 @@
 %     ideas del cuerpo del documento.
 % ==========================================================================
 
-% [verify: ADR-010 — pendiente: un \chapter{...} por anexo (análisis de participación, árbol de problemas, árbol de objetivos)]
+% [verify: ADR-010 — pendiente: los anexos de análisis de participación y de árbol de objetivos]
+
+\chapter{Árbol de problemas}\label{anx:arbol-problemas}
+
+Este anexo presenta el árbol de problemas que respalda la descripción del problema del \cref{cha:descripcion-problema}. El árbol reúne en una sola vista la causa principal, los factores causales, el problema central y los efectos que se derivan de él, de modo que el lector pueda comprobar la jerarquía que el capítulo describe en prosa.
+
+La \cref{fig:arbol-problemas} se lee de abajo hacia arriba, y las flechas indican la dirección de la relación causal. En la base se ubica la causa principal, de la que se desprenden tres factores causales que, en conjunto, originan el problema central. De ese problema se derivan dos efectos principales, que a su vez producen efectos secundarios agrupados según quién los experimenta, ya sea la comunidad académica, el personal administrador o la propia infraestructura.
+
+\begin{figure}[htbp]
+  \centering
+  \hyphenpenalty=10000 \exhyphenpenalty=10000
+  \begin{tikzpicture}[
+      font=\footnotesize,
+      box/.style={draw, rounded corners=2pt, align=center, inner sep=4pt, text width=3.35cm},
+      eff/.style={box, fill=black!6},
+      cau/.style={box, fill=white},
+      prob/.style={box, fill=black!22, very thick, text width=10.6cm},
+      wide/.style={box, text width=4.9cm},
+      rowlabel/.style={font=\scriptsize\bfseries, rotate=90, anchor=center, align=center},
+      flow/.style={-{Latex[length=2.2mm]}, thick}
+    ]
+    % --- Efectos secundarios ---------------------------------------------
+    \node[eff, minimum height=4.2cm] (s1) at (-3.85,0.2)  {\textbf{Estudiantes y profesores}\\[2pt] Validación práctica limitada de sus investigaciones o costos en plataformas comerciales de nube};
+    \node[eff, minimum height=4.2cm] (s2) at (0,0.2)   {\textbf{Administradores}\\[2pt] Sobrecarga operativa recurrente por la gestión individual de credenciales y solicitudes};
+    \node[eff, minimum height=4.2cm] (s3) at (3.85,0.2)   {\textbf{Infraestructura compartida}\\[2pt] Riesgo de saturación desordenada de las GPU y de fallas no detectadas que pueden degradar la disponibilidad de los nodos};
+    % --- Efectos principales ---------------------------------------------
+    \node[wide, fill=black!12, minimum height=1.8cm] (e1) at (-2.8,-4.4) {Subutilización sostenida de una infraestructura en la que la universidad ya invirtió};
+    \node[wide, fill=black!12, minimum height=1.8cm] (e2) at (2.8,-4.4)  {Interrupción del ciclo de vida de los modelos tras la etapa de entrenamiento};
+    % --- Problema central ------------------------------------------------
+    \node[prob, minimum height=1.9cm] (p) at (0,-7.9) {\textbf{Problema central}\\[2pt] La infraestructura de cómputo del IAsLab carece de mecanismos para operar como un entorno multiusuario compartido, gobernado y observable};
+    % --- Factores causales (causas secundarias) ---------------------------
+    \node[cau, minimum height=3.7cm] (c1) at (-3.85,-11.9) {Ausencia de un plano de servicio que gestione motores de inferencia, por lo que el despliegue se realiza a mano sobre el sistema operativo anfitrión};
+    \node[cau, minimum height=3.7cm] (c2) at (0,-11.9)    {Falta de integración entre el proveedor de identidad (SAAMFI) y políticas de cuotas, por lo que los roles no se traducen en cupos y los accesos se asignan a mano};
+    \node[cau, minimum height=3.7cm] (c3) at (3.85,-11.9)  {Inexistencia de un sistema de observabilidad centralizado, por lo que no hay visibilidad en tiempo real del estado de los nodos ni de la carga de inferencia que atienden};
+    % --- Causa principal -------------------------------------------------
+    \node[prob, fill=white, minimum height=1.6cm] (r) at (0,-15.4) {\textbf{Causa principal}\\[2pt] Ausencia de una capa de \emph{software} de orquestación y gestión de la etapa de inferencia sobre la infraestructura de cómputo del laboratorio};
+
+    % --- Relaciones causales (de abajo hacia arriba) ------------------------
+    \foreach \c in {c1,c2,c3} {
+      \draw[flow] (r.north -| \c.south) -- (\c.south);
+      \draw[flow] (\c.north) -- (\c.north |- p.south);
+    }
+    \draw[flow] (p.north -| e1.south) -- (e1.south);
+    \draw[flow] (p.north -| e2.south) -- (e2.south);
+    \coordinate (bus) at (0,-2.9);
+    \draw[thick] (e1.north) -- (e1.north |- bus);
+    \draw[thick] (e2.north) -- (e2.north |- bus);
+    \draw[thick] (s1.south |- bus) -- (s3.south |- bus);
+    \foreach \s in {s1,s2,s3} {
+      \draw[flow] (\s.south |- bus) -- (\s.south);
+    }
+
+    % --- Etiquetas de nivel --------------------------------------------------
+    \node[rowlabel] at (-6.0,0.2)   {Efectos secundarios};
+    \node[rowlabel] at (-6.0,-4.4)  {Efectos principales};
+    \node[rowlabel] at (-6.0,-7.9)  {Problema};
+    \node[rowlabel] at (-6.0,-11.9) {Causas secundarias};
+    \node[rowlabel] at (-6.0,-15.4) {Causa principal};
+  \end{tikzpicture}
+  \caption[Árbol de problemas]{Árbol de problemas del proyecto. Las flechas indican la relación causal y el diagrama se lee de abajo hacia arriba. Elaboración propia a partir del \cref{cha:descripcion-problema}.}
+  \label{fig:arbol-problemas}
+\end{figure}
