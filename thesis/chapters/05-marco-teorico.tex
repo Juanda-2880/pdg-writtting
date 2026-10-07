@@ -100,6 +100,8 @@ Las primitivas que el orquestador ofrece se aplican de forma directa al caso del
 
 Kubernetes no fue diseñado para cargas de inteligencia artificial y sin embargo las hospeda sin que su núcleo haya sido rediseñado. El mecanismo que lo permite es su modelo declarativo. \citet{burns-borgomegak8s-2016}, a partir de una década operando los sistemas Borg, Omega y Kubernetes, describen su principio central, según el cual el usuario declara el estado que desea que el clúster tenga, y un controlador ejecuta de forma permanente un bucle de reconciliación que compara ese estado con el observado y actúa hasta hacerlos converger. Como toda acción se decide a partir de la observación del estado presente, sin depender de una máquina de estados que recuerde por dónde iba el proceso, un controlador que falla y se reinicia retoma el trabajo desde lo que encuentra. La \cref{fig:bucle-reconciliacion} representa ese bucle. Esa propiedad es la que permite operar una infraestructura descrita íntegramente en archivos de configuración versionados y redesplegarla sin reconstruirla a mano, algo que el proyecto necesita porque el clúster se levanta desde cero sobre las estaciones de trabajo de la sala.
 
+\todo{'La figura 4.2 representa ese bucle.' La lectura del texto se diifculta con tanta puntuacion y pausas. revisar eso en todo el documento, tantas comas y puntos...}
+\todo{Observa va a observar? Es raro. Pueden omitir la palabra observa.}
 \begin{figure}[H]
   \centering
   \begin{tikzpicture}[
