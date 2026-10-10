@@ -81,6 +81,8 @@ where a `grep` can find it. A parenthetical pointing at "los requisitos del sist
 same leak in disguise: the reader cannot open `requirements.md`, and requirement IDs mean
 nothing in a document that ships on its own.
 
+**Exception (authors, 2026-10-09):** the requirement lists of `thesis/chapters/07-metodologia.tex` §«Requerimientos por objetivo» show the project's `Rk-nn` codes, because the document itself introduces them and an evaluator uses them to verify each objective. Those codes may be referenced from the prose when a requirement is named. Outside that use, the rule stands.
+
 | Before | Problem | After |
 | :--- | :--- | :--- |
 | *…genere las alertas de diagnóstico automatizado que exige FR-03.4…* | Reader meets an ID that doesn't exist in their world. | *…genere alertas tempranas y active el diagnóstico automatizado de salud de los nodos…* |

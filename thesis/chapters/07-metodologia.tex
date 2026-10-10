@@ -39,64 +39,63 @@ La evaluación empírica prevista en el \cref{obj:evaluacion} ejecuta pruebas de
 \section{Requerimientos por objetivo}
 \label{sec:requerimientos-objetivo}
 
-Esta sección reúne los requerimientos del proyecto, agrupados por el objetivo específico que cada uno sustenta. Se levantaron a partir de las sesiones de elicitación con el personal del IAsLab, que sirvieron como insumo. Después de revisarlos y ajustarlos, se cruzaron con los objetivos específicos para validar y definir el alcance propuesto del proyecto. Con ese alcance fijado, el equipo los refinó y priorizó, y el tutor los revisó. La agrupación resultante bajo cada objetivo específico permite que un evaluador verifique su cumplimiento con los entregables del \cref{cha:contribucion-resultados}. Las \cref{sec:req-telemetria,sec:req-gobernanza,sec:req-orquestacion,sec:req-evaluacion} presentan el conjunto en los mismos subsistemas funcionales con los que se especificó el proyecto, en el orden de los objetivos específicos del \cref{cha:objetivos}.
+Esta sección reúne los requerimientos del proyecto, agrupados por el objetivo específico que cada uno sustenta, y cada uno lleva un código de la forma Rk-nn, donde k señala el objetivo y nn el consecutivo dentro de él. Se levantaron a partir de las sesiones de elicitación con el personal del IAsLab, que sirvieron como insumo. Después de revisarlos y ajustarlos, se cruzaron con los objetivos específicos para validar y definir el alcance propuesto del proyecto. Con ese alcance fijado, el equipo los refinó y priorizó, y el tutor los revisó. La agrupación resultante bajo cada objetivo específico permite que un evaluador verifique su cumplimiento con los entregables del \cref{cha:contribucion-resultados}. Las \cref{sec:req-telemetria,sec:req-gobernanza,sec:req-orquestacion,sec:req-evaluacion} presentan el conjunto en los mismos subsistemas funcionales con los que se especificó el proyecto, en el orden de los objetivos específicos del \cref{cha:objetivos}.
 
 \subsection{Módulo de observabilidad (\cref{obj:telemetria})}
 \label{sec:req-telemetria}
 
 Estos requerimientos permiten verificar el cumplimiento del \cref{obj:telemetria}.
 
-\todo{Podrian crear un codigo tipo REQ-01 para identificarlo con facilidad, asi cuando se busque esa informacion en el documento sabemos a que hace referencia. Puede ser RQ-01}
 \noindent\textbf{Infraestructura base de telemetría}
-\begin{itemize}
+\begin{description}
 \setlength{\itemsep}{4pt}
-  \item Despliega Prometheus dentro del clúster como servicio permanente que centraliza la recolección de métricas de todos sus componentes.
-  \item Recolecta las métricas nativas de Kubernetes de nodos, \emph{pods} y despliegues mediante kube-state-metrics y node-exporter, sin instrumentación adicional.
-  \item Despliega Thanos sobre Prometheus, con las series temporales conservadas a largo plazo y consultables desde un punto único, sin que la retención dependa del disco de una sola instancia.
-  \item Despliega Loki junto con un agente de recolección en cada nodo que centraliza la salida estándar y de error de todos los \emph{pods} del clúster.
-  \item Despliega Grafana con Prometheus, Thanos y Loki registrados como fuentes de datos, consultables desde una sola interfaz.
-  \item Permite configurar la ventana de retención de métricas y registros.
-  \item Etiqueta métricas y registros con las mismas etiquetas de nodo, espacio de nombres, \emph{pod} y despliegue.
-  \item Refleja la telemetría con una latencia de actualización suficiente para detectar una condición de riesgo mientras aún puede evitarse.
-\end{itemize}
+  \item[R1-01] Despliega Prometheus dentro del clúster como servicio permanente que centraliza la recolección de métricas de todos sus componentes.
+  \item[R1-02] Recolecta las métricas nativas de Kubernetes de nodos, \emph{pods} y despliegues mediante kube-state-metrics y node-exporter, sin instrumentación adicional.
+  \item[R1-03] Despliega Thanos sobre Prometheus, con las series temporales conservadas a largo plazo y consultables desde un punto único, sin que la retención dependa del disco de una sola instancia.
+  \item[R1-04] Despliega Loki junto con un agente de recolección en cada nodo que centraliza la salida estándar y de error de todos los \emph{pods} del clúster.
+  \item[R1-05] Despliega Grafana con Prometheus, Thanos y Loki registrados como fuentes de datos, consultables desde una sola interfaz.
+  \item[R1-06] Permite configurar la ventana de retención de métricas y registros.
+  \item[R1-07] Etiqueta métricas y registros con las mismas etiquetas de nodo, espacio de nombres, \emph{pod} y despliegue.
+  \item[R1-08] Refleja la telemetría con una latencia de actualización suficiente para detectar una condición de riesgo mientras aún puede evitarse.
+\end{description}
 
 \noindent\textbf{Telemetría de \emph{hardware}}
-\begin{itemize}
+\begin{description}
 \setlength{\itemsep}{4pt}
-  \item Ejecuta el exportador DCGM de NVIDIA como \emph{DaemonSet} en los nodos con GPU y expone sus métricas a Prometheus.
-  \item Recolecta la temperatura del núcleo y de la memoria de cada GPU.
-  \item Recolecta la utilización de VRAM de cada GPU, en valor absoluto y en porcentaje.
-  \item Recolecta el consumo de potencia en vatios de cada GPU.
-  \item Recolecta los estados de limitación térmica y de potencia (\emph{throttling}) de cada GPU.
-  \item Recolecta el \emph{throughput} del bus PCIe de cada GPU.
-  \item Recolecta el uso del procesador (CPU, \emph{Central Processing Unit}), la memoria de acceso aleatorio (RAM, \emph{Random Access Memory}) y la entrada y salida (E/S) de disco de cada nodo.
-  \item Recolecta el espacio disponible en la partición dedicada a pesos de modelos.
-  \item Recolecta el estado de alcanzabilidad de cada nodo, y distingue un equipo apagado de uno encendido que dejó de responder.
-  \item Captura la telemetría de \emph{hardware} de un nodo sin importar qué carga esté corriendo en él.
-\end{itemize}
+  \item[R1-09] Ejecuta el exportador DCGM de NVIDIA como \emph{DaemonSet} en los nodos con GPU y expone sus métricas a Prometheus.
+  \item[R1-10] Recolecta la temperatura del núcleo y de la memoria de cada GPU.
+  \item[R1-11] Recolecta la utilización de VRAM de cada GPU, en valor absoluto y en porcentaje.
+  \item[R1-12] Recolecta el consumo de potencia en vatios de cada GPU.
+  \item[R1-13] Recolecta los estados de limitación térmica y de potencia (\emph{throttling}) de cada GPU.
+  \item[R1-14] Recolecta el \emph{throughput} del bus PCIe de cada GPU.
+  \item[R1-15] Recolecta el uso del procesador (CPU, \emph{Central Processing Unit}), la memoria de acceso aleatorio (RAM, \emph{Random Access Memory}) y la entrada y salida (E/S) de disco de cada nodo.
+  \item[R1-16] Recolecta el espacio disponible en la partición dedicada a pesos de modelos.
+  \item[R1-17] Recolecta el estado de alcanzabilidad de cada nodo, y distingue un equipo apagado de uno encendido que dejó de responder.
+  \item[R1-18] Captura la telemetría de \emph{hardware} de un nodo sin importar qué carga esté corriendo en él.
+\end{description}
 
 \noindent\textbf{Telemetría de la carga servida}
-\begin{itemize}
+\begin{description}
 \setlength{\itemsep}{4pt}
-  \item Expone un punto \texttt{/metrics} en cada \emph{pod} de motor de inferencia y lo registra como objetivo de recolección de Prometheus.
-  \item Mide el tiempo hasta el primer \emph{token} por despliegue y por modelo.
-  \item Mide la latencia entre \emph{tokens} consecutivos por despliegue.
-  \item Mide los \emph{tokens} por segundo de entrada y de salida por despliegue.
-  \item Mide la cantidad de peticiones en cola y el nivel de saturación de concurrencia de cada motor.
-  \item Mide la latencia de petición y la tasa de peticiones atendidas de las cargas de inteligencia artificial que no son de lenguaje, sin depender de métricas de \emph{tokens}.
-  \item Mide la tasa de errores y de peticiones rechazadas por despliegue.
-  \item Asocia cada métrica de carga al usuario y al despliegue que la originó.
-\end{itemize}
+  \item[R1-19] Expone un punto \texttt{/metrics} en cada \emph{pod} de motor de inferencia y lo registra como objetivo de recolección de Prometheus.
+  \item[R1-20] Mide el tiempo hasta el primer \emph{token} por despliegue y por modelo.
+  \item[R1-21] Mide la latencia entre \emph{tokens} consecutivos por despliegue.
+  \item[R1-22] Mide los \emph{tokens} por segundo de entrada y de salida por despliegue.
+  \item[R1-23] Mide la cantidad de peticiones en cola y el nivel de saturación de concurrencia de cada motor.
+  \item[R1-24] Mide la latencia de petición y la tasa de peticiones atendidas de las cargas de inteligencia artificial que no son de lenguaje, sin depender de métricas de \emph{tokens}.
+  \item[R1-25] Mide la tasa de errores y de peticiones rechazadas por despliegue.
+  \item[R1-26] Asocia cada métrica de carga al usuario y al despliegue que la originó.
+\end{description}
 
 \noindent\textbf{Visualización y alertas}
-\begin{itemize}
+\begin{description}
 \setlength{\itemsep}{4pt}
-  \item Ofrece un panel de \emph{hardware} filtrable por nodo, con temperatura, VRAM, potencia, PCIe, CPU y RAM.
-  \item Ofrece un panel de carga servida filtrable por modelo y por despliegue, con tiempo al primer \emph{token}, latencia, \emph{throughput} y saturación.
-  \item Ofrece un panel de consumo por usuario, accesible sin recurrir a la línea de comandos.
-  \item Deja configuradas reglas de alerta sobre cualquiera de las métricas recolectadas, con umbrales ajustables, apoyadas en la capacidad de alertas del conjunto de observabilidad.
-  \item Conserva los registros y la telemetría previos a un fallo de nodo.
-\end{itemize}
+  \item[R1-27] Ofrece un panel de \emph{hardware} filtrable por nodo, con temperatura, VRAM, potencia, PCIe, CPU y RAM.
+  \item[R1-28] Ofrece un panel de carga servida filtrable por modelo y por despliegue, con tiempo al primer \emph{token}, latencia, \emph{throughput} y saturación.
+  \item[R1-29] Ofrece un panel de consumo por usuario, accesible sin recurrir a la línea de comandos.
+  \item[R1-30] Deja configuradas reglas de alerta sobre cualquiera de las métricas recolectadas, con umbrales ajustables, apoyadas en la capacidad de alertas del conjunto de observabilidad.
+  \item[R1-33] Conserva los registros y la telemetría previos a un fallo de nodo.
+\end{description}
 
 \subsection{Gobernanza de recursos y cuotas por rol (\cref{obj:gobernanza})}
 \label{sec:req-gobernanza}
@@ -104,59 +103,59 @@ Estos requerimientos permiten verificar el cumplimiento del \cref{obj:telemetria
 Estos requerimientos permiten verificar el cumplimiento del \cref{obj:gobernanza}. El grupo de identidad y acceso se presenta primero porque la plataforma necesita saber quién solicita el recurso antes de aplicarle una cuota; los grupos de cuotas, admisión y el módulo administrativo que los opera siguen a continuación.
 
 \noindent\textbf{Identidad y control de acceso}
-\begin{itemize}
+\begin{description}
 \setlength{\itemsep}{4pt}
-  \item Autentica a los usuarios contra SAAMFI mediante OAuth 2.0 y OIDC (\emph{OpenID Connect}).
-  \item Redirige al usuario autenticado al panel principal de la aplicación.
-  \item Traduce los atributos del \emph{token} de SAAMFI a los roles de la plataforma en un componente aislado.
-  \item Define un rol de administrador propio, gestionable de forma independiente de SAAMFI.
-  \item Asigna el rol de usuario por defecto a toda identidad autenticada que no sea administradora.
-  \item Deriva del rol de la plataforma los permisos con los que el usuario opera sobre el clúster.
-  \item Registra quién desplegó, detuvo o modificó cada recurso y cada cuota.
-\end{itemize}
+  \item[R2-01] Autentica a los usuarios contra SAAMFI mediante OAuth 2.0 y OIDC (\emph{OpenID Connect}).
+  \item[R2-02] Redirige al usuario autenticado al panel principal de la aplicación.
+  \item[R2-03] Traduce los atributos del \emph{token} de SAAMFI a los roles de la plataforma en un componente aislado.
+  \item[R2-04] Define un rol de administrador propio, gestionable de forma independiente de SAAMFI.
+  \item[R2-05] Asigna el rol de usuario por defecto a toda identidad autenticada que no sea administradora.
+  \item[R2-06] Deriva del rol de la plataforma los permisos con los que el usuario opera sobre el clúster.
+  \item[R2-07] Registra quién desplegó, detuvo o modificó cada recurso y cada cuota.
+\end{description}
 
 \noindent\textbf{Cuotas y aislamiento}
-\begin{itemize}
+\begin{description}
 \setlength{\itemsep}{4pt}
-  \item Cuenta con un mecanismo de cuotas que acota el consumo de CPU, memoria y GPU de cada usuario.
-  \item Aísla los recursos de cada usuario, de modo que la carga de uno no interfiere con el desempeño ni con los despliegues de otro.
-  \item Acota también el consumo de un despliegue individual.
-  \item Rechaza o encola la solicitud que excede la cuota del usuario, con un mensaje que explica cuál límite se alcanzó.
-  \item Define las cuotas como plantillas por rol, con la posibilidad de sobrescribirlas para un usuario concreto.
-  \item Reserva CPU y memoria para los componentes de la propia plataforma y deja la GPU para los motores de inferencia.
-  \item Permite una sobreasignación configurable entre el 10\,\% y el 20\,\% sobre la capacidad nominal.
-  \item Impide que la sobreasignación lleve un nodo más allá de su capacidad física real.
-  \item Garantiza que la falla o el congelamiento del contenedor de un usuario no desestabilice los contenedores vecinos ni el nodo anfitrión.
-\end{itemize}
+  \item[R2-08] Cuenta con un mecanismo de cuotas que acota el consumo de CPU, memoria y GPU de cada usuario.
+  \item[R2-09] Aísla los recursos de cada usuario, de modo que la carga de uno no interfiere con el desempeño ni con los despliegues de otro.
+  \item[R2-10] Acota también el consumo de un despliegue individual.
+  \item[R2-11] Rechaza o encola la solicitud que excede la cuota del usuario, con un mensaje que explica cuál límite se alcanzó.
+  \item[R2-12] Define las cuotas como plantillas por rol, con la posibilidad de sobrescribirlas para un usuario concreto.
+  \item[R2-13] Reserva CPU y memoria para los componentes de la propia plataforma y deja la GPU para los motores de inferencia.
+  \item[R2-14] Permite una sobreasignación configurable entre el 10\,\% y el 20\,\% sobre la capacidad nominal.
+  \item[R2-15] Impide que la sobreasignación lleve un nodo más allá de su capacidad física real.
+  \item[R2-16] Garantiza que la falla o el congelamiento del contenedor de un usuario no desestabilice los contenedores vecinos ni el nodo anfitrión.
+\end{description}
 
 \noindent\textbf{Admisión, prioridad y reservas}
-\begin{itemize}
+\begin{description}
 \setlength{\itemsep}{4pt}
-  \item Encola la solicitud que no encuentra capacidad disponible, en lugar de descartarla.
-  \item Asocia un nivel de prioridad a cada rol.
-  \item Permite que una solicitud de rol prioritario expropie los recursos de una carga de menor prioridad cuando no haya capacidad libre.
-  \item Avisa al usuario cuya carga fue expropiada y conserva sus registros de sesión.
-  \item Permite reservar cupos de GPU por adelantado para una ventana de tiempo definida.
-  \item Inicia y termina la reserva de forma automática en las horas declaradas.
-  \item Avisa al usuario antes del vencimiento de su reserva.
-  \item Guarda los registros y el estado de la sesión al vencer la reserva, antes de liberar o congelar el contenedor.
-  \item Libera los recursos de una reserva vencida.
-  \item Rechaza la reserva que exceda la capacidad disponible de la sala en esa ventana.
-  \item Expone una API con operaciones de creación, consulta, modificación y borrado sobre cuotas y reservas.
-  \item Aplica las cuotas, la prioridad y la contabilidad de consumo a cualquier carga de inteligencia artificial, sea o no un modelo de lenguaje.
-\end{itemize}
+  \item[R2-17] Encola la solicitud que no encuentra capacidad disponible, en lugar de descartarla.
+  \item[R2-19] Asocia un nivel de prioridad a cada rol.
+  \item[R2-20] Permite que una solicitud de rol prioritario expropie los recursos de una carga de menor prioridad cuando no haya capacidad libre.
+  \item[R2-21] Avisa al usuario cuya carga fue expropiada y conserva sus registros de sesión.
+  \item[R2-22] Permite reservar cupos de GPU por adelantado para una ventana de tiempo definida.
+  \item[R2-23] Inicia y termina la reserva de forma automática en las horas declaradas.
+  \item[R2-24] Avisa al usuario antes del vencimiento de su reserva.
+  \item[R2-25] Guarda los registros y el estado de la sesión al vencer la reserva, antes de liberar o congelar el contenedor.
+  \item[R2-26] Libera los recursos de una reserva vencida.
+  \item[R2-27] Rechaza la reserva que exceda la capacidad disponible de la sala en esa ventana.
+  \item[R2-28] Expone una API con operaciones de creación, consulta, modificación y borrado sobre cuotas y reservas.
+  \item[R2-29] Aplica las cuotas, la prioridad y la contabilidad de consumo a cualquier carga de inteligencia artificial, sea o no un modelo de lenguaje.
+\end{description}
 
 \noindent\textbf{Módulo administrativo}
-\begin{itemize}
+\begin{description}
 \setlength{\itemsep}{4pt}
-  \item Ofrece una interfaz administrativa web que cubre toda la operación de gobernanza.
-  \item Permite al administrador modificar los límites de cuota de un rol o de un usuario y aplicar el cambio al clúster sin reiniciar nada.
-  \item Permite al administrador asignar y retirar el rol de administrador a otra identidad.
-  \item Muestra al administrador todos los despliegues en ejecución, sin importar de qué usuario sean.
-  \item Permite al administrador encender, apagar o deshabilitar cualquier despliegue.
-  \item Muestra al administrador el consumo de cuota de cada usuario en un periodo consultable.
-  \item Muestra al administrador la capacidad libre y comprometida por nodo.
-\end{itemize}
+  \item[R2-30] Ofrece una interfaz administrativa web que cubre toda la operación de gobernanza.
+  \item[R2-31] Permite al administrador modificar los límites de cuota de un rol o de un usuario y aplicar el cambio al clúster sin reiniciar nada.
+  \item[R2-32] Permite al administrador asignar y retirar el rol de administrador a otra identidad.
+  \item[R2-33] Muestra al administrador todos los despliegues en ejecución, sin importar de qué usuario sean.
+  \item[R2-34] Permite al administrador encender, apagar o deshabilitar cualquier despliegue.
+  \item[R2-35] Muestra al administrador el consumo de cuota de cada usuario en un periodo consultable.
+  \item[R2-36] Muestra al administrador la capacidad libre y comprometida por nodo.
+\end{description}
 
 \subsection{Despliegue de modelos y ejecución de cargas de IA (\cref{obj:orquestacion})}
 \label{sec:req-orquestacion}
@@ -164,58 +163,58 @@ Estos requerimientos permiten verificar el cumplimiento del \cref{obj:gobernanza
 Estos requerimientos permiten verificar el cumplimiento del \cref{obj:orquestacion}, en el orden en que el clúster necesita quedar operable, desde su base hasta la interfaz con la que un usuario lo consume, pasando por la orquestación de cargas y los motores que soporta.
 
 \noindent\textbf{Clúster base}
-\begin{itemize}
+\begin{description}
 \setlength{\itemsep}{4pt}
-  \item Corre sobre un clúster de Kubernetes instalado en las estaciones de trabajo de un laboratorio de cómputo, con un nodo de control y el resto como nodos de trabajo, desplegado inicialmente en la sala 104M y extensible a otras salas del laboratorio.
-  \item Aloja el nodo de control en una máquina que permanece encendida sin reinicios no anunciados.
-  \item Configura la red del clúster mediante una interfaz de red de contenedores (CNI, \emph{Container Network Interface}) que permite la comunicación entre los \emph{pods} de distintos nodos según la política de red definida.
-  \item Despliega el NVIDIA GPU Operator para aprovisionar controladores, \emph{runtime} y complemento de dispositivo de forma declarativa, de modo que los nodos expongan el recurso \texttt{nvidia.com/gpu}.
-  \item Dirige las cargas aceleradas únicamente a los nodos con GPU mediante selectores de nodo, marcas y tolerancias.
-  \item Etiqueta cada nodo con sus capacidades de \emph{hardware}.
-  \item Permite incorporar o retirar un nodo del clúster sin reinstalar los demás.
-  \item Limita los recursos que toma de cada estación, de modo que los equipos sigan siendo utilizables en las clases de la sala.
-  \item Permite marcar un nodo como no planificable y desalojar sus cargas de forma ordenada.
-  \item Mantiene toda la configuración del clúster versionada en un repositorio y aplicable de forma automatizada.
-  \item Funciona por completo sobre la infraestructura del laboratorio, sin depender de servicios de nube pública.
-  \item Almacena los pesos de los modelos en una partición de disco dedicada, separada del disco raíz y de los registros del sistema.
-  \item Expone esa partición al clúster como volumen persistente reclamable por los despliegues.
-  \item Conserva los pesos descargados entre reinicios de \emph{pod}.
-\end{itemize}
+  \item[R3-01] Corre sobre un clúster de Kubernetes instalado en las estaciones de trabajo de un laboratorio de cómputo, con un nodo de control y el resto como nodos de trabajo, desplegado inicialmente en la sala 104M y extensible a otras salas del laboratorio.
+  \item[R3-02] Aloja el nodo de control en una máquina que permanece encendida sin reinicios no anunciados.
+  \item[R3-03] Configura la red del clúster mediante una interfaz de red de contenedores (CNI, \emph{Container Network Interface}) que permite la comunicación entre los \emph{pods} de distintos nodos según la política de red definida.
+  \item[R3-04] Despliega el NVIDIA GPU Operator para aprovisionar controladores, \emph{runtime} y complemento de dispositivo de forma declarativa, de modo que los nodos expongan el recurso \texttt{nvidia.com/gpu}.
+  \item[R3-05] Dirige las cargas aceleradas únicamente a los nodos con GPU mediante selectores de nodo, marcas y tolerancias.
+  \item[R3-06] Etiqueta cada nodo con sus capacidades de \emph{hardware}.
+  \item[R3-07] Permite incorporar o retirar un nodo del clúster sin reinstalar los demás.
+  \item[R3-08] Limita los recursos que toma de cada estación, de modo que los equipos sigan siendo utilizables en las clases de la sala.
+  \item[R3-09] Permite marcar un nodo como no planificable y desalojar sus cargas de forma ordenada.
+  \item[R3-10] Mantiene toda la configuración del clúster versionada en un repositorio y aplicable de forma automatizada.
+  \item[R3-11] Funciona por completo sobre la infraestructura del laboratorio, sin depender de servicios de nube pública.
+  \item[R3-12] Almacena los pesos de los modelos en una partición de disco dedicada, separada del disco raíz y de los registros del sistema.
+  \item[R3-13] Expone esa partición al clúster como volumen persistente reclamable por los despliegues.
+  \item[R3-14] Conserva los pesos descargados entre reinicios de \emph{pod}.
+\end{description}
 
 \noindent\textbf{Orquestación de cargas}
-\begin{itemize}
+\begin{description}
 \setlength{\itemsep}{4pt}
-  \item Declara cada servicio de inferencia como un recurso del clúster gestionado por un controlador.
-  \item Traduce la petición de despliegue de un usuario en la declaración que el clúster aplica.
-  \item Despliega un modelo tanto dentro de un solo nodo como repartido entre varios cuando la infraestructura de red lo permita, apoyándose en Ray y limitándose a las capacidades que este ofrezca.
-  \item Sostiene varios despliegues concurrentes de distintos usuarios sobre el clúster sin degradación significativa dentro de los límites de cuota.
-  \item Refleja el estado real de cada despliegue, distinguiendo al menos pendiente, en ejecución, fallido y detenido.
-  \item Expone al usuario los registros de su propio despliegue.
-  \item Deja el modelo desplegado accesible dentro del clúster para las pruebas de carga del \Cref{obj:evaluacion}.
-\end{itemize}
+  \item[R3-15] Declara cada servicio de inferencia como un recurso del clúster gestionado por un controlador.
+  \item[R3-16] Traduce la petición de despliegue de un usuario en la declaración que el clúster aplica.
+  \item[R3-17] Despliega un modelo tanto dentro de un solo nodo como repartido entre varios cuando la infraestructura de red lo permita, apoyándose en Ray y limitándose a las capacidades que este ofrezca.
+  \item[R3-18] Sostiene varios despliegues concurrentes de distintos usuarios sobre el clúster sin degradación significativa dentro de los límites de cuota.
+  \item[R3-19] Refleja el estado real de cada despliegue, distinguiendo al menos pendiente, en ejecución, fallido y detenido.
+  \item[R3-20] Expone al usuario los registros de su propio despliegue.
+  \item[R3-21] Deja el modelo desplegado accesible dentro del clúster para las pruebas de carga del \Cref{obj:evaluacion}.
+\end{description}
 
 \noindent\textbf{Motores y modelos}
-\begin{itemize}
+\begin{description}
 \setlength{\itemsep}{4pt}
-  \item Empaqueta cada motor de inferencia como imagen de contenedor versionada en un registro accesible desde el clúster.
-  \item Incluye una imagen de \emph{llama.cpp} compilada para el \emph{hardware} de la sala, capaz de ejecutar pesos GGUF cuantizados dentro de los 24\,GB de VRAM de una RTX 4090.
-  \item Permite añadir un motor de inferencia nuevo sin modificar el resto de la plataforma.
-  \item Despliega modelos cuyos pesos ya vienen cuantizados y se apoya en la cuantización que el motor aplica al cargarlos, sin ejecutar un proceso de cuantización propio.
-  \item Ejecuta cargas de inteligencia artificial que no son modelos de lenguaje, entregadas como archivo de pesos más un servidor propio, por el mismo camino de despliegue que un modelo de lenguaje.
-  \item Rechaza, con un mensaje explicativo, el despliegue de un modelo que no cabe en la memoria de video de un nodo.
-  \item Permite dar de alta un modelo nuevo indicando un identificador de repositorio externo o subiendo el archivo de pesos.
-\end{itemize}
+  \item[R3-22] Empaqueta cada motor de inferencia como imagen de contenedor versionada en un registro accesible desde el clúster.
+  \item[R3-23] Incluye una imagen de \emph{llama.cpp} compilada para el \emph{hardware} de la sala, capaz de ejecutar pesos GGUF cuantizados dentro de los 24\,GB de VRAM de una RTX 4090.
+  \item[R3-25] Permite añadir un motor de inferencia nuevo sin modificar el resto de la plataforma.
+  \item[R3-26] Despliega modelos cuyos pesos ya vienen cuantizados y se apoya en la cuantización que el motor aplica al cargarlos, sin ejecutar un proceso de cuantización propio.
+  \item[R3-27] Ejecuta cargas de inteligencia artificial que no son modelos de lenguaje, entregadas como archivo de pesos más un servidor propio, por el mismo camino de despliegue que un modelo de lenguaje.
+  \item[R3-28] Rechaza, con un mensaje explicativo, el despliegue de un modelo que no cabe en la memoria de video de un nodo.
+  \item[R3-29] Permite dar de alta un modelo nuevo indicando un identificador de repositorio externo o subiendo el archivo de pesos.
+\end{description}
 
 \noindent\textbf{Interfaz de despliegue}
-\begin{itemize}
+\begin{description}
 \setlength{\itemsep}{4pt}
-  \item Ofrece al usuario un catálogo de los modelos ya entrenados disponibles.
-  \item Permite al usuario elegir el motor de ejecución entre los habilitados antes de desplegar.
-  \item Permite al usuario fijar el nodo de despliegue o dejar la decisión al planificador del clúster.
-  \item Permite al usuario iniciar y detener su despliegue desde la interfaz.
-  \item Muestra al usuario su cuota asignada y su consumo actual.
-  \item Es operable por un estudiante sin conocimientos de línea de comandos ni de Kubernetes.
-\end{itemize}
+  \item[R3-31] Ofrece al usuario un catálogo de los modelos ya entrenados disponibles.
+  \item[R3-32] Permite al usuario elegir el motor de ejecución entre los habilitados antes de desplegar.
+  \item[R3-33] Permite al usuario fijar el nodo de despliegue o dejar la decisión al planificador del clúster.
+  \item[R3-34] Permite al usuario iniciar y detener su despliegue desde la interfaz.
+  \item[R3-35] Muestra al usuario su cuota asignada y su consumo actual.
+  \item[R3-36] Es operable por un estudiante sin conocimientos de línea de comandos ni de Kubernetes.
+\end{description}
 
 \subsection{Evaluación de desempeño (\cref{obj:evaluacion})}
 \label{sec:req-evaluacion}
@@ -223,20 +222,20 @@ Estos requerimientos permiten verificar el cumplimiento del \cref{obj:orquestaci
 Estos requerimientos permiten verificar el cumplimiento del \cref{obj:evaluacion}.
 
 \noindent\textbf{Medición de desempeño}
-\begin{itemize}
+\begin{description}
 \setlength{\itemsep}{4pt}
 % [verify: ADR-031: diseño propio o reutilización del harness del laboratorio]
-  \item Cuenta con \emph{scripts} sencillos de Python, externos a la plataforma, que ejecutan escenarios de prueba declarados en un archivo de especificación.
-  \item Permite configurar el número de usuarios simultáneos del escenario de carga.
-  \item Genera peticiones de inferencia concurrentes contra los despliegues activos desde fuera de la aplicación.
-  \item Mide en cada ejecución el tiempo al primer \emph{token}, la latencia entre \emph{tokens}, los \emph{tokens} por segundo de entrada y de salida, el tiempo total de respuesta y la tasa de error.
-  \item Correlaciona los resultados de la prueba con la telemetría de \emph{hardware} del mismo periodo.
-  \item Registra las métricas de red durante la prueba y descarta explícitamente el ancho de banda de la sala como cuello de botella silencioso.
-  \item Permite ejecutar el mismo escenario contra motores de inferencia distintos en condiciones idénticas.
-  \item Permite programar la ejecución de las pruebas fuera del horario de clases.
-  \item Produce un reporte que compara latencias y \emph{throughput} entre escenarios de carga y entre motores.
-  \item Mide, para cargas que no son modelos de lenguaje, la cantidad de solicitudes concurrentes que soporta cada nodo y cómo crece esa capacidad al aumentar el número de nodos conectados.
-\end{itemize}
+  \item[R4-01] Cuenta con \emph{scripts} sencillos de Python, externos a la plataforma, que ejecutan escenarios de prueba declarados en un archivo de especificación.
+  \item[R4-02] Permite configurar el número de usuarios simultáneos del escenario de carga.
+  \item[R4-03] Genera peticiones de inferencia concurrentes contra los despliegues activos desde fuera de la aplicación.
+  \item[R4-04] Mide en cada ejecución el tiempo al primer \emph{token}, la latencia entre \emph{tokens}, los \emph{tokens} por segundo de entrada y de salida, el tiempo total de respuesta y la tasa de error.
+  \item[R4-05] Correlaciona los resultados de la prueba con la telemetría de \emph{hardware} del mismo periodo.
+  \item[R4-06] Registra las métricas de red durante la prueba y descarta explícitamente el ancho de banda de la sala como cuello de botella silencioso.
+  \item[R4-07] Permite ejecutar el mismo escenario contra motores de inferencia distintos en condiciones idénticas.
+  \item[R4-08] Permite programar la ejecución de las pruebas fuera del horario de clases.
+  \item[R4-10] Produce un reporte que compara latencias y \emph{throughput} entre escenarios de carga y entre motores.
+  \item[R4-11] Mide, para cargas que no son modelos de lenguaje, la cantidad de solicitudes concurrentes que soporta cada nodo y cómo crece esa capacidad al aumentar el número de nodos conectados.
+\end{description}
 
 \section{Fases de desarrollo del proyecto}
 \label{sec:fases-desarrollo}
