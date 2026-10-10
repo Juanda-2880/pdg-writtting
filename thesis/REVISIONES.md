@@ -335,3 +335,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** Melo088 (veredictos en el chat, ítem por ítem, sobre los `\todo` del tutor del 2026-10-07)
 - **C5-12** (tutor, `\todo` l. 85): «Podria separarse estas explicaciones cuando desplegamos modelos de IA tradicionales y modelos LLM, claramente el de LLM se puede extender mas, pero los otros modelos tambien son importantes» → aplicado · §5.2 queda en tres párrafos: general (definición y compromiso latencia/aprovechamiento, Ye), LLM (Miao, Kwon, Orca y las métricas de lenguaje) y modelos que no son de lenguaje (nuevo: artefacto propio, marcos como TensorFlow Serving y Seldon, métricas sin \emph{tokens}). Kreuzberger pasa a citarse también en §5.2 ¶3; `CITAS-VERIFICADAS.md` actualizado. El capítulo se mantiene en 9 páginas.
 - **Verificación:** `make build` OK, sin citas ni referencias indefinidas; cero guiones largos en el capítulo.
+
+### 2026-10-09 · cap05 · Lista de acrónimos · ítem 13 del tutor
+
+- **Revisó:** Melo088 (veredictos en el chat, ítem por ítem, sobre los `\todo` del tutor del 2026-10-07)
+- **C5-13** (tutor, `\todo` l. 88): «LLM puedee hacer parte de los acronimos o glosario» → aplicado sin cambio en el texto: «LLM» ya figura en la Lista de acrónimos de `main.tex` desde el 2026-09-27 y se define en su primer uso en §5.2 ¶2. Solo se retira el `\todo`.
+- **Verificación:** `make build` OK; el capítulo queda con tres `\todo` (ítems 14 a 16).
