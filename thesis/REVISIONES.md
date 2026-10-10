@@ -317,3 +317,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **C1-7** (tutor, `\todo` l. 57): «'Ese mejor aprovechamiento tiene, ademas, un efecto ambiental.' Es una forma extrana de narrar el hecho, poner ese ademas.» → aplicado · «tiene, además,» → «tiene también».
 - **C1-8** (tutor, `\todo` l. 60): «El proyecto o la plataforma?.» → aplicado · el sujeto sigue siendo «el proyecto» y el posesivo ambiguo se reemplaza por «el escenario en el que se desarrolla».
 - **Verificación:** `make build` OK, sin citas ni referencias indefinidas; cero `\todo` en el capítulo; greps de estilo sin hallazgos en prosa.
+
+### 2026-10-09 · cap02 · Identificación del problema ¶2 · ítem 9 del tutor
+
+- **Revisó:** Melo088 (veredictos en el chat, ítem por ítem, sobre los `\todo` del tutor del 2026-10-07)
+- **C2-9** (tutor, `\todo` l. 26): «No todos los elementos deben de ser parrafos, existe la posibilidad de que cuando nombren los 3 factores, pueda ser una enumeracion, unos bullets.» → aplicado · los tres factores causales pasan a `itemize` bajo la frase «De esta causa principal se desprenden tres factores causales.»; salen los conectores «Asimismo» y «Además» (`puntuation.md` §4.4).
+- **Verificación:** `make build` OK, sin citas ni referencias indefinidas; el capítulo ocupa ahora 2 páginas impresas (el `\todo` pendiente del ítem 10 sigue dentro).
