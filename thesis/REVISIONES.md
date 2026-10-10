@@ -373,3 +373,11 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** Melo088 (veredictos en el chat, ítem por ítem, sobre los `\todo` del tutor del 2026-10-07)
 - **C7-19** (tutor, `\todo` l. 50): «Podrian crear un codigo tipo REQ-01 para identificarlo con facilidad... Puede ser RQ-01» → aplicado · los 110 requerimientos de §7.2 muestran el código `Rk-nn` de `requirements.md` (el mismo identificador, sin doble numeración): R1-01 a R4-11, omitiendo los de prioridad Baja. Las listas pasan de `itemize` a `description` para que el código encabece cada ítem, y la introducción de la sección explica la forma del código. Decisión del autor sobre el esquema («el más entendible y limpio»). Se enmiendan la decisión del 2026-09-27 en `STATUS.md` y la regla §5 de `skills/writting-tools/nivel-de-detalle.md` para admitir los códigos en esa sección.
 - **Verificación:** `make build` OK; cap. 07 sigue en 13 páginas; los códigos se renderizan de R1-01 a R4-11.
+
+### 2026-10-09 · cap07 · ubicación de subsecciones · ítems 20–21 del tutor (aparcados)
+
+- **Revisó:** Melo088 (veredictos en el chat, ítem por ítem, sobre los `\todo` del tutor del 2026-10-07)
+- **C7-20** (tutor, `\todo` l. 279): «El cronograma y fases del proyecto pueden estar en un capitulo aparte, no como una seccion de metodologia.» → **aparcado por decisión del autor**: el formato ubica fases y cronograma en Metodología; se conserva el `\todo` del tutor y se añade un `\todo` de verificación.
+- **C7-21** (tutor, `\todo` l. 387): «Esto hace parte del capitulo? O es mas como anexos en la fase de analisis y diseño...?» → **aparcado**: el formato ubica el análisis de riesgos y limitaciones en Metodología; queda el `\todo` del tutor para revisión.
+- **C7-18 · addendum** (autor): §7.2 conserva el listado de requerimientos, con un `\todo` de verificación sobre su ubicación. La duda de las tres subsecciones queda registrada en **ADR-036** (`project-context/ADR.md`).
+- **Verificación:** `make build` OK; los `\todo` de verificación quedan visibles en el PDF.

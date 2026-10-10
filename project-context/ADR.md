@@ -151,3 +151,16 @@ Responder **en una reunión** también vale, con una condición: que la respuest
 - **Qué se necesita para cerrarla:** que los autores confirmen o corrijan, interesado por interesado, el poder (alto o bajo) y el interés (alto o bajo), y que confirmen si algún actor regulatorio o legal debe figurar. La guía también exige llevar un registro de las interacciones con la IA generativa (nivel 3 de uso), que corresponde a los autores.
 - **Al resolver:** ajustar `tab:interesados`, `tab:matriz-poder-interes` y la matriz según la respuesta, y quitar ambos marcadores.
 
+### ADR-036 — ¿Las subsecciones de la Metodología (requerimientos por objetivo, fases y cronograma, riesgos) se quedan donde el formato las ubica o se mueven (anexo o capítulo aparte)?
+
+- **Estado:** abierta
+- **Abierta por:** Revisor · 2026-10-09
+- **A quién corresponde:** autores
+- **Dónde se usa:**
+  - `thesis/chapters/07-metodologia.tex` — `\label{sec:requerimientos-objetivo}`, tras el párrafo de elicitación · marcador literal: `\todo{Verificar si este listado de requerimientos va en la Metodología o pasa a un anexo (decisión pendiente).}`
+  - `thesis/chapters/07-metodologia.tex` — antes de `\section{Cronograma}` · marcadores literales: `\todo{El cronograma y fases del proyecto pueden estar en  un capitulo aparte, no como una seccion de metodologia.}` (del tutor) y `\todo{Verificar si las fases y el cronograma van como sección de la Metodología o como capítulo aparte (decisión pendiente).}`
+  - `thesis/chapters/07-metodologia.tex` — antes de `\section{Análisis de riesgos y limitaciones}` · marcador literal: `\todo{Esto hace parte del capitulo? O es mas como anexos en la fase de analisis y diseño...?}`
+- **Contexto:** el formato de la facultad ubica «Fases de desarrollo», «Análisis de riesgos y limitaciones» y «Cronograma» como subsecciones de Metodología, y no menciona un listado de requerimientos. El anteproyecto de TRAINI (2026-1, mismo tutor) sitúa sus requerimientos en anexos y explica la elicitación dentro de las fases. El tutor acepta el listado en Metodología siempre que se explique cómo se obtuvo (aplicado el 2026-10-09), y sugiere que fases y cronograma podrían ir en un capítulo aparte. La decisión no bloquea la entrega actual.
+- **Qué se necesita para cerrarla:** que los autores confirmen, por cada subsección, si se queda en Metodología o se mueve, y en este último caso dónde.
+- **Al resolver:** aplicar los movimientos y borrar los `\todo`; actualizar `STATUS.md` (decisiones vigentes) y las referencias cruzadas del cap. 07.
+
