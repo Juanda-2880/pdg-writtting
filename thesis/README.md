@@ -44,7 +44,7 @@ This is where the actual thesis text lives — as opposed to `skills/thesis-writ
 | 01 | `chapters/01-motivacion-antecedentes.tex` | Motivación y antecedentes (contexto, antecedentes, justificación) | 3 páginas |
 | 02 | `chapters/02-descripcion-problema.tex` | Descripción del problema (identificación y formulación) | 1 página |
 | 04 | `chapters/04-objetivos.tex` | Objetivos (general + específicos) | 1 página |
-| 05 | `chapters/05-marco-teorico.tex` | Marco teórico | 9 páginas (tope propio) |
+| 05 | `chapters/05-marco-teorico.tex` | Marco teórico | 10 páginas (tope propio) |
 | 06 | `chapters/06-estado-del-arte.tex` | Estado del arte | 4 páginas |
 | 07 | `chapters/07-metodologia.tex` | Metodología (esquema de trabajo, fases, riesgos, cronograma, presupuesto) | — |
 | 08 | `chapters/08-contribucion-resultados.tex` | Contribución y resultados del proyecto de grado | 4 páginas |
@@ -52,7 +52,7 @@ This is where the actual thesis text lives — as opposed to `skills/thesis-writ
 | 99 | `chapters/99-anexos.tex` | Anexos (análisis de participación, árbol de problemas, árbol de objetivos) | — |
 
 > [!NOTE]
-> **Marco teórico con tope propio.** El formato fija 4 páginas como máximo, pero los autores decidieron el 2026-09-13 sustituir ese límite por uno propio de 8 páginas, y solo para el capítulo 05; el 2026-09-27 lo subieron a **9 páginas**, porque el capítulo lleva tres figuras. El resto de topes sigue vigente, incluido el del Estado del arte. Ver `STATUS.md`.
+> **Marco teórico con tope propio.** El formato fija 4 páginas como máximo, pero los autores decidieron el 2026-09-13 sustituir ese límite por uno propio de 8 páginas, y solo para el capítulo 05; el 2026-09-27 lo subieron a 9 páginas y el 2026-10-09 a **10 páginas**, porque el capítulo lleva cuatro figuras. El resto de topes sigue vigente, incluido el del Estado del arte. Ver `STATUS.md`.
 
 > [!NOTE]
 > El capítulo 03 (Hipótesis y restricciones) se eliminó por decisión de los autores; el numerado salta de 02 a 04 a propósito — ver `STATUS.md`. El formato de la facultad sí contempla esa sección, así que esto es una desviación deliberada, no un archivo perdido.

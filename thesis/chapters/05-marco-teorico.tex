@@ -13,9 +13,9 @@
 %
 % EXTENSIÓN (decisión de los autores, 2026-09-13): el formato fija 4 páginas
 % como máximo. Los autores levantaron ese tope para este capítulo y fijaron
-% uno propio de 8 PÁGINAS, que el 2026-09-27 subieron a 9 PÁGINAS porque el
-% capítulo lleva tres figuras. No lo recorte a 4 ni lo deje crecer más allá
-% de 9 sin consultarlo con ellos.
+% uno propio de 8 PÁGINAS, que el 2026-09-27 subieron a 9 PÁGINAS y el
+% 2026-10-09 a 10, porque el capítulo lleva cuatro figuras. No lo recorte a 4
+% ni lo deje crecer más allá de 10 sin consultarlo con ellos.
 %
 % PESOS RELATIVOS (decisión de los autores, 2026-09-13): los recursos
 % personalizados y el patrón operador se explican, pero NO dominan el
@@ -148,7 +148,28 @@ En el plano de la implementación, las cuotas nativas que Kubernetes asocia a lo
 
 Aplicar una política de prioridad por rol exige saber con certeza quién solicita un recurso y qué rol ostenta. En entornos de cómputo en la nube, el control de acceso basado en roles resulta más escalable y adecuado que los modelos discrecional y obligatorio, y admite extensiones que incorporan a la decisión los atributos del solicitante y su grado de confianza \citep{li-rbaccloudsurvey-2015}. La autenticación federada resuelve el problema complementario al delegar la verificación de la identidad en un proveedor externo, que tras autenticar al usuario emite un \emph{token} firmado con sus atributos, entre ellos sus roles; \citet{fett-oauth2security-2016} establecen mediante análisis formal las garantías de autorización, autenticación e integridad de sesión que ofrece OAuth 2.0 (\emph{Open Authorization}) bajo ese esquema, una vez corregidas las vulnerabilidades que su propio análisis descubrió. La Universidad Icesi opera un proveedor institucional, SAAMFI, comparable en su función con productos como Keycloak o Auth0. Una plataforma apoyada en él hereda su taxonomía de roles y define por encima solo los que su propia operación requiere, como el de administrador, lo que evita comprometerse con una enumeración de perfiles académicos que pertenece al proveedor y puede cambiar sin intervención del proyecto.
 
-\todo{Pueden especificar aqui un diagrama sencillo de como saamfi u otros proveedores de autenticacion se usan y se conectan a las aplicaciones.}
+La \cref{fig:identidad-federada} resume ese recorrido, desde la autenticación del usuario hasta los permisos con los que opera sobre el clúster.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[
+      font=\small,
+      actor/.style={draw, align=center, text width=20mm, minimum height=10mm, fill=black!5},
+      comp/.style={draw, rounded corners=2pt, align=center, text width=30mm, minimum height=12mm},
+      flecha/.style={-{Stealth[length=2mm]}, semithick},
+      etq/.style={font=\footnotesize, midway}]
+    \node[actor] (usr) at (0,0) {Usuario};
+    \node[comp] (idp) at (5.8,0) {Proveedor de identidad\\institucional\\SAAMFI};
+    \node[comp] (pla) at (5.8,-3.4) {Plataforma\\{\footnotesize traducción y asignación de roles}};
+    \node[comp] (rec) at (11.8,-3.4) {Recursos del clúster\\{\footnotesize cuotas y despliegues}};
+    \draw[flecha] (usr) -- node[etq, above, align=center] {\scriptsize autenticación\\OAuth 2.0 / OIDC} (idp);
+    \draw[flecha] (idp) -- node[etq, right] {\emph{token} con roles} (pla);
+    \draw[flecha] (pla) -- node[etq, above] {permisos} (rec);
+  \end{tikzpicture}
+  \caption[Identidad federada y control de acceso]{Identidad federada y control de acceso. El usuario se autentica contra el proveedor institucional mediante OAuth 2.0 y OIDC, y recibe un \emph{token} firmado con sus roles; la plataforma traduce esos atributos a sus propios roles y deriva de ellos los permisos con los que se accede a los recursos del clúster. Elaboración propia.}
+  \label{fig:identidad-federada}
+\end{figure}
+
 Cuando las cuotas se aplican sobre el tráfico de inferencia, la literatura de microservicios ofrece el patrón conocido como \emph{API gateway}, un punto único de entrada que da acceso a varias interfaces y al que resulta natural añadir funciones de descubrimiento de servicios, balanceo de carga, monitoreo y seguridad \citep{montesi-apigatewaypatterns-2016}. Sus variantes especializadas en modelos de lenguaje añaden límites basados en el consumo de \emph{tokens}, que es la unidad en la que se contabiliza el uso de ese tipo de modelos. La revisión de esta literatura no localizó ninguna variante que aplique cuotas de forma unificada sobre cargas de lenguaje y cargas que no lo son, vacío relevante para el proyecto porque la plataforma debe gobernar cualquier carga de inteligencia artificial, y un mecanismo que solo sepa contar \emph{tokens} deja fuera de la política a todo modelo cuya salida no se mida en esa unidad.
 
 \section{Observabilidad y telemetría de infraestructura acelerada}\label{sec:observabilidad-telemetria}
