@@ -381,3 +381,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **C7-21** (tutor, `\todo` l. 387): «Esto hace parte del capitulo? O es mas como anexos en la fase de analisis y diseño...?» → **aparcado**: el formato ubica el análisis de riesgos y limitaciones en Metodología; queda el `\todo` del tutor para revisión.
 - **C7-18 · addendum** (autor): §7.2 conserva el listado de requerimientos, con un `\todo` de verificación sobre su ubicación. La duda de las tres subsecciones queda registrada en **ADR-036** (`project-context/ADR.md`).
 - **Verificación:** `make build` OK; los `\todo` de verificación quedan visibles en el PDF.
+
+### 2026-10-09 · portada · título del profesor acompañante · ítem 22 del tutor
+
+- **Revisó:** Melo088 (veredictos en el chat, ítem por ítem, sobre los `\todo` del tutor del 2026-10-07)
+- **C22** (tutor, `\todo` en `main.tex` l. 38): «Antecederle al profesor alejandro el acronimo de maestria, Msc creo que es» → aplicado · «Profesor acompañante: Mgtr. Alejandro Muñoz Bravo». El profesor confirmó que tiene el título de maestría (transmitido por los autores); la abreviatura sigue la recomendación de FundéuRAE para *máster/magíster* («Mtr., Mag. o Mgtr.»), y descarta «M.Sc./MSc» por ser la forma inglesa. El hecho queda registrado en `project-context/documentation.md`.
+- **Verificación:** `make build` OK; la portada ya no muestra `\todo`.

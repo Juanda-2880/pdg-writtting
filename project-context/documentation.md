@@ -6,7 +6,7 @@
 
 **Responsible Tutor:** Kevin David Rodríguez Belalcazar
 
-**Accompanying Professors:** Alejandro Muñoz Bravo
+**Accompanying Professors:** Alejandro Muñoz Bravo, Mgtr. (master's degree confirmed by the authors, 2026-10-09; the abbreviation follows FundéuRAE, «Mtr., Mag. o Mgtr.»).
 
 **Macro-project Title:** Computational ecosystem of software services for the development of IAsLab projects for Industry 4.0 and e-Health in the context of Digital Transformation.
 
