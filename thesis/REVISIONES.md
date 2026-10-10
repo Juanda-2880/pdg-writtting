@@ -387,3 +387,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** Melo088 (veredictos en el chat, ítem por ítem, sobre los `\todo` del tutor del 2026-10-07)
 - **C22** (tutor, `\todo` en `main.tex` l. 38): «Antecederle al profesor alejandro el acronimo de maestria, Msc creo que es» → aplicado · «Profesor acompañante: Mgtr. Alejandro Muñoz Bravo». El profesor confirmó que tiene el título de maestría (transmitido por los autores); la abreviatura sigue la recomendación de FundéuRAE para *máster/magíster* («Mtr., Mag. o Mgtr.»), y descarta «M.Sc./MSc» por ser la forma inglesa. El hecho queda registrado en `project-context/documentation.md`.
 - **Verificación:** `make build` OK; la portada ya no muestra `\todo`.
+
+### 2026-10-09 · caps. 01, 05 y anexos · normalización a TRAINI · ítem 4 (segunda parte)
+
+- **Revisó:** Melo088 (decisión del autor, 2026-10-09)
+- **C1-4 · cierre:** las menciones restantes al proyecto anterior pasan a nombrar la plataforma: «Quienes usan el plano de control anterior» → «Quienes usan TRAINI» (cap. 01 ¶7); «Antes del proyecto de grado previo» → «Antes de TRAINI» y «El proyecto de grado previo automatizó…» → «TRAINI automatizó…» (cap. 01, Antecedentes ¶1–¶2); «corresponde al proyecto de grado previo del mismo macroproyecto» → «corresponde a TRAINI, el proyecto de grado previo del mismo macroproyecto» (§5.1 y su figura); «sistema web del proyecto anterior» → «sistema web de TRAINI» (Anexo A). Se conservan las descripciones que definen qué es TRAINI (glosario y primera mención en el Contexto).
+- **Verificación:** `make build` OK; sin citas ni referencias indefinidas.
