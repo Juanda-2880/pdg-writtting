@@ -21,7 +21,7 @@
 
 ## Introduction
 
-The Artificial Intelligence and Software Architecture Laboratory (IAsLab) of Universidad Icesi manages computational infrastructures used in academic and research projects in critical areas such as data science and artificial intelligence.
+The Artificial Intelligence and Software Architecture Laboratory (IAsLab) of Universidad Icesi manages computational infrastructures used in academic and research projects in critical areas such as data science and artificial intelligence. The laboratory operates within the Department of Computing and Intelligent Systems (*Departamento de Computación y Sistemas Inteligentes*) of the Barberi Faculty of Engineering, Design and Applied Sciences (authors, 2026-10-09).
 
 Historically, the use of these resources faced barriers related to manual configuration and hardware underutilization, which limited the scalability and reproducibility of experiments.
 
