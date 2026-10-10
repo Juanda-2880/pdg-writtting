@@ -323,3 +323,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** Melo088 (veredictos en el chat, ítem por ítem, sobre los `\todo` del tutor del 2026-10-07)
 - **C2-9** (tutor, `\todo` l. 26): «No todos los elementos deben de ser parrafos, existe la posibilidad de que cuando nombren los 3 factores, pueda ser una enumeracion, unos bullets.» → aplicado · los tres factores causales pasan a `itemize` bajo la frase «De esta causa principal se desprenden tres factores causales.»; salen los conectores «Asimismo» y «Además» (`puntuation.md` §4.4).
 - **Verificación:** `make build` OK, sin citas ni referencias indefinidas; el capítulo ocupa ahora 2 páginas impresas (el `\todo` pendiente del ítem 10 sigue dentro).
+
+### 2026-10-09 · cap04 · Objetivos · ítem 11 del tutor
+
+- **Revisó:** Melo088 (veredictos en el chat, ítem por ítem, sobre los `\todo` del tutor del 2026-10-07)
+- **C4-11** (tutor, `\todo` l. 27): «Es posible que un objetivo previo a todo esto se enfoque en diseñar la arquitectura. Pueden decirdir esto si el proceso de diseño fue extenso y detallado. O si es mas bien un objetivo intrinseco.» → aplicado sin cambio en el texto: el diseño queda como intrínseco al objetivo general (*Construir la plataforma…*) y documentado en la etapa previa del cap. 07. Se descarta un quinto objetivo específico (máximo de 4 del formato; reglas 1 y 8 de `objectives-project-rules.md`). Decisión del autor; no se responde al tutor.
+- **Verificación:** `make build` OK; cero `\todo` en el capítulo.
