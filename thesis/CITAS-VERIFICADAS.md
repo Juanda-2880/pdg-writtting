@@ -54,6 +54,9 @@ Los pasajes van en el idioma original y sin traducir. Las páginas son las del P
   - `chapters/06-estado-del-arte.tex` · `\label{sec:ecosistemas-mlops}` ¶3 · «mencionan KServing de Kubeflow, TensorFlow Serving y Seldon como marcos de servicio de modelos compatibles con Kubernetes, y describen Kubeflow como una plataforma de aprendizaje automático de extremo a extremo basada en Kubernetes, en la que cada componente se empaqueta en un contenedor»
     - Pasaje: "Other Kubernetes supported frameworks are KServing of Kubeflow [α], TensorFlow Serving, and Seldion.io serving [40]." (p. 4) y "Kubeflow is a Kubernetes-based end-to-end ML platform. Each Kubeflow component is wrapped into a container and orchestrated by Kubernetes." (p. 11, tabla de herramientas)
     - **Estado:** verificada · 2026-09-27
+  - `chapters/05-marco-teorico.tex` · `\label{sec:despliegue-inferencia}` ¶3 · «cuenta con marcos de servicio compatibles con Kubernetes, como TensorFlow Serving o Seldon»
+    - Pasaje: "Other Kubernetes supported frameworks are KServing of Kubeflow [α], TensorFlow Serving, and Seldion.io serving [40]." (p. 4, §4.2, C8)
+    - **Estado:** verificada · 2026-10-09. El preprint escribe «Seldion.io»; la tesis usa el nombre correcto de la herramienta (Seldon).
 
 ## eken-mlopsmultivocalreview-2026
 

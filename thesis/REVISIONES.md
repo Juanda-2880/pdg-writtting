@@ -329,3 +329,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** Melo088 (veredictos en el chat, ítem por ítem, sobre los `\todo` del tutor del 2026-10-07)
 - **C4-11** (tutor, `\todo` l. 27): «Es posible que un objetivo previo a todo esto se enfoque en diseñar la arquitectura. Pueden decirdir esto si el proceso de diseño fue extenso y detallado. O si es mas bien un objetivo intrinseco.» → aplicado sin cambio en el texto: el diseño queda como intrínseco al objetivo general (*Construir la plataforma…*) y documentado en la etapa previa del cap. 07. Se descarta un quinto objetivo específico (máximo de 4 del formato; reglas 1 y 8 de `objectives-project-rules.md`). Decisión del autor; no se responde al tutor.
 - **Verificación:** `make build` OK; cero `\todo` en el capítulo.
+
+### 2026-10-09 · cap05 · Despliegue e inferencia de modelos · ítem 12 del tutor
+
+- **Revisó:** Melo088 (veredictos en el chat, ítem por ítem, sobre los `\todo` del tutor del 2026-10-07)
+- **C5-12** (tutor, `\todo` l. 85): «Podria separarse estas explicaciones cuando desplegamos modelos de IA tradicionales y modelos LLM, claramente el de LLM se puede extender mas, pero los otros modelos tambien son importantes» → aplicado · §5.2 queda en tres párrafos: general (definición y compromiso latencia/aprovechamiento, Ye), LLM (Miao, Kwon, Orca y las métricas de lenguaje) y modelos que no son de lenguaje (nuevo: artefacto propio, marcos como TensorFlow Serving y Seldon, métricas sin \emph{tokens}). Kreuzberger pasa a citarse también en §5.2 ¶3; `CITAS-VERIFICADAS.md` actualizado. El capítulo se mantiene en 9 páginas.
+- **Verificación:** `make build` OK, sin citas ni referencias indefinidas; cero guiones largos en el capítulo.
