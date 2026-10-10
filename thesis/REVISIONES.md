@@ -341,3 +341,10 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** Melo088 (veredictos en el chat, ítem por ítem, sobre los `\todo` del tutor del 2026-10-07)
 - **C5-13** (tutor, `\todo` l. 88): «LLM puedee hacer parte de los acronimos o glosario» → aplicado sin cambio en el texto: «LLM» ya figura en la Lista de acrónimos de `main.tex` desde el 2026-09-27 y se define en su primer uso en §5.2 ¶2. Solo se retira el `\todo`.
 - **Verificación:** `make build` OK; el capítulo queda con tres `\todo` (ítems 14 a 16).
+
+### 2026-10-09 · cap05 · Extensibilidad declarativa · ítems 14–15 del tutor
+
+- **Revisó:** Melo088 (veredictos en el chat, ítem por ítem, sobre los `\todo` del tutor del 2026-10-07)
+- **C5-14** (tutor, `\todo` l. 105): «'La figura 4.2 representa ese bucle.' La lectura del texto se diifculta con tanta puntuacion y pausas. revisar eso en todo el documento, tantas comas y puntos...» → aplicado · §5.4 ¶1 pasa de las oraciones encadenadas originales a seis con conectores explícitos (y sin embargo, cuyo, Según, Como, y esa propiedad, porque). La revisión de la puntuación en el resto del documento queda como barrido aparte (80 oraciones candidatas medidas).
+- **C5-15** (tutor, `\todo` l. 106): «Observa va a observar? Es raro. Pueden omitir la palabra observa.» → aplicado · sale el rótulo «observa» de la flecha «Estado actual del clúster → Observar» en `fig:bucle-reconciliacion`; el nodo «Observar» se conserva. En la prosa, «compara ese estado con el observado» pasa a «compara el estado declarado con el actual».
+- **Verificación:** `make build` OK, sin citas ni referencias indefinidas; cap. 05 sigue en 9 páginas; cero guiones largos.
