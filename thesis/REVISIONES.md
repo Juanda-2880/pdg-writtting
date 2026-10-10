@@ -288,3 +288,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Correcciones del Revisor aplicadas:** antítesis «No son entregables, sino…» reescrita; la fila «Gobernanza de cuotas» de `tab:fases-desarrollo` nombraba cuatro grupos y el módulo administrativo pertenece a la fase de plataforma; `fig:gantt` desbordaba la página. El Coordinador corrigió «del Sección» → «de la Sección» en cinco referencias.
 - **Siglas:** CNI, E/S, OAuth, OIDC y RAM nuevas en la lista; CPU se define ahora en el cap. 07, su primer uso.
 - **Verificación:** `make build` OK, 51 páginas, sin citas ni referencias indefinidas, sin cajas desbordadas ni flotantes demasiado grandes; cero guiones largos, antítesis y dos puntos de empalme en prosa; ningún identificador R*-** visible ni mención al SUS.
+
+### 2026-10-09 · cap01 · Contexto ¶3
+
+- **Revisó:** Melo088 (veredictos en el chat, ítem por ítem, sobre los `\todo` del tutor del 2026-10-07)
+- **F1** (tutor, `\todo` l. 32): «'El estudio analizó...' Cual estudio? No es claro a cual hace referencia» → aplicado · «El estudio analizó 400 casos reales…» → «Dicho estudio analizó 400 casos reales…». La cita parentética se conserva al final del parafraseo, en la oración anterior, y el demostrativo «dicho» ata la oración siguiente a la fuente recién citada. `CITAS-VERIFICADAS.md` actualizado con la redacción nueva.
+- **Verificación:** `make build` OK, sin citas ni referencias indefinidas; el `\todo` de la l. 32 ya no aparece en el PDF.
