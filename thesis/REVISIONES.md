@@ -310,3 +310,10 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **C1-5** (tutor, `\todo` l. 53): «Este proyecto responde a...» → aplicado · la Justificación abre con «Este proyecto responde a una necesidad compartida por el IAsLab, el Departamento de Computación y Sistemas Inteligentes y la universidad.» (antes: «Construir esta plataforma es pertinente porque responde a necesidades concretas del IAsLab»).
 - **C1-6** (tutor, `\todo` l. 54): «No solamente responde a la necesidad del Iaslab, sino del departamento y la universidad, debe justificar por que, este es un proyecto que puede impactar mas areas.» → aplicado · el alcance se amplía al departamento (nombre confirmado por los autores) y a la universidad, y cierra con «Con esa capacidad, la plataforma puede sostener proyectos de otras áreas, como los de Industria 4.0 y e-Salud.» Se evitó la construcción «no solo… sino» (`puntuation.md` §4.2). El hecho del departamento se registró primero en `project-context/documentation.md` (*Introduction*, 2026-10-09).
 - **Verificación:** `make build` OK, sin citas ni referencias indefinidas; sin repeticiones de 3+ en la Justificación; cero guiones largos en el capítulo; los `\todo` de las líneas 53 y 54 ya no aparecen en el PDF.
+
+### 2026-10-09 · cap01 · Justificación ¶3–¶4 · ítems 7–8 del tutor
+
+- **Revisó:** Melo088 (veredictos en el chat, ítem por ítem, sobre los `\todo` del tutor del 2026-10-07)
+- **C1-7** (tutor, `\todo` l. 57): «'Ese mejor aprovechamiento tiene, ademas, un efecto ambiental.' Es una forma extrana de narrar el hecho, poner ese ademas.» → aplicado · «tiene, además,» → «tiene también».
+- **C1-8** (tutor, `\todo` l. 60): «El proyecto o la plataforma?.» → aplicado · el sujeto sigue siendo «el proyecto» y el posesivo ambiguo se reemplaza por «el escenario en el que se desarrolla».
+- **Verificación:** `make build` OK, sin citas ni referencias indefinidas; cero `\todo` en el capítulo; greps de estilo sin hallazgos en prosa.
