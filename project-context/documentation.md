@@ -37,6 +37,19 @@ Before this first phase, the IAsLab lacked a standardized platform for managing 
 
 Separately, before this project the laboratory deployed models manually: installing candidate inference engines and packages via Python scripts run by hand, without any platform automating the process ("fue básicamente como la ejecución de un par de scripts y ya. No hicieron una plataforma ellos directamente", tutor, 2026-08-26). Building on that practice, the laboratory evaluated inference engines with its own benchmarking harness, a Python script driven by declarative YAML specifications that measures input/output tokens per second and end-to-end response time (Alejandro Muñoz Bravo, 2026-09-04). Based on those benchmarks, the laboratory concluded that a purpose-compiled build of llama.cpp, compiled specifically for the hardware in room 104M, lets them deploy the best-performing models among those tried, after vLLM failed to produce good results in the lab's own trials. The measured baseline is approximately 20 tokens per second, with 10 to 15 minute response times, across the room's 31 workstations.
 
+### Institutional demand and student population in IT and AI programs (institutional enrollment data, 2026)
+
+> Recorded from official institutional analytics / enrollment dashboards of Universidad Icesi (Power BI report: `https://app.powerbi.com/view?r=eyJrIjoiZDUxM2QxZTAtMWNlNy00ODNjLTlkNDItNWM4OGEwMzg3NzJkIiwidCI6ImU5OTQwNzJiLTUyM2UtNGJmZS04NmUyLTQ0MmM1ZTEwYjI0NCIsImMiOjR9`), supplied by the authors (2026-10-12) to address tutor feedback on potential demand vs. infrastructure underutilization.
+
+The potential user base in information technologies and artificial intelligence at Universidad Icesi comprises 667 undergraduate students in IT/computing programmes and 190 graduate students across specialised programmes:
+- Maestría en Inteligencia Artificial: 89 students
+- Maestría en Ciencia de Datos: 74 students
+- Doctorado en Ingeniería: 13 students
+- Especialización en Ingeniería de Datos: 8 students
+- Especialización en Inteligencia Artificial Aplicada: 6 students
+
+Total direct potential community: 857 students (667 undergraduate + 190 graduate).
+
 ## Problem Description
 
 Although the first phase of the project mitigated the operational bottleneck associated with model training and basic task orchestration, the current system presents limitations regarding the productive stages of the artificial intelligence lifecycle and the progressive scaling of its users.
