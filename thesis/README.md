@@ -46,8 +46,9 @@ This is where the actual thesis text lives — as opposed to `skills/thesis-writ
 | 04 | `chapters/04-objetivos.tex` | Objetivos (general + específicos) | 1 página |
 | 05 | `chapters/05-marco-teorico.tex` | Marco teórico | 10 páginas (tope propio) |
 | 06 | `chapters/06-estado-del-arte.tex` | Estado del arte | 4 páginas |
-| 07 | `chapters/07-metodologia.tex` | Metodología (esquema de trabajo, fases, riesgos, cronograma, presupuesto) | — |
-| 08 | `chapters/08-contribucion-resultados.tex` | Contribución y resultados del proyecto de grado | 4 páginas |
+| 07 | `chapters/07-metodologia.tex` | Metodología (estrategia metodológica, elicitación de requerimientos, riesgos) | — |
+| 08 | `chapters/08-fases-desarrollo-cronograma.tex` | Fases de desarrollo y cronograma (fases, duraciones y diagrama de Gantt) | — |
+| 09 | `chapters/09-contribucion-resultados.tex` | Contribución y resultados del proyecto de grado | 4 páginas |
 | — | `references.bib` → `\bibliography{}` | Referencias bibliográficas | — |
 | 99 | `chapters/99-anexos.tex` | Anexos (análisis de participación, árbol de problemas, árbol de objetivos) | — |
 

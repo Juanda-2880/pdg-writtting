@@ -9,19 +9,15 @@
 %   - Estructura lógica del proceso: recolección de datos, organización,
 %     sistematización, análisis, interpretación y presentación de
 %     resultados.
-%   - FASES DE DESARROLLO DEL PROYECTO: en estrecha relación con los
-%     objetivos específicos; cada fase con duración asignada.
 %   - ANÁLISIS DE RIESGOS Y LIMITACIONES: riesgos que afectan alcance,
 %     cronograma, presupuesto y calidad.
-%   - CRONOGRAMA (diagrama de Gantt).
-% NO debe contener: metodología descrita sin justificación, ni fases que no
-% mapeen a un objetivo específico.
+% NO debe contener: metodología descrita sin justificación.
 %
 % Hechos técnicos: ../../project-context/technologies.md y requirements.md.
 % ==========================================================================
 \chapter{Metodología}\label{cha:metodologia}
 
-Este capítulo formula y justifica la metodología de ingeniería adoptada para resolver el problema planteado en el \cref{cha:descripcion-problema}, describe la estructura lógica del proceso de investigación, desde la recolección de datos hasta la presentación de resultados, expone el proceso de elicitación y especificación de requerimientos que sustentan los objetivos específicos del proyecto (cuyo catálogo detallado se compila en el Anexo~\labelcref{anx:requerimientos}), define las fases de desarrollo en relación directa con esos objetivos, presenta el cronograma de ejecución y remite al Anexo~\labelcref{anx:riesgos} para el análisis exhaustivo de riesgos y limitaciones que pueden afectar su alcance, cronograma y calidad.
+Este capítulo formula y justifica la metodología de ingeniería adoptada para resolver el problema planteado en el \cref{cha:descripcion-problema}, describe la estructura lógica del proceso de investigación, desde la recolección de datos hasta la presentación de resultados, expone el proceso de elicitación y especificación de requerimientos que sustentan los objetivos específicos del proyecto (cuyo catálogo detallado se compila en el Anexo~\labelcref{anx:requerimientos}), remite al \cref{cha:fases-cronograma} para las fases de desarrollo y el cronograma de ejecución, y al Anexo~\labelcref{anx:riesgos} para el análisis exhaustivo de riesgos y limitaciones que pueden afectar su alcance, cronograma y calidad.
 
 \section{Estrategia metodológica}\label{sec:estrategia-metodologica}
 
@@ -34,158 +30,12 @@ Los artefactos y ceremonias que el equipo emplea de forma efectiva son un tabler
 
 La estructura lógica del proceso de investigación se organiza en cuatro etapas. La recolección de datos se apoya en dos fuentes instrumentadas por el propio sistema, que son la telemetría de \emph{hardware} e inferencia que produce el módulo de observabilidad y los resultados de las pruebas de carga que ejecutan \emph{scripts} de Python externos a la plataforma sobre los nodos de inferencia. La organización y sistematización de estos datos consiste en consolidar las métricas de \emph{hardware} y de inferencia en formatos comparables entre fases y entre motores de inferencia evaluados. El análisis contrasta estas métricas contra los objetivos específicos formulados, determinando en qué medida cada módulo construido resuelve la carencia que motivó su desarrollo. Finalmente, la interpretación y presentación de resultados traduce los hallazgos del análisis en conclusiones sobre el nivel de concurrencia que la plataforma sostiene.
 
-La evaluación empírica prevista en el \cref{obj:evaluacion} ejecuta pruebas de carga con usuarios concurrentes mediante \emph{scripts} de Python externos a la plataforma, para no complejizar su desarrollo. La \cref{sec:fases-desarrollo} ubica esa evaluación en la fase correspondiente, y el \cref{cha:marco-teorico} presenta el respaldo metodológico de la prueba de carga.
+La evaluación empírica prevista en el \cref{obj:evaluacion} ejecuta pruebas de carga con usuarios concurrentes mediante \emph{scripts} de Python externos a la plataforma, para no complejizar su desarrollo. El \cref{cha:fases-cronograma} (\cref{sec:fases-desarrollo}) ubica esa evaluación en la fase correspondiente, y el \cref{cha:marco-teorico} presenta el respaldo metodológico de la prueba de carga.
 
 \section{Elicitación y especificación de requerimientos}
 \label{sec:requerimientos-objetivo}
 
 Los requerimientos del proyecto se levantaron a partir de las sesiones de elicitación con el personal del IAsLab, que sirvieron como insumo técnico y operativo. Después de revisarlos y ajustarlos, se contrastaron contra los objetivos específicos para validar y acotar el alcance propuesto de la solución. Con ese alcance fijado, el equipo procedió a su refinamiento y priorización, los cuales fueron validados por el tutor del proyecto. Para facilitar que un evaluador verifique el cumplimiento sistemático de cada objetivo contra los entregables descritos en el \cref{cha:contribucion-resultados}, los requerimientos se agruparon por objetivo específico y se codificaron bajo la convención Rk-nn, donde k indica el objetivo y nn el consecutivo correspondiente. El catálogo detallado con los 110 requerimientos funcionales y no funcionales se presenta en el Anexo~\labelcref{anx:requerimientos}, agrupado en los mismos subsistemas funcionales con los que se especificó la plataforma (\cref{sec:req-telemetria,sec:req-gobernanza,sec:req-orquestacion,sec:req-evaluacion}).
-
-\section{Fases de desarrollo del proyecto}
-\label{sec:fases-desarrollo}
-
-Las fases de desarrollo del proyecto guardan correspondencia directa con los objetivos específicos formulados en el \cref{cha:objetivos} y se estructuran según una cadena estricta de dependencias técnicas. El proceso inicia con la puesta en marcha del clúster sobre las estaciones de la sala 104M (\cref{sec:req-orquestacion}, grupo «Clúster base») y el despliegue de los motores de inferencia. Sobre esa infraestructura se instrumenta el módulo de observabilidad (\cref{sec:req-telemetria}), necesario para recolectar telemetría y métricas operativas antes de aplicar restricciones de recursos. Posteriormente, se implementa la gobernanza de cuotas dentro del clúster (\cref{sec:req-gobernanza}, grupos «Identidad y control de acceso», «Cuotas y aislamiento» y «Admisión, prioridad y reservas») y se construye la plataforma web de despliegue y administración, la cual expone la interfaz de despliegue del \cref{obj:orquestacion} y el módulo administrativo del \cref{obj:gobernanza} sobre las capacidades ya estabilizadas. El ciclo culmina con la evaluación empírica del sistema integrado mediante las pruebas de carga del grupo «Medición de desempeño» (\cref{sec:req-evaluacion}). La \cref{tab:fases-desarrollo} sintetiza esta secuencia con la duración estimada de cada fase en \emph{sprints} de tres semanas.
-
-\begin{xltabular}{\textwidth}{p{0.2\textwidth} X p{0.14\textwidth} p{0.11\textwidth}}
-        \caption{Fases de desarrollo del proyecto, su correspondencia con los objetivos específicos y su duración.}
-        \label{tab:fases-desarrollo} \\
-        \toprule
-        \textbf{Fase} & \textbf{Actividades principales} & \textbf{Objetivo específico} & \textbf{Duración} \\
-        \midrule
-        \endfirsthead
-        \toprule
-        \textbf{Fase} & \textbf{Actividades principales} & \textbf{Objetivo específico} & \textbf{Duración} \\
-        \midrule
-        \endhead
-        \bottomrule
-        \endfoot
-        Puesta en marcha del clúster &
-        Grupos «Clúster base», «Orquestación de cargas» y «Motores y modelos» de la \cref{sec:req-orquestacion} &
-        \Cref{obj:orquestacion} & 2 \emph{sprints} \\
-        \addlinespace
-        Observabilidad de infraestructura &
-        Los cuatro grupos de la \cref{sec:req-telemetria} &
-        \Cref{obj:telemetria} & 2 \emph{sprints} \\
-        \addlinespace
-        Gobernanza de cuotas &
-        Grupos «Identidad y control de acceso», «Cuotas y aislamiento» y «Admisión, prioridad y reservas» de la \cref{sec:req-gobernanza} &
-        \Cref{obj:gobernanza} & 2 \emph{sprints} \\
-        \addlinespace
-        Plataforma de despliegue y administración &
-        Grupo «Interfaz de despliegue» de la \cref{sec:req-orquestacion} y grupo «Módulo administrativo» de la \cref{sec:req-gobernanza} &
-        \Cref{obj:orquestacion}, \cref{obj:gobernanza} & 3 \emph{sprints} \\
-        \addlinespace
-        Evaluación empírica &
-        Grupo «Medición de desempeño» de la \cref{sec:req-evaluacion} &
-        \Cref{obj:evaluacion} & 1 \emph{sprint} \\
-\end{xltabular}
-
-\todo{El cronograma y fases del proyecto pueden estar en  un capitulo aparte, no como una seccion de metodologia.}
-\todo{Verificar si las fases y el cronograma van como sección de la Metodología o como capítulo aparte (decisión pendiente).}
-\section{Cronograma}
-\label{sec:cronograma}
-
-El proyecto inicia el 10 de agosto de 2026 y finaliza el 31 de mayo de 2027. Entre el 10 de agosto y el 20 de septiembre de 2026 el equipo dedica una etapa previa a la formulación del anteproyecto, el levantamiento de requisitos con el laboratorio y la definición de la arquitectura propuesta. Los \emph{sprints} de desarrollo comienzan el 21 de septiembre de 2026 y se suceden en ciclos de tres semanas hasta el cierre del proyecto. Las actividades de cada \emph{sprint} se derivan de los grupos de requerimientos presentados en las \cref{sec:req-telemetria,sec:req-gobernanza,sec:req-orquestacion,sec:req-evaluacion}, y las asume el equipo del proyecto en su conjunto, razón por la cual el cronograma omite una columna de responsable. La \cref{fig:gantt} presenta el cronograma completo, con las fechas de cada \emph{sprint}, los grupos de requerimientos que atiende y el hito de entrega del anteproyecto. Como cada fase depende de que la anterior quede estable, las cinco fases forman una sola cadena que constituye en conjunto la ruta crítica del proyecto, de modo que el retraso de cualquier \emph{sprint} desplaza el cierre.
-
-% [verify: ADR-033: el sprint 4 termina el 13-dic, y el sprint 5 (11-31 ene) inicia en enero]
-La ejecución del proyecto se estructura en dos grandes etapas consecutivas. La primera etapa abarca de agosto a diciembre de 2026, periodo en el que se consolida la formulación del anteproyecto y se ejecutan los cuatro primeros \emph{sprints} de desarrollo, correspondientes a la puesta en marcha del clúster de cómputo y a la instrumentación de observabilidad de infraestructura. La segunda etapa comprende de enero a mayo de 2027, periodo durante el cual se implementan el sistema de gobernanza de cuotas, la plataforma de despliegue y administración, y la evaluación empírica del sistema, culminando con el informe final del proyecto.
-
-\begin{landscape}
-\begin{figure}[p]
-  \centering
-  \begin{tikzpicture}[font=\small, yscale=0.92]
-    % --- Eje de meses ---------------------------------------------------
-    \draw[black!25] (0.000,0.20) -- (0.000,-13.00);
-    \node[anchor=south] at (0.869,0.20) {ago};
-    \draw[black!25] (1.738,0.20) -- (1.738,-13.00);
-    \node[anchor=south] at (2.579,0.20) {sep};
-    \draw[black!25] (3.419,0.20) -- (3.419,-13.00);
-    \node[anchor=south] at (4.288,0.20) {oct};
-    \draw[black!25] (5.157,0.20) -- (5.157,-13.00);
-    \node[anchor=south] at (5.998,0.20) {nov};
-    \draw[black!25] (6.839,0.20) -- (6.839,-13.00);
-    \node[anchor=south] at (7.708,0.20) {dic};
-    \draw[black!25] (8.575,0.20) -- (8.575,-13.00);
-    \node[anchor=south] at (9.444,0.20) {ene};
-    \draw[black!25] (10.313,0.20) -- (10.313,-13.00);
-    \node[anchor=south] at (11.099,0.20) {feb};
-    \draw[black!25] (11.883,0.20) -- (11.883,-13.00);
-    \node[anchor=south] at (12.752,0.20) {mar};
-    \draw[black!25] (13.621,0.20) -- (13.621,-13.00);
-    \node[anchor=south] at (14.461,0.20) {abr};
-    \draw[black!25] (15.302,0.20) -- (15.302,-13.00);
-    \node[anchor=south] at (16.171,0.20) {may};
-    \draw[black!25] (17.040,0.20) -- (17.040,-13.00);
-    \node[anchor=south] at (4.288,0.65) {\textbf{2026}};
-    \node[anchor=south] at (12.808,0.65) {\textbf{2027}};
-    \draw (0,0.00) -- (17.040,0.00);
-
-    % --- Bandas de fase (tono por fase, ver leyenda), a la izquierda de
-    % las etiquetas de fila, que a su vez quedan junto al eje -----------
-    \fill[black!25] (-3.6,-1.0) rectangle (-3.1,-3.0);
-    \node[rotate=90, font=\scriptsize] at (-3.35,-2.0) {F1};
-    \fill[black!40] (-3.6,-3.0) rectangle (-3.1,-5.0);
-    \node[rotate=90, font=\scriptsize] at (-3.35,-4.0) {F2};
-    \fill[black!55] (-3.6,-6.0) rectangle (-3.1,-8.0);
-    \node[rotate=90, font=\scriptsize] at (-3.35,-7.0) {F3};
-    \fill[black!70] (-3.6,-8.0) rectangle (-3.1,-11.0);
-    \node[rotate=90, font=\scriptsize] at (-3.35,-9.5) {F4};
-    \fill[black!85] (-3.6,-11.0) rectangle (-3.1,-12.0);
-    \node[rotate=90, font=\scriptsize, text=white] at (-3.35,-11.5) {F5};
-
-    % --- Etiquetas de fila (número de \emph{sprint} y grupos que atiende) --
-    \node[anchor=east, align=right, font=\scriptsize, text width=2.9cm] at (-0.2,-0.5) {Etapa previa};
-    \node[anchor=east, align=right, font=\scriptsize, text width=2.9cm] at (-0.2,-1.5) {\emph{Sprint} 1\\Clúster base};
-    \node[anchor=east, align=right, font=\scriptsize, text width=2.9cm] at (-0.2,-2.5) {\emph{Sprint} 2\\Orquestación y motores};
-    \node[anchor=east, align=right, font=\scriptsize, text width=2.9cm] at (-0.2,-3.5) {\emph{Sprint} 3\\Telemetría (infra. y \emph{hardware})};
-    \node[anchor=east, align=right, font=\scriptsize, text width=2.9cm] at (-0.2,-4.5) {\emph{Sprint} 4\\Telemetría de carga y paneles};
-    \node[anchor=east, align=right, font=\scriptsize, text width=2.9cm] at (-0.2,-5.5) {Hito\\Entrega del anteproyecto};
-    \node[anchor=east, align=right, font=\scriptsize, text width=2.9cm] at (-0.2,-6.5) {\emph{Sprint} 5\\Identidad y acceso};
-    \node[anchor=east, align=right, font=\scriptsize, text width=2.9cm] at (-0.2,-7.5) {\emph{Sprint} 6\\Cuotas, admisión y reservas};
-    \node[anchor=east, align=right, font=\scriptsize, text width=2.9cm] at (-0.2,-8.5) {\emph{Sprint} 7\\Interfaz de despliegue (servicio)};
-    \node[anchor=east, align=right, font=\scriptsize, text width=2.9cm] at (-0.2,-9.5) {\emph{Sprint} 8\\Interfaz de despliegue (UI)};
-    \node[anchor=east, align=right, font=\scriptsize, text width=2.9cm] at (-0.2,-10.5) {\emph{Sprint} 9\\Módulo administrativo};
-    % [verify: ADR-031: diseño propio o reutilización del harness del laboratorio]
-    \node[anchor=east, align=right, font=\scriptsize, text width=2.9cm] at (-0.2,-11.5) {\emph{Sprint} 10\\Medición de desempeño};
-    \node[anchor=east, align=right, font=\scriptsize, text width=2.9cm] at (-0.2,-12.5) {Cierre};
-
-    % --- Barras, con las fechas de inicio y fin junto a cada una -----------
-    \fill[black!10] (0.504,-0.84) rectangle (2.858,-0.16);
-    \node[anchor=south, font=\tiny] at (1.681,-0.12) {10 ago -- 20 sep};
-    \fill[black!25] (2.858,-1.84) rectangle (4.036,-1.16);
-    \node[anchor=south, font=\tiny] at (3.447,-1.12) {21 sep -- 11 oct};
-    \fill[black!25] (4.036,-2.84) rectangle (5.213,-2.16);
-    \node[anchor=south, font=\tiny] at (4.625,-2.12) {12 oct -- 1 nov};
-    \fill[black!40] (5.213,-3.84) rectangle (6.390,-3.16);
-    \node[anchor=south, font=\tiny] at (5.802,-3.12) {2 nov -- 22 nov};
-    \fill[black!40] (6.390,-4.84) rectangle (7.567,-4.16);
-    \node[anchor=south, font=\tiny] at (6.979,-4.12) {23 nov -- 13 dic};
-    \node[draw, fill=black, diamond, inner sep=2pt] at (7.006,-5.5) {};
-    \node[anchor=west, font=\tiny] at (7.15,-5.5) {Inicios de dic. 2026};
-    \fill[black!55] (9.136,-6.84) rectangle (10.313,-6.16);
-    \node[anchor=south, font=\tiny] at (9.725,-6.12) {11 ene -- 31 ene};
-    \fill[black!55] (10.313,-7.84) rectangle (11.491,-7.16);
-    \node[anchor=south, font=\tiny] at (10.902,-7.12) {1 feb -- 21 feb};
-    \fill[black!70] (11.491,-8.84) rectangle (12.668,-8.16);
-    \node[anchor=south, font=\tiny] at (12.080,-8.12) {22 feb -- 14 mar};
-    \fill[black!70] (12.668,-9.84) rectangle (13.845,-9.16);
-    \node[anchor=south, font=\tiny] at (13.257,-9.12) {15 mar -- 4 abr};
-    \fill[black!70] (13.845,-10.84) rectangle (15.022,-10.16);
-    \node[anchor=south, font=\tiny] at (14.434,-10.12) {5 abr -- 25 abr};
-    \fill[black!85] (15.022,-11.84) rectangle (16.199,-11.16);
-    \node[anchor=south, font=\tiny] at (15.611,-11.12) {26 abr -- 16 may};
-    \fill[black!10] (16.199,-12.84) rectangle (17.040,-12.16);
-    \node[anchor=south, font=\tiny] at (16.620,-12.12) {17 -- 31 may};
-
-    % --- Leyenda de fases -----------------------------------------------
-    \node[anchor=north west, font=\scriptsize, text width=17.5cm] at (-3.6,-13.35)
-      {F1 Puesta en marcha del clúster \quad F2 Observabilidad de infraestructura \quad F3 Gobernanza de cuotas\\
-       F4 Plataforma de despliegue y administración \quad F5 Evaluación empírica};
-  \end{tikzpicture}
-  \caption[Diagrama de Gantt del proyecto]{Diagrama de Gantt del proyecto. Cada barra indica sus fechas y, para los \emph{sprints}, el grupo de requerimientos que atiende, en el orden de las \cref{sec:req-telemetria,sec:req-gobernanza,sec:req-orquestacion,sec:req-evaluacion}; el tono lateral identifica la fase (leyenda F1--F5) y el rombo marca la entrega del anteproyecto a inicios de diciembre de 2026. Las cinco fases forman una sola cadena de dependencias y constituyen en conjunto la ruta crítica del proyecto. Elaboración propia.}
-  \label{fig:gantt}
-\end{figure}
-\end{landscape}
 
 \section{Riesgos y limitaciones del proyecto}
 \label{sec:riesgos-limitaciones}

@@ -81,8 +81,8 @@ Responder **en una reunión** también vale, con una condición: que la respuest
 - **A quién corresponde:** autores
 - **Dónde se usa:**
   - `thesis/chapters/07-metodologia.tex` — `\label{sec:estrategia-metodologica}`, segundo párrafo (Jira y Bitbucket) · marcador literal: `% [verify: ADR-030: Jira y Bitbucket salen del acta 2026-08-26 (Compromisos), no de project-context]`
-  - `thesis/chapters/07-metodologia.tex` — `\item[Saturación de VRAM y congelamiento de nodos GPU]` (rango de 90 % a 95 % y fuente de poder) · marcador literal: `% [verify: ADR-030: rango 90-95 % y fuente de poder salen del acta 2026-09-04; requirements.md R1-11 no fija el umbral de saturación]`
-  - `thesis/chapters/07-metodologia.tex` — `\item[Cambios de requisitos que obliguen a rehacer la infraestructura]` (advertencia del tutor y compromiso con GitOps) · marcador literal: `% [verify: ADR-030: advertencia del tutor y compromiso GitOps salen del acta 2026-09-09]`
+  - `thesis/chapters/99-anexos.tex` — `\item[Saturación de VRAM y congelamiento de nodos GPU]` en Anexo E (rango de 90 % a 95 % y fuente de poder) · marcador literal: `% [verify: ADR-030: rango 90-95 % y fuente de poder salen del acta 2026-09-04; requirements.md R1-11 no fija el umbral de saturación]`
+  - `thesis/chapters/99-anexos.tex` — `\item[Cambios de requisitos que obliguen a rehacer la infraestructura]` en Anexo E (advertencia del tutor y compromiso con GitOps) · marcador literal: `% [verify: ADR-030: advertencia del tutor y compromiso GitOps salen del acta 2026-09-09]`
   - `project-context/meetings/2026-08-26-tutor-arquitectura.md`, `2026-09-04-alejandro-elicitacion.md` y `2026-09-09-tutor-alcance-y-revision.md` — sección "Contradicciones", anotación «Hechos de esta reunión usados en la tesis sin respaldo en `project-context/`»
 - **Avance (2026-09-13):** en la revisión del acta del 2026-08-26 los autores promovieron el contenido de los *sprints* 1 y 2 junto con la exigencia del curso (`project-context/README.md`, «Course requirement for PDG I»), el calendario de PDG I y PDG II (`project-context/README.md`, «Academic calendar», que corrige el corte a los primeros días de diciembre) y la restricción de uso compartido con las clases (`requirements.md` R3-08). Esos marcadores ya se borraron del cap. 07. El nuevo calendario abrió ADR-033.
 - **Avance (2026-09-27):** el compromiso con GitOps, documentación y automatización del tercer pasaje ya está escrito en `requirements.md` §1.2 y R3-10 (configuración versionada y redesplegable en otra sala, desde el 2026-09-21); de ese pasaje solo sigue sin respaldo la «advertencia del tutor». En la misma fecha salió del cap. 07 la mención al curso de PDG que acompañaba a Jira y Bitbucket; el marcador de Jira y Bitbucket sigue en su lugar.
@@ -97,17 +97,18 @@ Responder **en una reunión** también vale, con una condición: que la respuest
 - **Abierta por:** Revisor · 2026-09-12
 - **A quién corresponde:** autores / tutor
 - **Dónde se usa:**
-  - `thesis/chapters/07-metodologia.tex` — `tab:req-evaluacion`, primera fila (texto literal: `Cuenta con \emph{scripts} sencillos de Python, externos a la plataforma`) y `fig:gantt`, fila del *Sprint* 10 · marcador literal en ambos: `% [verify: ADR-031: diseño propio o reutilización del harness del laboratorio]`
-  - `thesis/chapters/07-metodologia.tex` — `\label{sec:estrategia-metodologica}` ¶4 («los resultados de las pruebas de carga que ejecutan \emph{scripts} de Python externos a la plataforma») y ¶5, y fila «Evaluación empírica» de `tab:fases-desarrollo` («mediante \emph{scripts} de Python externos a la plataforma»)
-  - `thesis/chapters/08-contribucion-resultados.tex` — segundo párrafo de «Aportes relacionados con el desarrollo de capacidades del investigador» («ejecutadas con \emph{scripts} de Python») y fila `obj:evaluacion` de `tab:objetivos-entregables` («con los datos generados por los \emph{scripts} de prueba de carga»)
+  - `thesis/chapters/99-anexos.tex` — `tab:req-evaluacion`, primera fila en Anexo D (texto literal: `Cuenta con \emph{scripts} sencillos de Python, externos a la plataforma`)
+  - `thesis/chapters/08-fases-desarrollo-cronograma.tex` — `fig:gantt`, fila del *Sprint* 10 · marcador literal: `% [verify: ADR-031: diseño propio o reutilización del harness del laboratorio]`
+  - `thesis/chapters/07-metodologia.tex` — `\label{sec:estrategia-metodologica}` ¶4 («los resultados de las pruebas de carga que ejecutan \emph{scripts} de Python externos a la plataforma») y ¶5
+  - `thesis/chapters/08-fases-desarrollo-cronograma.tex` — fila «Evaluación empírica» de `tab:fases-desarrollo`
+  - `thesis/chapters/09-contribucion-resultados.tex` — segundo párrafo de «Aportes relacionados con el desarrollo de capacidades del investigador» y fila `obj:evaluacion` de `tab:objetivos-entregables`
   - `project-context/requirements.md` — R4-01 a R4-03
   - `project-context/technologies.md` — §E.1 "Custom Python Benchmark Harness"
   - `project-context/documentation.md` — «Institutional antecedents» · texto literal: `the laboratory evaluated inference engines with its own benchmarking harness`
-- **Contexto:** `documentation.md` registra que el laboratorio ya tiene un harness propio (un *script* de Python guiado por YAML que mide *tokens* por segundo y tiempo de respuesta). `requirements.md` R4-01 describe esa misma herramienta como requisito del proyecto, y el cap. 07 programa su ejecución en el *Sprint* 10. En la reunión del 2026-09-04, Alejandro ofreció acceso al repositorio del harness y dejó para el tutor si entra en el alcance [17:58, 20:32]; ninguna acta ni decisión escrita lo resolvió después. Si se reutiliza, «Diseño» sobrestima el trabajo; si se construye, la tesis debería decir por qué no basta el existente.
-- **Avance (2026-09-27):** el tutor comentó el 2026-09-21 sobre R4-01 a R4-03 que las pruebas de carga pueden hacerse «realizando scripts sencillos en python para no complejizar la aplicación y también su desarrollo» (`requirements_c.pdf`, p. 19). Los autores lo aplicaron a R4-01 a R4-03 y a los caps. 07 y 08, que ya no hablan de un «motor de *benchmarking* automatizado» sino de *scripts* de Python externos a la plataforma. Sigue abierto si esos *scripts* son los del harness del laboratorio o unos propios.
+- **Contexto:** `documentation.md` registra que el laboratorio ya tiene un harness propio (un *script* de Python guiado por YAML que mide *tokens* por segundo y tiempo de respuesta). `requirements.md` R4-01 describe esa misma herramienta como requisito del proyecto, y el cap. 08 programa su ejecución en el *Sprint* 10. En la reunión del 2026-09-04, Alejandro ofreció acceso al repositorio del harness y dejó para el tutor si entra en el alcance [17:58, 20:32]; ninguna acta ni decisión escrita lo resolvió después. Si se reutiliza, «Diseño» sobrestima el trabajo; si se construye, la tesis debería decir por qué no basta el existente.
+- **Avance (2026-09-27):** el tutor comentó el 2026-09-21 sobre R4-01 a R4-03 que las pruebas de carga pueden hacerse «realizando scripts sencillos en python para no complejizar la aplicación y también su desarrollo» (`requirements_c.pdf`, p. 19). Los autores lo aplicaron a R4-01 a R4-03 y a los caps. 07, 08 y 09, que ya no hablan de un «motor de *benchmarking* automatizado» sino de *scripts* de Python externos a la plataforma. Sigue abierto si esos *scripts* son los del harness del laboratorio o unos propios.
 - **Qué se necesita para cerrarla:** una de tres: (a) se reutiliza el harness del laboratorio y el proyecto solo lo adapta y ejecuta; (b) el proyecto construye uno propio; (c) el *benchmarking* automatizado queda fuera y la evaluación usa otra herramienta de carga.
-- **Al resolver:** ajustar R4-01 a R4-03 y §E.1 al origen decidido, ajustar la primera fila de `tab:req-evaluacion` si aplica, revisar las dos menciones del cap. 08 y borrar el marcador.
-
+- **Al resolver:** ajustar R4-01 a R4-03 y §E.1 al origen decidido, ajustar la primera fila de `tab:req-evaluacion` si aplica, revisar las dos menciones del cap. 09 y borrar el marcador.
 
 ### ADR-032 — ¿Hasta qué fila de la escalera de alcance llega este PDG?
 
@@ -117,8 +118,10 @@ Responder **en una reunión** también vale, con una condición: que la respuest
 - **Dónde se usa:**
   - `project-context/requirements.md` — §2, las cuatro tablas por objetivo
   - `thesis/chapters/04-objetivos.tex` — los cuatro `\label{obj:...}`: cada objetivo debe comprometer solo filas por encima de la línea
-  - `thesis/chapters/07-metodologia.tex` — `\label{sec:requerimientos-objetivo}` (las cuatro tablas `tab:req-*` listan los requerimientos Alta y Media de §2), `tab:fases-desarrollo` y `fig:gantt` (ver ADR-033)
-  - `thesis/chapters/08-contribucion-resultados.tex` — `tab:objetivos-entregables`
+  - `thesis/chapters/07-metodologia.tex` — `\label{sec:requerimientos-objetivo}`
+  - `thesis/chapters/99-anexos.tex` — las cuatro tablas `tab:req-*` en Anexo D
+  - `thesis/chapters/08-fases-desarrollo-cronograma.tex` — `tab:fases-desarrollo` y `fig:gantt` (ver ADR-033)
+  - `thesis/chapters/09-contribucion-resultados.tex` — `tab:objetivos-entregables`
   - `project-context/requirements.md` — los requerimientos de las filas que queden fuera
 - **Contexto:** el tutor pidió el 2026-09-09 ordenar los requerimientos con MoSCoW y que el equipo proponga hasta dónde llega, reservándose la decisión («ustedes me proponen hasta qué punto quieren llegar y yo les digo si hasta ahí o no», [55:28]). La escalera de 38 capacidades que vivía en `alcance-moscow.md` se refundió el 2026-09-20 en `requirements.md`, donde cada requerimiento va bajo el objetivo que lo compromete y con su prioridad. **Avance (2026-09-13):** los autores sacaron del documento el soporte a entrenamiento, y el 2026-09-20 pasó a `requirements.md` §3.1 como requerimiento sin compromiso. El *System Usability Scale* y la aceptación salieron del objetivo 4 el 2026-09-27 (autores); la prioridad de profesores se resolvió la misma fecha (el objetivo 2 compromete solo prioridad por rol, R2-19 y R2-20). Mientras no haya corte acordado, los objetivos del cap. 04 prometen capacidades que el tutor no ha confirmado.
 - **Qué se necesita para cerrarla:** los requerimientos de `requirements.md` §2 que el tutor confirma como compromiso del PDG y los que pasan a §3 o a trabajo futuro.
@@ -131,9 +134,9 @@ Responder **en una reunión** también vale, con una condición: que la respuest
 - **Abierta por:** Coordinador · 2026-09-13
 - **A quién corresponde:** autores
 - **Dónde se usa:**
-  - `thesis/chapters/07-metodologia.tex` — `\label{sec:cronograma}`, segundo párrafo · marcador literal: `% [verify: ADR-033: el sprint 4 termina el 13-dic, y el sprint 5 (11-31 ene) inicia en enero]`
-  - `thesis/chapters/07-metodologia.tex` — `tab:fases-desarrollo`, columna Duración
-  - `thesis/chapters/07-metodologia.tex` — `fig:gantt`, que desde el 2026-09-27 es el único cronograma (salió `tab:cronograma` por decisión de los autores) y conserva las fechas de esa tabla
+  - `thesis/chapters/08-fases-desarrollo-cronograma.tex` — `\label{sec:cronograma}`, segundo párrafo · marcador literal: `% [verify: ADR-033: el sprint 4 termina el 13-dic, y el sprint 5 (11-31 ene) inicia en enero]`
+  - `thesis/chapters/08-fases-desarrollo-cronograma.tex` — `tab:fases-desarrollo`, columna Duración
+  - `thesis/chapters/08-fases-desarrollo-cronograma.tex` — `fig:gantt`, que desde el 2026-09-27 es el único cronograma (salió `tab:cronograma` por decisión de los autores) y conserva las fechas de esa tabla
 - **Contexto:** los autores fijaron el 2026-09-13 que PDG1 termina en los primeros días de diciembre de 2026 y PDG2 va de febrero a mayo de 2027 (`project-context/README.md`, «Academic calendar»). El cronograma actual se armó suponiendo PDG1 hasta finales de diciembre y PDG2 desde enero: los *sprints* 8 y 9 terminan el 13 de diciembre y los *sprints* 10 y 11 empiezan el 11 de enero, fuera de ambos cursos. Además, las fases salen de los objetivos actuales, que pueden cambiar con ADR-032. Replanificar antes de fijar el alcance obligaría a hacerlo dos veces.
 - **Avance (2026-09-13):** JDLP rehízo el cronograma con *sprints* de tres semanas desde el 21 de septiembre, etapa previa del 10 de agosto al 20 de septiembre y orden clúster → telemetría → cuotas → plataforma → evaluación (`documentation.md`, «Execution-order decisions»). Con ese plan el *sprint* 4 (23 nov – 13 dic) termina después del cierre de PDG1 y el *sprint* 5 (11–31 ene) cae antes de PDG2, y el segundo párrafo del cronograma decía «PDG2, entre enero y mayo de 2027» (desde el 2026-09-17 dice «La segunda etapa comprende de enero a mayo de 2027», sin nombrar los cursos). Los tres marcadores anteriores se reemplazaron por uno solo.
 - **Qué se necesita para cerrarla:** ADR-032 cerrada, y la decisión de si entre diciembre y febrero se trabaja o no (hoy ese periodo no pertenece a ningún curso).
@@ -151,15 +154,5 @@ Responder **en una reunión** también vale, con una condición: que la respuest
 - **Qué se necesita para cerrarla:** que los autores confirmen o corrijan, interesado por interesado, el poder (alto o bajo) y el interés (alto o bajo), y que confirmen si algún actor regulatorio o legal debe figurar. La guía también exige llevar un registro de las interacciones con la IA generativa (nivel 3 de uso), que corresponde a los autores.
 - **Al resolver:** ajustar `tab:interesados`, `tab:matriz-poder-interes` y la matriz según la respuesta, y quitar ambos marcadores.
 
-### ADR-036 — ¿Las fases y el cronograma del proyecto se quedan en Metodología o pasan a un capítulo aparte?
-
-- **Estado:** abierta
-- **Abierta por:** Revisor · 2026-10-09
-- **A quién corresponde:** autores
-- **Dónde se usa:**
-  - `thesis/chapters/07-metodologia.tex` — antes de `\section{Cronograma}` · marcadores literales: `\todo{El cronograma y fases del proyecto pueden estar en  un capitulo aparte, no como una seccion de metodologia.}` (del tutor) y `\todo{Verificar si las fases y el cronograma van como sección de la Metodología o como capítulo aparte (decisión pendiente).}`
-- **Contexto:** el formato de la facultad ubica «Fases de desarrollo», «Análisis de riesgos y limitaciones» y «Cronograma» como subsecciones de Metodología. El 2026-10-12 los autores resolvieron mover el catálogo detallado de requerimientos al Anexo D y el análisis detallado de riesgos al Anexo E. Queda pendiente la sugerencia del tutor sobre si fases y cronograma deberían formar un capítulo independiente o mantenerse como secciones de Metodología. La decisión no bloquea la entrega actual.
-- **Qué se necesita para cerrarla:** que los autores confirmen si fases y cronograma se mantienen en Metodología o pasan a un capítulo aparte.
-- **Al resolver:** si se separan, crear el nuevo capítulo y ajustar `main.tex`, `STATUS.md` y `README.md`; si se quedan, retirar ambos `\todo` y confirmar la estructura.
 
 
