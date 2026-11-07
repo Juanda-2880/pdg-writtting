@@ -176,7 +176,7 @@ Cada requerimiento es una unidad de trabajo asignable. La columna **Prioridad** 
 | ID | Requerimiento | Prioridad |
 | :--- | :--- | :--- |
 | R3-01 | El sistema debe correr sobre un clúster de Kubernetes instalado en las estaciones de trabajo de un laboratorio de cómputo, con tres nodos de control y el resto como nodos de trabajo, desplegado inicialmente en la sala 104M y extensible a otras salas del laboratorio, para convertir equipos sueltos en capacidad agregada. | Alta |
-| R3-02 | El sistema debe alojar el nodo de control en una máquina que permanezca encendida sin reinicios no anunciados para que la caída de una estación de la sala no tumbe el plano de control. | Alta |
+| R3-02 | El sistema debe alojar los tres nodos de control en máquinas que permanezcan encendidas sin reinicios no anunciados, de modo que la caída de uno no detenga el plano de control. | Alta |
 | R3-03 | El sistema debe configurar la red del clúster con un CNI para que los *pods* de distintos nodos se comuniquen entre sí según la política de red definida. | Alta |
 | R3-04 | El sistema debe desplegar el NVIDIA GPU Operator para aprovisionar controladores, *runtime* y complemento de dispositivo de forma declarativa, de modo que los nodos expongan el recurso `nvidia.com/gpu`. | Alta |
 | R3-05 | El sistema debe dirigir las cargas aceleradas únicamente a los nodos con GPU mediante selectores de nodo, marcas y tolerancias, para que un *pod* sin acelerador no ocupe una máquina que lo tiene. | Alta |

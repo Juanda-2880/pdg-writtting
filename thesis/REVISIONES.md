@@ -414,3 +414,45 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **C7-20 · resolución:** «El cronograma y fases del proyecto pueden estar en un capitulo aparte, no como una seccion de metodologia.» y «Verificar si las fases y el cronograma van como sección de la Metodología o como capítulo aparte (decisión pendiente).» → aplicado por decisión de los autores · «Fases de desarrollo del proyecto» y «Cronograma» se trasladan desde `thesis/chapters/07-metodologia.tex` a un nuevo capítulo independiente: `thesis/chapters/08-fases-desarrollo-cronograma.tex`, bajo el título «Fases de desarrollo y cronograma» (`\label{cha:fases-cronograma}`). El capítulo de contribución y resultados se renumera secuencialmente como `thesis/chapters/09-contribucion-resultados.tex`. Se conserva el 100 % de la información original: la correspondencia y duración de fases en `tab:fases-desarrollo`, el texto explicativo de *sprints* de tres semanas e hitos, y el diagrama de Gantt en formato apaisado (`fig:gantt`). En Metodología, la introducción y la estrategia metodológica enlazan al nuevo capítulo y a sus secciones correspondientes. Se retiran ambos marcadores `\todo` y se cierra y elimina definitivamente **ADR-036** de `project-context/ADR.md`.
 - **Verificación:** `make build` OK (61 páginas); cero citas indefinidas, cero referencias cruzadas rotas (`??`), cero em dashes (`—`), cero antítesis y cero dos puntos como empalme en prosa.
 
+### 2026-11-07 · caps. 07, 08 y 09, Anexos A y D, `main.tex` · Alineación con la implementación y retiro de dudas abiertas
+
+- **Revisó:** JuanJDlp (Juan José De La Pava), en el chat, sobre un cruce de la tesis con el repositorio de implementación hecho por la IA (Coordinador, Investigador, Redactor y Revisor).
+- **F1** (humano): «Sobre los Pendientes que siguen abiertos que me mencionaste, puedes eliminarlos, el proyecto esta bien en el estado en que esta y no tenemos nada que hacer con esas desiciones, simplemente borralos tienes el permiso.» → aplicado · ADR-010, 030, 031, 032, 033 y 035 retiradas de `project-context/ADR.md`; sus ocho marcadores `% [verify: ADR-...]` salieron de los caps. 07 y 08 y de los anexos. El texto impreso no cambia.
+- **F2** (humano, punto 5 del cruce): «aqui si cambia el numero a 3 nodos de control, solamente eso, nada mas» → aplicado · R3-01 (Anexo D) y cap. 07.
+- **F3** (humano, punto 13): «ACtualiza el cronograma, se desplegara en la sala en dicimebre, por ahora lo que es octubre y noviembre se trabaja en el POC, pero igual las fases del desarrollo siguen siendo las mimas» → aplicado · caps. 07 y 08.
+- **F4** (humano, punto 16): «Ajusta esa parte en la thesis tambien» → aplicado · R3-27 habla solo de archivo de pesos, sin servidor propio.
+- **F5** (humano, punto 17): «la tesis debe mencionar que el administrador es quien otorga el permiso para que los usuarios desplieguen modelos, y el es el unico que da de alta cargas LLM, esto se hizo para proteger los recursos de las salas» → aplicado · Anexo A y R3-29.
+- **F6** (humano, punto 8): «Actualiza como lo menciona la tesis, la forma que la tenemos en el poc es la correcto, es solo de expresion» y «Sobre el punto 7 me equivoque, es el 8 el que menciono» → aplicado · R3-23 y cap. 09 hablan de la imagen oficial de llama.cpp.
+- **No aplicado, por decisión del autor:** el resto de puntos del cruce. «Lo que no te mencione o te dije que lo dejaras asi, simplement eno toques nada relacionado a eso, esta bien como esta y no lo queremos romper».
+- **Verificación:** `make build` OK (61 páginas). La ausencia de referencias indefinidas se confirmó después con `grep -a` (ver la tercera entrada de este día).
+
+### 2026-11-07 · cap. 10 (nuevo) · Avances del proyecto
+
+- **Revisó:** JuanJDlp, en el chat. El plan del capítulo se aprobó antes de redactar.
+- **F1** (humano): «la nueva seccion es avances del proyecto que va despues de los apartados principales, este apartado tiene que decir que hemos hecho, retos, como hemos avanzado y como lo hemos solucionado, basicamente es describir lo que hemos hehco en el POC» → aplicado · `chapters/10-avances-proyecto.tex`, incluido después del cap. 09.
+- **F2** (humano): «Tiene que quedar claro en este apartado que esto es un POC, prueba del PDG en un solo nodo, que puede que sucedan cambios en la implementacion de vvverdad y que tambien nos vimos limitados por el hardware por lo que tuvimos que ajustar la arquitectura» → aplicado.
+- **F3** (humano): «No digas que hay cosas bloqueadas, simplemente di que hay cosas que se estan implementado» → aplicado.
+- **F4** (humano): «Si, el POC corre en un unico servidor fisico, y que tambien cada modelo se sirve en cada modelo» → aplicado como «cada modelo se sirve en un solo nodo de cómputo».
+- **F5** (humano): «Si, agrega como mediciones, pero no seria un parrafo ya que aun no se ejecutan pruebas» → aplicado · `tab:mediciones-poc`.
+- **F6** (humano): «Tambien menciona en este de avances del proyecto que se han tenido varias reuniones con el tutor, con el profesor Alejandro y Juan Carlos» → aplicado · sección «Reuniones de seguimiento», solo con hechos de las actas ya promovidos a `project-context/`.
+- **Capturas de pantalla:** pedidas por el autor, no se tomaron. Chromium headless funciona, pero la interfaz del POC no responde desde la máquina de trabajo.
+- **Verificación:** `make build` OK (65 páginas).
+
+### 2026-11-07 · cap. 10, cap. 08 y Anexos A y D · Revisión cruzada del trabajo del día
+
+- **Revisó:** JuanJDlp, sobre una revisión de la IA del trabajo de las dos entradas anteriores. Hallazgos **S1 a S12** aprobados con «Estoy de acuerdo con lo que dices», con estos ajustes:
+- **F1** (humano): «Yo si quiero tener 3 nodos de control en el cluster final, la thesis deberia de decir eso, actualmente en el poc todo corre en 1 ervidor y tiene 3 maquinas virtuales.» → aplicado · R3-02 en plural (Anexo D y `requirements.md`); el cap. 10 distingue el clúster final del POC.
+- **F2** (humano): «Los equipos si se encienden y apagan sin aviso, eso esta bien» → se conserva, sin nombrar la sala 205; registrado en `project-context/documentation.md`.
+- **F3** (humano): «IMportante eliminar eso, la thesis deberia ser self contained, o sea que el lector la debe de entender si necesidar de ver el repositorio o tener contexto adicional externo» → aplicado · el cap. 10 ya no remite al plan de las specs; la regla queda en la cabecera del capítulo y en `STATUS.md`.
+- **F4** (humano): «si puedes agregar mas imagenes, por ejemplo 1 explicando como es el flujo del despliegue esta bien» → aplicado · `fig:flujo-despliegue`, en TikZ.
+- **S1 a S12 aplicados:** etapas del prototipo en lugar de *sprints* propios, ubicadas dentro de los *sprints* 2 y 3 del cronograma; el adaptador de medición solo en la variante de Ray; los retos de los *taints* y de la interfaz de configuración avanzada y energía, descritos según el hallazgo; el Anexo A sin contradicción entre el rol por defecto y el permiso de despliegue; «un modelo por equipo»; cursivas de *hardware*, *tokens* y *llama.cpp*; «+2,4 %» sin doble espacio; la sigla POC expandida en su primer uso (cap. 08).
+- **Figura del POC:** regenerada con draw.io desde una copia del generador, sin em dash ni códigos internos (ADR, specs, dudas, rutas), fechada al 26 de octubre de 2026 y apaisada al final del capítulo para no dejar páginas a medias. Tabla de mediciones con columnas alineadas a la izquierda.
+- **`project-context`:** R3-02; fecha correcta del diagrama; retos reescritos; flujo de despliegue documentado; `meetings/INDEX.md` marca ADR-030 y ADR-031 como retiradas.
+- **Verificación:** `make build` OK (66 páginas); con `grep -a`, cero citas y referencias indefinidas y cero cajas desbordadas; revisión visual de las páginas del capítulo; cero em dash, antítesis y dos puntos de empalme en la prosa nueva; cero referencias al repositorio de implementación en el cap. 10.
+
+### 2026-11-07 · cap. 10 · Despliegue de un modelo desde la vista del usuario
+
+- **Revisó:** JuanJDlp, en el chat.
+- **F1** (humano): «Si pueds en el cap 10, explicar un poco como es el despliegue de un modelo, seria perfecto» → aplicado · párrafo nuevo en la sección de la segunda etapa, antes de `fig:flujo-despliegue`, con el recorrido desde la vista del usuario: alta del modelo por el administrador, permiso de despliegue, elección de modelo, motor y nodo, fases visibles, dirección publicada y acciones sobre el despliegue. El párrafo de la figura pasa a describir lo que ocurre internamente. Hechos registrados antes en `project-context/documentation.md` («How a user deploys a model in the POC»).
+- **Verificación:** `make build` OK (66 páginas); con `grep -a`, cero referencias indefinidas y cero cajas desbordadas; revisión visual de las páginas afectadas; cero em dash, dos puntos de empalme y referencias al repositorio de implementación en el capítulo.
+
