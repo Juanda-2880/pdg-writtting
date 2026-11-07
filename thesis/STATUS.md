@@ -20,7 +20,7 @@ Status values: `not started` · `drafted` · `under review` · `approved`.
 | Metodología | `chapters/07-metodologia.tex` | under review | 2 pág. (sin límite) | Sin DSR. Enfoque iterativo tipo Scrum en *sprints* de tres semanas. Elicitación y especificación de requerimientos como insumo metodológico (remite al Anexo D), remisión al \cref{cha:fases-cronograma} para fases y cronograma, y síntesis de gestión de riesgos remitida al Anexo E. Fases y cronograma trasladados al capítulo 08 el 2026-10-14 por sugerencia del tutor (ADR-036 cerrada). Cero `\todo` en el capítulo. |
 | Fases de desarrollo y cronograma | `chapters/08-fases-desarrollo-cronograma.tex` | under review | 3 pág. (sin límite) | Creado el 2026-10-14 a partir de Metodología por sugerencia del tutor (ADR-036 cerrada). Contiene la cadena de dependencias técnicas y correspondencia con objetivos (`tab:fases-desarrollo`), la distribución temporal en *sprints* de tres semanas y el diagrama de Gantt en página apaisada (`fig:gantt`). |
 | Contribución y resultados | `chapters/09-contribucion-resultados.tex` | under review | **3 / 4 pág.** | Cumple. Reenumerado de 08 a 09 tras la separación de fases y cronograma (2026-10-14). Trazabilidad objetivo → resultado → entregable realineada el 2026-09-13 con los objetivos 1 y 3 reformulados. Las filas de los objetivos 1 y 2 ya no mencionan entrenamiento, y el texto quedó sin dos puntos en prosa. **Sin aceptación ni usabilidad desde el 2026-09-27** en la fila del objetivo 4. **Revisado el 2026-09-27:** LLM con sigla, «implementación» en la tabla, *scripts* de Python en lugar del motor de *benchmarking*, programas de los autores y resumen del problema alineado con el cap. 02. |
-| Anexos | `chapters/99-anexos.tex` | in progress | 18 pág. | Anexo A (análisis de participación, borrador con cuadrantes propuestos, ADR-035), Anexo B (árbol de problemas, vertical), Anexo C (árbol de objetivos, horizontal), Anexo D (requerimientos del sistema por objetivo, 110 requerimientos R1-01 a R4-11) y Anexo E (análisis de riesgos y limitaciones, siete riesgos y mitigaciones). Requerimientos y riesgos trasladados el 2026-10-12 por decisión de los autores. ADR-010 pendiente de cierre. |
+| Anexos | `chapters/99-anexos.tex` | in progress | 18 pág. | Anexo A (análisis de participación, borrador con cuadrantes propuestos), Anexo B (árbol de problemas, vertical), Anexo C (árbol de objetivos, horizontal), Anexo D (requerimientos del sistema por objetivo, 110 requerimientos R1-01 a R4-11) y Anexo E (análisis de riesgos y limitaciones, siete riesgos y mitigaciones). Requerimientos y riesgos trasladados el 2026-10-12 por decisión de los autores. |
 | Bibliografía | `references.bib` | drafted | — | 50 entradas, 47 citadas (salió `lewis-susbenchmarks-2018` con el SUS, 2026-09-27); sin citar `vavilapalli-yarn-2013` y `yoo-slurm-2003` (anteriores a 2015) y `wiest-privacypreservingllm-2024`. **Todas las citadas tienen PDF local y verificación en `CITAS-VERIFICADAS.md`** (2026-09-27); solo `muiruri-mlinferenceserving-2026` y un uso de `eken-mlopsmultivocalreview-2026` en §6.1 quedan sin respaldo, por decisión de los autores. Autores de Li et al. (2015) y Chen et al. (2026) corregidos contra los PDF. |
 
 ## Verificaciones que pasa el documento hoy
@@ -41,15 +41,9 @@ Medido, no supuesto. Reproducible con los `grep` de `../skills/writting-tools/pu
 
 ## Dudas abiertas
 
-Viven en [`../project-context/ADR.md`](../project-context/ADR.md), no aquí. **Quedan cinco** (al 2026-10-14):
+Ninguna. Las dudas ADR-010, 030, 031, 032, 033 y 035 se retiraron el 2026-11-07 por decisión de los autores: el documento se mantiene como está.
 
-- **ADR-010**: qué anexos se incluyen y si los árboles de problemas y objetivos se dibujan en TikZ o se insertan como imagen.
-- **ADR-030** (la fuente de poder ya tiene respaldo en `requirements.md` R1-12; queda el rango de 90 % a 95 %): si los hechos de reunión que el cap. 07 todavía afirma sin respaldo (Jira y Bitbucket) y los del Anexo E (rango de 90 % a 95 % y fuente de poder; advertencia del tutor y compromiso GitOps) se escriben en `project-context/` o se retiran. Tres marcadores `% [verify: ADR-030: ...]` (uno en `chapters/07-metodologia.tex` y dos en `chapters/99-anexos.tex`). El 2026-09-13 los autores promovieron los *sprints* 1 y 2, el calendario de PDG1 y PDG2 y el uso compartido con las clases.
-- **ADR-031**: si los *scripts* de Python de las pruebas de carga los construye el proyecto o se reutiliza el harness del laboratorio. Marcadores en Anexo D (`tab:req-evaluacion`), en el *Sprint* 10 de `fig:gantt` (`chapters/08-fases-desarrollo-cronograma.tex`), y referencias en caps. 07, 08 y 09.
-- **ADR-032**: hasta dónde llega el alcance comprometido con el tutor, sobre [`../project-context/requirements.md`](../project-context/requirements.md) §2. Lo proponen los autores y lo decide el tutor. Puede cambiar los cuatro objetivos específicos. El soporte de entrenamiento ya salió del documento el 2026-09-13 y desde el 2026-09-20 vive en §3 como requerimiento sin compromiso.
-- **ADR-033**: cómo se reparten las fases entre PDG1 (hasta los primeros días de diciembre de 2026) y PDG2 (febrero a mayo de 2027). Un marcador en `chapters/08-fases-desarrollo-cronograma.tex` tras el cronograma rehecho por JDLP; depende de ADR-032.
-- **ADR-035**: si se validan los niveles de poder e interés propuestos y la ausencia de actores regulatorios o legales en el análisis de participación. Dos marcadores en `chapters/99-anexos.tex`.
-
+---
 ## Decisiones estructurales vigentes
 
 - **2026-09-06 — El documento sigue la estructura de ANTEPROYECTO** de `../project-context/formato-anteproyecto.md`, no la de tesis final de `../skills/thesis-writing/structure.md`. Por eso no hay capítulos de Resultados, Discusión ni Conclusiones.
@@ -83,15 +77,13 @@ Viven en [`../project-context/ADR.md`](../project-context/ADR.md), no aquí. **Q
 - **2026-09-27 — El objetivo 4 evalúa solo desempeño.** Salen la aceptación y el *System Usability Scale* de todo el documento, porque ningún requerimiento los medía. **Ningún agente debe reintroducir un instrumento de usabilidad sin un requerimiento en `requirements.md` §2.4.**
 - **2026-09-27 — El documento coincide con `requirements.md`.** Thanos entra al módulo de observabilidad (R1-03, R1-05); la mitigación del riesgo de VRAM se limita a alertas configuradas en el propio conjunto de observabilidad y a conservar la telemetría previa a una falla (R1-30, R1-33); la evaluación usa *scripts* de Python externos a la plataforma (R4-01 a R4-03), y el entrenamiento queda «fuera del alcance de este documento», sin negar el módulo que se construye como requerimiento *Sin compromiso* (§3.1).
 - **2026-10-14 — Las fases de desarrollo y el cronograma se separan en un capítulo independiente.** Por sugerencia del tutor (ADR-036 cerrada), «Fases de desarrollo del proyecto» y «Cronograma» se trasladan desde Metodología al nuevo capítulo 08 (`chapters/08-fases-desarrollo-cronograma.tex`), bajo el título «Fases de desarrollo y cronograma» (`\label{cha:fases-cronograma}`). Metodología se conserva como capítulo 07 (estrategia metodológica, elicitación y especificación de requerimientos, y riesgos) y Contribución y resultados se renumera como capítulo 09 (`chapters/09-contribucion-resultados.tex`).
+- **2026-11-07 — Cronograma, nodos y permisos.** Flujo de roles completo (Coordinador → Investigador → Redactor → Revisor). Hechos registrados en `project-context/documentation.md` (sección «Decisions of 2026-11-07») y `requirements.md` (R3-01, R3-23, R3-27, R3-29). Tesis: clúster en la sala 104M en diciembre de 2026, POC en máquinas virtuales en octubre y noviembre, fases sin cambios (cap. 07 y 08); tres nodos de control (Anexo D, R3-01); imagen oficial de llama.cpp en lugar de una compilación para la sala (R3-23, cap. 09); R3-27 solo con archivo de pesos; permiso de despliegue y altas de modelos de lenguaje reservadas al administrador (Anexo A, R3-29); sigla POC en la lista de acrónimos. Revisor: PDF sin referencias indefinidas, sin em dash, sin antítesis y sin dos puntos en la prosa nueva.
 - **Los nombres de los autores van en orden ALFABÉTICO en el PDF compilado, no por rol.** Ya aplicado: De La Pava, Melo, Pacheco.
 
 ## Lo que sigue
 
-1. **Validar el análisis de participación (ADR-035)** y cerrar ADR-010. Los cinco anexos (A a E) ya existen en el documento.
-2. **Fijar el alcance comprometido con el tutor (ADR-032)** sobre `../project-context/requirements.md` §2. Cierra con ella ADR-031, y desbloquea la replanificación del cronograma y del Gantt (ADR-033).
-3. **Terminar la promoción de hechos de las actas** (ADR-030): queda la «advertencia del tutor» del riesgo de cambios de requisitos, Jira y Bitbucket, y el rango de 90 % a 95 % con la fuente de poder.
-4. **Resumen y Abstract**, que por indicación del formato se escriben al final.
-5. Una pasada del **Revisor** sobre el documento completo antes de entregarlo.
+1. **Resumen y Abstract**, que por indicación del formato se escriben al final.
+2. Una pasada del **Revisor** sobre el documento completo antes de entregarlo.
 
 ## How to update this file
 

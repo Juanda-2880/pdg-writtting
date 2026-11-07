@@ -175,7 +175,7 @@ Cada requerimiento es una unidad de trabajo asignable. La columna **Prioridad** 
 
 | ID | Requerimiento | Prioridad |
 | :--- | :--- | :--- |
-| R3-01 | El sistema debe correr sobre un clúster de Kubernetes instalado en las estaciones de trabajo de un laboratorio de cómputo, con un nodo de control y el resto como nodos de trabajo, desplegado inicialmente en la sala 104M y extensible a otras salas del laboratorio, para convertir equipos sueltos en capacidad agregada. | Alta |
+| R3-01 | El sistema debe correr sobre un clúster de Kubernetes instalado en las estaciones de trabajo de un laboratorio de cómputo, con tres nodos de control y el resto como nodos de trabajo, desplegado inicialmente en la sala 104M y extensible a otras salas del laboratorio, para convertir equipos sueltos en capacidad agregada. | Alta |
 | R3-02 | El sistema debe alojar el nodo de control en una máquina que permanezca encendida sin reinicios no anunciados para que la caída de una estación de la sala no tumbe el plano de control. | Alta |
 | R3-03 | El sistema debe configurar la red del clúster con un CNI para que los *pods* de distintos nodos se comuniquen entre sí según la política de red definida. | Alta |
 | R3-04 | El sistema debe desplegar el NVIDIA GPU Operator para aprovisionar controladores, *runtime* y complemento de dispositivo de forma declarativa, de modo que los nodos expongan el recurso `nvidia.com/gpu`. | Alta |
@@ -207,13 +207,13 @@ Cada requerimiento es una unidad de trabajo asignable. La columna **Prioridad** 
 | ID | Requerimiento | Prioridad |
 | :--- | :--- | :--- |
 | R3-22 | El sistema debe empaquetar cada motor de inferencia como imagen de contenedor versionada en un registro accesible desde el clúster, para que el despliegue no dependa de instalaciones manuales en el nodo. | Alta |
-| R3-23 | El sistema debe incluir una imagen de `llama.cpp` compilada para el hardware de la sala, capaz de ejecutar pesos GGUF cuantizados dentro de los 24 GB de VRAM de una RTX 4090. | Alta |
+| R3-23 | El sistema debe incluir una imagen oficial de `llama.cpp` empaquetada como contenedor, capaz de ejecutar pesos GGUF cuantizados dentro de los 24 GB de VRAM de una RTX 4090. | Alta |
 | R3-24 | El sistema debe incluir una imagen de vLLM para comparar su enfoque de gestión de memoria frente a `llama.cpp` bajo cargas idénticas. | Baja |
 | R3-25 | El sistema debe permitir añadir un motor de inferencia nuevo sin modificar el resto de la plataforma, para no quedar atado al motor elegido hoy. | Alta |
 | R3-26 | El sistema debe desplegar modelos cuyos pesos ya vienen cuantizados, y apoyarse en la cuantización que el motor aplique al cargarlos, sin ejecutar un proceso de cuantización propio, porque construir uno queda fuera del alcance. | Alta |
-| R3-27 | El sistema debe ejecutar cargas de inteligencia artificial que no son modelos de lenguaje, entregadas como archivo de pesos más un servidor propio, por el mismo camino de despliegue que un modelo de lenguaje, para que la plataforma no quede atada al caso de uso de lenguaje. | Alta |
+| R3-27 | El sistema debe ejecutar cargas de inteligencia artificial que no son modelos de lenguaje, entregadas como archivo de pesos en un formato que sirve un motor del catálogo, por el mismo camino de despliegue que un modelo de lenguaje, para que la plataforma no quede atada al caso de uso de lenguaje. | Alta |
 | R3-28 | El sistema debe rechazar, con un mensaje explicativo, el despliegue de un modelo que no cabe en la memoria de video de un nodo, para evitar el fallo por falta de memoria en tiempo de ejecución. | Media |
-| R3-29 | El sistema debe permitir dar de alta un modelo nuevo indicando un identificador de repositorio externo o subiendo el archivo de pesos, para que el catálogo crezca sin intervención del administrador. | Media |
+| R3-29 | El sistema debe permitir dar de alta un modelo nuevo indicando un identificador de repositorio externo o subiendo el archivo de pesos, y solo el administrador da de alta los modelos de lenguaje, para proteger los recursos compartidos de las salas. | Media |
 | R3-30 | El sistema debe proponer los parámetros de ejecución de un modelo recién dado de alta a partir de sus características, para reducir el ensayo y error al configurarlo. | Baja |
 
 #### 2.3.4 Interfaz de despliegue

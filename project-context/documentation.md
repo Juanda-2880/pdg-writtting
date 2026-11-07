@@ -108,3 +108,14 @@ Recorded here because they change what the thesis commits to, not merely how it 
 - **Quotas are the last capability built** before the empirical evaluation.
 - **The anteproyecto is delivered at the beginning of December 2026**, not at the end.
 - **Phase order (confirmed by the authors 2026-09-13):** cluster -> telemetry -> quotas -> web platform -> evaluation. Quota enforcement lives inside the cluster, so it precedes the interface that exposes it.
+
+## Decisions of 2026-11-07 (authors)
+
+Source: the authors' instructions given directly in session on 2026-11-07, checked against the implementation repository (`backend/docs/requirements.md`, `backend/docs/estado.md`, `backend/docs/decisions/0038-plano-control-tres-servidores.md`).
+
+- **Control plane: three nodes.** The cluster has three control-plane nodes, not one (R3-01). The control plane is the set of nodes that run the Kubernetes control components. This is the only change to the cluster description.
+- **Schedule: the cluster is deployed in room 104M in December 2026.** In October and November 2026 the work runs on a proof-of-concept (POC) prototype: eight virtual machines on a laboratory server (three control, three service and two compute nodes without GPU). The phases of the development and their durations do not change; only the place where the cluster is first deployed moves to December.
+- **Model deployment requires a permission granted by the administrator.** A user deploys a model only when the administrator has granted the permission to deploy models. Reason: protect the shared resources of the rooms.
+- **Only the administrator registers language models.** Adding a model to the catalogue, from an external repository identifier or by uploading its weights, is done by the administrator when the model is a language model (R3-29). Reason: protect the shared resources of the rooms.
+- **llama.cpp image: official image.** The image of `llama.cpp` is the official container image, not a build made for the room's hardware (R3-23). The POC runs this image on CPU; the GPU build for the room is not part of this decision.
+- **Non-language workloads: weights only.** A non-language workload is delivered as a weights file in a format served by an engine of the catalogue, without a server of its own (R3-27).
