@@ -1,0 +1,71 @@
+% ==========================================================================
+% Capítulo: Avances del proyecto
+% Estado: se registra en ../STATUS.md, no aquí.
+%
+% Qué contiene: lo construido hasta la fecha en el prototipo (POC) del
+% proyecto, los retos del montaje y cómo se resolvieron, y las mediciones
+% preliminares. Es un prototipo en un único servidor físico; no es el
+% resultado de la evaluación del objetivo 4 (cap. 04).
+%
+% Hechos: ../../project-context/documentation.md, sección «POC status and
+% implementation progress». No citar detalles del repositorio de
+% implementación que no estén ahí.
+% Extensión: unas 3 páginas, con la figura del POC montado.
+% ==========================================================================
+\chapter{Avances del proyecto}\label{cha:avances}
+
+Este capítulo informa el trabajo realizado hasta el 7 de noviembre de 2026 en el prototipo de prueba (\emph{proof of concept}, POC) del proyecto. El prototipo corre en un único servidor físico del laboratorio. El clúster se simula sobre ocho máquinas virtuales, con tres nodos de control, tres nodos de servicios y dos nodos de cómputo sin unidad de procesamiento gráfico (GPU), y cada modelo se sirve en un solo nodo de cómputo. El POC permite validar el diseño antes de desplegarlo en la sala 104M, prevista para diciembre de 2026. Por esa razón su implementación puede cambiar, y las decisiones que aquí se describen son las vigentes a la fecha de corte.
+
+El hardware disponible en el servidor condicionó el montaje. Sin GPU, los motores de inferencia se ejecutan en CPU, lo que limita las mediciones de desempeño a una referencia preliminar, y la validación sobre las GPU de la sala queda para la etapa de despliegue. La \cref{fig:poc-montado} presenta la arquitectura tal como está montada.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{imagenes/poc-montado.png}
+  \caption[Arquitectura del POC montado]{Arquitectura del POC montado a la fecha de corte. Muestra los tres nodos de control, los nodos de servicios, los dos nodos de cómputo sin GPU y los componentes desplegados sobre ellos. Elaboración propia a partir de la documentación del repositorio de implementación.}
+  \label{fig:poc-montado}
+\end{figure}
+
+\section{Primer sprint: cimientos del clúster}\label{sec:avance-sprint1}
+
+El primer sprint, del 17 al 26 de octubre de 2026, levantó la base sobre la que se construyen los demás componentes. Se montó el servidor y las ocho máquinas virtuales, y sobre ellas se instaló un clúster de Kubernetes con tres servidores de plano de control, con una dirección virtual que se mantiene aunque caiga uno de ellos. Sobre ese clúster se desplegaron la entrada fija de la plataforma, la entrega continua desde el repositorio de configuración (GitOps), el cifrado de secretos, el almacenamiento persistente, la base de datos, el registro de imágenes y la observabilidad de métricas y registros. También se activaron las políticas de admisión y el gestor de colas de cómputo, que retiene las cargas que no tienen capacidad disponible.
+
+Durante este sprint aparecieron tres retos. El primero fue que las máquinas virtuales no recibían disco ni red del sistema invitado, porque su definición no incluía la configuración de energía que el sistema invitado necesita. Se corrigió la definición de las máquinas. El segundo fue que los nodos con marcas de reserva (\emph{taints}) impedían que corrieran los trabajos de instalación de los componentes base. Se resolvió separando los servicios de la plataforma de los nodos de cómputo, de modo que cada grupo de nodos admite solo las cargas que le corresponden. El tercero fue la dependencia de un único servidor de control, que dejaba sin acceso al clúster ante la caída de ese equipo. Por ese motivo el plano de control pasó de uno a tres servidores, decisión que también aplica a la sala. El inventario de la sala 205 mostró que sus equipos se encienden y apagan sin aviso, y que una parte utiliza discos mecánicos, por lo que ninguno cumple por sí solo la condición de permanecer encendido sin reinicios no anunciados.
+
+\section{Segundo sprint: servicio de modelos y gobierno}\label{sec:avance-sprint2}
+
+El segundo sprint, del 26 de octubre al 7 de noviembre de 2026, construyó el servicio de modelos sobre la base anterior. Cada modelo se describe como un recurso del clúster, con su motor, su formato y su cuota. La elección del motor depende del formato de los pesos, de modo que los modelos en GGUF se sirven con llama.cpp y los modelos en safetensors con vLLM. Como línea base, un despliegue se ejecuta como un \emph{Deployment} admitido por la cola de cómputo, y se compara con una variante sobre Ray Serve que usa el mismo motor. Un adaptador propio mide el tiempo hasta el primer \emph{token} y la latencia entre \emph{tokens} en ambas variantes.
+
+Del lado del gobierno, se implementó el operador que traduce las cuotas de cada usuario en un espacio con su límite, y la cuota de la sala en un fondo común que las cuotas individuales pueden usar. Se verificó en el POC que una solicitud que excede la cuota espera en cola, que una carga puede recuperar cuota cuando otra la necesita, y que la carga expropiada queda identificada en su estado. También se verificó que un agotamiento de memoria en un despliegue no afecta a los vecinos, y que las políticas rechazan los despliegues que no cumplen las etiquetas o los límites de la sala.
+
+Los retos de este sprint fueron de recursos. El servidor del POC tiene 60 GiB de memoria, así que cada componente declara sus solicitudes y sus límites y el plan indica cuánto suma. vLLM agotaba la memoria durante su fase de calentamiento, y se resolvió con su modo de ejecución directa (\emph{eager}), que omite ese calentamiento. El escalador automático de Argo CD no tenía solicitudes de memoria con que calcular su uso, y se fijaron esas solicitudes para que el escalado funcione. Por último, la integración con el proveedor institucional de identidad SAAMFI se encuentra en implementación. Mientras tanto, el prototipo usa un proveedor de identidad local que permite probar el flujo de roles, de autenticación y de permisos de extremo a extremo.
+
+Sobre este servicio se construyeron también el importador de pesos, que verifica el tamaño y la integridad de cada archivo antes de registrarlo, la API con usuarios locales y base de datos, una interfaz web mínima, la lectura de registros filtrada por usuario y un panel de métricas por modelo y por despliegue. Los administradores dan de alta los modelos desde la API o desde la interfaz, y la clave de acceso a repositorios externos se guarda cifrada.
+
+\section{Mediciones preliminares}\label{sec:avance-mediciones}
+
+La \cref{tab:mediciones-poc} recoge las primeras mediciones del POC. Son referencias de funcionamiento en CPU y no constituyen la evaluación de desempeño del \cref{obj:evaluacion}, que aún no se ha ejecutado.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Mediciones preliminares del POC (solo CPU; no son una evaluación de desempeño).}
+  \label{tab:mediciones-poc}
+  \begin{tabular}{p{0.44\textwidth} p{0.2\textwidth} p{0.26\textwidth}}
+    \toprule
+    \textbf{Medición} & \textbf{Resultado} & \textbf{Condición} \\
+    \midrule
+    \emph{Tokens} por segundo, Qwen3-0.6B en GGUF Q8\_0 con llama.cpp & Entre 15 y 17 & 2 CPU por motor \\
+    \addlinespace
+    \emph{Tokens} por segundo, Qwen3-0.6B con vLLM & Cerca de 3 & 2 CPU \\
+    \addlinespace
+    Latencia de la variante sobre Ray frente a llama.cpp directo & +2,4 \,\% & Misma salida y mismas peticiones \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Reuniones de seguimiento}\label{sec:avance-reuniones}
+
+Las reuniones de seguimiento han sido un insumo constante para el alcance y la arquitectura. En las reuniones con el tutor del 26 de agosto y del 9 de septiembre de 2026 se definió que el núcleo del proyecto es la capa de infraestructura y de servicio, que el sistema de cuotas debe gobernar recursos generales y no solo los tokens de los modelos de lenguaje, y que los requerimientos se ordenan por prioridad antes de proponer el corte de alcance. En la elicitación con el profesor Alejandro Muñoz Bravo, el 4 de septiembre de 2026, se levantaron las necesidades operativas del laboratorio. Con el profesor Juan Carlos Muñoz, quien dirige el macroproyecto, se acordó que las limitaciones de hardware permiten desplegar un modelo en cada equipo, criterio que el POC adopta. Estas decisiones orientan el diseño que se verifica en el prototipo.
+
+\section{Estado al cierre de la etapa}\label{sec:avance-estado}
+
+Al cierre de la etapa, el prototipo cubre el ciclo de despliegue de un modelo, desde el alta del modelo hasta su consumo por una API compatible con OpenAI, con cuotas, registros y métricas por usuario. Se encuentran en implementación la integración con SAAMFI, la validación de los componentes sobre las GPU de la sala, las reservas por ventana de tiempo y la prioridad por rol, así como los respaldos fuera del clúster. El despliegue en la sala 104M, previsto para diciembre de 2026, incorporará las GPU del laboratorio y permitirá verificar sobre ellas las mediciones de desempeño del objetivo 4.
