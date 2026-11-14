@@ -379,7 +379,7 @@ Estos requerimientos permiten verificar el cumplimiento del \cref{obj:orquestaci
   \item[R3-01] Corre sobre un clúster de Kubernetes instalado en las estaciones de trabajo de un laboratorio de cómputo, con tres nodos de control y el resto como nodos de trabajo, desplegado inicialmente en la sala 104M y extensible a otras salas del laboratorio.
   \item[R3-02] Aloja los tres nodos de control en máquinas que permanecen encendidas sin reinicios no anunciados, de modo que la caída de uno no detiene el plano de control.
   \item[R3-03] Configura la red del clúster mediante una interfaz de red de contenedores (CNI, \emph{Container Network Interface}) que permite la comunicación entre los \emph{pods} de distintos nodos según la política de red definida.
-  \item[R3-04] Despliega el NVIDIA GPU Operator para aprovisionar controladores, \emph{runtime} y complemento de dispositivo de forma declarativa, de modo que los nodos expongan el recurso \texttt{nvidia.com/gpu}.
+  \item[R3-04] Despliega el NVIDIA GPU Operator para aprovisionar controladores, entorno de ejecución y complemento de dispositivo de forma declarativa, de modo que los nodos expongan el recurso \texttt{nvidia.com/gpu}.
   \item[R3-05] Dirige las cargas aceleradas únicamente a los nodos con GPU mediante selectores de nodo, marcas y tolerancias.
   \item[R3-06] Etiqueta cada nodo con sus capacidades de \emph{hardware}.
   \item[R3-07] Permite incorporar o retirar un nodo del clúster sin reinstalar los demás.

@@ -606,3 +606,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «La afirmación de que la distinción entre entrenamiento e inferencia se aplica a cualquier tipo de modelo (clasificadores, visión por computador, modelos generativos) no tiene cita. Respáldenla con una fuente o preséntenla como una posición de los autores.» → aplicado · «La distinción se aplica a cualquier tipo de modelo» → «Para este proyecto, la distinción se aplica a cualquier tipo de modelo». La afirmación queda declarada como posición de los autores.
 - **Verificación:** `make build` OK (74 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 11 `\todo` en el capítulo 05.
+
+### 2026-11-14 · Anglicismos y glosario
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); decisiones de Melo088 en el chat: traducir *fine-grained*, *runtime* y *batch*; conservar *proxy*, *framework*, *kernels*, *backlog*, *throughput* y *token*.
+- **F1** (tutor): «Revisen los anglicismos del documento... Tradúzcanlos cuando exista un equivalente claro en español. Si el concepto se entiende mejor en inglés, consérvenlo, defínanlo en su primer uso y añádanlo al glosario. Aprovechen para ampliar el glosario con los términos propios del proyecto...» → aplicado · *fine-grained* pasa a «detallado»; *runtime* a «entorno de ejecución»; *batch* a «lotes». Se conservan *proxy*, *framework*, *kernels*, *backlog*, *throughput* y *token*, definidos en su primer uso. El glosario incorpora operador, recurso personalizado, cuota, reserva, expropiación, motor de inferencia, *backlog*, *framework*, *kernels*, *proxy*, *throughput* y *token*.
+- **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 10 `\todo` en el capítulo 05.

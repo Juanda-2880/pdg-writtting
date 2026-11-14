@@ -125,7 +125,19 @@ por \\[0.5cm]
 % SAAMFI se define aquí con su expansión completa: Sistema de Autenticación
 % y Autorización Multi-Institucional (autores, 2026-11-14).
 \begin{description}
+  \item[\emph{backlog}] Lista de trabajo priorizada que el equipo mantiene en Jira y de la que selecciona las tareas de cada \emph{sprint}.
+  \item[Cuota] Límite de consumo de recursos de cómputo que la plataforma asigna a un usuario o a un espacio de nombres.
+  \item[Expropiación] Liberación de los recursos de una carga de menor prioridad para atender una solicitud de mayor prioridad cuando no hay capacidad libre.
+  \item[\emph{framework}] Marco de trabajo de \emph{software} que ofrece componentes y convenciones reutilizables para construir aplicaciones.
+  \item[\emph{kernels}] Núcleos de cómputo que ejecutan operaciones paralelas en la GPU.
+  \item[Motor de inferencia] Componente que carga los pesos de un modelo, gestiona la concurrencia y expone una interfaz de red para atender solicitudes.
+  \item[Operador] Controlador que acompaña a un recurso personalizado y encapsula el conocimiento operativo necesario para materializarlo.
+  \item[\emph{proxy}] Componente intermediario que recibe las solicitudes de los clientes y las reenvía a los servicios que las atienden.
+  \item[Recurso personalizado] Tipo de objeto registrado en el servidor de la API de Kubernetes mediante una definición de recurso personalizado, con su esquema de validación.
+  \item[Reserva] Asignación anticipada de capacidad de cómputo para una carga durante una ventana de tiempo definida.
   \item[SAAMFI] Sistema de Autenticación y Autorización Multi-Institucional. Plataforma centralizada desarrollada en el contexto de ICESI que gestiona identidad, autenticación y autorización para múltiples aplicaciones (sistemas) desde un solo punto. Funciona como proveedor de identidad (\emph{Identity Provider}) para los sistemas que lo integran: registra a los usuarios y su esquema de roles y permisos, y emite un \emph{token} que cada sistema consume según sus propias reglas. No impone políticas de autorización sobre los sistemas que lo usan, de modo que la traducción de un rol en un límite de consumo de \emph{hardware} corresponde a la plataforma desarrollada en este proyecto.
+  \item[\emph{throughput}] Tasa de procesamiento, es decir, la cantidad de trabajo que un sistema completa por unidad de tiempo.
+  \item[\emph{token}] En los modelos de lenguaje, unidad de texto que el modelo procesa y con la que se mide el consumo de sus solicitudes. En la identidad federada, credencial firmada que emite el proveedor de identidad con los atributos del usuario.
   \item[TrainLab] Plataforma desarrollada por un proyecto de grado anterior del IAsLab para configurar, ejecutar y monitorear tareas de entrenamiento distribuido de modelos de inteligencia artificial. Centraliza la configuración, ejecución y seguimiento de los entrenamientos, aprovisiona los nodos de procesamiento e integra SAAMFI como proveedor de identidad.
 \end{description}
 
