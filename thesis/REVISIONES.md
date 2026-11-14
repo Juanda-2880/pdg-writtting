@@ -582,3 +582,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «El orden de los objetivos específicos (observabilidad, gobernanza, despliegue y evaluación) no coincide con el orden de ejecución del capítulo 7 ni con el del diagrama de Gantt, que empiezan por el despliegue del clúster. Ordénenlos según la cadena de dependencias o expliquen por qué se presentan en otro orden.» → aplicado · se conserva el orden y se añade: «Los objetivos se presentan en el orden de los módulos y de los requerimientos que los sustentan (R1 a R4), no en el orden de ejecución del cronograma, que empieza por el clúster porque es la infraestructura que soporta a los demás módulos.» Se evita renumerar los códigos Rk-nn del Anexo D.
 - **Verificación:** `make build` OK (74 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 2 `\todo` en el capítulo 04.
+
+### 2026-11-14 · cap. 04 · Resultado verificable del objetivo específico 3
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
+- **F1** (tutor): «La expresión "fase de servicio consumible" es imprecisa. Expresen el resultado de forma verificable, por ejemplo, modelos accesibles mediante una API desde la plataforma.» → aplicado · «con el fin de llevar los modelos del laboratorio a una fase de servicio consumible» → «con el fin de que los modelos del laboratorio queden accesibles mediante una API desde la plataforma».
+- **Verificación:** `make build` OK (74 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; queda 1 `\todo` en el capítulo 04.
