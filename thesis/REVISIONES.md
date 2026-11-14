@@ -508,3 +508,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **F2** (tutor, cap. 06): «Aquí se habla de una "red de área local estándar", mientras que el Anexo E indica que la red de la sala es de 10 Gbit/s. Usen el mismo dato en ambos lugares.» → aplicado · el cap. 06 dice «red de 10 Gbit/s».
 - **Datos:** se adoptó la observación del 2026-10-22 registrada en `project-context/documentation.md` (RTX 4500 Ada Generation de 24 GB en 30 de los 31 equipos; el `104m30` no tiene GPU NVIDIA; red de 10 Gbit/s). Se actualizaron las menciones a RTX 4090 del cap. 05, el cap. 06, el Anexo D, `requirements.md` y `technologies.md`.
 - **Verificación:** `make build` OK (77 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 6 `\todo` en el capítulo 01.
+
+### 2026-11-14 · cap. 01 · Antecedentes ¶1 · «Explotación continua»
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
+- **F1** (tutor): «"Explotación continua" es un término poco claro para el lector general. Consideren una expresión como "uso productivo continuo".» → aplicado · «y todavía no en explotación continua» → «y todavía no en uso productivo continuo».
+- **Verificación:** `make build` OK (77 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 5 `\todo` en el capítulo 01.
