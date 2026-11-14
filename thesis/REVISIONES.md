@@ -562,3 +562,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «Las cifras de matrícula no tienen fuente. Citen el documento o portal del que provienen e indiquen el año o periodo académico de corte.» → aplicado · la frase pasa a «De acuerdo con las estadísticas de matrícula de la Universidad Icesi para 2026 \citep{icesi-matricula-2026}». Se añadió la entrada `icesi-matricula-2026` a `references.bib` (panel institucional de analítica académica en Power BI, datos de 2026, consultado el 2026-10-12), la fila en `fuentes/INDEX.md` y la verificación en `CITAS-VERIFICADAS.md`.
 - **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 2 `\todo` en el capítulo 02.
+
+### 2026-11-14 · cap. 02 · Doctorado en Ingeniería y demanda potencial
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
+- **F1** (tutor): «El Doctorado en Ingeniería se incluye entre los programas avanzados de computación e inteligencia artificial, aunque su alcance es más amplio. Justifiquen su inclusión o aclaren que solo una parte de esa población constituye demanda potencial.» → aplicado · se añade «Del Doctorado en Ingeniería, solo una parte de sus estudiantes desarrolla proyectos de computación e inteligencia artificial, de modo que no toda esa población constituye demanda potencial para la plataforma» y «más de 850 estudiantes» pasa a «cerca de 850 estudiantes».
+- **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; queda 1 `\todo` en el capítulo 02.
