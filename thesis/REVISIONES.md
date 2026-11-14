@@ -588,3 +588,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «La expresión "fase de servicio consumible" es imprecisa. Expresen el resultado de forma verificable, por ejemplo, modelos accesibles mediante una API desde la plataforma.» → aplicado · «con el fin de llevar los modelos del laboratorio a una fase de servicio consumible» → «con el fin de que los modelos del laboratorio queden accesibles mediante una API desde la plataforma».
 - **Verificación:** `make build` OK (74 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; queda 1 `\todo` en el capítulo 04.
+
+### 2026-11-14 · cap. 04 · Criterio de sostenibilidad del servicio
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
+- **F1** (tutor): «El objetivo no define qué significa que el servicio "se sostenga". Fijen el criterio, por ejemplo un umbral de latencia o de tasa de error, o remitan al capítulo donde se define.» → aplicado · el objetivo específico 4 añade «según los criterios de latencia, \emph{throughput} y tasa de error definidos en el \cref{sec:marco-conceptual}».
+- **Verificación:** `make build` OK (74 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; el capítulo 04 queda sin `\todo`.
