@@ -26,6 +26,8 @@ Construir la plataforma de orquestación y gobernanza de cargas de inteligencia 
 
 \section{Objetivos específicos}\label{sec:objetivos-especificos}
 
+\todo{El orden de los objetivos específicos (observabilidad, gobernanza, despliegue y evaluación) no coincide con el orden de ejecución del capítulo 7 ni con el del diagrama de Gantt, que empiezan por el despliegue del clúster. Ordénenlos según la cadena de dependencias o expliquen por qué se presentan en otro orden.}
+
 \begin{enumerate}
   % Hace que \cref/\Cref nombren estos ítems como "objetivo específico N"
   % en lugar de "Punto N"; es local a este entorno (ver ../../skills/latex/preamble.tex).
@@ -34,7 +36,7 @@ Construir la plataforma de orquestación y gobernanza de cargas de inteligencia 
 
   \item \label{obj:gobernanza} Implementar un sistema de cuotas y restricciones de infraestructura, acoplado a los roles provistos por SAAMFI y a un rol de administrador de la plataforma, que reserve cupos de cómputo para las cargas de inferencia, con el fin de prevenir la monopolización de las GPU.
 
-  \item \label{obj:orquestacion} Implementar sobre el clúster de cómputo del IAsLab el despliegue concurrente de modelos de inteligencia artificial ya entrenados, mediante motores de inferencia empaquetados como imágenes de contenedor, con el fin de llevar los modelos del laboratorio a una fase de servicio consumible.
+  \item \label{obj:orquestacion} Implementar sobre el clúster de cómputo del IAsLab el despliegue concurrente de modelos de inteligencia artificial ya entrenados, mediante motores de inferencia empaquetados como imágenes de contenedor, con el fin de llevar los modelos del laboratorio a una fase de servicio consumible. \todo{La expresión «fase de servicio consumible» es imprecisa. Expresen el resultado de forma verificable, por ejemplo, modelos accesibles mediante una API desde la plataforma.}
 
-  \item \label{obj:evaluacion} Evaluar el desempeño de la plataforma mediante pruebas de carga con usuarios concurrentes, con el fin de determinar hasta qué nivel de concurrencia sostiene el servicio.
+  \item \label{obj:evaluacion} Evaluar el desempeño de la plataforma mediante pruebas de carga con usuarios concurrentes, con el fin de determinar hasta qué nivel de concurrencia sostiene el servicio. \todo{El objetivo no define qué significa que el servicio «se sostenga». Fijen el criterio, por ejemplo un umbral de latencia o de tasa de error, o remitan al capítulo donde se define.}
 \end{enumerate}

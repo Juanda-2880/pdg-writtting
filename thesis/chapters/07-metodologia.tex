@@ -17,9 +17,13 @@
 % ==========================================================================
 \chapter{Metodología}\label{cha:metodologia}
 
+\todo{El primer párrafo del capítulo es una sola oración que enumera cinco contenidos. Divídanla para facilitar la lectura.}
+
 Este capítulo formula y justifica la metodología de ingeniería adoptada para resolver el problema planteado en el \cref{cha:descripcion-problema}, describe la estructura lógica del proceso de investigación, desde la recolección de datos hasta la presentación de resultados, expone el proceso de elicitación y especificación de requerimientos que sustentan los objetivos específicos del proyecto (cuyo catálogo detallado se compila en el Anexo~\labelcref{anx:requerimientos}), remite al \cref{cha:fases-cronograma} para las fases de desarrollo y el cronograma de ejecución, y al Anexo~\labelcref{anx:riesgos} para el análisis exhaustivo de riesgos y limitaciones que pueden afectar su alcance, cronograma y calidad.
 
 \section{Estrategia metodológica}\label{sec:estrategia-metodologica}
+
+\todo{Si adoptan Scrum, indiquen de forma puntual quién asume cada rol, es decir, quién es el \emph{Product Owner}, quién construye y prioriza el \emph{backlog}, quién actúa como \emph{Scrum Master} y qué papel cumple el tutor dentro del marco.}
 
 El proyecto adopta un proceso de desarrollo iterativo e incremental de tipo Scrum, siguiendo la \emph{Scrum Guide} de \citet{schwaber-scrumguide-2020}, organizado en \emph{sprints} de tres semanas. Esta elección responde a que el alcance del proyecto, cuatro objetivos específicos con dependencias técnicas parciales entre sí, se beneficia de ciclos cortos de construcción y retroalimentación, en los que cada \emph{sprint} entrega un incremento verificable y permite reordenar el trabajo restante conforme avanza el desarrollo y conforme lo permite la disponibilidad de los nodos de cómputo del IAsLab, en lugar de comprometer de antemano una secuencia rígida de actividades como exigiría un modelo de desarrollo en cascada.
 
@@ -27,16 +31,24 @@ La duración de tres semanas por \emph{sprint} responde a la naturaleza del trab
 
 Los artefactos y ceremonias que el equipo emplea de forma efectiva son un tablero en Jira para el \emph{backlog} y el seguimiento de las iteraciones, un repositorio Bitbucket para el control de versiones y los archivos de configuración de la infraestructura, y una reunión semanal de seguimiento con el tutor del proyecto, en la que se revisa el avance de la iteración en curso y se ajusta el alcance de la siguiente. No se documentan otras ceremonias de Scrum, por ejemplo el \emph{daily scrum} o las retrospectivas formales, porque el equipo no las practica de forma sistemática; el punto de control periódico del proyecto es la reunión semanal con el tutor.
 
+\todo{Consideren acompañar este proceso con un diagrama sencillo de las etapas de investigación y del ciclo de \emph{sprints}, para que el lector visualice la estrategia metodológica.}
+
 La estructura lógica del proceso de investigación se organiza en cuatro etapas. La recolección de datos se apoya en dos fuentes instrumentadas por el propio sistema, que son la telemetría de \emph{hardware} e inferencia que produce el módulo de observabilidad y los resultados de las pruebas de carga que ejecutan \emph{scripts} de Python externos a la plataforma sobre los nodos de inferencia. La organización y sistematización de estos datos consiste en consolidar las métricas de \emph{hardware} y de inferencia en formatos comparables entre fases y entre motores de inferencia evaluados. El análisis contrasta estas métricas contra los objetivos específicos formulados, determinando en qué medida cada módulo construido resuelve la carencia que motivó su desarrollo. Finalmente, la interpretación y presentación de resultados traduce los hallazgos del análisis en conclusiones sobre el nivel de concurrencia que la plataforma sostiene.
+
+\todo{«Para no complejizar su desarrollo» es una expresión coloquial. Consideren «para no añadir complejidad a la plataforma».}
 
 La evaluación empírica prevista en el \cref{obj:evaluacion} ejecuta pruebas de carga con usuarios concurrentes mediante \emph{scripts} de Python externos a la plataforma, para no complejizar su desarrollo. El \cref{cha:fases-cronograma} (\cref{sec:fases-desarrollo}) ubica esa evaluación en la fase correspondiente, y el \cref{cha:marco-teorico} presenta el respaldo metodológico de la prueba de carga.
 
 \section{Elicitación y especificación de requerimientos}
 \label{sec:requerimientos-objetivo}
 
+\todo{Describan cómo se realizó la elicitación de requerimientos, con la técnica empleada (entrevistas, talleres u otra), el número de sesiones, los participantes y las fechas. El capítulo 9 menciona una sesión con el profesor Alejandro Muñoz Bravo el 4 de septiembre de 2026 que aquí no aparece.}
+
 Los requerimientos del proyecto se levantaron a partir de las sesiones de elicitación con el personal del IAsLab, que sirvieron como insumo técnico y operativo. Después de revisarlos y ajustarlos, se contrastaron contra los objetivos específicos para validar y acotar el alcance propuesto de la solución. Con ese alcance fijado, el equipo procedió a su refinamiento y priorización, los cuales fueron validados por el tutor del proyecto. Para facilitar que un evaluador verifique el cumplimiento sistemático de cada objetivo contra los entregables descritos en el \cref{cha:contribucion-resultados}, los requerimientos se agruparon por objetivo específico y se codificaron bajo la convención Rk-nn, donde k indica el objetivo y nn el consecutivo correspondiente. El catálogo detallado con los 110 requerimientos funcionales y no funcionales se presenta en el Anexo~\labelcref{anx:requerimientos}, agrupado en los mismos subsistemas funcionales con los que se especificó la plataforma (\cref{sec:req-telemetria,sec:req-gobernanza,sec:req-orquestacion,sec:req-evaluacion}).
 
 \section{Riesgos y limitaciones del proyecto}
 \label{sec:riesgos-limitaciones}
+
+\todo{Esta sección solo remite al Anexo E. Mencionen al menos los riesgos principales, como la disponibilidad de los nodos y el congelamiento de las estaciones por el consumo de la GPU.}
 
 El despliegue de la plataforma sobre infraestructura de cómputo compartida conlleva incertidumbres técnicas y de gestión derivadas de las restricciones operativas y supuestos del proyecto. Para salvaguardar el alcance, el cronograma y la calidad de la solución, el equipo caracterizó los riesgos técnicos y metodológicos, identificando la dimensión que comprometen y formulando estrategias preventivas de mitigación. El análisis detallado de cada uno de los riesgos identificados y sus medidas de mitigación se presenta en el Anexo~\labelcref{anx:riesgos}.
