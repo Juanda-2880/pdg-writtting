@@ -27,7 +27,7 @@ La plataforma debe servir **dos clases de carga de trabajo**: modelos grandes de
 
 - Despliegue de un clúster Kubernetes sobre las estaciones de trabajo de un laboratorio de cómputo, con soporte de GPU, desplegado inicialmente en la sala 104M y extensible a otras salas del laboratorio.
 - Módulo de observabilidad de hardware, de logs y de carga servida, basado en Prometheus, Thanos, Loki, Grafana y el exportador DCGM de NVIDIA.
-- Sistema de gobernanza de recursos y cuotas por rol, integrado con el servicio institucional SAAMFI vía OAuth2/OIDC, con admisión, encolamiento, prioridad y reservas anticipadas.
+- Sistema de gobernanza de recursos y cuotas por rol, integrado con SAAMFI vía OAuth2/OIDC, con admisión, encolamiento, prioridad y reservas anticipadas.
 - Orquestación de motores de inferencia empaquetados como imágenes de contenedor y declarados sobre el clúster.
 - Ejecución de cargas de IA que no son modelos de lenguaje sobre el mismo flujo de despliegue.
 - Interfaz web para desplegar modelos y administrar cuotas.

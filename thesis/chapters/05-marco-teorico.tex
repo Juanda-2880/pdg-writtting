@@ -166,7 +166,7 @@ En el plano de la implementación, las cuotas nativas que Kubernetes asocia a lo
 
 \section{Identidad federada y control de acceso}\label{sec:identidad-rbac}
 
-Aplicar una política de prioridad por rol exige saber con certeza quién solicita un recurso y qué rol ostenta. En entornos de cómputo en la nube, el control de acceso basado en roles resulta más escalable y adecuado que los modelos discrecional y obligatorio, y admite extensiones que incorporan a la decisión los atributos del solicitante y su grado de confianza \citep{li-rbaccloudsurvey-2015}. La autenticación federada resuelve el problema complementario al delegar la verificación de la identidad en un proveedor externo, que tras autenticar al usuario emite un \emph{token} firmado con sus atributos, entre ellos sus roles; \citet{fett-oauth2security-2016} establecen mediante análisis formal las garantías de autorización, autenticación e integridad de sesión que ofrece OAuth 2.0 (\emph{Open Authorization}) bajo ese esquema, una vez corregidas las vulnerabilidades que su propio análisis descubrió. La Universidad Icesi opera un proveedor institucional, SAAMFI, comparable en su función con productos como Keycloak o Auth0. Una plataforma apoyada en él hereda su taxonomía de roles y define por encima solo los que su propia operación requiere, como el de administrador, lo que evita comprometerse con una enumeración de perfiles académicos que pertenece al proveedor y puede cambiar sin intervención del proyecto.
+Aplicar una política de prioridad por rol exige saber con certeza quién solicita un recurso y qué rol ostenta. En entornos de cómputo en la nube, el control de acceso basado en roles resulta más escalable y adecuado que los modelos discrecional y obligatorio, y admite extensiones que incorporan a la decisión los atributos del solicitante y su grado de confianza \citep{li-rbaccloudsurvey-2015}. La autenticación federada resuelve el problema complementario al delegar la verificación de la identidad en un proveedor externo, que tras autenticar al usuario emite un \emph{token} firmado con sus atributos, entre ellos sus roles; \citet{fett-oauth2security-2016} establecen mediante análisis formal las garantías de autorización, autenticación e integridad de sesión que ofrece OAuth 2.0 (\emph{Open Authorization}) bajo ese esquema, una vez corregidas las vulnerabilidades que su propio análisis descubrió. En el contexto de ICESI se desarrolló SAAMFI, una plataforma centralizada de identidad, autenticación y autorización comparable en su función con productos como Keycloak o Auth0. Una plataforma apoyada en él hereda su taxonomía de roles y define por encima solo los que su propia operación requiere, como el de administrador, lo que evita comprometerse con una enumeración de perfiles académicos que pertenece al proveedor y puede cambiar sin intervención del proyecto.
 
 La \cref{fig:identidad-federada} resume ese recorrido, desde la autenticación del usuario hasta los permisos con los que opera sobre el clúster.
 
@@ -179,14 +179,14 @@ La \cref{fig:identidad-federada} resume ese recorrido, desde la autenticación d
       flecha/.style={-{Stealth[length=2mm]}, semithick},
       etq/.style={font=\footnotesize, midway}]
     \node[actor] (usr) at (0,0) {Usuario};
-    \node[comp] (idp) at (5.8,0) {Proveedor de identidad\\institucional\\SAAMFI};
+    \node[comp] (idp) at (5.8,0) {Proveedor de identidad\\SAAMFI};
     \node[comp] (pla) at (5.8,-3.4) {Plataforma\\{\footnotesize traducción y asignación de roles}};
     \node[comp] (rec) at (11.8,-3.4) {Recursos del clúster\\{\footnotesize cuotas y despliegues}};
     \draw[flecha] (usr) -- node[etq, above, align=center] {\scriptsize autenticación\\OAuth 2.0 / OIDC} (idp);
     \draw[flecha] (idp) -- node[etq, right] {\emph{token} con roles} (pla);
     \draw[flecha] (pla) -- node[etq, above] {permisos} (rec);
   \end{tikzpicture}
-  \caption[Identidad federada y control de acceso]{Identidad federada y control de acceso. El usuario se autentica contra el proveedor institucional mediante OAuth 2.0 y OIDC, y recibe un \emph{token} firmado con sus roles; la plataforma traduce esos atributos a sus propios roles y deriva de ellos los permisos con los que se accede a los recursos del clúster. Elaboración propia.}
+  \caption[Identidad federada y control de acceso]{Identidad federada y control de acceso. El usuario se autentica contra SAAMFI mediante OAuth 2.0 y OIDC, y recibe un \emph{token} firmado con sus roles; la plataforma traduce esos atributos a sus propios roles y deriva de ellos los permisos con los que se accede a los recursos del clúster. Elaboración propia.}
   \label{fig:identidad-federada}
 \end{figure}
 

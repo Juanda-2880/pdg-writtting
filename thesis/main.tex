@@ -111,6 +111,7 @@ por \\[0.5cm]
   \item[POC] Prueba de concepto (\emph{Proof of Concept})
   \item[RAM] Memoria de acceso aleatorio (\emph{Random Access Memory})
   \item[RBAC] Control de acceso basado en roles (\emph{Role-Based Access Control})
+  \item[SAAMFI] Sistema de Autenticación y Autorización Multi-Institucional
   \item[SSH] Protocolo de acceso remoto seguro (\emph{Secure Shell})
   \item[VPN] Red privada virtual (\emph{Virtual Private Network})
   \item[VRAM] Memoria de acceso aleatorio de video (\emph{Video Random Access Memory})
@@ -121,12 +122,11 @@ por \\[0.5cm]
 \addcontentsline{toc}{chapter}{Glosario de términos}
 % Términos específicos del dominio del proyecto, en orden alfabético
 % (project-context/formato-anteproyecto.md, "Glosario de términos").
-% SAAMFI va aquí y no en la lista de acrónimos: es un nombre propio, no una
-% sigla, y por tanto no tiene expansión que definir (confirmado por los
-% autores, 2026-09-12).
+% SAAMFI se define aquí con su expansión completa: Sistema de Autenticación
+% y Autorización Multi-Institucional (autores, 2026-11-14).
 \begin{description}
-  \item[SAAMFI] Servicio institucional de identidad de la Universidad Icesi. Funciona exclusivamente como proveedor de identidad (\emph{Identity Provider}), en el mismo sentido que Keycloak o Auth0: registra a los usuarios y su esquema de roles y permisos, y emite un \emph{token} que cada sistema integrado consume según sus propias reglas. No impone políticas de autorización sobre los sistemas que lo usan, de modo que la traducción de un rol en un límite de consumo de \emph{hardware} corresponde a la plataforma desarrollada en este proyecto.
-  \item[TrainLab] Plataforma desarrollada por un proyecto de grado anterior del IAsLab para configurar, ejecutar y monitorear tareas de entrenamiento distribuido de modelos de inteligencia artificial. Centraliza la configuración, ejecución y seguimiento de los entrenamientos, aprovisiona los nodos de procesamiento e integra SAAMFI como proveedor institucional de identidad.
+  \item[SAAMFI] Sistema de Autenticación y Autorización Multi-Institucional. Plataforma centralizada desarrollada en el contexto de ICESI que gestiona identidad, autenticación y autorización para múltiples aplicaciones (sistemas) desde un solo punto. Funciona como proveedor de identidad (\emph{Identity Provider}) para los sistemas que lo integran: registra a los usuarios y su esquema de roles y permisos, y emite un \emph{token} que cada sistema consume según sus propias reglas. No impone políticas de autorización sobre los sistemas que lo usan, de modo que la traducción de un rol en un límite de consumo de \emph{hardware} corresponde a la plataforma desarrollada en este proyecto.
+  \item[TrainLab] Plataforma desarrollada por un proyecto de grado anterior del IAsLab para configurar, ejecutar y monitorear tareas de entrenamiento distribuido de modelos de inteligencia artificial. Centraliza la configuración, ejecución y seguimiento de los entrenamientos, aprovisiona los nodos de procesamiento e integra SAAMFI como proveedor de identidad.
 \end{description}
 
 \clearpage

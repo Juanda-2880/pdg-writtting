@@ -14,7 +14,7 @@ The system architecture is structured across four primary layers:
 │    • Web GUI (React / Next.js control plane for deployment & quotas)   │
 │    • AI Gateway (OpenAI-compatible entry point + quota enforcement;    │
 │      NOT LiteLLM — adopted or built, see section B.1)                  │
-│    • SAAMFI (Institutional Identity Provider & OAuth/SAML Auth)        │
+│    • SAAMFI (Identity Provider & OAuth/SAML Auth)        │
 ├────────────────────────────────────────────────────────────────────────┤
 │ 2. ORCHESTRATION & CLUSTERING LAYER (Distributed Workload Management)  │
 │    • Kubernetes (Container orchestration, node selectors, pods)        │
@@ -92,8 +92,8 @@ The system architecture is structured across four primary layers:
 
 ### C. Governance, Identity & Access
 
-#### 1. SAAMFI (Universidad Icesi)
-- **Role:** Institutional identity provider (IdP), integrated purely as such (propagado de `documentation.md` *Introduction*, 2026-09-12).
+#### 1. SAAMFI (Sistema de Autenticación y Autorización Multi-Institucional)
+- **Role:** Identity provider (IdP), integrated purely as such (propagado de `documentation.md` *Introduction*, 2026-09-12).
 - **Integration:** The platform's users carry **whatever roles SAAMFI provides**, and on top of them the platform defines **one administrator role** that manages the platform itself (propagado de `requirements.md` R2-04 / ADR-022, 2026-09-12; this replaces the earlier mapping to "Undergraduate Thesis, AI Elective, Research Faculty, Lab Admin"). Those roles control access permissions and reservation-based GPU allocation, with a priority level declared per role that resolves contention (`requirements.md` R2-19, R2-20; the professor-over-student priority was removed on 2026-09-27, ADR-034 closed). Not a Fair-Share scheme.
 
 ---
