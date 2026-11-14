@@ -462,3 +462,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); aplicado por Melo088 tras aprobación en el chat.
 - **F1** (tutor): «Precisen el referente de "su código". Por el contexto, parece referirse al código del modelo dentro del sistema completo.» → aplicado · «señalan que su código es solo una pequeña fracción de un sistema real» → «señalan que el código que lo implementa es solo una pequeña fracción de un sistema real». Se eligió la opción A, que evita repetir «modelo» y mantiene el referente inequívoco.
 - **Verificación:** `make build` OK; cero citas y referencias indefinidas, cero cajas desbordadas; quedan 11 `\todo` en el capítulo.
+
+### 2026-11-14 · cap. 01 · §Contexto ¶3 · Cierre del párrafo sobre Gao et al. (corrección del tutor)
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); aplicado por Melo088 tras aprobación en el chat.
+- **F1** (tutor): «Revisen el cierre de este párrafo. Que el problema exista en un entorno corporativo de gran tamaño no implica por sí solo que ocurra en un laboratorio académico pequeño. Apoyen la conexión con evidencia del propio laboratorio o preséntenla como una suposición.» → aplicado · «Si el problema aparece a esa escala, es razonable que un laboratorio académico también necesite herramientas para detectarlo y controlarlo» → «Si bien el IAsLab no alcanza esa escala, ese estudio permite suponer que un entorno de menor tamaño también puede necesitar herramientas para detectar y controlar el mismo problema». La conexión se presenta como suposición, no como conclusión.
+- **Verificación:** `make build` OK; cero citas y referencias indefinidas, cero cajas desbordadas; quedan 10 `\todo` en el capítulo.
