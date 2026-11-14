@@ -23,13 +23,11 @@
 
 La infraestructura de procesamiento gráfico (GPU) del IAsLab presenta limitaciones estructurales para operar como un entorno compartido, regulado y observable al servicio de la comunidad académica. La puesta en operación de modelos de inteligencia artificial se realiza mediante procedimientos manuales directamente sobre las máquinas físicas. La asignación de recursos y la habilitación de usuarios dependen de solicitudes individuales gestionadas de forma manual y con tiempos de espera prolongados, sin mecanismos de autoservicio. La supervisión de la infraestructura carece de telemetría en tiempo real sobre el consumo y el estado de los nodos.
 
-\todo{Las causas del problema nombran componentes de la solución, como un «plano de servicio que gestione motores de inferencia» o un «motor de políticas de cuotas». Este capítulo debe describir el problema sin anticipar la solución. Redacten las causas como carencias, sin nombrar los componentes que las resuelven.}
-
-El origen de esta situación radica en la ausencia de una capa de \emph{software} de orquestación y gestión que administre la etapa de inferencia sobre la infraestructura de cómputo del laboratorio. Esa ausencia se concreta en las siguientes carencias.
+El origen de esta situación radica en que la etapa de inferencia no cuenta con mecanismos integrados de administración sobre la infraestructura de cómputo del laboratorio. Esa ausencia se concreta en las siguientes carencias.
 \begin{itemize}
-  \item La carencia de un plano de servicio que gestione motores de inferencia obliga a ejecutar dependencias y \emph{scripts} de despliegue de forma manual en el sistema operativo anfitrión.
-  \item La falta de integración entre el proveedor de identidad SAAMFI y un motor de políticas de cuotas impide traducir los roles de los usuarios en cupos de cómputo, lo que perpetúa la asignación manual de accesos sin reglas explícitas.
-  \item La inexistencia de un sistema centralizado de observabilidad priva a los administradores de visibilidad en tiempo real sobre el estado de los nodos y la carga de inferencia que atienden.
+  \item La falta de automatización en el despliegue obliga a ejecutar dependencias y \emph{scripts} de despliegue de forma manual en el sistema operativo anfitrión.
+  \item La falta de un mecanismo que traduzca los roles de los usuarios en cupos de cómputo impide aplicar reglas explícitas de reparto y perpetúa la asignación manual de accesos.
+  \item La falta de visibilidad en tiempo real sobre el estado de los nodos y la carga de inferencia impide a los administradores detectar saturaciones o fallas a tiempo.
 \end{itemize}
 
 \todo{Las cifras de matrícula no tienen fuente. Citen el documento o portal del que provienen e indiquen el año o periodo académico de corte.}

@@ -550,3 +550,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «El capítulo repite la estructura de "tres síntomas" y "tres factores causales". Varíen la forma de presentar estos elementos para que la lectura no resulte mecánica.» → aplicado · los síntomas quedan en prosa continua, sin el conteo «tres síntomas» ni los marcadores «En primer lugar / En segundo lugar / En tercer lugar»; la introducción de las causas pasa de «De esta causa principal se desprenden tres factores causales» a «Esa ausencia se concreta en las siguientes carencias», y la lista se conserva.
 - **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 4 `\todo` en el capítulo 02.
+
+### 2026-11-14 · cap. 02 y Anexo B · Causas del problema como carencias
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
+- **F1** (tutor): «Las causas del problema nombran componentes de la solución, como un "plano de servicio que gestione motores de inferencia" o un "motor de políticas de cuotas". Este capítulo debe describir el problema sin anticipar la solución. Redacten las causas como carencias, sin nombrar los componentes que las resuelven.» → aplicado · la causa principal pasa a «la etapa de inferencia no cuenta con mecanismos integrados de administración»; las tres carencias se redactan como falta de automatización, falta de un mecanismo que traduzca los roles en cupos y falta de visibilidad en tiempo real. Se ajustaron los tres nodos de causas del Anexo B para que no contradigan el capítulo.
+- **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 3 `\todo` en el capítulo 02.

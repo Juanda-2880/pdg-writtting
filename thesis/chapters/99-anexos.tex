@@ -155,9 +155,9 @@ La \cref{fig:arbol-problemas} se lee de abajo hacia arriba, y las flechas indica
     % --- Problema central ------------------------------------------------
     \node[prob, minimum height=1.9cm] (p) at (0,-7.9) {\textbf{Problema central}\\[2pt] La infraestructura de cómputo del IAsLab carece de mecanismos para operar como un entorno multiusuario compartido, gobernado y observable};
     % --- Factores causales (causas secundarias) ---------------------------
-    \node[cau, minimum height=3.7cm] (c1) at (-3.85,-11.9) {Ausencia de un plano de servicio que gestione motores de inferencia, por lo que el despliegue se realiza a mano sobre el sistema operativo anfitrión};
-    \node[cau, minimum height=3.7cm] (c2) at (0,-11.9)    {Falta de integración entre el proveedor de identidad (SAAMFI) y políticas de cuotas, por lo que los roles no se traducen en cupos y los accesos se asignan a mano};
-    \node[cau, minimum height=3.7cm] (c3) at (3.85,-11.9)  {Inexistencia de un sistema de observabilidad centralizado, por lo que no hay visibilidad en tiempo real del estado de los nodos ni de la carga de inferencia que atienden};
+    \node[cau, minimum height=3.7cm] (c1) at (-3.85,-11.9) {Falta de automatización en el despliegue, por lo que las dependencias y los \emph{scripts} se ejecutan a mano sobre el sistema operativo anfitrión};
+    \node[cau, minimum height=3.7cm] (c2) at (0,-11.9)    {Falta de un mecanismo que traduzca los roles en cupos, por lo que los accesos se asignan a mano sin reglas explícitas};
+    \node[cau, minimum height=3.7cm] (c3) at (3.85,-11.9)  {Falta de visibilidad en tiempo real del estado de los nodos y de la carga de inferencia, por lo que las saturaciones y fallas no se detectan a tiempo};
     % --- Causa principal -------------------------------------------------
     \node[prob, fill=white, minimum height=1.6cm] (r) at (0,-15.4) {\textbf{Causa principal}\\[2pt] Ausencia de una capa de \emph{software} de orquestación y gestión de la etapa de inferencia sobre la infraestructura de cómputo del laboratorio};
 
