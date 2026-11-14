@@ -618,3 +618,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «Revisen el orden de los párrafos de esta sección. "Dentro de ese espectro" remite al espectro de optimización de los LLM descrito dos párrafos antes, pero entre ambos se ubicó el párrafo sobre los modelos que no son de lenguaje, y lo mismo ocurre en el párrafo siguiente. Dejen juntos los párrafos sobre LLM y ubiquen el de los demás modelos al final de la sección.» → aplicado · el párrafo de los modelos que no son de lenguaje se trasladó al final de §4.2, después del párrafo de los motores, y abre con «También los modelos que no son de lenguaje reciben el mismo tratamiento».
 - **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 9 `\todo` en el capítulo 05.
+
+### 2026-11-14 · cap. 05 · Cálculo de memoria para modelos cuantizados
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
+- **F1** (tutor): «Respalden con una cita o con un cálculo de memoria la afirmación de que los modelos de 7000 a 14000 millones de parámetros caben en 24 GB de memoria de video.» → aplicado · se añade el cálculo: «Con pesos de 8 bits por parámetro, un modelo de 14 000 millones ocupa alrededor de 14 GB y uno de 7 000 millones, alrededor de 7 GB; con 4 bits, ocupan la mitad. Esos valores dejan margen dentro de los 24 GB para la caché de atención y el entorno de ejecución.»
+- **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 8 `\todo` en el capítulo 05.
