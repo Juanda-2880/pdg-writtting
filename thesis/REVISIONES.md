@@ -630,3 +630,10 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «Den el término original en el primer uso de "marcas y tolerancias" (\emph{taints} y \emph{tolerations}) y de "espacios de nombres" (\emph{namespaces}), y usen los mismos nombres en el capítulo 9, donde aparecen como "marcas de reserva" y "un espacio con su límite".» → aplicado · el cap. 05 dice «marcas y tolerancias (\emph{taints} y \emph{tolerations})» y «espacios de nombres (\emph{namespaces})»; el cap. 10 pasa a «marcas (\emph{taints})» y «un espacio de nombres con su límite».
 - **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 7 `\todo` en el capítulo 05.
+
+### 2026-11-14 · cap. 05 · Cita del diseño de Kubernetes
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción B aprobada por Melo088 en el chat.
+- **F1** (tutor): «La afirmación inicial sobre el diseño de Kubernetes no tiene cita. Además, la sección termina con "las estaciones de trabajo de la sala", que en este punto el lector aún no conoce (ver el comentario sobre la sala 104M en el capítulo 1).» → aplicado · la oración pasa a «Kubernetes se diseñó para servicios de internet y, sin embargo, hoy hospeda cargas de inteligencia artificial \citep{xu-sing-2025}». La sala 104M ya se describe en el Contexto del cap. 01. Se retiró «sin que su núcleo haya sido rediseñado» porque Xu et al. no lo afirman.
+- **Fuente:** Xu et al. (2025), p. 2, §1 («Originally designed for internet backend services…»; «…applied to ML model training jobs in campus ML clusters») y p. 3, §2.1.3 («Recently, Kubernetes has also been used to manage shared ML clusters»). Registrado en `CITAS-VERIFICADAS.md`.
+- **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 6 `\todo` en el capítulo 05.
