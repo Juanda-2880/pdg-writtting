@@ -207,7 +207,7 @@ Cada requerimiento es una unidad de trabajo asignable. La columna **Prioridad** 
 | ID | Requerimiento | Prioridad |
 | :--- | :--- | :--- |
 | R3-22 | El sistema debe empaquetar cada motor de inferencia como imagen de contenedor versionada en un registro accesible desde el clúster, para que el despliegue no dependa de instalaciones manuales en el nodo. | Alta |
-| R3-23 | El sistema debe incluir una imagen oficial de `llama.cpp` empaquetada como contenedor, capaz de ejecutar pesos GGUF cuantizados dentro de los 24 GB de VRAM de una RTX 4090. | Alta |
+| R3-23 | El sistema debe incluir una imagen oficial de `llama.cpp` empaquetada como contenedor, capaz de ejecutar pesos GGUF cuantizados dentro de los 24 GB de VRAM de una GPU NVIDIA RTX 4500 Ada Generation. | Alta |
 | R3-24 | El sistema debe incluir una imagen de vLLM para comparar su enfoque de gestión de memoria frente a `llama.cpp` bajo cargas idénticas. | Baja |
 | R3-25 | El sistema debe permitir añadir un motor de inferencia nuevo sin modificar el resto de la plataforma, para no quedar atado al motor elegido hoy. | Alta |
 | R3-26 | El sistema debe desplegar modelos cuyos pesos ya vienen cuantizados, y apoyarse en la cuantización que el motor aplique al cargarlos, sin ejecutar un proceso de cuantización propio, porque construir uno queda fuera del alcance. | Alta |

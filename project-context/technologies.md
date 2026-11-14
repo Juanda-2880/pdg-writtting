@@ -46,7 +46,7 @@ The system architecture is structured across four primary layers:
 #### 1. Kubernetes (K8s)
 - **Role:** Base container orchestrator managing worker nodes, storage volumes, and service discovery.
 - **Key Features Used:**
-  - **Node Selectors & Taints/Tolerations:** Directing GPU-heavy pods specifically to RTX 4090 nodes while isolating control services on legacy CPU machines.
+  - **Node Selectors & Taints/Tolerations:** Directing GPU-heavy pods specifically to RTX 4500 Ada nodes while isolating control services on legacy CPU machines.
   - **Resource Quotas & Limits:** Enforcing physical memory and CPU constraints per container.
   - **Persistent Volume Claims (PVCs):** Mounting high-speed NVMe storage partitions dedicated to model repositories and checkpoints.
 - **Control-plane placement, options not yet decided (promoted by the authors 2026-09-13, from `meetings/2026-08-26-tutor-arquitectura.md` [50:33]):** the tutor listed three possible locations for the master node: workstation 01 of room 104M, a separate server, or a GPU-less machine from room 205 that is free most of the time (*"pueden agarrar un computador del 205 como nodo máster, que no tiene GPU y está libre casi todo el tiempo"*). The remaining workstations act as the processing cluster. None has been chosen; `requirements.md` R3-02 states the requirement the chosen location must meet.
@@ -85,7 +85,7 @@ The system architecture is structured across four primary layers:
 
 #### 3. Quantization Technologies (consumed, not implemented — ADR-021 closed 2026-09-12)
 - **AWQ / GPTQ / GGUF:**
-  - *Purpose:* 4-bit/8-bit representations of 7B, 13B and 14B parameter models are what let a model instance fit inside the 24 GB VRAM of an RTX 4090 node (confirmed 2026-09-12 by the authors — see `requirements.md` §1.3 and R3-04).
+  - *Purpose:* 4-bit/8-bit representations of 7B, 13B and 14B parameter models are what let a model instance fit inside the 24 GB VRAM of an RTX 4500 Ada node (confirmed 2026-09-12 by the authors — see `requirements.md` §1.3 and R3-04).
   - *Project boundary:* **the platform does not run a quantization process of its own.** It deploys weights that already come quantized, and it may rely on whatever quantization the serving engine applies natively at load time (`llama.cpp` does this when a model is selected and deployed). A model that would require a separate, project-run quantization step is out of scope and must be supplied pre-quantized. See R3-26.
 
 ---
@@ -105,7 +105,7 @@ The system architecture is structured across four primary layers:
 - **Metrics Collected:** Node CPU, RAM, disk space, and Kubernetes container resource usage.
 
 #### 2. NVIDIA DCGM Exporter (Data Center GPU Manager)
-- **Role:** Exposes low-level hardware metrics from the NVIDIA RTX 4090 cards directly to Prometheus.
+- **Role:** Exposes low-level hardware metrics from the NVIDIA RTX 4500 Ada cards directly to Prometheus.
 - **Metrics Tracked:**
   - GPU Core & Memory Temperature (°C).
   - VRAM Utilization (allocated vs. free bytes).
