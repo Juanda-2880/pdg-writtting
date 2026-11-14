@@ -624,3 +624,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «Respalden con una cita o con un cálculo de memoria la afirmación de que los modelos de 7000 a 14000 millones de parámetros caben en 24 GB de memoria de video.» → aplicado · se añade el cálculo: «Con pesos de 8 bits por parámetro, un modelo de 14 000 millones ocupa alrededor de 14 GB y uno de 7 000 millones, alrededor de 7 GB; con 4 bits, ocupan la mitad. Esos valores dejan margen dentro de los 24 GB para la caché de atención y el entorno de ejecución.»
 - **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 8 `\todo` en el capítulo 05.
+
+### 2026-11-14 · cap. 05 y cap. 10 · Términos de Kubernetes
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
+- **F1** (tutor): «Den el término original en el primer uso de "marcas y tolerancias" (\emph{taints} y \emph{tolerations}) y de "espacios de nombres" (\emph{namespaces}), y usen los mismos nombres en el capítulo 9, donde aparecen como "marcas de reserva" y "un espacio con su límite".» → aplicado · el cap. 05 dice «marcas y tolerancias (\emph{taints} y \emph{tolerations})» y «espacios de nombres (\emph{namespaces})»; el cap. 10 pasa a «marcas (\emph{taints})» y «un espacio de nombres con su límite».
+- **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 7 `\todo` en el capítulo 05.
