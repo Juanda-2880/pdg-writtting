@@ -600,3 +600,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «La primera oración del capítulo tiene cerca de noventa palabras y enumera cinco dominios. Divídanla para facilitar la lectura.» → aplicado · la oración se divide en dos: «...exige integrar conocimiento de cinco dominios de la ingeniería de sistemas. Esos dominios son el ciclo de vida...».
 - **Verificación:** `make build` OK (74 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 12 `\todo` en el capítulo 05.
+
+### 2026-11-14 · cap. 05 · Alcance de la distinción entrenamiento/inferencia
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
+- **F1** (tutor): «La afirmación de que la distinción entre entrenamiento e inferencia se aplica a cualquier tipo de modelo (clasificadores, visión por computador, modelos generativos) no tiene cita. Respáldenla con una fuente o preséntenla como una posición de los autores.» → aplicado · «La distinción se aplica a cualquier tipo de modelo» → «Para este proyecto, la distinción se aplica a cualquier tipo de modelo». La afirmación queda declarada como posición de los autores.
+- **Verificación:** `make build` OK (74 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 11 `\todo` en el capítulo 05.
