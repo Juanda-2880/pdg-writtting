@@ -556,3 +556,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «Las causas del problema nombran componentes de la solución, como un "plano de servicio que gestione motores de inferencia" o un "motor de políticas de cuotas". Este capítulo debe describir el problema sin anticipar la solución. Redacten las causas como carencias, sin nombrar los componentes que las resuelven.» → aplicado · la causa principal pasa a «la etapa de inferencia no cuenta con mecanismos integrados de administración»; las tres carencias se redactan como falta de automatización, falta de un mecanismo que traduzca los roles en cupos y falta de visibilidad en tiempo real. Se ajustaron los tres nodos de causas del Anexo B para que no contradigan el capítulo.
 - **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 3 `\todo` en el capítulo 02.
+
+### 2026-11-14 · cap. 02 · Fuente de las cifras de matrícula
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
+- **F1** (tutor): «Las cifras de matrícula no tienen fuente. Citen el documento o portal del que provienen e indiquen el año o periodo académico de corte.» → aplicado · la frase pasa a «De acuerdo con las estadísticas de matrícula de la Universidad Icesi para 2026 \citep{icesi-matricula-2026}». Se añadió la entrada `icesi-matricula-2026` a `references.bib` (panel institucional de analítica académica en Power BI, datos de 2026, consultado el 2026-10-12), la fila en `fuentes/INDEX.md` y la verificación en `CITAS-VERIFICADAS.md`.
+- **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 2 `\todo` en el capítulo 02.

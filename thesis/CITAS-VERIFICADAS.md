@@ -596,3 +596,11 @@ Los pasajes van en el idioma original y sin traducir. Las páginas son las del P
   - `chapters/01-motivacion-antecedentes.tex` · *Contexto* ¶5 · «un proyecto de grado anterior construyó la plataforma TrainLab, que actúa como plano de control (*control plane*) del entrenamiento distribuido»
     - Pasaje: «Desarrollar una plataforma web de orquestación para la gestión y aprovechamiento eficiente de la infraestructura computacional del Laboratorio de Inteligencia Artificial y Arquitectura de Software (IAsLab) de la Universidad Icesi en la ejecución de tareas de entrenamiento (de nodo único o distribuidas) de modelos de inteligencia artificial.» (Objetivo general); «Diseñar la arquitectura del sistema […] para establecer un plano de control unificado que elimine la fragmentación actual de los recursos» (Objetivo específico 2); «la plataforma TRAINI ejecutar entrenamientos de modelos de forma distribuida en la infraestructura real del IASLAB directamente desde la interfaz de usuario» (sección de *sprints*, Sprint 2).
     - **Estado:** verificada · 2026-11-14
+
+## icesi-matricula-2026
+
+- **Versión consultada:** panel institucional de analítica académica de la Universidad Icesi (Power BI), <https://app.powerbi.com/view?r=eyJrIjoiZDUxM2QxZTAtMWNlNy00ODNjLTlkNDItNWM4OGEwMzg3NzJkIiwidCI6ImU5OTQwNzJiLTUyM2UtNGJmZS04NmUyLTQ0MmM1ZTEwYjI0NCIsImMiOjR9>, datos de 2026, suministrado por los autores y consultado el 2026-10-12. No es una publicación arbitrada; es la fuente institucional de las cifras de matrícula.
+- **Usos:**
+  - `chapters/02-descripcion-problema.tex` · *Identificación del problema* ¶4 · «De acuerdo con las estadísticas de matrícula de la Universidad Icesi para 2026, la comunidad directamente vinculada a estas áreas comprende 667 estudiantes de pregrado y 190 estudiantes de posgrado en programas avanzados de computación e inteligencia artificial»
+    - Datos del panel: 667 estudiantes de pregrado en programas de TI; 190 de posgrado, distribuidos en Maestría en Inteligencia Artificial (89), Maestría en Ciencia de Datos (74), Doctorado en Ingeniería (13), Especialización en Ingeniería de Datos (8) y Especialización en Inteligencia Artificial Aplicada (6).
+    - **Estado:** verificada · 2026-11-14
