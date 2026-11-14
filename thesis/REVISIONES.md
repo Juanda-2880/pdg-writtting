@@ -520,3 +520,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «Revisen la redacción de este párrafo. "Poner un modelo en operación" y "el laboratorio desplegaba modelos ejecutando a mano" usan un registro coloquial y repiten la idea. Reformúlenlo en un lenguaje técnico y más preciso, por ejemplo con el término "despliegue manual" definido una sola vez y usado de forma consistente.» → aplicado · el párrafo abre con «El despliegue manual era el único procedimiento disponible» y usa «despliegue» de forma consistente; salen «poner un modelo en operación», «desplegaba modelos ejecutando a mano» y «puesta en servicio».
 - **Verificación:** `make build` OK (77 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 4 `\todo` en el capítulo 01.
+
+### 2026-11-14 · cap. 01 · Antecedentes ¶3 · Nombrar Slurm
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
+- **F1** (tutor): «"Una herramienta conocida" es vago. Revisen la fuente para identificar a qué herramienta se refieren los autores, nómbrenla y evalúen si deberían tenerla en consideración como alternativa en el estado del arte.» → aplicado · «muchas universidades adoptan una herramienta conocida con configuraciones subóptimas» → «muchas universidades adoptan un planificador de colas como Slurm con configuraciones subóptimas». La fuente (Xu et al., 2025) dice «pick a tool that they are familiar with (e.g., Slurm [41]) and use it as-is with sub-optimal settings». Slurm ya se analiza como alternativa en el cap. 06, §5.3 y en la tabla comparativa.
+- **Verificación:** `make build` OK (77 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 3 `\todo` en el capítulo 01.
