@@ -526,3 +526,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «"Una herramienta conocida" es vago. Revisen la fuente para identificar a qué herramienta se refieren los autores, nómbrenla y evalúen si deberían tenerla en consideración como alternativa en el estado del arte.» → aplicado · «muchas universidades adoptan una herramienta conocida con configuraciones subóptimas» → «muchas universidades adoptan un planificador de colas como Slurm con configuraciones subóptimas». La fuente (Xu et al., 2025) dice «pick a tool that they are familiar with (e.g., Slurm [41]) and use it as-is with sub-optimal settings». Slurm ya se analiza como alternativa en el cap. 06, §5.3 y en la tabla comparativa.
 - **Verificación:** `make build` OK (77 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 3 `\todo` en el capítulo 01.
+
+### 2026-11-14 · cap. 01 y cap. 06 · Separador decimal
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); aplicado por Melo088 tras aprobación en el chat.
+- **F1** (tutor): «Unifiquen el separador decimal. Aquí se usa el punto (21.49 y 31.37), mientras que en otros apartados se usa la coma (2,4 en la Tabla 9.1 y 1,5 en el capítulo 5). En español se recomienda la coma decimal.» → aplicado · «21.49» y «31.37» → «21,49» y «31,37» en el cap. 01 y en la misma cifra del cap. 06. No quedan puntos decimales en la prosa de los capítulos.
+- **Verificación:** `make build` OK (77 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 2 `\todo` en el capítulo 01.
