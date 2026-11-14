@@ -594,3 +594,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «El objetivo no define qué significa que el servicio "se sostenga". Fijen el criterio, por ejemplo un umbral de latencia o de tasa de error, o remitan al capítulo donde se define.» → aplicado · el objetivo específico 4 añade «según los criterios de latencia, \emph{throughput} y tasa de error definidos en el \cref{sec:marco-conceptual}».
 - **Verificación:** `make build` OK (74 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; el capítulo 04 queda sin `\todo`.
+
+### 2026-11-14 · cap. 05 · Primera oración del capítulo
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
+- **F1** (tutor): «La primera oración del capítulo tiene cerca de noventa palabras y enumera cinco dominios. Divídanla para facilitar la lectura.» → aplicado · la oración se divide en dos: «...exige integrar conocimiento de cinco dominios de la ingeniería de sistemas. Esos dominios son el ciclo de vida...».
+- **Verificación:** `make build` OK (74 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 12 `\todo` en el capítulo 05.
