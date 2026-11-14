@@ -21,13 +21,11 @@
 
 \section{Identificación del problema}
 
-\todo{El capítulo repite la estructura de «tres síntomas» y «tres factores causales». Varíen la forma de presentar estos elementos para que la lectura no resulte mecánica.}
-
-La infraestructura de procesamiento gráfico (GPU) del IAsLab presenta limitaciones estructurales para operar como un entorno compartido, regulado y observable al servicio de la comunidad académica. Esta situación se manifiesta en tres síntomas. En primer lugar, la puesta en operación de modelos de inteligencia artificial se realiza mediante procedimientos manuales directamente sobre las máquinas físicas. En segundo lugar, la asignación de recursos y la habilitación de usuarios dependen de solicitudes individuales gestionadas de forma manual y con tiempos de espera prolongados, sin mecanismos de autoservicio. En tercer lugar, la supervisión de la infraestructura carece de telemetría en tiempo real sobre el consumo y el estado de los nodos.
+La infraestructura de procesamiento gráfico (GPU) del IAsLab presenta limitaciones estructurales para operar como un entorno compartido, regulado y observable al servicio de la comunidad académica. La puesta en operación de modelos de inteligencia artificial se realiza mediante procedimientos manuales directamente sobre las máquinas físicas. La asignación de recursos y la habilitación de usuarios dependen de solicitudes individuales gestionadas de forma manual y con tiempos de espera prolongados, sin mecanismos de autoservicio. La supervisión de la infraestructura carece de telemetría en tiempo real sobre el consumo y el estado de los nodos.
 
 \todo{Las causas del problema nombran componentes de la solución, como un «plano de servicio que gestione motores de inferencia» o un «motor de políticas de cuotas». Este capítulo debe describir el problema sin anticipar la solución. Redacten las causas como carencias, sin nombrar los componentes que las resuelven.}
 
-El origen de esta situación radica en la ausencia de una capa de \emph{software} de orquestación y gestión que administre la etapa de inferencia sobre la infraestructura de cómputo del laboratorio. De esta causa principal se desprenden tres factores causales.
+El origen de esta situación radica en la ausencia de una capa de \emph{software} de orquestación y gestión que administre la etapa de inferencia sobre la infraestructura de cómputo del laboratorio. Esa ausencia se concreta en las siguientes carencias.
 \begin{itemize}
   \item La carencia de un plano de servicio que gestione motores de inferencia obliga a ejecutar dependencias y \emph{scripts} de despliegue de forma manual en el sistema operativo anfitrión.
   \item La falta de integración entre el proveedor de identidad SAAMFI y un motor de políticas de cuotas impide traducir los roles de los usuarios en cupos de cómputo, lo que perpetúa la asignación manual de accesos sin reglas explícitas.

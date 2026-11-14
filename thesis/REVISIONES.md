@@ -544,3 +544,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «La afirmación de que los usuarios "dejan de depender de suscripciones comerciales que no todos pueden costear" no tiene respaldo. Matícenla o susténtenla, por ejemplo con el uso de Google Colab que mencionan en la sección 1.2.» → aplicado · «que dejan de depender de suscripciones comerciales que no todos pueden costear» → «que pueden prescindir de servicios externos como Google Colab, a los que parte de la comunidad recurría ante la falta de acceso». La frase se apoya en el dato ya presente en los Antecedentes y retira la generalización sin respaldo.
 - **Verificación:** `make build` OK (76 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; el capítulo 01 queda sin `\todo`.
+
+### 2026-11-14 · cap. 02 · §2.1 · Presentación de síntomas y causas
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
+- **F1** (tutor): «El capítulo repite la estructura de "tres síntomas" y "tres factores causales". Varíen la forma de presentar estos elementos para que la lectura no resulte mecánica.» → aplicado · los síntomas quedan en prosa continua, sin el conteo «tres síntomas» ni los marcadores «En primer lugar / En segundo lugar / En tercer lugar»; la introducción de las causas pasa de «De esta causa principal se desprenden tres factores causales» a «Esa ausencia se concreta en las siguientes carencias», y la lista se conserva.
+- **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 4 `\todo` en el capítulo 02.
