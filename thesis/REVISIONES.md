@@ -456,3 +456,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **F1** (humano): «Si pueds en el cap 10, explicar un poco como es el despliegue de un modelo, seria perfecto» → aplicado · párrafo nuevo en la sección de la segunda etapa, antes de `fig:flujo-despliegue`, con el recorrido desde la vista del usuario: alta del modelo por el administrador, permiso de despliegue, elección de modelo, motor y nodo, fases visibles, dirección publicada y acciones sobre el despliegue. El párrafo de la figura pasa a describir lo que ocurre internamente. Hechos registrados antes en `project-context/documentation.md` («How a user deploys a model in the POC»).
 - **Verificación:** `make build` OK (66 páginas); con `grep -a`, cero referencias indefinidas y cero cajas desbordadas; revisión visual de las páginas afectadas; cero em dash, dos puntos de empalme y referencias al repositorio de implementación en el capítulo.
 
+
+### 2026-11-14 · cap. 01 · §Contexto ¶1 · Referente de «su código» (corrección del tutor)
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); aplicado por Melo088 tras aprobación en el chat.
+- **F1** (tutor): «Precisen el referente de "su código". Por el contexto, parece referirse al código del modelo dentro del sistema completo.» → aplicado · «señalan que su código es solo una pequeña fracción de un sistema real» → «señalan que el código que lo implementa es solo una pequeña fracción de un sistema real». Se eligió la opción A, que evita repetir «modelo» y mantiene el referente inequívoco.
+- **Verificación:** `make build` OK; cero citas y referencias indefinidas, cero cajas desbordadas; quedan 11 `\todo` en el capítulo.
