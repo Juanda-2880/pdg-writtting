@@ -758,3 +758,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «La frase sobre "arquitecturas de gran escala, en particular los LLM" que pasan del entrenamiento al servicio de inferencia sugiere que el laboratorio entrena LLM, lo cual no está sustentado, y restringe el aporte a los modelos de lenguaje. Reformúlenla en términos de modelos de IA ya entrenados, propios o descargados.» → aplicado · «arquitecturas de gran escala, en particular los LLM» → «modelos de inteligencia artificial ya entrenados, propios o descargados».
 - **Verificación:** `make build` OK (74 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 4 `\todo` en el capítulo 09.
+
+### 2026-11-15 · cap. 09 · Imagen de llama.cpp presentada antes de nombrarla
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
+- **F1** (tutor): «Revisen que todo elemento que se nombra haya sido presentado antes o tenga una referencia explícita. Por ejemplo, este párrafo menciona "la imagen oficial de \emph{llama.cpp}" como si el lector ya la conociera, y el capítulo 9 usa conceptos como el "fondo común" de cuota que no aparecen en el marco teórico. Hagan esta revisión en todos los capítulos.» → aplicado · «la imagen oficial de \emph{llama.cpp}» → «la imagen de contenedor que publica el proyecto \emph{llama.cpp}». El «fondo común» ya quedó definido en el cap. 05 §4.5 con su figura (commit `5704686`).
+- **Verificación:** `make build` OK (74 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 3 `\todo` en el capítulo 09.
