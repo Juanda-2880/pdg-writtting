@@ -38,7 +38,7 @@ Los pasajes van en el idioma original y sin traducir. Las páginas son las del P
   - `chapters/01-motivacion-antecedentes.tex` · *Contexto* ¶1 · «definen las operaciones de aprendizaje automático (MLOps) como un paradigma que abarca la conceptualización, implementación, monitoreo, despliegue y escalabilidad de estos productos»
     - Pasaje: "MLOps (Machine Learning Operations) is a paradigm, including aspects like best practices, sets of concepts, as well as a development culture when it comes to the end-to-end conceptualization, implementation, monitoring, deployment, and scalability of machine learning products." (p. 8, §6 *Conceptualization*)
     - **Estado:** verificada · 2026-09-13
-  - `chapters/01-motivacion-antecedentes.tex` · *Contexto* ¶1 · «e incluyen un componente dedicado a vigilar de forma continua el desempeño en servicio y el estado de la infraestructura»
+  - `chapters/01-motivacion-antecedentes.tex` · *Contexto* ¶1 · «e incluyen un componente dedicado a vigilar de forma continua el desempeño de cada modelo y el estado de la infraestructura» (antes «el desempeño en servicio»; cambiado el 2026-11-15 al unificar la terminología)
     - Pasaje: "C9 Monitoring Component (P8, P9). The monitoring component takes care of the continuous monitoring of the model serving performance (e.g., prediction accuracy). Additionally, monitoring of the ML infrastructure, CI/CD, and orchestration are required" (p. 4, §4.2)
     - **Estado:** verificada · 2026-09-13
   - Términos que la fuente **no** usa y no deben atribuírsele: *quota*, *telemetry*, *access governance*. La única aparición de *governance* se refiere a los artefactos: "These repetitive tasks yield a large number of artifacts that require a strong governance" (p. 8, §7).
@@ -48,7 +48,7 @@ Los pasajes van en el idioma original y sin traducir. Las páginas son las del P
   - `chapters/06-estado-del-arte.tex` · `\label{sec:ecosistemas-mlops}` ¶1 · «la literatura propuso el paradigma de MLOps para el ciclo de vida de estos sistemas […], aunque [Eken et al.] advierten que su conceptualización unificada sigue sin lograrse»
     - Pasaje: "The paradigm of Machine Learning Operations (MLOps) addresses this issue. MLOps includes several aspects, such as best practices, sets of concepts, and development culture. However, MLOps is still a vague term" (*Abstract*); y, en Eken et al., "an evidence-based body of knowledge regarding MLOps practices and tools grounded in a unified conceptualization of the MLOps concept remains elusive" (introducción)
     - **Estado:** verificada · 2026-10-04. «Formalizó el ciclo de vida» se cambió porque las fuentes no dicen que lo formalizaran; ambas hablan de un paradigma todavía sin conceptualización unificada.
-  - `chapters/06-estado-del-arte.tex` · `\label{sec:ecosistemas-mlops}` ¶1 · «recogen, entre los servicios en la nube para poner modelos en servicio, Microsoft Azure ML, AWS SageMaker, IBM Watson Studio y Google Vertex AI»
+  - `chapters/06-estado-del-arte.tex` · `\label{sec:ecosistemas-mlops}` ¶1 · «recogen, entre los servicios en la nube para servir modelos, Microsoft Azure ML, AWS SageMaker, IBM Watson Studio y Google Vertex AI»
     - Pasaje: "Examples of cloud services include Microsoft Azure ML REST API [ε], AWS SageMaker Endpoints [α, β], IBM Watson Studio [γ], and Google Vertex AI prediction service [δ]." (p. 4, §4.2, C8)
     - **Estado:** verificada · 2026-09-27
   - `chapters/06-estado-del-arte.tex` · `\label{sec:ecosistemas-mlops}` ¶3 · «mencionan KServing de Kubeflow, TensorFlow Serving y Seldon como marcos de servicio de modelos compatibles con Kubernetes, y describen Kubeflow como una plataforma de aprendizaje automático de extremo a extremo basada en Kubernetes, en la que cada componente se empaqueta en un contenedor»
@@ -493,7 +493,7 @@ Los pasajes van en el idioma original y sin traducir. Las páginas son las del P
 
 - **Versión consultada:** `fuentes/pdf/cortez-resourcecentral-2017.pdf`, versión de Microsoft Research del artículo de SOSP '17.
 - **Usos:**
-  - `chapters/05-marco-teorico.tex` · `\label{sec:gobernanza-recursos-compartidos}` ¶3 · «muestran, en las máquinas virtuales de Microsoft Azure, que ciertos comportamientos de una carga se mantienen consistentes a lo largo de su vida, de modo que su historia predice su comportamiento futuro, y usan esas predicciones para sobresuscribir servidores sin degradar el desempeño»
+  - `chapters/05-marco-teorico.tex` · `\label{sec:gobernanza-recursos-compartidos}` ¶3 · «muestran, en las máquinas virtuales de Microsoft Azure, que ciertos comportamientos de una carga se mantienen consistentes a lo largo de su vida, de modo que su historia predice su comportamiento futuro, y usan esas predicciones para asignar a cada servidor más máquinas virtuales de las que admite su capacidad nominal sin degradar el desempeño» (antes «para sobresuscribir servidores»; cambiado el 2026-11-15 al unificar la terminología; el pasaje dice *oversubscribing servers*)
     - Pasaje: "We then show that certain VM behaviors are fairly consistent over multiple lifetimes, i.e. history is an accurate predictor of future behavior. […] we modify Azure's VM scheduler to leverage predictions in oversubscribing servers […] while retaining high VM performance." (p. 1, *Abstract*)
     - **Estado:** verificada · 2026-09-27
 
