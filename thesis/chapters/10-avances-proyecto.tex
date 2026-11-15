@@ -16,13 +16,28 @@
 % ==========================================================================
 \chapter{Avances del proyecto}\label{cha:avances}
 
-Este capítulo informa el trabajo realizado hasta el 7 de noviembre de 2026 en la prueba de concepto (POC) del proyecto. El prototipo corre en un único servidor físico del laboratorio, sobre el que se simula el clúster con ocho máquinas virtuales, tres de control, tres de servicios y dos de cómputo sin unidad de procesamiento gráfico (GPU), y cada modelo se sirve en un solo nodo de cómputo. El clúster final también tendrá tres nodos de control, alojados en equipos físicos del laboratorio, de modo que el prototipo reproduce esa topología con máquinas virtuales. El POC permite validar el diseño antes de desplegarlo en la sala 104M en diciembre de 2026, y por esa razón su implementación puede cambiar. Las decisiones que aquí se describen son las vigentes a la fecha de corte.
+Este capítulo informa el trabajo realizado hasta el 7 de noviembre de 2026 en la prueba de concepto (POC) del proyecto. El prototipo corre en un único servidor físico del laboratorio, un computador de escritorio con un procesador AMD Ryzen 7 1700 de 8 núcleos y 16 hilos, 60\,GiB de memoria RAM y una unidad de estado sólido NVMe, de la que el prototipo ocupa una partición de 388\,GiB. El equipo cuenta además con una unidad de procesamiento gráfico (GPU) NVIDIA GeForce GTX 1080 Ti de 11\,GB, que el prototipo aún no utiliza porque no se ha asignado a ninguna de sus máquinas virtuales. Sobre ese servidor se simula el clúster con ocho máquinas virtuales, tres de control, tres de servicios y dos de cómputo sin GPU, cuyos recursos recoge la \cref{tab:vm-poc}, y cada modelo se sirve en un solo nodo de cómputo. El clúster final también tendrá tres nodos de control, alojados en equipos físicos del laboratorio, de modo que el prototipo reproduce esa topología con máquinas virtuales. El POC permite validar el diseño antes de desplegarlo en la sala 104M en diciembre de 2026, y por esa razón su implementación puede cambiar. Las decisiones que aquí se describen son las vigentes a la fecha de corte.
 
-\todo{Describan desde el inicio el equipo con el que trabajan, con su procesador (modelo y núcleos), memoria RAM, almacenamiento y GPU, si la tiene. Hoy solo se menciona la memoria de 60 GiB en la segunda etapa, cuando el lector ya necesitaba ese dato. Acompañen la descripción con una fotografía de la estación o torre. Después pueden recordarla, pero el lector debe conocerla desde el principio. Tengan en cuenta que la Figura 9.2 ya indica el procesador del servidor (AMD Ryzen 7 1700), pero el texto nunca lo menciona.}
+\begin{table}[htbp]
+  \centering
+  \caption{Máquinas virtuales del POC. Los recursos de vCPU, memoria y disco son los de cada máquina.}
+  \label{tab:vm-poc}
+  \begin{tabular}{l c c c c}
+    \toprule
+    \textbf{Rol} & \textbf{Cantidad} & \textbf{vCPU} & \textbf{Memoria} & \textbf{Disco} \\
+    \midrule
+    Control & 3 & 2 & 6\,GiB & 25\,GB \\
+    Servicios & 3 & 4 & 10\,GiB & 60\,GB \\
+    Cómputo, sin GPU & 2 & 4 & 6\,GiB & 35\,GB \\
+    \midrule
+    \textbf{Total del servidor} & 8 & 26 & 60\,GiB & 325\,GB \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 \todo{Este capítulo servirá de insumo para el PDG2. Si lo redactan con detalle y precisión, podrá reutilizarse casi directamente en el informe final. Escríbanlo pensando en ese propósito.}
 
-El trabajo del prototipo se desarrolló en dos etapas, entre el 17 de octubre y el 7 de noviembre de 2026, dentro de los \emph{sprints} 2 y 3 del cronograma de la \cref{fig:gantt}. Para validar el diseño de extremo a extremo, el prototipo construyó versiones mínimas de componentes que el cronograma completa en fases posteriores, sin alterar el orden de las fases ni su duración. El \emph{hardware} disponible condicionó el montaje. Sin GPU en el servidor, los motores de inferencia se ejecutan en CPU, lo que limita las mediciones de desempeño a una referencia preliminar, y la validación sobre las GPU de la sala queda para la etapa de despliegue.
+El trabajo del prototipo se desarrolló en dos etapas, entre el 17 de octubre y el 7 de noviembre de 2026, dentro de los \emph{sprints} 2 y 3 del cronograma de la \cref{fig:gantt}. Para validar el diseño de extremo a extremo, el prototipo construyó versiones mínimas de componentes que el cronograma completa en fases posteriores, sin alterar el orden de las fases ni su duración. El \emph{hardware} disponible condicionó el montaje. Como la GPU del servidor no está asignada a las máquinas virtuales, los motores de inferencia se ejecutan en CPU, lo que limita las mediciones de desempeño a una referencia preliminar, y la validación sobre las GPU de la sala queda para la etapa de despliegue.
 
 \section{Primera etapa: cimientos del clúster}\label{sec:avance-etapa1}
 
@@ -84,7 +99,7 @@ La \cref{fig:flujo-despliegue} muestra lo que ocurre internamente en ese recorri
 
 Del lado del gobierno, se implementó el operador que traduce las cuotas de cada usuario en un espacio de nombres con su límite, y la cuota de la sala en un fondo común que las cuotas individuales pueden usar. Se verificó en el POC que una solicitud que excede la cuota espera en cola, que una carga puede recuperar cuota cuando otra la necesita, y que la carga expropiada queda identificada en su estado. También se verificó que un agotamiento de memoria en un despliegue no afecta a los vecinos, y que las políticas rechazan los despliegues que no cumplen las etiquetas o los límites de la sala.
 
-Los retos de esta etapa fueron de recursos. El servidor del POC tiene 60\,GiB de memoria, así que cada componente declara la memoria y el procesador que solicita y su límite máximo, de modo que la suma se mantiene dentro de la capacidad del servidor. vLLM agotaba la memoria durante su fase de calentamiento, y se resolvió con su modo de ejecución directa (\emph{eager}), que omite ese calentamiento. El escalador automático de Argo CD no tenía solicitudes de memoria con que calcular su uso, y se fijaron esas solicitudes para que el escalado funcione. Por último, la integración con el proveedor de identidad SAAMFI se encuentra en implementación. Mientras tanto, el prototipo usa un proveedor de identidad local que permite probar el flujo de roles, de autenticación y de permisos de extremo a extremo.
+Los retos de esta etapa fueron de recursos. Como el servidor del POC tiene 60\,GiB de memoria, según se indicó al inicio del capítulo, cada componente declara la memoria y el procesador que solicita y su límite máximo, de modo que la suma se mantiene dentro de la capacidad del servidor. vLLM agotaba la memoria durante su fase de calentamiento, y se resolvió con su modo de ejecución directa (\emph{eager}), que omite ese calentamiento. El escalador automático de Argo CD no tenía solicitudes de memoria con que calcular su uso, y se fijaron esas solicitudes para que el escalado funcione. Por último, la integración con el proveedor de identidad SAAMFI se encuentra en implementación. Mientras tanto, el prototipo usa un proveedor de identidad local que permite probar el flujo de roles, de autenticación y de permisos de extremo a extremo.
 
 Sobre este servicio se construyeron también el importador de pesos, que verifica el tamaño y la integridad de cada archivo antes de registrarlo, la API con usuarios locales y base de datos, una interfaz web mínima, la lectura de registros filtrada por usuario y un panel de métricas por modelo y por despliegue. Los administradores dan de alta los modelos desde la API o desde la interfaz, y la clave de acceso a repositorios externos de modelos se guarda cifrada.
 

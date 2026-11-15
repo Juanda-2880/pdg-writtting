@@ -87,6 +87,7 @@ Ninguna. Las dudas ADR-010, 030, 031, 032, 033 y 035 se retiraron el 2026-11-07 
 
 1. **Resumen y Abstract**, que por indicación del formato se escriben al final.
 2. Una pasada del **Revisor** sobre el documento completo antes de entregarlo.
+3. **Fotografía del servidor del POC** para el cap. 10 (en el PDF, cap. 9), pedida por el tutor el 2026-11-14 junto con la descripción del equipo. El texto y la `tab:vm-poc` ya están; falta que los autores aporten la foto, que se incluye como figura junto al ¶1. Sin `\todo` visible en el documento, por decisión de Melo088 (2026-11-15).
 
 ## How to update this file
 
