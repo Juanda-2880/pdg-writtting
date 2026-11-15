@@ -35,8 +35,6 @@ Este capítulo informa el trabajo realizado hasta el 7 de noviembre de 2026 en l
   \end{tabular}
 \end{table}
 
-\todo{Este capítulo servirá de insumo para el PDG2. Si lo redactan con detalle y precisión, podrá reutilizarse casi directamente en el informe final. Escríbanlo pensando en ese propósito.}
-
 El trabajo del prototipo se desarrolló en dos etapas, entre el 17 de octubre y el 7 de noviembre de 2026, dentro de los \emph{sprints} 2 y 3 del cronograma de la \cref{fig:gantt}. Para validar el diseño de extremo a extremo, el prototipo construyó versiones mínimas de componentes que el cronograma completa en fases posteriores, sin alterar el orden de las fases ni su duración. El \emph{hardware} disponible condicionó el montaje. Como la GPU del servidor no está asignada a las máquinas virtuales, los motores de inferencia se ejecutan en CPU, lo que limita las mediciones de desempeño a una referencia preliminar, y la validación sobre las GPU de la sala queda para la etapa de despliegue. La \cref{fig:arquitectura-poc} presenta la arquitectura completa del prototipo a la fecha de corte, y las secciones siguientes amplían cada parte a medida que la describen.
 
 \begin{figure}[htbp]
