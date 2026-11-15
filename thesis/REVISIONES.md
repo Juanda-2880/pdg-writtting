@@ -740,3 +740,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «De los tres vacíos, el tercero ("El tercero es acercar la telemetría…") está redactado como una meta y no como un vacío. Redáctenlo como una carencia.» → aplicado · «El tercero es acercar la telemetría…» → «El tercero es la ausencia de una interfaz de autoservicio que exponga a los administradores de una sala académica la telemetría…».
 - **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; el capítulo 06 queda sin `\todo`.
+
+### 2026-11-15 · cap. 07 · Primer párrafo del capítulo
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
+- **F1** (tutor): «El primer párrafo del capítulo es una sola oración que enumera cinco contenidos. Divídanla para facilitar la lectura.» → aplicado · el párrafo se divide en tres oraciones: metodología y justificación; estructura lógica y elicitación de requerimientos; fases, cronograma y riesgos.
+- **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 5 `\todo` en el capítulo 07.
