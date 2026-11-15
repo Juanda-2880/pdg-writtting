@@ -698,3 +698,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **F1** (tutor): «Prometheus, Thanos, Loki, Grafana y el exportador DCGM se describen sin ninguna referencia. Citen su documentación oficial, como hacen en el capítulo 5.» → aplicado · se añadieron `prometheus-overview-2026`, `thanos-quick-tutorial-2026`, `loki-overview-2026`, `grafana-overview-2026` y `dcgm-exporter-2026` a `references.bib`, con su cita en la frase correspondiente. Se registraron en `fuentes/INDEX.md` y `CITAS-VERIFICADAS.md`, con los pasajes literales verificados.
 - **Ajuste de fidelidad:** la documentación de DCGM no afirma que las métricas «residan en el \emph{firmware} del dispositivo»; esa cláusula se retiró.
 - **Verificación:** `make build` OK (76 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; queda 1 `\todo` en el capítulo 05.
+
+### 2026-11-15 · cap. 05 · Explicación literal de las etiquetas de Loki
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
+- **F1** (tutor): «"Sin cambiar de sistema de coordenadas" es una metáfora poco clara. Expliquen literalmente qué permite, por ejemplo, consultar métricas y registros con las mismas etiquetas.» → aplicado · la frase pasa a «Loki agrega los registros que emiten los contenedores y los indexa por las mismas etiquetas, de modo que las métricas y los registros se pueden consultar con un mismo conjunto de etiquetas y es posible pasar de una anomalía observada en una gráfica a los registros que la produjeron».
+- **Verificación:** `make build` OK (76 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; el capítulo 05 queda sin `\todo`.
