@@ -663,3 +663,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **F1** (humano): «aprovechemos a mejorar o corregir las otras figuras, donde, si bien el contenido puede estar bien, las flechas hacen que se vea desordenado, no quiero que hayan flechas diagonales, prefiero ortogonales.» → aplicado · en la \cref{fig:bucle-reconciliacion}, «Reconciliar» pasa debajo de «Analizar cambios» y «Estado actual» a su altura, de modo que el bucle forma un rectángulo y la flecha hacia «Observar» sube en ángulo recto; en la \cref{fig:flujo-observabilidad}, Prometheus y Thanos bajan a la fila de los servicios y la flecha del exportador DCGM llega con un codo. El contenido de ambas figuras no cambia.
 - **Revisadas sin cambios:** figuras 4.1, 4.3 (gobernanza, nueva), 4.4 (identidad), 9.1, A.1, B.1 y C.1, que ya eran ortogonales. La 9.2 es una imagen de draw.io y queda para su propio comentario del tutor.
 - **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas.
+
+### 2026-11-15 · cap. 05 · Tabla 4.1, fila «Recurso personalizado y operador»
+
+- **Revisó:** Melo088 (autor); sugerencia de la IA aprobada en el chat («ajustalo»).
+- **S1** (IA, aprobada por Melo088): la fila conservaba el encuadre de KubeRay corregido en §4.4 → aplicado · «Es el mecanismo por el que la plataforma declara clústeres de cómputo, trabajos y servicios de inferencia como objetos nativos del orquestador» → «Es el mecanismo por el que la plataforma describe cada despliegue como un objeto propio y lo traduce en objetos nativos del orquestador».
+- **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas.
