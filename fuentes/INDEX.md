@@ -6,9 +6,9 @@ Mapa de cada entrada de [`../thesis/references.bib`](../thesis/references.bib) a
 - **Versión del PDF:** si es la versión publicada, un preprint o una versión de autor. Una cita textual se comprueba siempre contra la versión publicada.
 - **Verificada:** si la entrada ya tiene usos comprobados en [`../thesis/CITAS-VERIFICADAS.md`](../thesis/CITAS-VERIFICADAS.md). «sí (parcial)» significa que hay usos verificados, no que todos lo estén.
 
-Actualizado: 2026-11-15 (documentación de Kueue añadida al cap. 05, 50 citadas); anterior: 2026-11-14 (estadísticas de matrícula añadidas al cap. 02, 49 citadas; anteproyecto de TRAINI añadido al cap. 01, 48 citadas); anterior: 2026-10-04 (cap. 06: cinco páginas de documentación oficial añadidas, 47 citadas); anterior: 2026-09-27 (revisión completa del documento: 26 fuentes nuevas en `pdf/`, verificación de los caps. 05, 06 y 07). El mismo día salió `lewis-susbenchmarks-2018` de `references.bib`, junto con el *System Usability Scale* del objetivo 4.
+Actualizado: 2026-11-15 (documentación de Prometheus, Thanos, Loki, Grafana y DCGM añadida al cap. 05, 55 citadas); anterior: 2026-11-15 (documentación de Kueue añadida al cap. 05, 50 citadas); anterior: 2026-11-14 (estadísticas de matrícula añadidas al cap. 02, 49 citadas; anteproyecto de TRAINI añadido al cap. 01, 48 citadas); anterior: 2026-10-04 (cap. 06: cinco páginas de documentación oficial añadidas, 47 citadas); anterior: 2026-09-27 (revisión completa del documento: 26 fuentes nuevas en `pdf/`, verificación de los caps. 05, 06 y 07). El mismo día salió `lewis-susbenchmarks-2018` de `references.bib`, junto con el *System Usability Scale* del objetivo 4.
 
-## Citadas en la tesis (50)
+## Citadas en la tesis (55)
 
 | Clave BibTeX | Año | Citada en | Referencia | PDF | Versión del PDF | Cómo obtenerla | Verificada |
 | :--- | :---: | :--- | :--- | :--- | :--- | :--- | :---: |
@@ -62,6 +62,11 @@ Actualizado: 2026-11-15 (documentación de Kueue añadida al cap. 05, 50 citadas
 | `llamacpp-readme-2026` | 2026 | cap. 06 | [URL](https://github.com/ggml-org/llama.cpp) | [`pdf/llamacpp-readme-2026.md`](./pdf/llamacpp-readme-2026.md) | Página web (README oficial del repositorio, rama principal) | Acceso abierto: github.com | sí |
 | `tobar-sistemaentrenamiento-2026` | 2026 | cap. 01 | Documento local (Word): anteproyecto de TRAINI | **No aplica**: `.docx` de los autores, fuera del repositorio | Anteproyecto de Proyecto de Grado, versión de 2026 | Copia local en `workspace/PDG/Anteproyecto-PdG-I-2026-1.docx`; SHA-256 abajo | sí |
 | `icesi-matricula-2026` | 2026 | cap. 02 | [Panel de Power BI](https://app.powerbi.com/view?r=eyJrIjoiZDUxM2QxZTAtMWNlNy00ODNjLTlkNDItNWM4OGEwMzg3NzJkIiwidCI6ImU5OTQwNzJiLTUyM2UtNGJmZS04NmUyLTQ0MmM1ZTEwYjI0NCIsImMiOjR9) | **No aplica** (panel en línea) | Datos de 2026, consultado el 2026-10-12 | Panel institucional de analítica académica, suministrado por los autores | sí |
+| `prometheus-overview-2026` | 2026 | cap. 05 | [URL](https://prometheus.io/docs/introduction/overview/) | [`pdf/prometheus-overview-2026.html`](./pdf/prometheus-overview-2026.html) | Página web (documentación oficial), consultada el 2026-11-15 | Acceso abierto: prometheus.io | sí |
+| `thanos-quick-tutorial-2026` | 2026 | cap. 05 | [URL](https://thanos.io/tip/thanos/quick-tutorial.md/) | [`pdf/thanos-quick-tutorial-2026.html`](./pdf/thanos-quick-tutorial-2026.html) | Página web (documentación oficial), consultada el 2026-11-15 | Acceso abierto: thanos.io | sí |
+| `loki-overview-2026` | 2026 | cap. 05 | [URL](https://grafana.com/docs/loki/latest/) | [`pdf/loki-overview-2026.html`](./pdf/loki-overview-2026.html) | Página web (documentación oficial), consultada el 2026-11-15 | Acceso abierto: grafana.com | sí |
+| `grafana-overview-2026` | 2026 | cap. 05 | [URL](https://grafana.com/docs/grafana/latest/) | [`pdf/grafana-overview-2026.html`](./pdf/grafana-overview-2026.html) | Página web (documentación oficial), consultada el 2026-11-15 | Acceso abierto: grafana.com | sí |
+| `dcgm-exporter-2026` | 2026 | cap. 05 | [URL](https://docs.nvidia.com/datacenter/dcgm/latest/installation/install-dcgm-exporter.html) | [`pdf/dcgm-exporter-2026.html`](./pdf/dcgm-exporter-2026.html) | Página web (documentación oficial), consultada el 2026-11-15 | Acceso abierto: docs.nvidia.com | sí |
 
 ## En `references.bib` pero sin citar (3)
 
@@ -91,6 +96,11 @@ Para comprobar que el archivo de otro autor es el mismo que se verificó: `sha25
 | :--- | :--- |
 | `ahmed-industryinfluence-2023.pdf` | `69986c7032541c4d5803a29cc401efc37fc45e83a42969058f8c996d8f42e74c` |
 | `Anteproyecto-PdG-I-2026-1.docx` | `c9a347b3d8b872fd9ad43e7652d815573e71985a62efcafff910507742f41cbe` |
+| `dcgm-exporter-2026.html` | `2f305b00eb7d3e779f79687e2ff77e8c22e9359ae0df9f80e8641794859dc474` |
+| `grafana-overview-2026.html` | `e078f695792e11596ce4799919ca1dcc85cb6b71ebb449ac89f71fafab49a388` |
+| `loki-overview-2026.html` | `f7df8fcb031e2927e9c3eb13f24f57bee916735d90980cdc5be0864846ef299b` |
+| `prometheus-overview-2026.html` | `e1f20e4a6633d9f49f0a250178759478b655889c93f4431665adb626c9be12f0` |
+| `thanos-quick-tutorial-2026.html` | `f939cc3e39f0fba07d6fa161bbbfc492a3573ca2072d7e9124421c10b9194c10` |
 | `bashir-peakovercommit-2021.pdf` | `33d54b5af9d04ed33b497ae7560060b25428552106de1494ed5a9ab565027e4d` |
 | `burns-borgomegak8s-2016.pdf` | `0679da43280d8c3903eb23b1516b92087c3168430ff2a65e70e0e426a86a5a4b` |
 | `carrion-k8sbibliometric-2022.pdf` | `9d3653ce3a06e6999e6d07aba0cfad13af49354a7fa6a21cd9646009ea7bb263` |

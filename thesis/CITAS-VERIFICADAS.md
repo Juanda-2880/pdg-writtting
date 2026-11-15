@@ -618,3 +618,43 @@ Los pasajes van en el idioma original y sin traducir. Las páginas son las del P
   - `chapters/05-marco-teorico.tex` · `\label{sec:gobernanza-recursos-compartidos}` ¶4 · «las colas de una misma cohorte (\emph{cohort}) toman prestada la cuota que las demás no usan, hasta un límite propio, y una carga en espera puede expropiar las cargas de otras colas de la cohorte que consumen más de su cuota propia»
     - Pasajes: "ClusterQueues that belong to the same cohort can borrow unused quota from each other." (§Cohort); "borrowingLimit is the maximum amount of quota that this ClusterQueue is allowed to borrow from the unused nominal quota of other ClusterQueues in the same cohort." (§Resources); "reclaimWithinCohort determines whether a pending Workload can preempt Workloads from other ClusterQueues in the cohort that are using more than their nominal quota." (§Preemption).
     - **Estado:** verificada · 2026-11-15
+
+## prometheus-overview-2026
+
+- **Versión consultada:** `fuentes/pdf/prometheus-overview-2026.html`, página *Overview* de la documentación oficial (<https://prometheus.io/docs/introduction/overview/>), descargada el 2026-11-15.
+- **Usos:**
+  - `chapters/05-marco-teorico.tex` · `\label{sec:observabilidad-telemetria}` ¶3 · «Prometheus recolecta métricas por consulta periódica a los puntos de exposición de cada componente, las almacena como series temporales identificadas por etiquetas y evalúa sobre ellas reglas de alerta»
+    - Pasaje: "Prometheus scrapes metrics from instrumented jobs, either directly or via an intermediary push gateway for short-lived jobs. It stores all scraped samples locally and runs rules over this data to either aggregate and record new time series from existing data or generate alerts."; "Prometheus collects and stores its metrics as time series data, i.e. metrics information is stored with the timestamp at which it was recorded, alongside optional key-value pairs called labels."
+    - **Estado:** verificada · 2026-11-15
+
+## thanos-quick-tutorial-2026
+
+- **Versión consultada:** `fuentes/pdf/thanos-quick-tutorial-2026.html`, página *Quick Tutorial* de la documentación oficial (<https://thanos.io/tip/thanos/quick-tutorial.md/>), descargada el 2026-11-15.
+- **Usos:**
+  - `chapters/05-marco-teorico.tex` · `\label{sec:observabilidad-telemetria}` ¶3 · «Thanos se apoya en Prometheus para conservar esas series a largo plazo y consultarlas desde un punto único, sin que la retención quede limitada al disco de una sola instancia»
+    - Pasaje: el título de la página es "Thanos - Highly available Prometheus setup with long term storage capabilities"; y "Now that we have setup Sidecar for one or more Prometheus instances, we want to use Thanos’s global Query Layer to evaluate PromQL queries against all instances at once. The Querier component is stateless and horizontally scalable...". La sección *External Storage* del tutorial describe el almacenamiento de las series fuera de Prometheus.
+    - **Estado:** verificada · 2026-11-15
+
+## loki-overview-2026
+
+- **Versión consultada:** `fuentes/pdf/loki-overview-2026.html`, página de introducción de la documentación oficial (<https://grafana.com/docs/loki/latest/>), descargada el 2026-11-15.
+- **Usos:**
+  - `chapters/05-marco-teorico.tex` · `\label{sec:observabilidad-telemetria}` ¶3 · «Loki agrega los registros que emiten los contenedores y los indexa por las mismas etiquetas, lo que permite pasar de una anomalía observada en una gráfica a los registros que la produjeron»
+    - Pasaje: "Unlike other logging systems, Loki is built around the idea of only indexing metadata about your logs’ labels (just like Prometheus labels). Log data itself is then compressed and stored in chunks in object stores such as Amazon Simple Storage Service (S3) or Google Cloud Storage (GCS), or even locally on the filesystem."
+    - **Estado:** verificada · 2026-11-15
+
+## grafana-overview-2026
+
+- **Versión consultada:** `fuentes/pdf/grafana-overview-2026.html`, página de documentación de Grafana OSS (<https://grafana.com/docs/grafana/latest/>), descargada el 2026-11-15.
+- **Usos:**
+  - `chapters/05-marco-teorico.tex` · `\label{sec:observabilidad-telemetria}` ¶3 · «Grafana consolida esas fuentes en paneles de visualización»
+    - Pasaje: "Grafana Open Source Software (OSS) enables you to query, visualize, alert on, and explore your metrics, logs, and traces wherever they’re stored."; "Grafana OSS provides you with tools to display that data on live dashboards with insightful graphs and visualizations."
+    - **Estado:** verificada · 2026-11-15
+
+## dcgm-exporter-2026
+
+- **Versión consultada:** `fuentes/pdf/dcgm-exporter-2026.html`, página *Install DCGM Exporter* de la documentación oficial de NVIDIA (<https://docs.nvidia.com/datacenter/dcgm/latest/installation/install-dcgm-exporter.html>), descargada el 2026-11-15.
+- **Usos:**
+  - `chapters/05-marco-teorico.tex` · `\label{sec:observabilidad-telemetria}` ¶3 · «El exportador DCGM de NVIDIA completa el arreglo al exponer a Prometheus las métricas de bajo nivel de las tarjetas aceleradoras, que los demás componentes del conjunto no exponen»
+    - Pasaje: "DCGM Exporter converts selected DCGM telemetry fields to the Prometheus exposition format. Install one exporter on each GPU node that Prometheus should monitor."
+    - **Estado:** verificada · 2026-11-15. La última cláusula («que los demás componentes del conjunto no exponen») es una lectura de los autores; la fuente solo describe la conversión de campos de telemetría de DCGM al formato de Prometheus.

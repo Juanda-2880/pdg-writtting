@@ -691,3 +691,10 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «Las afirmaciones sobre las variantes del \emph{API gateway} para modelos de lenguaje y sobre la ausencia de variantes con cuotas unificadas no tienen cita, y no se explica cómo se hizo esa búsqueda. Citen las fuentes, por ejemplo la documentación de LiteLLM del capítulo 5, y remitan a la estrategia de búsqueda de la sección 5.1.» → aplicado · se añadió `\citep{litellm-proxyusers-2026}` a la frase sobre los límites por \emph{tokens}, y «La revisión de esta literatura no localizó» pasó a «La revisión documental descrita en la \cref{sec:estrategia-revision} no localizó». Se actualizó `CITAS-VERIFICADAS.md`.
 - **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 2 `\todo` en el capítulo 05.
+
+### 2026-11-15 · cap. 05 · Documentación de la pila de observabilidad
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat, con verificación previa de las fuentes.
+- **F1** (tutor): «Prometheus, Thanos, Loki, Grafana y el exportador DCGM se describen sin ninguna referencia. Citen su documentación oficial, como hacen en el capítulo 5.» → aplicado · se añadieron `prometheus-overview-2026`, `thanos-quick-tutorial-2026`, `loki-overview-2026`, `grafana-overview-2026` y `dcgm-exporter-2026` a `references.bib`, con su cita en la frase correspondiente. Se registraron en `fuentes/INDEX.md` y `CITAS-VERIFICADAS.md`, con los pasajes literales verificados.
+- **Ajuste de fidelidad:** la documentación de DCGM no afirma que las métricas «residan en el \emph{firmware} del dispositivo»; esa cláusula se retiró.
+- **Verificación:** `make build` OK (76 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; queda 1 `\todo` en el capítulo 05.
