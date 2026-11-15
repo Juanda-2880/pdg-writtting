@@ -37,11 +37,51 @@ Este capítulo informa el trabajo realizado hasta el 7 de noviembre de 2026 en l
 
 \todo{Este capítulo servirá de insumo para el PDG2. Si lo redactan con detalle y precisión, podrá reutilizarse casi directamente en el informe final. Escríbanlo pensando en ese propósito.}
 
-El trabajo del prototipo se desarrolló en dos etapas, entre el 17 de octubre y el 7 de noviembre de 2026, dentro de los \emph{sprints} 2 y 3 del cronograma de la \cref{fig:gantt}. Para validar el diseño de extremo a extremo, el prototipo construyó versiones mínimas de componentes que el cronograma completa en fases posteriores, sin alterar el orden de las fases ni su duración. El \emph{hardware} disponible condicionó el montaje. Como la GPU del servidor no está asignada a las máquinas virtuales, los motores de inferencia se ejecutan en CPU, lo que limita las mediciones de desempeño a una referencia preliminar, y la validación sobre las GPU de la sala queda para la etapa de despliegue.
+El trabajo del prototipo se desarrolló en dos etapas, entre el 17 de octubre y el 7 de noviembre de 2026, dentro de los \emph{sprints} 2 y 3 del cronograma de la \cref{fig:gantt}. Para validar el diseño de extremo a extremo, el prototipo construyó versiones mínimas de componentes que el cronograma completa en fases posteriores, sin alterar el orden de las fases ni su duración. El \emph{hardware} disponible condicionó el montaje. Como la GPU del servidor no está asignada a las máquinas virtuales, los motores de inferencia se ejecutan en CPU, lo que limita las mediciones de desempeño a una referencia preliminar, y la validación sobre las GPU de la sala queda para la etapa de despliegue. La \cref{fig:arquitectura-poc} presenta la arquitectura completa del prototipo a la fecha de corte, y las secciones siguientes amplían cada parte a medida que la describen.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+      font=\small,
+      ext/.style={draw, rounded corners=2pt, align=center, text width=22mm, minimum height=12mm, fill=black!8, font=\footnotesize},
+      mod/.style={draw, rounded corners=2pt, align=center, text width=25mm, minimum height=28mm, fill=white, font=\footnotesize},
+      ancho/.style={draw, rounded corners=2pt, align=center, text width=78mm, minimum height=9mm, fill=white, font=\footnotesize},
+      franja/.style={draw, fill=black!4},
+      flecha/.style={-{Stealth[length=2mm]}, semithick},
+      etq/.style={font=\scriptsize}]
+    \draw (2.4,1.45) rectangle (15.3,-7.0);
+    \node[anchor=north west, font=\footnotesize\bfseries] at (2.5,1.4) {Servidor del POC con ocho máquinas virtuales};
+    % Control
+    \draw[franja] (2.65,0.85) rectangle (15.05,-0.7);
+    \node[anchor=north west, font=\scriptsize] at (2.7,0.8) {Control (3)};
+    \node[ancho] (ctl) at (9.5,0.0) {Kubernetes (RKE2), etcd y dirección virtual del plano de control\\{\scriptsize\cref{fig:recorte-aprovisionamiento}}};
+    % Servicios
+    \draw[franja] (2.65,-1.0) rectangle (15.05,-4.75);
+    \node[anchor=north west, font=\scriptsize] at (2.7,-1.05) {Servicios (3)};
+    \node[mod] (ent) at (4.3,-3.0) {\textbf{Entrada y entrega}\\{\scriptsize IP fija, puerta de entrada, GitOps y secretos cifrados}\\{\scriptsize\cref{fig:recorte-entrada}}};
+    \node[mod] (pla) at (7.4,-3.0) {\textbf{Plataforma propia}\\{\scriptsize interfaz web, API, operador e importador de pesos}\\{\scriptsize\cref{fig:flujo-despliegue}}};
+    \node[mod] (gob) at (10.5,-3.0) {\textbf{Gobierno de cargas}\\{\scriptsize gestor de colas, políticas y KubeRay}\\{\scriptsize\cref{fig:flujo-despliegue}}};
+    \node[mod] (dat) at (13.6,-3.0) {\textbf{Datos y observabilidad}\\{\scriptsize almacenamiento, base de datos, imágenes, métricas y registros}\\{\scriptsize\cref{fig:recorte-datos}}};
+    % Cómputo
+    \draw[franja] (2.65,-5.05) rectangle (15.05,-6.75);
+    \node[anchor=south west, font=\scriptsize] at (2.7,-6.7) {Cómputo (2), sin GPU};
+    \node[ancho] (mot) at (10.1,-5.95) {Motores de inferencia \emph{llama.cpp} y vLLM, como \emph{Deployment} o \emph{RayService}\\{\scriptsize\cref{fig:flujo-despliegue}}};
+    % Externos
+    \node[ext] (mod) at (0.75,0.0) {Repositorio externo de modelos\\{\scriptsize pesos}};
+    \node[ext] (usu) at (0.75,-2.3) {Usuarios\\{\scriptsize por red privada virtual}};
+    \node[ext] (rep) at (0.75,-3.9) {Repositorio de configuración\\{\scriptsize GitOps}};
+    \draw[flecha] (mod.east) -- ++(0.55,0) |- (7.4,-0.85) -- (pla.north);
+    \draw[flecha] (usu.east) -- (ent.west |- usu.east);
+    \draw[flecha] (rep.east) -- (ent.west |- rep.east);
+    \draw[flecha] (ent.south) |- (mot.west);
+  \end{tikzpicture}
+  \caption[Arquitectura del POC al 7 de noviembre de 2026]{Arquitectura del POC al 7 de noviembre de 2026, con las tres franjas de máquinas virtuales del servidor. La flecha que baja de la entrada a los motores representa las peticiones a los modelos, y cada bloque indica la figura que lo amplía.}
+  \label{fig:arquitectura-poc}
+\end{figure}
 
 \section{Primera etapa: cimientos del clúster}\label{sec:avance-etapa1}
 
-La primera etapa, del 17 al 26 de octubre de 2026, levantó la base sobre la que se construyen los demás componentes. Se montó el servidor y las ocho máquinas virtuales, y sobre ellas se instaló un clúster de Kubernetes con tres nodos de control y una dirección virtual que se mantiene aunque caiga uno de ellos. Sobre ese clúster se desplegaron los componentes base de la plataforma, que la \cref{tab:componentes-poc} presenta con su función y la herramienta elegida. El Anexo~\labelcref{anx:tecnologias} expone por qué se eligió cada herramienta frente a sus alternativas. La \cref{fig:poc-montado} muestra el prototipo al cierre de esta etapa.
+La primera etapa, del 17 al 26 de octubre de 2026, levantó la base sobre la que se construyen los demás componentes. Se montó el servidor y las ocho máquinas virtuales, y sobre ellas se instaló un clúster de Kubernetes con tres nodos de control y una dirección virtual que se mantiene aunque caiga uno de ellos. Sobre ese clúster se desplegaron los componentes base de la plataforma, que la \cref{tab:componentes-poc} presenta con su función y la herramienta elegida. El Anexo~\labelcref{anx:tecnologias} expone por qué se eligió cada herramienta frente a sus alternativas.
 
 \begin{table}[htbp]
   \centering
@@ -72,11 +112,101 @@ La primera etapa, del 17 al 26 de octubre de 2026, levantó la base sobre la que
   \end{tabularx}
 \end{table}
 
-\todo{La arquitectura del POC es muy detallada y la figura es demasiado grande, con mucho texto, lo que dificulta su lectura. Presenten primero la arquitectura completa y luego un recorte o ampliación por cada etapa o módulo, de modo que se explique un componente a la vez. Por ejemplo, en el aprovisionamiento muestren con un elemento gráfico qué partes de Kubernetes configuraron y cuáles no. Revisen además lo siguiente. El título de la figura indica el cierre de la primera etapa (26 de octubre), pero la figura muestra componentes de la segunda, como Kueue, KubeRay, vLLM y el importador de pesos. La figura contiene direcciones IP, versiones, nombres internos y términos en inglés como \emph{requests}, \emph{limits} o \emph{sidecar}, y nombra herramientas que el texto nunca presenta, como MetalLB, Envoy, Garage, Longhorn, CloudNativePG, zot, Alloy, NetBird o Sealed Secrets. Su título interno, «POC montado», usa además un registro coloquial. En los recortes, muestren solo los componentes que el texto explica y, si lo consideran necesario, lleven el detalle técnico a un anexo.}
+El aprovisionamiento configuró solo las partes de Kubernetes que el prototipo necesita, como muestra la \cref{fig:recorte-aprovisionamiento}. Los tres nodos de control ejecutan Kubernetes con su base de datos etcd, que conserva el estado del clúster mientras dos de ellos sigan activos, y comparten la dirección virtual del plano de control. Los nodos de servicios llevan una etiqueta que los identifica, y los de cómputo, una marca (\emph{taint}) que los reserva para los motores de inferencia. La red del clúster aplica en el espacio de cada usuario una política que bloquea por defecto el tráfico no autorizado. Quedan sin configurar el operador de GPU y su exportador de métricas, que requieren las GPU de la sala, el certificado HTTPS de la entrada y los respaldos fuera del clúster.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+      font=\small,
+      nodo/.style={draw, rounded corners=2pt, align=center, text width=40mm, minimum height=17mm, font=\footnotesize},
+      pend/.style={draw, dashed, rounded corners=2pt, align=center, text width=40mm, minimum height=10mm, font=\footnotesize},
+      flecha/.style={-{Stealth[length=2mm]}, semithick}]
+    \node[nodo, minimum height=9mm] (vip) at (0,1.75) {Dirección virtual del plano de control};
+    \node[nodo] (ctl) at (0,0) {\textbf{Control (3 máquinas)}\\{\scriptsize Kubernetes (RKE2) con etcd, que conserva el estado mientras dos de los tres nodos sigan activos}};
+    \node[nodo] (svc) at (5.0,0) {\textbf{Servicios (3 máquinas)}\\{\scriptsize con etiqueta y sin marca, alojan los componentes de la plataforma}};
+    \node[nodo] (cmp) at (10.0,0) {\textbf{Cómputo (2 máquinas)}\\{\scriptsize con una marca que los reserva para los motores de inferencia}};
+    \draw[flecha] (vip) -- (ctl);
+    \node[draw, rounded corners=2pt, align=center, minimum width=144mm, minimum height=9mm, font=\footnotesize] (red) at (5.0,-1.75) {Red del clúster (Canal), con una política por usuario que bloquea por defecto el tráfico no autorizado};
+    \node[font=\footnotesize\bfseries, anchor=west] at (-2.2,-2.95) {Sin configurar en el POC};
+    \node[pend] (bk) at (0,-3.85) {Respaldos fuera del clúster};
+    \node[pend] (tls) at (5.0,-3.85) {Certificado HTTPS de la entrada};
+    \node[pend] (gpu) at (10.0,-3.85) {Operador de GPU y exportador de sus métricas};
+  \end{tikzpicture}
+  \caption[Recorte del aprovisionamiento del clúster]{Recorte del aprovisionamiento del clúster. Las cajas de borde continuo son las partes de Kubernetes configuradas en el POC y las de borde discontinuo, las que quedan sin configurar.}
+  \label{fig:recorte-aprovisionamiento}
+\end{figure}
+
+La \cref{fig:recorte-entrada} muestra cómo se llega a la plataforma y cómo cambia su configuración. Los usuarios del prototipo acceden al servidor por una red privada virtual (NetBird), y dentro del clúster MetalLB anuncia una dirección IP fija desde los nodos de servicios. En esa dirección, Envoy Gateway recibe cada petición y la dirige a la interfaz web, a la API o a la ruta del modelo solicitado. Los cambios de configuración entran por el repositorio de Bitbucket, del que Argo CD toma lo que aplica en el clúster. Las credenciales viajan en ese repositorio cifradas con Sealed Secrets, y solo el controlador instalado en el clúster puede descifrarlas.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+      font=\small,
+      paso/.style={draw, rounded corners=2pt, align=center, text width=26mm, minimum height=13mm, font=\footnotesize},
+      dest/.style={draw, rounded corners=2pt, align=center, text width=24mm, minimum height=7mm, font=\footnotesize, fill=black!5},
+      flecha/.style={-{Stealth[length=2mm]}, semithick}]
+    \node[font=\footnotesize\bfseries, anchor=west] at (-1.4,1.5) {Entrada};
+    \node[paso, fill=black!8] (usu) at (0,0) {Usuario};
+    \node[paso] (vpn) at (3.2,0) {Red privada virtual\\{\scriptsize NetBird}};
+    \node[paso] (ip) at (6.4,0) {Dirección IP fija\\{\scriptsize MetalLB}};
+    \node[paso] (gw) at (9.6,0) {Puerta de entrada\\{\scriptsize Envoy Gateway}};
+    \node[dest] (web) at (12.9,0.95) {Interfaz web};
+    \node[dest] (api) at (12.9,0) {API};
+    \node[dest] (rut) at (12.9,-0.95) {Ruta de cada modelo};
+    \draw[flecha] (usu) -- (vpn);
+    \draw[flecha] (vpn) -- (ip);
+    \draw[flecha] (ip) -- (gw);
+    \draw[flecha] (gw) -- (api);
+    \draw[flecha] (gw.east) ++(0.45,0) |- (web.west);
+    \draw[flecha] (gw.east) ++(0.45,0) |- (rut.west);
+    \node[font=\footnotesize\bfseries, anchor=west] at (-1.4,-2.0) {Entrega (GitOps)};
+    \node[paso, text width=34mm, fill=black!8] (repo) at (0.5,-3.3) {Repositorio de Bitbucket\\{\scriptsize configuración y credenciales cifradas con Sealed Secrets}};
+    \node[paso] (argo) at (5.0,-3.3) {Argo CD\\{\scriptsize toma lo que está en el repositorio}};
+    \node[paso, text width=40mm] (clu) at (9.9,-3.3) {Clúster\\{\scriptsize aplica la configuración y su controlador descifra las credenciales}};
+    \draw[flecha] (repo) -- (argo);
+    \draw[flecha] (argo) -- (clu);
+  \end{tikzpicture}
+  \caption[Recorte de la entrada y la entrega de la configuración]{Recorte de la entrada a la plataforma y de la entrega de su configuración desde el repositorio.}
+  \label{fig:recorte-entrada}
+\end{figure}
+
+La \cref{fig:recorte-datos} reúne los datos y la observabilidad. Prometheus recolecta las métricas de los nodos, del clúster y de los motores, y Grafana las presenta en paneles. Thanos está configurado para llevarlas a Garage, el almacén de objetos, y conservarlas a largo plazo, aunque en el prototipo aún no se ha confirmado que ese envío ocurra. En paralelo, Alloy recoge en cada nodo los registros de los contenedores y los envía a Loki, que los guarda en Garage y también se consulta desde Grafana. Garage conserva además los pesos de los modelos, CloudNativePG mantiene la base de datos de la API y de Grafana, y zot guarda las imágenes de contenedor. Longhorn replica entre los nodos de servicios los volúmenes de los componentes que guardan estado.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+      font=\small,
+      paso/.style={draw, rounded corners=2pt, align=center, text width=22mm, minimum height=11mm, font=\footnotesize},
+      flecha/.style={-{Stealth[length=2mm]}, semithick},
+      etq/.style={font=\scriptsize}]
+    \node[paso, fill=black!8] (src) at (0,0) {Nodos, clúster y motores};
+    \node[paso] (pro) at (3.1,0) {Prometheus\\{\scriptsize métricas}};
+    \node[paso] (tha) at (6.4,0) {Thanos\\{\scriptsize retención larga}};
+    \node[paso] (gra) at (3.1,-1.6) {Grafana\\{\scriptsize paneles}};
+    \node[paso, text width=30mm, minimum height=9mm] (cnp) at (6.4,-1.3) {CloudNativePG\\{\scriptsize base de datos de la API y de Grafana}};
+    \node[paso, fill=black!8] (con) at (0,-3.2) {Contenedores de cada nodo};
+    \node[paso] (all) at (3.1,-3.2) {Alloy\\{\scriptsize recolector}};
+    \node[paso] (lok) at (6.4,-3.2) {Loki\\{\scriptsize registros}};
+    \node[draw, rounded corners=2pt, align=center, text width=28mm, minimum height=14mm, font=\footnotesize, fill=black!5] (gar) at (10.3,-1.6) {\textbf{Garage}\\almacén de objetos\\{\scriptsize pesos de los modelos, métricas históricas y registros}};
+    \node[paso] (zot) at (13.6,-1.6) {zot\\{\scriptsize imágenes de contenedor}};
+    \draw[flecha] (src) -- (pro);
+    \draw[flecha] (pro) -- (tha);
+    \draw[flecha] (pro) -- (gra);
+    \draw[flecha, dashed] (tha.east) -| node[etq, above, pos=0.25] {sin confirmar} (gar.north);
+    \draw[flecha] (con) -- (all);
+    \draw[flecha] (all) -- (lok);
+    \draw[flecha] ([xshift=-8mm]lok.north) -- ++(0,0.3) -| ([xshift=4mm]gra.south);
+    \draw[flecha] (lok.east) -| (gar.south);
+    \draw[flecha] (cnp.west) -- (gra.east |- cnp.west);
+    \node[draw, rounded corners=2pt, align=center, minimum width=150mm, minimum height=8mm, font=\footnotesize] at (6.8,-4.6) {Longhorn replica entre los nodos de servicios los volúmenes de los componentes que guardan estado};
+  \end{tikzpicture}
+  \caption[Recorte de los datos y la observabilidad]{Recorte de los datos y la observabilidad del POC. La flecha discontinua indica un envío configurado que aún no se ha confirmado en el prototipo.}
+  \label{fig:recorte-datos}
+\end{figure}
 
 \todo{Cuando mencionen una figura, como la Figura 9.2, procuren que aparezca antes que el texto que la cita, o muy cerca. Hoy se menciona en la página 33 y aparece en la 38, al final del capítulo, lejos de su explicación, y el lector no puede comparar el texto con la imagen. Revisen esto en todas las figuras.}
 
-Durante esta etapa aparecieron tres retos. El primero fue que el sistema operativo de las máquinas virtuales no detectaba el disco ni la red, porque la definición de las máquinas no activaba la interfaz avanzada de configuración y energía (ACPI, \emph{Advanced Configuration and Power Interface}), con la que el sistema descubre sus dispositivos. Se activó esa interfaz en la definición de las máquinas. El segundo fue que todos los nodos tenían marcas (\emph{taints}), de modo que los trabajos de instalación de los componentes base no encontraban un nodo donde ejecutarse. Se resolvió dejando los nodos de servicios sin esa marca, identificados solo con una etiqueta. El tercero fue la dependencia de un único nodo de control, cuya caída deja al clúster sin acceso a su interfaz de administración. Los equipos del laboratorio se encienden y se apagan sin aviso, y algunos utilizan discos mecánicos, por lo que ninguno cumple por sí solo la condición de permanecer encendido sin reinicios no anunciados. Por ese motivo el plano de control pasó de uno a tres nodos, de modo que la caída de uno no detenga el clúster, decisión que también se aplica al despliegue en la sala.
+Durante esta etapa aparecieron tres retos. El primero fue que el sistema operativo de las máquinas virtuales no detectaba el disco ni la red, porque la definición de las máquinas no activaba la interfaz avanzada de configuración y energía (ACPI, \emph{Advanced Configuration and Power Interface}), con la que el sistema descubre sus dispositivos. Se activó esa interfaz en la definición de las máquinas. El segundo fue que todos los nodos tenían marcas, de modo que los trabajos de instalación de los componentes base no encontraban un nodo donde ejecutarse. Se resolvió dejando los nodos de servicios sin esa marca, identificados solo con una etiqueta. El tercero fue la dependencia de un único nodo de control, cuya caída deja al clúster sin acceso a su interfaz de administración. Los equipos del laboratorio se encienden y se apagan sin aviso, y algunos utilizan discos mecánicos, por lo que ninguno cumple por sí solo la condición de permanecer encendido sin reinicios no anunciados. Por ese motivo el plano de control pasó de uno a tres nodos, de modo que la caída de uno no detenga el clúster, decisión que también se aplica al despliegue en la sala.
 
 \section{Segunda etapa: servicio de modelos y gobierno}\label{sec:avance-etapa2}
 
@@ -154,12 +284,3 @@ Las reuniones de seguimiento han sido un insumo constante para el alcance y la a
 \section{Estado al cierre de la etapa}\label{sec:avance-estado}
 
 Al cierre de la etapa, el prototipo cubre el ciclo de despliegue de un modelo, desde el alta del modelo hasta su consumo por una API compatible con OpenAI, con cuotas, registros y métricas por usuario. Se encuentran en implementación la integración con SAAMFI, la validación de los componentes sobre las GPU de la sala, las reservas por ventana de tiempo y la prioridad por rol, así como los respaldos fuera del clúster. El despliegue en la sala 104M, previsto para diciembre de 2026, incorporará las GPU del laboratorio y permitirá verificar sobre ellas las mediciones de desempeño del \cref{obj:evaluacion}.
-
-\begin{landscape}
-\begin{figure}[p]
-  \centering
-  \includegraphics[width=\linewidth]{imagenes/poc-montado.png}
-  \caption[Arquitectura del POC al cierre de la primera etapa]{Arquitectura del POC al cierre de la primera etapa, el 26 de octubre de 2026. Muestra los tres nodos de control, los tres nodos de servicios con los componentes de la plataforma y los dos nodos de cómputo sin GPU con los motores en ejecución. Las cajas de borde continuo indican componentes encendidos y las de borde discontinuo, componentes apagados o sin uso. Elaboración propia.}
-  \label{fig:poc-montado}
-\end{figure}
-\end{landscape}
