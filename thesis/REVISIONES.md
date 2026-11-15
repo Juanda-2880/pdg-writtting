@@ -816,3 +816,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Pendiente:** la fotografía del servidor, que los autores no tienen aún. Queda en `STATUS.md` («Lo que sigue»), sin `\todo` visible en el documento, por decisión de Melo088.
 - **Hecho corregido en `project-context/documentation.md`:** el servidor del POC sí tiene GPU (GTX 1080 Ti, sin asignar); se añaden procesador, disco y máquinas virtuales. Fuentes: inspección de solo lectura del 2026-10-22 y `infraestructura-explicada.md` §A.2 del repositorio de implementación, sin cambios en `master` al 2026-11-14.
 - **Verificación:** `make build` OK (74 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 9 `\todo` en el capítulo 10.
+
+### 2026-11-15 · cap. 10 (cap. 9 en el PDF) · Sigla ACPI
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); propuesta aprobada por Melo088 en el chat.
+- **F1** (tutor): «"Interfaz de configuración avanzada y energía" es la traducción de ACPI. Incluyan la sigla para que el lector pueda identificar el término.» → aplicado · ¶ de retos de la primera etapa: «la interfaz de configuración avanzada y energía con la que» → «la interfaz avanzada de configuración y energía (ACPI, \emph{Advanced Configuration and Power Interface}), con la que». ACPI entra en la Lista de acrónimos de `main.tex` (26 siglas).
+- **Verificación:** `make build` OK (74 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 8 `\todo` en el capítulo 10.
