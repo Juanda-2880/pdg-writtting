@@ -710,3 +710,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «En este capítulo se definen de nuevo siglas que ya se definieron antes, como GPU, MLOps e IAsLab. Definan cada sigla una sola vez, en su primer uso.» → aplicado · se retiraron las expansiones de GPU, MLOps, IAsLab y API en el cap. 06. Quedan solo las siglas, ya definidas en los capítulos 01 y 05.
 - **Verificación:** `make build` OK (76 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 5 `\todo` en el capítulo 06.
+
+### 2026-11-15 · cap. 06 · «Entre las que destaca LiteLLM»
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
+- **F1** (tutor): «"Entre las que destaca LiteLLM" no indica un criterio que justifique "destaca". Consideren "como LiteLLM".» → aplicado · «entre las que destaca LiteLLM» → «como LiteLLM».
+- **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 4 `\todo` en el capítulo 06.

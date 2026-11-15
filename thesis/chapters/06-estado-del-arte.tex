@@ -53,9 +53,7 @@ En el ámbito del \emph{software} libre desplegable sobre Kubernetes, \citet{kre
 
 \section{Pasarelas de inferencia y gobernanza de interfaces de programación}\label{sec:pasarelas-inferencia}
 
-\todo{«Entre las que destaca LiteLLM» no indica un criterio que justifique «destaca». Consideren «como LiteLLM».}
-
-Con la proliferación de los LLM, surgieron herramientas intermediarias enfocadas en estandarizar el consumo de servicios de inferencia mediante pasarelas de API (\emph{API Gateways}), entre las que destaca LiteLLM. Este enfoque se sustenta en patrones reconocidos de microservicios \citep{montesi-apigatewaypatterns-2016}, en el que la pasarela actúa como un componente intermediario (\emph{proxy}) entre los clientes y los servicios que consumen.
+Con la proliferación de los LLM, surgieron herramientas intermediarias enfocadas en estandarizar el consumo de servicios de inferencia mediante pasarelas de API (\emph{API Gateways}), como LiteLLM. Este enfoque se sustenta en patrones reconocidos de microservicios \citep{montesi-apigatewaypatterns-2016}, en el que la pasarela actúa como un componente intermediario (\emph{proxy}) entre los clientes y los servicios que consumen.
 
 La documentación de LiteLLM lo describe como una biblioteca de código abierto que ofrece una interfaz unificada para invocar más de cien modelos de lenguaje con el formato de OpenAI, con lógica de reintentos y de respaldo entre varios despliegues, y como una pasarela autoalojada con llaves virtuales, seguimiento de costos y presupuestos por llave, equipo o usuario \citep{litellm-overview-2026}. Su proxy permite además fijar límites de tokens por minuto, de peticiones por minuto y de peticiones en paralelo por llave o equipo \citep{litellm-proxyusers-2026}. Esa gobernanza se expresa en gasto, tokens y peticiones, de modo que no aborda los cupos de GPU ni la prioridad de una carga sobre otra.
 
