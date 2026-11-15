@@ -716,3 +716,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «"Entre las que destaca LiteLLM" no indica un criterio que justifique "destaca". Consideren "como LiteLLM".» → aplicado · «entre las que destaca LiteLLM» → «como LiteLLM».
 - **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 4 `\todo` en el capítulo 06.
+
+### 2026-11-15 · cap. 06 · «Estas son lecturas de los autores»
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
+- **F1** (tutor): «La última oración del párrafo ("Estas son lecturas de los autores…") es poco clara. Reformúlenla, por ejemplo, como "Esta valoración es de los autores y se basa en la documentación disponible".» → aplicado · «Estas son lecturas de los autores a partir de lo que la documentación describe y de lo que no describe» → «Esta valoración es de los autores y se basa en la documentación disponible».
+- **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 3 `\todo` en el capítulo 06.
