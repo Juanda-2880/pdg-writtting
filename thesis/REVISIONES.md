@@ -752,3 +752,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088, con la condición de no repetir «contribuye a» tres veces.
 - **F1** (tutor): «Expresiones como "maximiza el retorno de la inversión" y "reducen la carga cognitiva" (párrafo siguiente) son afirmaciones que el proyecto no medirá. Usen formulaciones como "contribuye a" y retiren o sustenten la referencia a la carga cognitiva.» → aplicado · «maximiza el retorno de la inversión» → «contribuye a aprovechar mejor la inversión»; «reduce la necesidad» → «ayuda a reducir la necesidad»; «reducen la carga cognitiva y administrativa» → «reducen la carga administrativa». Se varían los verbos para no repetir «contribuye a».
 - **Verificación:** `make build` OK (74 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 5 `\todo` en el capítulo 09.
+
+### 2026-11-15 · cap. 09 · Modelos ya entrenados, no solo LLM
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
+- **F1** (tutor): «La frase sobre "arquitecturas de gran escala, en particular los LLM" que pasan del entrenamiento al servicio de inferencia sugiere que el laboratorio entrena LLM, lo cual no está sustentado, y restringe el aporte a los modelos de lenguaje. Reformúlenla en términos de modelos de IA ya entrenados, propios o descargados.» → aplicado · «arquitecturas de gran escala, en particular los LLM» → «modelos de inteligencia artificial ya entrenados, propios o descargados».
+- **Verificación:** `make build` OK (74 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 4 `\todo` en el capítulo 09.
