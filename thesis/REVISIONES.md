@@ -722,3 +722,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «La última oración del párrafo ("Estas son lecturas de los autores…") es poco clara. Reformúlenla, por ejemplo, como "Esta valoración es de los autores y se basa en la documentación disponible".» → aplicado · «Estas son lecturas de los autores a partir de lo que la documentación describe y de lo que no describe» → «Esta valoración es de los autores y se basa en la documentación disponible».
 - **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 3 `\todo` en el capítulo 06.
+
+### 2026-11-15 · cap. 06 · Prueba de vLLM en el laboratorio
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
+- **F1** (tutor): «La afirmación de que vLLM "no produjo buenos resultados" es informal y no describe la prueba. Indiquen con qué modelo, con qué métrica y qué valores se obtuvieron, o citen la prueba como comunicación del laboratorio con su fecha.» → aplicado · la frase remite al banco de pruebas del laboratorio, describe la métrica («\emph{tokens} de entrada y salida por segundo y el tiempo de respuesta extremo a extremo») y cita la comunicación del laboratorio del 4 de septiembre de 2026. No se inventan el modelo ni los valores de vLLM, que no constan en `project-context/`.
+- **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 2 `\todo` en el capítulo 06.
