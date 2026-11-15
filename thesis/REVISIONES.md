@@ -728,3 +728,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «La afirmación de que vLLM "no produjo buenos resultados" es informal y no describe la prueba. Indiquen con qué modelo, con qué métrica y qué valores se obtuvieron, o citen la prueba como comunicación del laboratorio con su fecha.» → aplicado · la frase remite al banco de pruebas del laboratorio, describe la métrica («\emph{tokens} de entrada y salida por segundo y el tiempo de respuesta extremo a extremo») y cita la comunicación del laboratorio del 4 de septiembre de 2026. No se inventan el modelo ni los valores de vLLM, que no constan en `project-context/`.
 - **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 2 `\todo` en el capítulo 06.
+
+### 2026-11-15 · cap. 06 · Rendimiento de llama.cpp
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
+- **F1** (tutor): «La baja latencia y el consumo reducido de \emph{llama.cpp} se afirman sin evidencia en esta sección. Respáldenlos con una cita o remitan a las mediciones de la Tabla 9.1.» → aplicado · se retiran «baja latencia» y «consumo reducido», que la tabla no mide, y se remite a las mediciones preliminares: «\emph{llama.cpp} superó a vLLM en CPU para el modelo probado (\cref{tab:mediciones-poc})».
+- **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; queda 1 `\todo` en el capítulo 06.
