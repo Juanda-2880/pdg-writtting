@@ -764,3 +764,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «Revisen que todo elemento que se nombra haya sido presentado antes o tenga una referencia explícita. Por ejemplo, este párrafo menciona "la imagen oficial de \emph{llama.cpp}" como si el lector ya la conociera, y el capítulo 9 usa conceptos como el "fondo común" de cuota que no aparecen en el marco teórico. Hagan esta revisión en todos los capítulos.» → aplicado · «la imagen oficial de \emph{llama.cpp}» → «la imagen de contenedor que publica el proyecto \emph{llama.cpp}». El «fondo común» ya quedó definido en el cap. 05 §4.5 con su figura (commit `5704686`).
 - **Verificación:** `make build` OK (74 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 3 `\todo` en el capítulo 09.
+
+### 2026-11-15 · caps. 05, 06 y 09 · Siglas CPU y RBAC en su primer uso
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
+- **F1** (tutor): «La sigla CPU (párrafo anterior) se usa sin definir, pues solo se define en el Anexo D, y RBAC se define aquí aunque el control de acceso basado en roles ya aparece en la sección 4.6. Definan cada sigla en su primer uso dentro del texto.» → aplicado · CPU se define en su primer uso real (cap. 06 §6.5): «unidad central de procesamiento (CPU)»; RBAC se introduce en el cap. 05 §4.6: «control de acceso basado en roles (RBAC)»; el cap. 09 pasa a «integración con sistemas RBAC», sin volver a expandir la sigla.
+- **Verificación:** `make build` OK (74 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 2 `\todo` en el capítulo 09.
