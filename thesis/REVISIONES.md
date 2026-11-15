@@ -788,3 +788,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «Consideren acompañar este proceso con un diagrama sencillo de las etapas de investigación y del ciclo de \emph{sprints}, para que el lector visualice la estrategia metodológica.» → aplicado · figura nueva `fig:estrategia-metodologica` (TikZ) después de ¶4 de §6.1. Arriba muestra el ciclo de \emph{sprints} (\emph{backlog} priorizado en Jira, \emph{sprint} de tres semanas con reunión semanal con el tutor, incremento verificable en Bitbucket y ajuste del alcance de la iteración siguiente) y abajo las cuatro etapas de investigación, enlazadas porque los incrementos aportan las fuentes de datos. ¶4 cierra con una oración que remite a la figura.
 - **Verificación:** `make build` OK (74 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 4 `\todo` en el capítulo 07.
+
+### 2026-11-15 · cap. 07 · Expresión coloquial en §6.1
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); propuesta recomendada aprobada por Melo088 en el chat.
+- **F1** (tutor): «"Para no complejizar su desarrollo" es una expresión coloquial. Consideren "para no añadir complejidad a la plataforma".» → aplicado · ¶5 de §6.1: «para no complejizar su desarrollo» → «para no añadir complejidad a su desarrollo». Se conserva «su desarrollo» porque la oración ya termina el inciso anterior con «externos a la plataforma» y la forma literal repetiría la palabra.
+- **Verificación:** `make build` OK (74 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 3 `\todo` en el capítulo 07.
