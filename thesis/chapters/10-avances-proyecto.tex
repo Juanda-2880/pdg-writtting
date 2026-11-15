@@ -41,11 +41,38 @@ El trabajo del prototipo se desarrolló en dos etapas, entre el 17 de octubre y 
 
 \section{Primera etapa: cimientos del clúster}\label{sec:avance-etapa1}
 
-\todo{Este párrafo enumera nueve componentes (entrada fija, entrega continua, cifrado de secretos, almacenamiento persistente, base de datos, registro de imágenes, observabilidad, políticas de admisión y gestor de colas) sin nombrar la herramienta ni explicar la función de cada uno. Una tabla con el componente, su función y la herramienta elegida facilitaría la lectura y prepararía los recortes de la arquitectura.}
-
 \todo{En el documento final deben describir, aunque sea brevemente, el motivo por el cual eligieron cada tecnología de la plataforma (por ejemplo, RKE2, Kueue, KubeRay, Argo CD, MetalLB, Envoy, Garage, Longhorn o CloudNativePG) y no otra alternativa. Son elementos de infraestructura que deben saber defender.}
 
-La primera etapa, del 17 al 26 de octubre de 2026, levantó la base sobre la que se construyen los demás componentes. Se montó el servidor y las ocho máquinas virtuales, y sobre ellas se instaló un clúster de Kubernetes con tres nodos de control y una dirección virtual que se mantiene aunque caiga uno de ellos. Sobre ese clúster se desplegaron la entrada fija de la plataforma, la entrega continua desde el repositorio de configuración (GitOps), el cifrado de secretos, el almacenamiento persistente, la base de datos, el registro de imágenes y la observabilidad de métricas y registros. También se activaron las políticas de admisión y el gestor de colas, que retiene las cargas que no tienen capacidad disponible. La \cref{fig:poc-montado} muestra el prototipo al cierre de esta etapa.
+La primera etapa, del 17 al 26 de octubre de 2026, levantó la base sobre la que se construyen los demás componentes. Se montó el servidor y las ocho máquinas virtuales, y sobre ellas se instaló un clúster de Kubernetes con tres nodos de control y una dirección virtual que se mantiene aunque caiga uno de ellos. Sobre ese clúster se desplegaron los componentes base de la plataforma, que la \cref{tab:componentes-poc} presenta con su función y la herramienta elegida. La \cref{fig:poc-montado} muestra el prototipo al cierre de esta etapa.
+
+\begin{table}[htbp]
+  \centering
+  \small
+  \renewcommand{\arraystretch}{1.3}
+  \caption{Componentes base del POC, con su función y la herramienta elegida para cada uno.}
+  \label{tab:componentes-poc}
+  \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.25\textwidth} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{0.22\textwidth}}
+    \toprule
+    \textbf{Componente} & \textbf{Función} & \textbf{Herramienta} \\
+    \midrule
+    Distribución de Kubernetes & Instala y opera el clúster con tres nodos de control & RKE2 \\
+    Dirección virtual del plano de control & Mantiene accesible la interfaz de administración del clúster aunque caiga un nodo de control & kube-vip \\
+    Red del clúster & Comunica los contenedores entre nodos y aplica las políticas de red & Canal \\
+    Entrada fija & Ofrece una dirección IP estable, que otro nodo de servicios toma si el primero se apaga & MetalLB \\
+    Puerta de entrada & Dirige cada petición HTTP a la interfaz web, a la API o a la ruta de cada modelo & Envoy Gateway \\
+    Entrega continua (GitOps) & Aplica en el clúster la configuración versionada en el repositorio & Argo CD \\
+    Cifrado de secretos & Guarda las credenciales cifradas en el repositorio & Sealed Secrets \\
+    Almacenamiento persistente & Ofrece volúmenes replicados a los servicios y un volumen local en cada nodo de cómputo para los pesos de los modelos & Longhorn y local-path-provisioner \\
+    Almacén de objetos & Guarda los pesos de los modelos, las métricas históricas y los registros & Garage \\
+    Base de datos & Aloja la base PostgreSQL de la API y de Grafana, con una instancia primaria y una réplica & CloudNativePG \\
+    Registro de imágenes & Guarda las imágenes de contenedor propias y replica las públicas & zot \\
+    Observabilidad de métricas & Recolecta, conserva y visualiza las métricas del clúster y de los modelos & Prometheus, Thanos y Grafana \\
+    Observabilidad de registros & Recolecta y consulta los registros de todos los contenedores & Loki y Alloy \\
+    Políticas de admisión & Rechazan las cargas que no llevan las etiquetas o los límites exigidos & Pod Security Admission y políticas de validación nativas \\
+    Gestor de colas & Admite cada carga según la cuota disponible o la retiene en cola & Kueue \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
 
 \todo{La arquitectura del POC es muy detallada y la figura es demasiado grande, con mucho texto, lo que dificulta su lectura. Presenten primero la arquitectura completa y luego un recorte o ampliación por cada etapa o módulo, de modo que se explique un componente a la vez. Por ejemplo, en el aprovisionamiento muestren con un elemento gráfico qué partes de Kubernetes configuraron y cuáles no. Revisen además lo siguiente. El título de la figura indica el cierre de la primera etapa (26 de octubre), pero la figura muestra componentes de la segunda, como Kueue, KubeRay, vLLM y el importador de pesos. La figura contiene direcciones IP, versiones, nombres internos y términos en inglés como \emph{requests}, \emph{limits} o \emph{sidecar}, y nombra herramientas que el texto nunca presenta, como MetalLB, Envoy, Garage, Longhorn, CloudNativePG, zot, Alloy, NetBird o Sealed Secrets. Su título interno, «POC montado», usa además un registro coloquial. En los recortes, muestren solo los componentes que el texto explica y, si lo consideran necesario, lleven el detalle técnico a un anexo.}
 
