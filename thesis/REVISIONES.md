@@ -746,3 +746,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «El primer párrafo del capítulo es una sola oración que enumera cinco contenidos. Divídanla para facilitar la lectura.» → aplicado · el párrafo se divide en tres oraciones: metodología y justificación; estructura lógica y elicitación de requerimientos; fases, cronograma y riesgos.
 - **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 5 `\todo` en el capítulo 07.
+
+### 2026-11-15 · cap. 09 · Afirmaciones que el proyecto no mide
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088, con la condición de no repetir «contribuye a» tres veces.
+- **F1** (tutor): «Expresiones como "maximiza el retorno de la inversión" y "reducen la carga cognitiva" (párrafo siguiente) son afirmaciones que el proyecto no medirá. Usen formulaciones como "contribuye a" y retiren o sustenten la referencia a la carga cognitiva.» → aplicado · «maximiza el retorno de la inversión» → «contribuye a aprovechar mejor la inversión»; «reduce la necesidad» → «ayuda a reducir la necesidad»; «reducen la carga cognitiva y administrativa» → «reducen la carga administrativa». Se varían los verbos para no repetir «contribuye a».
+- **Verificación:** `make build` OK (74 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 5 `\todo` en el capítulo 09.
