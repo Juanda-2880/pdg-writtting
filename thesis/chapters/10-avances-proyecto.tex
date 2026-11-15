@@ -81,7 +81,7 @@ El trabajo del prototipo se desarrolló en dos etapas, entre el 17 de octubre y 
 
 La primera etapa, del 17 al 26 de octubre de 2026, levantó la base sobre la que se construyen los demás componentes. Se montó el servidor y las ocho máquinas virtuales, y sobre ellas se instaló un clúster de Kubernetes con tres nodos de control y una dirección virtual que se mantiene aunque caiga uno de ellos. Sobre ese clúster se desplegaron los componentes base de la plataforma, que la \cref{tab:componentes-poc} presenta con su función y la herramienta elegida. El Anexo~\labelcref{anx:tecnologias} expone por qué se eligió cada herramienta frente a sus alternativas.
 
-\begin{table}[htbp]
+\begin{table}[H]
   \centering
   \small
   \renewcommand{\arraystretch}{1.3}
@@ -112,7 +112,7 @@ La primera etapa, del 17 al 26 de octubre de 2026, levantó la base sobre la que
 
 El aprovisionamiento configuró solo las partes de Kubernetes que el prototipo necesita, como muestra la \cref{fig:recorte-aprovisionamiento}. Los tres nodos de control ejecutan Kubernetes con su base de datos etcd, que conserva el estado del clúster mientras dos de ellos sigan activos, y comparten la dirección virtual del plano de control. Los nodos de servicios llevan una etiqueta que los identifica, y los de cómputo, una marca (\emph{taint}) que los reserva para los motores de inferencia. La red del clúster aplica en el espacio de cada usuario una política que bloquea por defecto el tráfico no autorizado. Quedan sin configurar el operador de GPU y su exportador de métricas, que requieren las GPU de la sala, el certificado HTTPS de la entrada y los respaldos fuera del clúster.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}[
       font=\small,
@@ -136,7 +136,7 @@ El aprovisionamiento configuró solo las partes de Kubernetes que el prototipo n
 
 La \cref{fig:recorte-entrada} muestra cómo se llega a la plataforma y cómo cambia su configuración. Los usuarios del prototipo acceden al servidor por una red privada virtual (NetBird), y dentro del clúster MetalLB anuncia una dirección IP fija desde los nodos de servicios. En esa dirección, Envoy Gateway recibe cada petición y la dirige a la interfaz web, a la API o a la ruta del modelo solicitado. Los cambios de configuración entran por el repositorio de Bitbucket, del que Argo CD toma lo que aplica en el clúster. Las credenciales viajan en ese repositorio cifradas con Sealed Secrets, y solo el controlador instalado en el clúster puede descifrarlas.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}[
       font=\small,
@@ -170,7 +170,7 @@ La \cref{fig:recorte-entrada} muestra cómo se llega a la plataforma y cómo cam
 
 La \cref{fig:recorte-datos} reúne los datos y la observabilidad. Prometheus recolecta las métricas de los nodos, del clúster y de los motores, y Grafana las presenta en paneles. Thanos está configurado para llevarlas a Garage, el almacén de objetos, y conservarlas a largo plazo, aunque en el prototipo aún no se ha confirmado que ese envío ocurra. En paralelo, Alloy recoge en cada nodo los registros de los contenedores y los envía a Loki, que los guarda en Garage y también se consulta desde Grafana. Garage conserva además los pesos de los modelos, CloudNativePG mantiene la base de datos de la API y de Grafana, y zot guarda las imágenes de contenedor. Longhorn replica entre los nodos de servicios los volúmenes de los componentes que guardan estado.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}[
       font=\small,
@@ -202,8 +202,6 @@ La \cref{fig:recorte-datos} reúne los datos y la observabilidad. Prometheus rec
   \label{fig:recorte-datos}
 \end{figure}
 
-\todo{Cuando mencionen una figura, como la Figura 9.2, procuren que aparezca antes que el texto que la cita, o muy cerca. Hoy se menciona en la página 33 y aparece en la 38, al final del capítulo, lejos de su explicación, y el lector no puede comparar el texto con la imagen. Revisen esto en todas las figuras.}
-
 Durante esta etapa aparecieron tres retos. El primero fue que el sistema operativo de las máquinas virtuales no detectaba el disco ni la red, porque la definición de las máquinas no activaba la interfaz avanzada de configuración y energía (ACPI, \emph{Advanced Configuration and Power Interface}), con la que el sistema descubre sus dispositivos. Se activó esa interfaz en la definición de las máquinas. El segundo fue que todos los nodos tenían marcas, de modo que los trabajos de instalación de los componentes base no encontraban un nodo donde ejecutarse. Se resolvió dejando los nodos de servicios sin esa marca, identificados solo con una etiqueta. El tercero fue la dependencia de un único nodo de control, cuya caída deja al clúster sin acceso a su interfaz de administración. Los equipos del laboratorio se encienden y se apagan sin aviso, y algunos utilizan discos mecánicos, por lo que ninguno cumple por sí solo la condición de permanecer encendido sin reinicios no anunciados. Por ese motivo el plano de control pasó de uno a tres nodos, de modo que la caída de uno no detenga el clúster, decisión que también se aplica al despliegue en la sala.
 
 \section{Segunda etapa: servicio de modelos y gobierno}\label{sec:avance-etapa2}
@@ -216,7 +214,7 @@ Desde el punto de vista de quien usa la plataforma, desplegar un modelo tiene do
 
 La \cref{fig:flujo-despliegue} muestra lo que ocurre internamente en ese recorrido. La API verifica que el despliegue quepa en la cuota del usuario y lo registra como un recurso personalizado del clúster. El operador observa ese recurso y genera lo que el motor necesita para ejecutarse, que incluye su carga de trabajo, el volumen de pesos y la ruta de red. El gestor de colas admite la carga o la retiene hasta que haya cuota, y el planificador la ubica en un nodo de cómputo. Allí, un contenedor de inicio copia los pesos desde el almacén de objetos al volumen del nodo, salvo que ya estén, y el motor los carga y queda disponible en una ruta de la puerta de entrada. La API y el operador se comunican únicamente a través del servidor del clúster, de modo que una solicitud se conserva aunque el operador se detenga.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}[
       font=\small,
