@@ -213,7 +213,7 @@ Cada requerimiento es una unidad de trabajo asignable. La columna **Prioridad** 
 | R3-26 | El sistema debe desplegar modelos cuyos pesos ya vienen cuantizados, y apoyarse en la cuantización que el motor aplique al cargarlos, sin ejecutar un proceso de cuantización propio, porque construir uno queda fuera del alcance. | Alta |
 | R3-27 | El sistema debe ejecutar cargas de inteligencia artificial que no son modelos de lenguaje, entregadas como archivo de pesos en un formato que sirve un motor del catálogo, por el mismo camino de despliegue que un modelo de lenguaje, para que la plataforma no quede atada al caso de uso de lenguaje. | Alta |
 | R3-28 | El sistema debe rechazar, con un mensaje explicativo, el despliegue de un modelo que no cabe en la memoria de video de un nodo, para evitar el fallo por falta de memoria en tiempo de ejecución. | Media |
-| R3-29 | El sistema debe permitir dar de alta un modelo nuevo indicando un identificador de repositorio externo o subiendo el archivo de pesos, y solo el administrador da de alta los modelos de lenguaje, para proteger los recursos compartidos de las salas. | Media |
+| R3-29 | El sistema debe permitir dar de alta un modelo nuevo indicando un identificador de repositorio externo o subiendo el archivo de pesos, y solo el administrador da de alta los modelos, sean o no de lenguaje, para proteger los recursos compartidos de las salas. | Media |
 | R3-30 | El sistema debe proponer los parámetros de ejecución de un modelo recién dado de alta a partir de sus características, para reducir el ensayo y error al configurarlo. | Baja |
 
 #### 2.3.4 Interfaz de despliegue

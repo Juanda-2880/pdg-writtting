@@ -8,7 +8,7 @@ Mapa de cada entrada de [`../thesis/references.bib`](../thesis/references.bib) a
 
 Actualizado: 2026-11-15 (documentación de Prometheus, Thanos, Loki, Grafana y DCGM añadida al cap. 05, 55 citadas); anterior: 2026-11-15 (documentación de Kueue añadida al cap. 05, 50 citadas); anterior: 2026-11-14 (estadísticas de matrícula añadidas al cap. 02, 49 citadas; anteproyecto de TRAINI añadido al cap. 01, 48 citadas); anterior: 2026-10-04 (cap. 06: cinco páginas de documentación oficial añadidas, 47 citadas); anterior: 2026-09-27 (revisión completa del documento: 26 fuentes nuevas en `pdf/`, verificación de los caps. 05, 06 y 07). El mismo día salió `lewis-susbenchmarks-2018` de `references.bib`, junto con el *System Usability Scale* del objetivo 4.
 
-## Citadas en la tesis (55)
+## Citadas en la tesis (57)
 
 | Clave BibTeX | Año | Citada en | Referencia | PDF | Versión del PDF | Cómo obtenerla | Verificada |
 | :--- | :---: | :--- | :--- | :--- | :--- | :--- | :---: |
@@ -67,6 +67,8 @@ Actualizado: 2026-11-15 (documentación de Prometheus, Thanos, Loki, Grafana y D
 | `loki-overview-2026` | 2026 | cap. 05 | [URL](https://grafana.com/docs/loki/latest/) | [`pdf/loki-overview-2026.html`](./pdf/loki-overview-2026.html) | Página web (documentación oficial), consultada el 2026-11-15 | Acceso abierto: grafana.com | sí |
 | `grafana-overview-2026` | 2026 | cap. 05 | [URL](https://grafana.com/docs/grafana/latest/) | [`pdf/grafana-overview-2026.html`](./pdf/grafana-overview-2026.html) | Página web (documentación oficial), consultada el 2026-11-15 | Acceso abierto: grafana.com | sí |
 | `dcgm-exporter-2026` | 2026 | cap. 05 | [URL](https://docs.nvidia.com/datacenter/dcgm/latest/installation/install-dcgm-exporter.html) | [`pdf/dcgm-exporter-2026.html`](./pdf/dcgm-exporter-2026.html) | Página web (documentación oficial), consultada el 2026-11-15 | Acceso abierto: docs.nvidia.com | sí |
+| `pytorch-onnx-2026` | 2026 | cap. 10 | [URL](https://docs.pytorch.org/docs/2.15/onnx.html) | [`pdf/pytorch-onnx-2026.html`](./pdf/pytorch-onnx-2026.html) | Página web (documentación oficial, PyTorch 2.15) | Acceso abierto: docs.pytorch.org | sí |
+| `sklearn-modelpersistence-2026` | 2026 | cap. 10 | [URL](https://scikit-learn.org/stable/model_persistence.html) | [`pdf/sklearn-modelpersistence-2026.html`](./pdf/sklearn-modelpersistence-2026.html) | Página web (guía de usuario oficial, scikit-learn 1.9.1) | Acceso abierto: scikit-learn.org | sí |
 
 ## En `references.bib` pero sin citar (3)
 
@@ -148,3 +150,5 @@ Para comprobar que el archivo de otro autor es el mismo que se verificó: `sha25
 | `litellm-proxyusers-2026.html` | `a59d5aefc4e4fc6c084a612e694cfd6c7865e7ba4d698d8494b8b844bf1036ee` |
 | `slurm-overview-2026.html` | `95a38035cae196a4ff790022d2125cfabcee618485a415233a345f4144756e93` |
 | `llamacpp-readme-2026.md` | `dc2d34687c844ecf929d9e9a9c9c78e8023b52abf3b2b3d039600c79016673b6` |
+| `pytorch-onnx-2026.html` | `08520ddcf00a48ea98451dddddfa15d2c055de56117ced8c083bcfe67f689666` |
+| `sklearn-modelpersistence-2026.html` | `633b36141e36e011f2c3b74e2bfb7a768fb0ae7e07a1cf5df883cb595efad8ce` |

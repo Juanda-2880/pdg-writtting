@@ -658,3 +658,20 @@ Los pasajes van en el idioma original y sin traducir. Las páginas son las del P
   - `chapters/05-marco-teorico.tex` · `\label{sec:observabilidad-telemetria}` ¶3 · «El exportador DCGM de NVIDIA completa el arreglo al exponer a Prometheus las métricas de bajo nivel de las tarjetas aceleradoras, que los demás componentes del conjunto no exponen»
     - Pasaje: "DCGM Exporter converts selected DCGM telemetry fields to the Prometheus exposition format. Install one exporter on each GPU node that Prometheus should monitor."
     - **Estado:** verificada · 2026-11-15. La última cláusula («que los demás componentes del conjunto no exponen») es una lectura de los autores; la fuente solo describe la conversión de campos de telemetría de DCGM al formato de Prometheus.
+
+## pytorch-onnx-2026
+
+- **Versión consultada:** `fuentes/pdf/pytorch-onnx-2026.html`, página *torch.onnx* de la documentación oficial de PyTorch 2.15 (<https://docs.pytorch.org/docs/2.15/onnx.html>), descargada el 2026-11-15. No es una publicación arbitrada; es la documentación oficial de la herramienta.
+- **Usos:**
+  - `chapters/10-avances-proyecto.tex` · `\label{sec:avance-etapa2}` ¶ de modelos que no son de lenguaje · «ONNX, un estándar abierto para representar modelos de aprendizaje automático al que PyTorch exporta sus modelos, y que puede consumir cualquiera de los entornos de ejecución que lo admiten»
+    - Pasaje: "Open Neural Network eXchange (ONNX) is an open standard format for representing machine learning models. The torch.onnx module captures the computation graph from a native PyTorch torch.nn.Module model and converts it into an ONNX graph. The exported model can be consumed by any of the many runtimes that support ONNX, including Microsoft's ONNX Runtime." (§Overview)
+    - **Estado:** verificada · 2026-11-15
+
+## sklearn-modelpersistence-2026
+
+- **Versión consultada:** `fuentes/pdf/sklearn-modelpersistence-2026.html`, capítulo *Model persistence* de la guía de usuario de scikit-learn 1.9.1 (<https://scikit-learn.org/stable/model_persistence.html>), descargada el 2026-11-15. No es una publicación arbitrada; es la documentación oficial de la herramienta.
+- **Usos:**
+  - `chapters/10-avances-proyecto.tex` · `\label{sec:avance-etapa2}` ¶ de modelos que no son de lenguaje · «scikit-learn ofrece también ONNX para servir un modelo sin un entorno de Python, aunque no todos sus modelos admiten esa conversión, y advierte que cargar un modelo guardado con \emph{pickle} puede ejecutar código arbitrario»
+    - Pasajes: "ONNX — Serve models without a Python environment […] Not all scikit-learn models are supported" (§Summary of model persistence methods, tabla); "To convert scikit-learn model to ONNX sklearn-onnx has been developed. However, not all scikit-learn models are supported" (§11.2 ONNX); "pickle — […] Loading can execute arbitrary code" (§Summary of model persistence methods, tabla).
+    - **Estado:** verificada · 2026-11-15. La oración siguiente («Por esa razón la plataforma no admite archivos de \emph{pickle}») es una decisión del proyecto, sin cita.
+
