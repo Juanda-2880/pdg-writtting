@@ -656,3 +656,10 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Fuente:** `kueue-clusterqueue-2026`, página *Cluster Queue* (§Cohort, §Resources, §Preemption). Registrada en `CITAS-VERIFICADAS.md` y `fuentes/INDEX.md`.
 - **Propagación:** `project-context/documentation.md`, viñeta *Governance and workloads*, recibe cómo funciona el fondo común en el POC (`Cohort`, `nominalQuota: 0`, `borrowingLimit` igual a la cuota efectiva, `reclaimWithinCohort: Any`), tomado de `backend/MANUAL-CRDS.md` §3.2–3.3.
 - **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; el Marco teórico sigue entre las pp. 7 y 17; quedan 4 `\todo` en el capítulo 05 y 10 en el capítulo 10.
+
+### 2026-11-15 · cap. 05 · Flechas ortogonales en las figuras 4.2 y 4.5
+
+- **Revisó:** Melo088 (autor), en el chat.
+- **F1** (humano): «aprovechemos a mejorar o corregir las otras figuras, donde, si bien el contenido puede estar bien, las flechas hacen que se vea desordenado, no quiero que hayan flechas diagonales, prefiero ortogonales.» → aplicado · en la \cref{fig:bucle-reconciliacion}, «Reconciliar» pasa debajo de «Analizar cambios» y «Estado actual» a su altura, de modo que el bucle forma un rectángulo y la flecha hacia «Observar» sube en ángulo recto; en la \cref{fig:flujo-observabilidad}, Prometheus y Thanos bajan a la fila de los servicios y la flecha del exportador DCGM llega con un codo. El contenido de ambas figuras no cambia.
+- **Revisadas sin cambios:** figuras 4.1, 4.3 (gobernanza, nueva), 4.4 (identidad), 9.1, A.1, B.1 y C.1, que ya eran ortogonales. La 9.2 es una imagen de draw.io y queda para su propio comentario del tutor.
+- **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas.

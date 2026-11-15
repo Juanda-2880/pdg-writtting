@@ -111,16 +111,16 @@ Kubernetes se diseñó para servicios de internet y, sin embargo, hoy hospeda ca
       flecha/.style={-{Stealth[length=2mm]}, semithick}]
     \node[paso] (obs) at (0,0) {Observar};
     \node[paso] (ana) at (4,0) {Analizar cambios};
-    \node[paso] (rec) at (2,-2) {Reconciliar};
-    \node[estado] (actual) at (-4.6,-1) {Estado actual del clúster};
+    \node[paso] (rec) at (4,-2) {Reconciliar};
+    \node[estado] (actual) at (-4.6,-2) {Estado actual del clúster};
     \node[estado] (deseado) at (8.9,0) {Estado deseado\\{\footnotesize declarado en archivos versionados}};
     \draw[dashed] (-1.55,1.15) rectangle (5.55,-2.75);
     \node[font=\footnotesize, anchor=north] at (2,1.1) {Bucle de control del controlador u operador};
     \draw[flecha] (obs) -- (ana);
     \draw[flecha] (ana) -- (rec);
-    \draw[flecha] (actual) -- (obs);
-    \draw[flecha] (deseado) -- node[pos=0.3, above, font=\footnotesize] {compara} (ana);
-    \draw[flecha] (rec) -- node[pos=0.3, below, sloped, font=\footnotesize] {actúa sobre} (actual);
+    \draw[flecha] (actual.north) |- (obs.west);
+    \draw[flecha] (deseado) -- node[above, font=\footnotesize] {compara} (ana);
+    \draw[flecha] (rec) -- node[pos=0.35, below, font=\footnotesize] {actúa sobre} (actual);
   \end{tikzpicture}
   \caption[Bucle de reconciliación de un controlador de Kubernetes]{Bucle de reconciliación de un controlador de Kubernetes. El controlador observa el estado actual del clúster, lo compara con el estado deseado y actúa hasta hacerlos converger. Adaptado de \citet{xu-k8soperatorbugs-2024} (Figura 1) y de \citet{burns-borgomegak8s-2016}.}
   \label{fig:bucle-reconciliacion}
@@ -229,12 +229,12 @@ El ecosistema de Kubernetes instrumenta esas señales con un conjunto de compone
     \node[fuente] (svc) at (0,0) {Servicios y motores\\de inferencia};
     \node[fuente] (cont) at (0,-1.7) {Salida de los\\contenedores};
     \node[comp] (dcgm) at (3.7,1.7) {Exportador DCGM};
-    \node[comp] (prom) at (7.2,0.85) {Prometheus\\{\footnotesize métricas y alertas}};
-    \node[comp] (thanos) at (10.5,0.85) {Thanos\\{\footnotesize retención larga}};
+    \node[comp] (prom) at (7.2,0) {Prometheus\\{\footnotesize métricas y alertas}};
+    \node[comp] (thanos) at (10.5,0) {Thanos\\{\footnotesize retención larga}};
     \node[comp] (loki) at (7.2,-1.7) {Loki\\{\footnotesize registros}};
     \node[comp] (graf) at (10.5,-1.7) {Grafana\\{\footnotesize paneles}};
     \draw[flecha] (gpu) -- (dcgm);
-    \draw[flecha] (dcgm) -- (prom);
+    \draw[flecha] (dcgm.east) -| (prom.north);
     \draw[flecha] (svc) -- node[etq] {métricas} (prom);
     \draw[flecha] (cont) -- node[etq] {registros} (loki);
     \draw[flecha] (prom) -- (thanos);
