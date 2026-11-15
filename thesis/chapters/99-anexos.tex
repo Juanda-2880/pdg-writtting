@@ -462,3 +462,55 @@ El despliegue de una plataforma sobre infraestructura de cómputo compartida con
   \item[Límites de ancho de banda de la sala] Compromete la calidad de las pruebas de carga, en tanto la red de la sala del IAsLab tiene una capacidad de 10 Gbit/s. La configuración actual sirve cada modelo en un solo nodo, de modo que el proyecto no requiere una capacidad mayor para operar, y solo la necesitaría si la plataforma habilitara el reparto de un modelo entre varios nodos, modalidad prevista para cuando la infraestructura lo permita. La mitigación consiste en diseñar los escenarios de prueba de carga a partir de esa capacidad real, en lugar de extrapolar cifras de referentes de la literatura obtenidos en infraestructuras de mayor escala.
 \end{description}
 
+\chapter{Selección de tecnologías de la plataforma}\label{anx:tecnologias}
+
+Este anexo expone por qué se eligió cada tecnología de la plataforma frente a las alternativas consideradas. Las razones parten de las condiciones del proyecto, que son una infraestructura propia sin servicios de nube ni presupuesto, unos equipos que se comparten con las clases y se apagan sin aviso, y la necesidad de redesplegar la plataforma en otra sala a partir de su configuración versionada. La función de cada componente se presenta en la \cref{tab:componentes-poc}.
+
+{\small
+\renewcommand{\arraystretch}{1.25}
+\begin{xltabular}{\textwidth}{>{\raggedright\arraybackslash}p{0.17\textwidth} >{\raggedright\arraybackslash}p{0.2\textwidth} >{\raggedright\arraybackslash}X}
+  \caption{Tecnologías de la plataforma, alternativas consideradas y razón de la elección.}
+  \label{tab:seleccion-tecnologias} \\
+  \toprule
+  \textbf{Tecnología} & \textbf{Alternativas consideradas} & \textbf{Razón de la elección} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Tecnología} & \textbf{Alternativas consideradas} & \textbf{Razón de la elección} \\
+  \midrule
+  \endhead
+  \bottomrule
+  \endfoot
+    RKE2 & k3s, kubeadm y Talos & Se instala sobre el sistema operativo que ya tienen los equipos del laboratorio, que se usan en clase y no se pueden reinstalar, como sí exigen Talos y los sistemas de arranque por red. Incluye etcd embebido, de modo que el plano de control de tres nodos no requiere un clúster etcd aparte, y su instalación se automatiza con Ansible a partir de archivos versionados, lo que permite repetirla en otra sala. k3s y kubeadm también serían viables, pero no aportan una capacidad que el proyecto necesite, y cambiar de distribución obligaría a rehacer la instalación ya automatizada. \\
+    \addlinespace[4pt]
+    Canal & Cilium & Es la red por defecto de RKE2 y aplica las políticas de red con las que la plataforma aísla a cada usuario. Cilium ofrece funciones adicionales que ningún requerimiento pide, y la red de un clúster no se puede cambiar con el clúster en marcha. \\
+    \addlinespace[4pt]
+    MetalLB & kube-vip para servicios y acceso por puerto de nodo & Asigna una dirección IP fija de entrada y la anuncia desde los nodos de servicios, de modo que, si uno se apaga, otro la toma. Funciona con la red Canal. El acceso por puerto de nodo no ofrece una dirección única, y kube-vip solo se instala cuando el plano de control tiene tres nodos. \\
+    \addlinespace[4pt]
+    Envoy Gateway & NGINX Gateway Fabric, Traefik y kgateway & Implementa Gateway API, la interfaz de Kubernetes para enrutar el tráfico de entrada, y su versión libre incluye la autenticación con OIDC y con testigos web JSON (JWT, \emph{JSON Web Token}) y el límite de peticiones que la plataforma necesita en la entrada. \\
+    \addlinespace[4pt]
+    Argo CD & Flux & Aplica en el clúster todo lo que está versionado en el repositorio, de modo que redesplegar la plataforma en otra sala consiste en apuntarlo a otra configuración. Frente a Flux, que cumple la misma función, ofrece una interfaz web para seguir el estado de cada aplicación, y la configuración por sala del proyecto ya estaba escrita para él. \\
+    \addlinespace[4pt]
+    Sealed Secrets & External Secrets con un gestor de secretos, y SOPS & Permite guardar las credenciales cifradas en el mismo repositorio que el resto de la configuración, sin depender de un servicio externo. External Secrets exige operar un gestor de secretos aparte, y SOPS requiere un complemento adicional en Argo CD. \\
+    \addlinespace[4pt]
+    Longhorn & Un servidor de almacenamiento fuera del clúster, Rook-Ceph y OpenEBS Mayastor & Replica los volúmenes de los servicios entre los nodos, de modo que el apagado de un equipo no hace perder datos. Un servidor de almacenamiento aparte sería un punto único de falla en un laboratorio cuyos equipos se apagan sin aviso, y Ceph y Mayastor exigen más memoria y una preparación de los discos que los equipos del laboratorio no tienen. \\
+    \addlinespace[4pt]
+    local-path-provisioner & El montaje directo de una ruta del nodo & Expone la partición de modelos de cada nodo de cómputo como un volumen persistente que cada despliegue reclama, sin añadir componentes de almacenamiento a esos nodos. El montaje directo de una ruta no constituye un volumen reclamable. \\
+    \addlinespace[4pt]
+    Garage & Ceph & La plataforma necesita un almacén de objetos propio, porque opera sin servicios de nube. Garage es ligero, replica cada objeto en tres nodos y funciona con Thanos y con Loki, mientras que Ceph añade demasiadas piezas para tres nodos de servicios. \\
+    \addlinespace[4pt]
+    CloudNativePG & PostgreSQL fuera del clúster & Opera PostgreSQL dentro del clúster con una instancia primaria, una réplica y la conmutación entre ellas, gestionadas desde el mismo repositorio que el resto de la plataforma. Una base de datos fuera del clúster solo convendría si la administrara la universidad. \\
+    \addlinespace[4pt]
+    zot & Harbor y Nexus Repository & Guarda las imágenes de contenedor en el almacén de objetos y replica las de los registros públicos, de modo que la plataforma opera sin depender de ellos. Harbor exige su propia base de datos y su propia caché, y Nexus requiere más recursos de los que tienen los nodos de servicios. \\
+    \addlinespace[4pt]
+    Prometheus, Thanos y Grafana & VictoriaMetrics & Prometheus es el sistema en el que los demás componentes publican sus métricas, y Thanos conserva su historia en el almacén de objetos y permite consultarla desde un solo punto. VictoriaMetrics se justifica con volúmenes de métricas mayores que los previstos en el laboratorio. \\
+    \addlinespace[4pt]
+    Loki y Alloy & VictoriaLogs y Fluent Bit & Loki guarda los registros en el mismo almacén de objetos y se consulta desde Grafana junto con las métricas, y Alloy recolecta los registros en cada nodo. Las alternativas cumplirían la misma función sin aportar una capacidad que el proyecto requiera. \\
+    \addlinespace[4pt]
+    Políticas de admisión nativas & Kyverno & Forman parte de Kubernetes, de modo que no añaden un servicio que deba seguir en funcionamiento para admitir cargas, lo que importa cuando los equipos se apagan. Kyverno añadiría un componente más para obtener el mismo resultado. \\
+    \addlinespace[4pt]
+    Kueue & NVIDIA KAI Scheduler & Encolar en lugar de rechazar, priorizar por rol y expropiar son capacidades propias de Kueue, y construirlas a mano sería la parte más riesgosa del objetivo de gobernanza. Admite tanto un \emph{Deployment} como un \emph{RayService} sin reemplazar el planificador del clúster, y cuenta recursos de cómputo y no \emph{tokens}, de modo que la gobernanza no depende de que la carga sea un modelo de lenguaje. KAI Scheduler obligaría a sustituir el planificador. \\
+    \addlinespace[4pt]
+    KubeRay & KServe y un \emph{Deployment} sin Ray & Ejecuta cada \emph{RayService}, la forma prevista para repartir un modelo entre varios nodos cuando la red lo permita, y el gestor de colas lo admite como una sola carga. Ray publica la latencia, la tasa y los errores de cualquier carga servida. Un \emph{Deployment} sin Ray no permite ese reparto, y KServe añade su propio controlador sin cubrir una necesidad adicional del proyecto. \\
+\end{xltabular}
+}

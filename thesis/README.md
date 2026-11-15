@@ -51,7 +51,7 @@ This is where the actual thesis text lives — as opposed to `skills/thesis-writ
 | 09 | `chapters/09-contribucion-resultados.tex` | Contribución y resultados del proyecto de grado | 4 páginas |
 | 10 | `chapters/10-avances-proyecto.tex` | Avances del proyecto (prototipo en un servidor, retos, mediciones preliminares y reuniones de seguimiento) | ~3 páginas de texto, con dos figuras |
 | — | `references.bib` → `\bibliography{}` | Referencias bibliográficas | — |
-| 99 | `chapters/99-anexos.tex` | Anexos (análisis de participación, árbol de problemas, árbol de objetivos) | — |
+| 99 | `chapters/99-anexos.tex` | Anexos (análisis de participación, árbol de problemas, árbol de objetivos, requerimientos por objetivo, riesgos y limitaciones, selección de tecnologías) | — |
 
 > [!NOTE]
 > **Marco teórico con tope propio.** El formato fija 4 páginas como máximo, pero los autores decidieron el 2026-09-13 sustituir ese límite por uno propio de 8 páginas, y solo para el capítulo 05; el 2026-09-27 lo subieron a 9 páginas y el 2026-10-09 a **10 páginas**, porque el capítulo lleva cuatro figuras. El resto de topes sigue vigente, incluido el del Estado del arte. Ver `STATUS.md`.
