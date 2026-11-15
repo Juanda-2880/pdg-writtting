@@ -678,3 +678,10 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Citas:** se actualizaron en `CITAS-VERIFICADAS.md` las afirmaciones de Kreuzberger et al. (caps. 01 y 06) y de Cortez et al. (cap. 05); los pasajes siguen respaldándolas.
 - **No incluido:** «desplegar» aplicado al clúster o a la plataforma (caps. 08 y 10) y «políticas de admisión» (cap. 10), que nombran otros conceptos.
 - **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; sin variantes residuales de los términos retirados; quedan 3 `\todo` en el capítulo 05.
+
+### 2026-11-15 · caps. 01 y 10 · Repetición de «despliegue» en dos párrafos
+
+- **Revisó:** Melo088 (autor); sugerencias de la IA aprobadas en el chat («aplica las dos propuestas»).
+- **S1** (IA, aprobada por Melo088, cap. 01 ¶ «El despliegue manual…»): «despliegue»/«desplegar» aparecía 4 veces → aplicado · «el despliegue no podía gestionarse de forma desacoplada del anfitrión. Cada despliegue exigía…» → «ese proceso no podía gestionarse de forma desacoplada del anfitrión, y cada instalación exigía…». Quedan 2 apariciones.
+- **S2** (IA, aprobada por Melo088, cap. 10 §Segunda etapa ¶2): «despliegue»/«desplegar» aparecía 6 veces → aplicado · «El estado del despliegue avanza por en cola…» → «La solicitud avanza por los estados en cola…»; «los registros de su despliegue» → «los registros de ejecución». Se conservó «el permiso para desplegar», porque «ese permiso», como se había propuesto, remitía a un permiso no mencionado antes. Quedan 4 apariciones.
+- **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas.
