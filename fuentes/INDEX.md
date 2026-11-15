@@ -6,9 +6,9 @@ Mapa de cada entrada de [`../thesis/references.bib`](../thesis/references.bib) a
 - **Versión del PDF:** si es la versión publicada, un preprint o una versión de autor. Una cita textual se comprueba siempre contra la versión publicada.
 - **Verificada:** si la entrada ya tiene usos comprobados en [`../thesis/CITAS-VERIFICADAS.md`](../thesis/CITAS-VERIFICADAS.md). «sí (parcial)» significa que hay usos verificados, no que todos lo estén.
 
-Actualizado: 2026-11-14 (estadísticas de matrícula añadidas al cap. 02, 49 citadas; anteproyecto de TRAINI añadido al cap. 01, 48 citadas); anterior: 2026-10-04 (cap. 06: cinco páginas de documentación oficial añadidas, 47 citadas); anterior: 2026-09-27 (revisión completa del documento: 26 fuentes nuevas en `pdf/`, verificación de los caps. 05, 06 y 07). El mismo día salió `lewis-susbenchmarks-2018` de `references.bib`, junto con el *System Usability Scale* del objetivo 4.
+Actualizado: 2026-11-15 (documentación de Kueue añadida al cap. 05, 50 citadas); anterior: 2026-11-14 (estadísticas de matrícula añadidas al cap. 02, 49 citadas; anteproyecto de TRAINI añadido al cap. 01, 48 citadas); anterior: 2026-10-04 (cap. 06: cinco páginas de documentación oficial añadidas, 47 citadas); anterior: 2026-09-27 (revisión completa del documento: 26 fuentes nuevas en `pdf/`, verificación de los caps. 05, 06 y 07). El mismo día salió `lewis-susbenchmarks-2018` de `references.bib`, junto con el *System Usability Scale* del objetivo 4.
 
-## Citadas en la tesis (49)
+## Citadas en la tesis (50)
 
 | Clave BibTeX | Año | Citada en | Referencia | PDF | Versión del PDF | Cómo obtenerla | Verificada |
 | :--- | :---: | :--- | :--- | :--- | :--- | :--- | :---: |
@@ -57,6 +57,7 @@ Actualizado: 2026-11-14 (estadísticas de matrícula añadidas al cap. 02, 49 ci
 | `litellm-overview-2026` | 2026 | cap. 06 | [URL](https://docs.litellm.ai/docs/) | [`pdf/litellm-overview-2026.html`](./pdf/litellm-overview-2026.html) | Página web (documentación oficial), no producción arbitrada | Acceso abierto: docs.litellm.ai | sí |
 | `litellm-proxyusers-2026` | 2026 | cap. 06 | [URL](https://docs.litellm.ai/docs/proxy/users) | [`pdf/litellm-proxyusers-2026.html`](./pdf/litellm-proxyusers-2026.html) | Página web (documentación oficial) | Acceso abierto: docs.litellm.ai | sí |
 | `kubeflow-profiles-2026` | 2026 | cap. 06 | [URL](https://www.kubeflow.org/docs/components/central-dash/profiles/) | [`pdf/kubeflow-profiles-2026.html`](./pdf/kubeflow-profiles-2026.html) | Página web (documentación oficial) | Acceso abierto: kubeflow.org | sí |
+| `kueue-clusterqueue-2026` | 2026 | cap. 05 | [URL](https://kueue.sigs.k8s.io/docs/concepts/cluster_queue/) | [`pdf/kueue-clusterqueue-2026.html`](./pdf/kueue-clusterqueue-2026.html) | Página web (documentación oficial, versión `main`, última modificación 2026-08-19) | Acceso abierto: kueue.sigs.k8s.io | sí |
 | `slurm-overview-2026` | 2026 | cap. 06 | [URL](https://slurm.schedmd.com/overview.html) | [`pdf/slurm-overview-2026.html`](./pdf/slurm-overview-2026.html) | Página web (documentación oficial) | Acceso abierto: slurm.schedmd.com | sí |
 | `llamacpp-readme-2026` | 2026 | cap. 06 | [URL](https://github.com/ggml-org/llama.cpp) | [`pdf/llamacpp-readme-2026.md`](./pdf/llamacpp-readme-2026.md) | Página web (README oficial del repositorio, rama principal) | Acceso abierto: github.com | sí |
 | `tobar-sistemaentrenamiento-2026` | 2026 | cap. 01 | Documento local (Word): anteproyecto de TRAINI | **No aplica**: `.docx` de los autores, fuera del repositorio | Anteproyecto de Proyecto de Grado, versión de 2026 | Copia local en `workspace/PDG/Anteproyecto-PdG-I-2026-1.docx`; SHA-256 abajo | sí |

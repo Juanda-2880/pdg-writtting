@@ -607,3 +607,11 @@ Los pasajes van en el idioma original y sin traducir. Las páginas son las del P
   - `chapters/02-descripcion-problema.tex` · *Identificación del problema* ¶4 · «De acuerdo con las estadísticas de matrícula de la Universidad Icesi para 2026, la comunidad directamente vinculada a estas áreas comprende 667 estudiantes de pregrado y 190 estudiantes de posgrado en programas avanzados de computación e inteligencia artificial»
     - Datos del panel: 667 estudiantes de pregrado en programas de TI; 190 de posgrado, distribuidos en Maestría en Inteligencia Artificial (89), Maestría en Ciencia de Datos (74), Doctorado en Ingeniería (13), Especialización en Ingeniería de Datos (8) y Especialización en Inteligencia Artificial Aplicada (6).
     - **Estado:** verificada · 2026-11-14
+
+## kueue-clusterqueue-2026
+
+- **Versión consultada:** `fuentes/pdf/kueue-clusterqueue-2026.html`, página *Cluster Queue* de la documentación oficial de Kueue (<https://kueue.sigs.k8s.io/docs/concepts/cluster_queue/>), versión `main` con última modificación del 2026-08-19, descargada el 2026-11-15. No es una publicación arbitrada; es la documentación oficial de la herramienta.
+- **Usos:**
+  - `chapters/05-marco-teorico.tex` · `\label{sec:gobernanza-recursos-compartidos}` ¶4 · «las colas de una misma cohorte (\emph{cohort}) toman prestada la cuota que las demás no usan, hasta un límite propio, y una carga en espera puede expropiar las cargas de otras colas de la cohorte que consumen más de su cuota propia»
+    - Pasajes: "ClusterQueues that belong to the same cohort can borrow unused quota from each other." (§Cohort); "borrowingLimit is the maximum amount of quota that this ClusterQueue is allowed to borrow from the unused nominal quota of other ClusterQueues in the same cohort." (§Resources); "reclaimWithinCohort determines whether a pending Workload can preempt Workloads from other ClusterQueues in the cohort that are using more than their nominal quota." (§Preemption).
+    - **Estado:** verificada · 2026-11-15

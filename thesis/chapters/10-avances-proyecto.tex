@@ -82,8 +82,6 @@ La \cref{fig:flujo-despliegue} muestra lo que ocurre internamente en ese recorri
   \label{fig:flujo-despliegue}
 \end{figure}
 
-\todo{Conceptos como el «fondo común» de cuota, «recuperar cuota» y «carga expropiada» no se presentan en el marco teórico. Introdúzcanlos en la sección 4.5 o explíquenlos aquí.}
-
 Del lado del gobierno, se implementó el operador que traduce las cuotas de cada usuario en un espacio de nombres con su límite, y la cuota de la sala en un fondo común que las cuotas individuales pueden usar. Se verificó en el POC que una solicitud que excede la cuota espera en cola, que una carga puede recuperar cuota cuando otra la necesita, y que la carga expropiada queda identificada en su estado. También se verificó que un agotamiento de memoria en un despliegue no afecta a los vecinos, y que las políticas rechazan los despliegues que no cumplen las etiquetas o los límites de la sala.
 
 Los retos de esta etapa fueron de recursos. El servidor del POC tiene 60\,GiB de memoria, así que cada componente declara la memoria y el procesador que solicita y su límite máximo, de modo que la suma se mantiene dentro de la capacidad del servidor. vLLM agotaba la memoria durante su fase de calentamiento, y se resolvió con su modo de ejecución directa (\emph{eager}), que omite ese calentamiento. El escalador automático de Argo CD no tenía solicitudes de memoria con que calcular su uso, y se fijaron esas solicitudes para que el escalado funcione. Por último, la integración con el proveedor de identidad SAAMFI se encuentra en implementación. Mientras tanto, el prototipo usa un proveedor de identidad local que permite probar el flujo de roles, de autenticación y de permisos de extremo a extremo.
