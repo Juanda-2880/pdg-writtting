@@ -561,6 +561,9 @@ Los pasajes van en el idioma original y sin traducir. Las páginas son las del P
   - `chapters/06-estado-del-arte.tex` · `\label{sec:pasarelas-inferencia}` ¶2 · «límites de tokens por minuto, de peticiones por minuto y de peticiones en paralelo por llave o equipo»
     - Pasaje: "You can set: tpm limits (tokens per minute) rpm limits (requests per minute) max parallel requests rpm / tpm limits per model for a given key or team"
     - **Estado:** verificada · 2026-10-04
+  - `chapters/05-marco-teorico.tex` · `\label{sec:identidad-rbac}` ¶3 · «Sus variantes especializadas en modelos de lenguaje añaden límites basados en el consumo de \emph{tokens}»
+    - Pasaje: el mismo de la página *Budgets, Rate Limits*: "You can set: tpm limits (tokens per minute) rpm limits (requests per minute) max parallel requests rpm / tpm limits per model for a given key or team".
+    - **Estado:** verificada · 2026-11-14. La ausencia de variantes con cuotas unificadas se presenta como resultado de la revisión documental descrita en la §5.1, no como una afirmación de la documentación de LiteLLM.
 
 ## kubeflow-profiles-2026
 

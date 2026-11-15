@@ -685,3 +685,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **S1** (IA, aprobada por Melo088, cap. 01 ¶ «El despliegue manual…»): «despliegue»/«desplegar» aparecía 4 veces → aplicado · «el despliegue no podía gestionarse de forma desacoplada del anfitrión. Cada despliegue exigía…» → «ese proceso no podía gestionarse de forma desacoplada del anfitrión, y cada instalación exigía…». Quedan 2 apariciones.
 - **S2** (IA, aprobada por Melo088, cap. 10 §Segunda etapa ¶2): «despliegue»/«desplegar» aparecía 6 veces → aplicado · «El estado del despliegue avanza por en cola…» → «La solicitud avanza por los estados en cola…»; «los registros de su despliegue» → «los registros de ejecución». Se conservó «el permiso para desplegar», porque «ese permiso», como se había propuesto, remitía a un permiso no mencionado antes. Quedan 4 apariciones.
 - **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas.
+
+### 2026-11-15 · cap. 05 · §4.6 · Cita de las variantes del API gateway
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
+- **F1** (tutor): «Las afirmaciones sobre las variantes del \emph{API gateway} para modelos de lenguaje y sobre la ausencia de variantes con cuotas unificadas no tienen cita, y no se explica cómo se hizo esa búsqueda. Citen las fuentes, por ejemplo la documentación de LiteLLM del capítulo 5, y remitan a la estrategia de búsqueda de la sección 5.1.» → aplicado · se añadió `\citep{litellm-proxyusers-2026}` a la frase sobre los límites por \emph{tokens}, y «La revisión de esta literatura no localizó» pasó a «La revisión documental descrita en la \cref{sec:estrategia-revision} no localizó». Se actualizó `CITAS-VERIFICADAS.md`.
+- **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 2 `\todo` en el capítulo 05.
