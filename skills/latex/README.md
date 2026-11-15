@@ -7,7 +7,7 @@ This module provides the LaTeX-specific configuration, build tooling, and skill 
 ## Purpose
 
 1. Give agents a ready-to-copy preamble, `Makefile`, and `latexmkrc` instead of improvising packages/build steps per session.
-2. Fix the citation/bibliography stack (APA 7 via `natbib` + `apalike`) so it's consistent with [`reference-writting/`](../reference-writting/README.md) and [`writting-tools/normas-APA.md`](../writting-tools/normas-APA.md) — see [`SKILL.md`](./SKILL.md) for why this was chosen over the tutor's original `alphaabbr` style.
+2. Fix the citation/bibliography stack (numeric, IEEE-like, via `natbib` + `unsrtnat`, chosen by the authors on 2026-11-15 after the tutor's review) — see [`SKILL.md`](./SKILL.md) and [`references/citations-and-figures.md`](./references/citations-and-figures.md).
 3. Encode the semantic-markup rules (proper `description`/`itemize`/`enumerate` use, `cleveref` cross-references, `csquotes` quotations, `booktabs`/`longtable` tables) that keep the generated LaTeX correct and maintainable rather than visually-hacked.
 4. Route every compiled/generated artifact to [`compiled-output/`](../../compiled-output/README.md), per the repo-wide rule in [`CLAUDE.md`](../../CLAUDE.md).
 
@@ -36,7 +36,7 @@ brew install --cask basictex && sudo tlmgr update --self && \
 
 Verify the install with:
 ```bash
-latexmk -v && kpsewhich cleveref.sty natbib.sty csquotes.sty apalike.bst
+latexmk -v && kpsewhich cleveref.sty natbib.sty csquotes.sty xurl.sty unsrtnat.bst
 ```
 If any of those come back empty, that package/collection is missing — install it and retry rather than removing the feature from the preamble.
 

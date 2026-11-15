@@ -878,3 +878,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Matiz en el cap. 06** (aprobado por Melo088): «\emph{llama.cpp} superó a vLLM en la CPU para el modelo probado» → «…en la CPU con los formatos probados, en una prueba sin concurrencia», porque el informe de origen advierte que los motores no se comparan por rendimiento.
 - **Hecho actualizado en `project-context/documentation.md`:** la línea «Measurements in the POC» registra el procedimiento y los valores con su fuente.
 - **Verificación:** `make build` OK (80 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; el capítulo 10 queda sin `\todo`.
+
+### 2026-11-15 · `main.tex`, preámbulo y cap. 05 · Formato de las referencias
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); estilo elegido por Melo088 en el chat: «el numérico, es decir el primer recomendado».
+- **F1** (tutor): «Reconsideren el formato de las referencias. Pueden escoger entre el estilo numérico, con el número entre corchetes, como [1], y el título «Referencias», o el estilo alfanumérico, con un acrónimo del primer autor y el año, como [AWT23]. Elijan uno de los dos y apliquen el formato de forma consistente en todo el documento.» → aplicado · `skills/latex/preamble.tex` pasa de `natbib` autor-año con `apalike` a `natbib` con `numbers,square,sort&compress` y `unsrtnat` (orden de primera cita, URL impresas y cortadas con `xurl`); la lista se titula «Referencias» y entra en el índice. Cap. 05: la cita agrupada de cuantización pasa de cuatro `\citealp` a un solo `\citep` y la cita de segunda mano queda «(Sridharan, citado en [n])». Se actualizaron la documentación del módulo `skills/latex/` y el `README.md` raíz, que describían el estilo APA autor-año.
+- **Verificación:** `make build` OK (79 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; `main.tex` queda sin `\todo`.

@@ -104,7 +104,7 @@ A gitignored scratch directory where agents write generated or compiled artifact
 ### 8. [`skills/latex/`](./skills/latex/README.md)
 LaTeX configuration, build tooling, and a dedicated skill so agents don't reinvent the toolchain each session:
 - **Preamble & build**: a ready-to-copy `preamble.tex`, `Makefile`, and `latexmkrc` (report class, Spanish/babel, `latexmk`, output routed to `compiled-output/`).
-- **APA 7 citations in LaTeX**: `natbib` + `apalike`, chosen to match `skills/reference-writting/` and `skills/writting-tools/normas-APA.md`.
+- **Numeric citations in LaTeX**: `natbib` + `unsrtnat` (IEEE-like `[n]`, list titled «Referencias»), chosen by the authors on 2026-11-15 after the tutor's review.
 - **Semantic-markup rules**: correct `description`/`itemize`/`enumerate` use, `cleveref` cross-references, `csquotes` quotations, `booktabs`/`longtable` tables.
 
 ### 9. [`thesis/`](./thesis/README.md)

@@ -10,7 +10,7 @@
 % of this repo) and from the semantic-markup / cleveref / csquotes practices
 % in the dbosk/claude-skills "latex-writing" skill (MIT license, see
 % ../NOTICE.md), customized for: report class, Spanish (babel), pdfLaTeX,
-% and APA 7 citations via natbib + apalike (see references/packages.md and
+% and numeric citations via natbib + unsrtnat (see references/packages.md and
 % references/citations-and-figures.md for the "why" behind each choice).
 % ==========================================================================
 
@@ -100,14 +100,18 @@
 \titleformat{\chapter}[hang]{\sffamily\huge\bfseries}{\thechapter.}{0.5em}{}
 \titlespacing*{\chapter}{0pt}{0pt}{20pt}
 
-% --- Citations: APA 7 via natbib + apalike ----------------------------------
-% \citet{key}  -> Autor (Año)      \citep{key} -> (Autor, Año)
-% See references/citations-and-figures.md for the full cheat sheet and for
-% what to do if apalike's output needs closer APA-7 fidelity (apacite).
-\usepackage[authoryear,round]{natbib}
-\bibliographystyle{apalike}
+% --- Citations: numeric, IEEE-like, via natbib + unsrtnat -------------------
+% Chosen by the authors on 2026-11-15 after the tutor's review (numeric style,
+% number in square brackets, list titled «Referencias», ordered by first
+% citation). \citet{key} -> Autor et al. [n]    \citep{key} -> [n]
+% See references/citations-and-figures.md for the cheat sheet.
+\usepackage[numbers,square,sort&compress]{natbib}
+\bibliographystyle{unsrtnat}
+\addto\captionsspanish{\renewcommand{\bibname}{Referencias}}
+\renewcommand{\bibsection}{\chapter*{\bibname}\addcontentsline{toc}{chapter}{\bibname}}
 
 % --- Cross-references: hyperref THEN cleveref (order matters) --------------
+\usepackage{xurl}           % URLs in the reference list may break at any character
 \usepackage[plainpages=false, colorlinks=false, pdfborder={0 0 0}]{hyperref}
 \usepackage[spanish,capitalize]{cleveref}
 % cleveref's Spanish set prints "Figura"/"Capítulo"/"Ecuación" correctly

@@ -27,7 +27,8 @@ What each package in `../preamble.tex` is for, and why it's there. Don't add a n
 | `fancyhdr` | Page headers/footers (page number in the footer, per the tutor's convention). |
 | `sectsty` | Sans-serif section headings. |
 | `titlesec` | Chapter-heading format. Prints `6. Metodología` instead of the `report` class's default `Capítulo 6` + title on two lines (authors, 2026-09-20, on the tutor's request). Purely presentational and **fixed**: the `\titleformat`/`\titlespacing` lines in `preamble.tex` are not changed without an author's approval, the same as the `hyperref` options. Coexists with `sectsty`, which keeps governing `\section` and below. |
-| `natbib` (authoryear, round) | APA-style `\citet`/`\citep` commands. Paired with `\bibliographystyle{apalike}`. See `citations-and-figures.md`. |
+| `natbib` (numbers, square, sort&compress) | Numeric `\citet`/`\citep` commands (`[n]`). Paired with `\bibliographystyle{unsrtnat}`, which orders by first citation. See `citations-and-figures.md`. |
+| `xurl` | Lets URLs in the reference list break at any character, so long links do not overflow the margin. |
 | `hyperref` | Clickable cross-references and a navigable PDF outline. **Must load before `cleveref`.** |
 | `cleveref` (spanish, capitalize) | `\cref{...}`/`\Cref{...}` — auto-prefixed, localized cross-references ("Figura 3", "Capítulo 2") instead of hand-typed `Figura~\ref{...}`. |
 

@@ -1,6 +1,6 @@
 # Troubleshooting the Build
 
-Common failure modes for this specific stack (pdfLaTeX, `babel[spanish]`, `natbib`+`apalike`, `cleveref`, `tikz`/`pgfplots`) and how to diagnose them. Always run `make build` (see `../Makefile`) via `latexmk` rather than a single manual `pdflatex` pass — most of the symptoms below are just "it needs one more rerun," which `latexmk` already handles.
+Common failure modes for this specific stack (pdfLaTeX, `babel[spanish]`, `natbib`+`unsrtnat`, `cleveref`, `tikz`/`pgfplots`) and how to diagnose them. Always run `make build` (see `../Makefile`) via `latexmk` rather than a single manual `pdflatex` pass — most of the symptoms below are just "it needs one more rerun," which `latexmk` already handles.
 
 ## "Undefined control sequence" or garbled quotation marks
 

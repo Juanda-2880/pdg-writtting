@@ -16,7 +16,7 @@ Origin note: the semantic-markup, cross-reference, and citation practices below 
 - **Document class**: `report` (chapters + sections), `letterpaper`, `11pt` — matches the tutor's reference thesis project.
 - **Engine**: `pdflatex`, driven by `latexmk` (see `Makefile`/`latexmkrc`) — not a manual `pdflatex` invocation, and not XeLaTeX/LuaLaTeX.
 - **Language**: Spanish, via `babel[spanish]`.
-- **Citations**: APA 7, via `natbib` (`authoryear,round`) + `\bibliographystyle{apalike}` — chosen to match `reference-writting/` and `writting-tools/normas-APA.md`, which already mandate APA 7. See `references/citations-and-figures.md`.
+- **Citations**: numeric, IEEE-like, via `natbib` (`numbers,square,sort&compress`) + `\bibliographystyle{unsrtnat}`, list titled «Referencias» (authors, 2026-11-15, after the tutor's review). Replaces the earlier APA author-year setup. See `references/citations-and-figures.md`.
 - **Cross-references**: `cleveref` (loaded after `hyperref`), Spanish names.
 - **Build output**: everything generated goes to `compiled-output/` (repo root), per `CLAUDE.md` rule 2 — never into the LaTeX source tree.
 

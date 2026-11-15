@@ -1,24 +1,28 @@
 # Citations, Cross-References, Figures & Tables in LaTeX
 
-How the APA 7 rules in [`reference-writting/`](../../reference-writting/README.md) and [`writting-tools/normas-APA.md`](../../writting-tools/normas-APA.md) map onto the actual LaTeX commands, given the `natbib` + `apalike` + `cleveref` setup in `../preamble.tex`.
+How the citation rules in [`reference-writting/`](../../reference-writting/README.md) map onto the actual LaTeX commands, given the `natbib` + `unsrtnat` + `cleveref` setup in `../preamble.tex`.
 
-## Citations (natbib, APA-style)
+> **Style since 2026-11-15: numeric, IEEE-like.** After the tutor's review (`\todo` in `main.tex`, 2026-11-14: numeric `[1]` with the title «Referencias», or alphanumeric `[AWT23]`), the authors chose the numeric style. `natbib` runs with `numbers,square,sort&compress`, `\bibliographystyle{unsrtnat}` orders the list by first citation and prints URLs, and the list is titled «Referencias» and listed in the table of contents. The prose rules of `reference-writting/` (what a citation may attribute, locators for direct quotes) still apply; only the rendering changed from author-year to numbers.
+
+## Citations (natbib, numeric)
 
 | You want | Command | Renders as |
 | :--- | :--- | :--- |
-| Narrative citation ("Author (Year) found...") | `\citet{key}` | Rodríguez (2024) |
-| Parenthetical citation ("...as shown (Author, Year)") | `\citep{key}` | (Rodríguez, 2024) |
-| With a page/locator (direct quotes) | `\citep[p.~12]{key}` | (Rodríguez, 2024, p. 12) |
-| Multiple sources | `\citep{key1,key2}` | (Rodríguez, 2024; Muñoz, 2023) |
-| Author already named, just the year | `\citeyearpar{key}` | (2024) |
+| Narrative citation ("Author found...") | `\citet{key}` | Rodríguez et al. [4] |
+| Parenthetical citation | `\citep{key}` | [4] |
+| With a page/locator (direct quotes) | `\citep[p.~12]{key}` | [4, p. 12] |
+| Multiple sources | `\citep{key1,key2,key3}` | [4–6] (compressed and sorted) |
+| Secondary source (cited in another work) | `(Autor, citado en \citep{key})` | (Sridharan, citado en [17]) |
+
+Don't use `\citealp`, `\citeyear` or `\citeyearpar`: in numeric mode they print a bare number or nothing useful.
 
 Rules:
-- **Never** hand-type a citation like `(Smith, 2020)` — always a `\cite*` command, so the bibliography stays the single source of truth and `apalike` handles formatting/sorting.
+- **Never** hand-type a citation like `(Smith, 2020)` — always a `\cite*` command, so the bibliography stays the single source of truth and `unsrtnat` handles numbering and ordering.
 - Follow `reference-writting/direct-reference.md` for when a citation must carry a locator (`p.`/`pp.`/`para.`) — direct quotes always do.
 - Follow `reference-writting/indirect-reference.md` for paraphrase/synthesis citations — usually `\citep{key}` or `\citet{key}`, no locator needed unless pointing to a specific passage.
 - Every `\cite*` key must exist in the shared `.bib` file. If the Investigador hasn't supplied a real source yet, use `\cite{cite_needed}` as a visible, grep-able placeholder — **never** invent a BibTeX key/entry to fill the gap (see `../../../agent-roles/Investigador.md`).
 
-**apalike vs. strict APA 7**: `apalike.bst` gets the shape right (author-year, hanging indent, alphabetical) but has known small deviations from the literal APA-7 rulebook (e.g. `and` vs. `&` between authors, some punctuation details). If a reviewer flags a specific mismatch, prefer a spot patch or a small custom `.bst` tweak over swapping the whole citation engine — a wholesale switch to `apacite`/biblatex-apa is a structural change that goes through the Coordinador, not a silent substitution.
+**unsrtnat output language**: `unsrtnat.bst` writes its fixed words in English (`and`, `In`, `pages`, `URL`). If a reviewer flags it, prefer a small custom `.bst` copy over swapping the citation engine; a switch to biblatex is a structural change that goes through the Coordinador, not a silent substitution.
 
 ## Direct quotes (csquotes)
 
