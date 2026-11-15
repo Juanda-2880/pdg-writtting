@@ -776,3 +776,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «En la Tabla 8.1, el resultado del objetivo 1 solo incluye métricas de modelos de lenguaje (\emph{tokens} por segundo). Añadan las métricas de los demás modelos, como la latencia y la tasa de peticiones atendidas (R1-24).» → aplicado · la fila del objetivo 1 añade «tasa de peticiones atendidas» a las métricas de carga de trabajo.
 - **Verificación:** `make build` OK (74 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; queda 1 `\todo` en el capítulo 09.
+
+### 2026-11-15 · cap. 09 · Resultado del objetivo 4 en la Tabla 8.1
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
+- **F1** (tutor): «En la Tabla 8.1, el resultado del objetivo 4 incluye "el crecimiento de la capacidad por nodo", que no forma parte del objetivo tal como está redactado. Alineen la tabla con el objetivo o el objetivo con la tabla.» → aplicado · se retiró «y el crecimiento de la capacidad por nodo» de la fila del objetivo 4. El resultado queda alineado con el objetivo: pruebas de carga con usuarios concurrentes, incluidos los modelos que no son de lenguaje.
+- **Verificación:** `make build` OK (74 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; el capítulo 09 queda sin `\todo`.
