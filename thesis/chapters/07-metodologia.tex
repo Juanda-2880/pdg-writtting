@@ -29,9 +29,40 @@ La duración de tres semanas por \emph{sprint} responde a la naturaleza del trab
 
 Los artefactos y ceremonias que el equipo emplea de forma efectiva son un tablero en Jira para el \emph{backlog} (la lista de trabajo priorizada) y el seguimiento de las iteraciones, un repositorio Bitbucket para el control de versiones y los archivos de configuración de la infraestructura, y una reunión semanal de seguimiento con el tutor del proyecto, en la que se revisa el avance de la iteración en curso y se ajusta el alcance de la siguiente. No se documentan otras ceremonias de Scrum, por ejemplo el \emph{daily scrum} o las retrospectivas formales, porque el equipo no las practica de forma sistemática; el punto de control periódico del proyecto es la reunión semanal con el tutor.
 
-\todo{Consideren acompañar este proceso con un diagrama sencillo de las etapas de investigación y del ciclo de \emph{sprints}, para que el lector visualice la estrategia metodológica.}
+La estructura lógica del proceso de investigación se organiza en cuatro etapas. La recolección de datos se apoya en dos fuentes instrumentadas por el propio sistema, que son la telemetría de \emph{hardware} e inferencia que produce el módulo de observabilidad y los resultados de las pruebas de carga que ejecutan \emph{scripts} de Python externos a la plataforma sobre los nodos de inferencia. La organización y sistematización de estos datos consiste en consolidar las métricas de \emph{hardware} y de inferencia en formatos comparables entre fases y entre motores de inferencia evaluados. El análisis contrasta estas métricas contra los objetivos específicos formulados, determinando en qué medida cada módulo construido resuelve la carencia que motivó su desarrollo. Finalmente, la interpretación y presentación de resultados traduce los hallazgos del análisis en conclusiones sobre el nivel de concurrencia que la plataforma sostiene. La \cref{fig:estrategia-metodologica} resume el ciclo de \emph{sprints} y las cuatro etapas, y muestra que los incrementos de cada iteración aportan las fuentes de datos sobre las que opera la investigación.
 
-La estructura lógica del proceso de investigación se organiza en cuatro etapas. La recolección de datos se apoya en dos fuentes instrumentadas por el propio sistema, que son la telemetría de \emph{hardware} e inferencia que produce el módulo de observabilidad y los resultados de las pruebas de carga que ejecutan \emph{scripts} de Python externos a la plataforma sobre los nodos de inferencia. La organización y sistematización de estos datos consiste en consolidar las métricas de \emph{hardware} y de inferencia en formatos comparables entre fases y entre motores de inferencia evaluados. El análisis contrasta estas métricas contra los objetivos específicos formulados, determinando en qué medida cada módulo construido resuelve la carencia que motivó su desarrollo. Finalmente, la interpretación y presentación de resultados traduce los hallazgos del análisis en conclusiones sobre el nivel de concurrencia que la plataforma sostiene.
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[
+      font=\small,
+      paso/.style={draw, rounded corners=2pt, align=center, text width=38mm, minimum height=13mm},
+      etapa/.style={draw, align=center, text width=29mm, minimum height=14mm, fill=black!5},
+      flecha/.style={-{Stealth[length=2mm]}, semithick}]
+    % Ciclo de sprints
+    \draw[dashed] (-2.35,1.3) rectangle (12.95,-2.0);
+    \node[font=\footnotesize, anchor=north] at (5.3,1.25) {Ciclo de \emph{sprints} de tres semanas};
+    \node[paso] (backlog) at (0.3,0) {\emph{Backlog} priorizado\\{\footnotesize tablero en Jira}};
+    \node[paso] (sprint) at (5.3,0) {\emph{Sprint} de tres semanas\\{\footnotesize reunión semanal\\con el tutor}};
+    \node[paso] (incremento) at (10.3,0) {Incremento verificable\\{\footnotesize versionado en Bitbucket}};
+    \draw[flecha] (backlog) -- (sprint);
+    \draw[flecha] (sprint) -- (incremento);
+    \draw[flecha] (incremento.south) -- (10.3,-1.4) -- node[below, font=\footnotesize] {ajuste del alcance de la iteración siguiente} (0.3,-1.4) -- (backlog.south);
+    % Etapas de investigación
+    \draw[dashed] (-2.35,-2.8) rectangle (12.95,-5.3);
+    \node[font=\footnotesize, anchor=north] at (5.3,-2.85) {Etapas de investigación};
+    \node[etapa] (recoleccion) at (-0.55,-4.15) {Recolección de datos\\{\footnotesize telemetría y pruebas de carga}};
+    \node[etapa] (organizacion) at (3.35,-4.15) {Organización y sistematización\\{\footnotesize métricas\\comparables}};
+    \node[etapa] (analisis) at (7.25,-4.15) {Análisis\\{\footnotesize contraste con los objetivos específicos}};
+    \node[etapa] (interpretacion) at (11.15,-4.15) {Interpretación y presentación\\{\footnotesize nivel de\\concurrencia sostenido}};
+    \draw[flecha] (recoleccion) -- (organizacion);
+    \draw[flecha] (organizacion) -- (analisis);
+    \draw[flecha] (analisis) -- (interpretacion);
+    % Relación entre ambos procesos
+    \draw[flecha, dashed] (5.3,-2.0) -- node[right, font=\footnotesize] {los incrementos aportan las fuentes de datos} (5.3,-2.8);
+  \end{tikzpicture}
+  \caption[Estrategia metodológica del proyecto]{Estrategia metodológica del proyecto. Cada \emph{sprint} parte del \emph{backlog} priorizado y entrega un incremento verificable, que se revisa con el tutor para ajustar el alcance de la iteración siguiente. Los incrementos aportan la telemetría y las pruebas de carga sobre las que operan las cuatro etapas de investigación.}
+  \label{fig:estrategia-metodologica}
+\end{figure}
 
 \todo{«Para no complejizar su desarrollo» es una expresión coloquial. Consideren «para no añadir complejidad a la plataforma».}
 

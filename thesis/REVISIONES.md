@@ -782,3 +782,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «En la Tabla 8.1, el resultado del objetivo 4 incluye "el crecimiento de la capacidad por nodo", que no forma parte del objetivo tal como está redactado. Alineen la tabla con el objetivo o el objetivo con la tabla.» → aplicado · se retiró «y el crecimiento de la capacidad por nodo» de la fila del objetivo 4. El resultado queda alineado con el objetivo: pruebas de carga con usuarios concurrentes, incluidos los modelos que no son de lenguaje.
 - **Verificación:** `make build` OK (74 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; el capítulo 09 queda sin `\todo`.
+
+### 2026-11-15 · cap. 07 · Diagrama de la estrategia metodológica
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
+- **F1** (tutor): «Consideren acompañar este proceso con un diagrama sencillo de las etapas de investigación y del ciclo de \emph{sprints}, para que el lector visualice la estrategia metodológica.» → aplicado · figura nueva `fig:estrategia-metodologica` (TikZ) después de ¶4 de §6.1. Arriba muestra el ciclo de \emph{sprints} (\emph{backlog} priorizado en Jira, \emph{sprint} de tres semanas con reunión semanal con el tutor, incremento verificable en Bitbucket y ajuste del alcance de la iteración siguiente) y abajo las cuatro etapas de investigación, enlazadas porque los incrementos aportan las fuentes de datos. ¶4 cierra con una oración que remite a la figura.
+- **Verificación:** `make build` OK (74 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 4 `\todo` en el capítulo 07.
