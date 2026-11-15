@@ -704,3 +704,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «"Sin cambiar de sistema de coordenadas" es una metáfora poco clara. Expliquen literalmente qué permite, por ejemplo, consultar métricas y registros con las mismas etiquetas.» → aplicado · la frase pasa a «Loki agrega los registros que emiten los contenedores y los indexa por las mismas etiquetas, de modo que las métricas y los registros se pueden consultar con un mismo conjunto de etiquetas y es posible pasar de una anomalía observada en una gráfica a los registros que la produjeron».
 - **Verificación:** `make build` OK (76 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; el capítulo 05 queda sin `\todo`.
+
+### 2026-11-15 · cap. 06 · Siglas definidas de nuevo
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
+- **F1** (tutor): «En este capítulo se definen de nuevo siglas que ya se definieron antes, como GPU, MLOps e IAsLab. Definan cada sigla una sola vez, en su primer uso.» → aplicado · se retiraron las expansiones de GPU, MLOps, IAsLab y API en el cap. 06. Quedan solo las siglas, ya definidas en los capítulos 01 y 05.
+- **Verificación:** `make build` OK (76 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 5 `\todo` en el capítulo 06.
