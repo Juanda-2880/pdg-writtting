@@ -252,25 +252,31 @@ Sobre este servicio se construyeron también el importador de pesos, que verific
 
 \section{Mediciones preliminares}\label{sec:avance-mediciones}
 
-\todo{Las mediciones de la Tabla 9.1 no indican cuántas repeticiones se hicieron, con qué carga ni en qué fecha, y valores como «cerca de 3» o «entre 15 y 17» no permiten comparar. Describan el procedimiento. La Figura 9.2 indica «20 peticiones iguales, desde el portátil», un dato que debería estar en el texto o en la tabla.}
-
 La \cref{tab:mediciones-poc} recoge las primeras mediciones del POC. Son referencias de funcionamiento en CPU y no constituyen la evaluación de desempeño del \cref{obj:evaluacion}, que aún no se ha ejecutado.
 
-\begin{table}[htbp]
+Las mediciones se tomaron el 26 de octubre de 2026 con una prueba funcional, que no constituye una prueba de carga, sobre el modelo Qwen3-0.6B. Desde un portátil conectado por la red privada virtual se enviaron, de forma secuencial y sin concurrencia, 20 peticiones idénticas a cada camino de servicio, con el mismo texto de entrada, temperatura 0, semilla fija y un máximo de 128 \emph{tokens} de respuesta, además de una petición previa de calentamiento por camino que no se contó. Cada motor se ejecutó con 2 CPU. La \cref{tab:mediciones-poc} reporta la mediana de las 20 peticiones y, entre paréntesis, el mínimo y el máximo. La latencia y los \emph{tokens} por segundo se miden de punta a punta, de modo que incluyen el viaje por la red privada, de unos 0,3\,s. Dentro de cada motor, la respuesta fue idéntica con y sin Ray. Los dos motores no se comparan entre sí, porque sirven el modelo en formatos distintos y la prueba no tuvo concurrencia, que es donde vLLM aporta sus ventajas.
+
+\begin{table}[H]
   \centering
-  \caption{Mediciones preliminares del POC (solo CPU; no son una evaluación de desempeño).}
+  \small
+  \renewcommand{\arraystretch}{1.25}
+  \caption{Mediciones preliminares del POC con Qwen3-0.6B en CPU, el 26 de octubre de 2026 (20 peticiones secuenciales por camino; no son una evaluación de desempeño).}
   \label{tab:mediciones-poc}
-  \begin{tabular}{>{\raggedright\arraybackslash}p{0.44\textwidth} >{\raggedright\arraybackslash}p{0.2\textwidth} >{\raggedright\arraybackslash}p{0.26\textwidth}}
+  \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.18\textwidth} >{\raggedright\arraybackslash}X >{\centering\arraybackslash}p{0.11\textwidth} >{\raggedright\arraybackslash}p{0.18\textwidth} >{\raggedright\arraybackslash}p{0.18\textwidth}}
     \toprule
-    \textbf{Medición} & \textbf{Resultado} & \textbf{Condición} \\
+    \textbf{Motor y camino} & \textbf{Formato de los pesos} & \textbf{\emph{Tokens} generados} & \textbf{Latencia total, mediana (mín.--máx.)} & \textbf{\emph{Tokens} por segundo, mediana (mín.--máx.)} \\
     \midrule
-    \emph{Tokens} por segundo, Qwen3-0.6B en GGUF Q8\_0 con \emph{llama.cpp} & Entre 15 y 17 & 2 CPU por motor \\
-    \addlinespace
-    \emph{Tokens} por segundo, Qwen3-0.6B con vLLM & Cerca de 3 & 2 CPU \\
-    \addlinespace
-    Latencia de la variante sobre Ray frente a \emph{llama.cpp} directo & +2,4\,\% & Misma salida y mismas peticiones \\
+    \emph{llama.cpp}, \emph{Deployment} & GGUF Q8\_0 & 100 & 6,92\,s (6,55--7,14) & 14,45 (14,02--15,27) \\
+    \emph{llama.cpp}, \emph{RayService} & GGUF Q8\_0 & 100 & 7,08\,s (6,70--7,65) & 14,12 (13,08--14,93) \\
+    vLLM, \emph{Deployment} & \emph{safetensors} bf16 & 82 & 27,67\,s (27,10--28,19) & 2,96 \\
+    vLLM, \emph{RayService} & \emph{safetensors} bf16 & 82 & 27,52\,s (26,93--110,43)\textsuperscript{a} & 2,98 \\
     \bottomrule
-  \end{tabular}
+  \end{tabularx}
+
+  \smallskip
+  \begin{minipage}{\textwidth}
+    \footnotesize\textsuperscript{a} El máximo corresponde a una sola de las 20 peticiones, que no se investigó. Para vLLM se registró solo la mediana de \emph{tokens} por segundo.
+  \end{minipage}
 \end{table}
 
 \section{Reuniones de seguimiento}\label{sec:avance-reuniones}
