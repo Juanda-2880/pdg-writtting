@@ -734,3 +734,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «La baja latencia y el consumo reducido de \emph{llama.cpp} se afirman sin evidencia en esta sección. Respáldenlos con una cita o remitan a las mediciones de la Tabla 9.1.» → aplicado · se retiran «baja latencia» y «consumo reducido», que la tabla no mide, y se remite a las mediciones preliminares: «\emph{llama.cpp} superó a vLLM en CPU para el modelo probado (\cref{tab:mediciones-poc})».
 - **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; queda 1 `\todo` en el capítulo 06.
+
+### 2026-11-15 · cap. 06 · Tercer vacío redactado como carencia
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
+- **F1** (tutor): «De los tres vacíos, el tercero ("El tercero es acercar la telemetría…") está redactado como una meta y no como un vacío. Redáctenlo como una carencia.» → aplicado · «El tercero es acercar la telemetría…» → «El tercero es la ausencia de una interfaz de autoservicio que exponga a los administradores de una sala académica la telemetría…».
+- **Verificación:** `make build` OK (75 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; el capítulo 06 queda sin `\todo`.
