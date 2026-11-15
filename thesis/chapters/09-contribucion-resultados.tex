@@ -32,8 +32,6 @@ La implementación del sistema de reserva de cupos con prioridad por rol, acopla
 
 \section{Resultados y entregables}
 
-\todo{En la Tabla 8.1, el resultado del objetivo 1 solo incluye métricas de modelos de lenguaje (\emph{tokens} por segundo). Añadan las métricas de los demás modelos, como la latencia y la tasa de peticiones atendidas (R1-24).}
-
 \todo{En la Tabla 8.1, el resultado del objetivo 4 incluye «el crecimiento de la capacidad por nodo», que no forma parte del objetivo tal como está redactado. Alineen la tabla con el objetivo o el objetivo con la tabla.}
 
 De acuerdo con el formato institucional del anteproyecto, cada resultado esperado y su entregable correspondiente deben trazarse a al menos uno de los objetivos específicos formulados en el \cref{cha:objetivos}. La \cref{tab:objetivos-entregables} presenta esta trazabilidad para los cuatro objetivos específicos del proyecto.
@@ -52,7 +50,7 @@ De acuerdo con el formato institucional del anteproyecto, cada resultado esperad
         \bottomrule
         \endfoot
         \Cref{obj:telemetria}: desarrollo del módulo de observabilidad &
-        Panel de telemetría que muestra, por nodo, métricas de \emph{hardware} (temperatura, VRAM, consumo energético) y de carga de trabajo (latencia, \emph{tokens} por segundo, saturación de concurrencia), mediante visualizaciones gráficas interactivas &
+        Panel de telemetría que muestra, por nodo, métricas de \emph{hardware} (temperatura, VRAM, consumo energético) y de carga de trabajo (latencia, \emph{tokens} por segundo, tasa de peticiones atendidas y saturación de concurrencia), mediante visualizaciones gráficas interactivas &
         Módulo de observabilidad integrado a la plataforma (Prometheus, Thanos, DCGM Exporter, Grafana, Loki) y su documentación de despliegue \\
         \addlinespace
         \Cref{obj:gobernanza}: implementación del sistema de cuotas por rol &

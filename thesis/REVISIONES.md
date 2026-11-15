@@ -770,3 +770,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
 - **F1** (tutor): «La sigla CPU (párrafo anterior) se usa sin definir, pues solo se define en el Anexo D, y RBAC se define aquí aunque el control de acceso basado en roles ya aparece en la sección 4.6. Definan cada sigla en su primer uso dentro del texto.» → aplicado · CPU se define en su primer uso real (cap. 06 §6.5): «unidad central de procesamiento (CPU)»; RBAC se introduce en el cap. 05 §4.6: «control de acceso basado en roles (RBAC)»; el cap. 09 pasa a «integración con sistemas RBAC», sin volver a expandir la sigla.
 - **Verificación:** `make build` OK (74 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; quedan 2 `\todo` en el capítulo 09.
+
+### 2026-11-15 · cap. 09 · Métricas del objetivo 1 en la Tabla 8.1
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); opción A aprobada por Melo088 en el chat.
+- **F1** (tutor): «En la Tabla 8.1, el resultado del objetivo 1 solo incluye métricas de modelos de lenguaje (\emph{tokens} por segundo). Añadan las métricas de los demás modelos, como la latencia y la tasa de peticiones atendidas (R1-24).» → aplicado · la fila del objetivo 1 añade «tasa de peticiones atendidas» a las métricas de carga de trabajo.
+- **Verificación:** `make build` OK (74 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; queda 1 `\todo` en el capítulo 09.
