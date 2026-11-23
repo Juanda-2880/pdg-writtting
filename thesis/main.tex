@@ -67,17 +67,32 @@ por \\[0.5cm]
 % Se escriben AL FINAL, cuando el resto del documento esté completo — ver
 % project-context/formato-anteproyecto.md ("Resumen": máx. 1 página, 4-6
 % palabras clave, sin citas) y skills/thesis-writing/SKILL.md Modo 2.
+% Cada dato del Resumen y del Abstract sale de los capítulos (formato: «no debe
+% contener información que no esté incluida en el documento»): problema (02),
+% estado del arte (06), objetivos (04), metodología (07), fases (08),
+% entregables (09) y avances del POC (10). No se presenta hipótesis porque el
+% capítulo 03 se eliminó por decisión de los autores (ver STATUS.md).
 \chapter*{Resumen}
 \addcontentsline{toc}{chapter}{Resumen}
-% [verify: not yet written — se redacta al final del anteproyecto]
 
-\noindent \textbf{Palabras clave}: % [verify]
+El Laboratorio de Inteligencia Artificial y Arquitectura de Software (IAsLab) de la Universidad Icesi cuenta con estaciones de trabajo con unidades de procesamiento gráfico (GPU), que se comparten entre las clases y la investigación. Sobre esa infraestructura, el despliegue de modelos se realiza de forma manual en las máquinas físicas, el acceso a los recursos depende de solicitudes individuales con tiempos de espera prolongados y los administradores carecen de telemetría en tiempo real sobre el estado de los nodos. Como consecuencia, la capacidad instalada se subutiliza, el ciclo de vida de los modelos se interrumpe después del entrenamiento y el clúster queda expuesto a saturaciones no reguladas, mientras cerca de 850 estudiantes de programas de tecnologías de la información podrían aprovecharla. Las soluciones del estado del arte, diseñadas para clústeres industriales, de investigación o de campus, no integran la gobernanza por rol con el servicio de inferencia en un laboratorio de este tipo.
+
+Para responder a este problema se propone IAsLab ORCHID, una plataforma de orquestación y gobernanza de cargas de inteligencia artificial y aprendizaje automático construida sobre un clúster de Kubernetes, con la que se busca consolidar el ciclo de vida de MLOps \emph{on-premise} en la universidad. La plataforma integra tres módulos. El módulo de despliegue pone en servicio, de forma concurrente, modelos ya entrenados, mediante motores de inferencia empaquetados como imágenes de contenedor que quedan accesibles por una interfaz de programación de aplicaciones (API). El módulo de gobernanza reserva cupos de cómputo para las cargas de inferencia según los roles que provee SAAMFI, el sistema de autenticación y autorización de la universidad, con el fin de prevenir la monopolización de las GPU. El módulo de observabilidad captura y visualiza métricas de \emph{hardware} y de carga de trabajo de los nodos. Un cuarto objetivo evalúa la plataforma mediante pruebas de carga con usuarios concurrentes, según criterios de latencia, \emph{throughput} y tasa de error.
+
+El desarrollo sigue un proceso iterativo e incremental de tipo Scrum, con \emph{sprints} de tres semanas y reuniones semanales con el tutor. El trabajo se organiza en cinco fases que siguen la cadena de dependencias técnicas, desde la puesta en marcha del clúster hasta la evaluación empírica.
+
+Como avance, se construyó una prueba de concepto en un único servidor físico, sobre el que ocho máquinas virtuales simulan el clúster. El prototipo cubre ya el ciclo de despliegue de un modelo, desde su alta en el catálogo hasta su consumo por una API compatible con OpenAI, con cuotas, registros y métricas por usuario. Las mediciones preliminares se tomaron sin GPU, como referencia de funcionamiento, y la evaluación de desempeño se hará sobre las GPU de la sala 104M, donde el despliegue está previsto para diciembre de 2026. Los entregables son el \emph{software} de la plataforma, desplegado sobre la infraestructura del IAsLab, y su documentación técnica y de usuario. Con ellos, la administración manual se sustituye por un servicio con reglas de uso explícitas, que amplía el acceso de estudiantes y profesores al cómputo especializado y reduce la necesidad de adquirir créditos en nubes públicas comerciales.
+
+\medskip
+\noindent \textbf{Palabras clave}: MLOps, Kubernetes, gobernanza de GPU, servicio de inferencia, observabilidad.
 
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
-% [verify: not yet written — se redacta al final del anteproyecto]
 
-\noindent \textbf{Keywords}: % [verify]
+The Artificial Intelligence and Software Architecture Laboratory (IAsLab) at Universidad Icesi operates workstations equipped with graphics processing units (GPUs) that are shared between classes and research. Model deployment on this infrastructure is manual, access to resources depends on individual requests handled by hand, and administrators lack real-time telemetry on the state of the nodes, so the installed capacity is underused and the life cycle of the models stops after training. This project proposes IAsLab ORCHID, a platform for orchestrating and governing artificial intelligence and machine learning workloads on a Kubernetes cluster, in order to consolidate the on-premise MLOps life cycle at the university. The platform integrates three modules. The deployment module serves trained models concurrently through inference engines packaged as container images and exposed through an application programming interface (API). The governance module reserves compute quotas for inference workloads according to the roles provided by SAAMFI, the university's authentication and authorization system, in order to prevent GPU monopolization. The observability module collects and displays hardware and workload metrics for each node. A fourth objective evaluates the platform through load tests with concurrent users, in terms of latency, throughput and error rate. Development follows an iterative and incremental Scrum-based process with three-week sprints, organized in five phases that follow the technical dependencies between the modules. As progress, a proof of concept running on a single physical server, where eight virtual machines simulate the cluster, already covers the deployment cycle of a model, from its registration in the catalog to its consumption through an OpenAI-compatible API, with per-user quotas, logs and metrics. Performance will be evaluated on the GPUs of room 104M, where deployment is planned for December 2026. The deliverables are the platform software, deployed on the IAsLab infrastructure, and its technical and user documentation.
+
+\medskip
+\noindent \textbf{Keywords}: MLOps, Kubernetes, GPU governance, model serving, observability.
 
 % --- Lista de acrónimos -----------------------------------------------------
 % Todo acrónimo usado en el documento va aquí y, además, debe definirse la

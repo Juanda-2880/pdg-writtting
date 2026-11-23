@@ -898,3 +898,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Revisó:** tutor del proyecto (correcciones de 2026-11-14); Melo088 aportó dos fotografías en el chat y dejó a elección del agente usar una o ambas.
 - **F1** (tutor, pendiente desde el bloque «El equipo del POC desde el inicio» del 2026-11-15): «Acompañen la descripción con una fotografía de la estación o torre.» → aplicado · se usan las dos fotografías, recortadas al encuadre de la torre, en una sola figura `fig:servidor-poc` (Figura 9.1), con la vista lateral a la izquierda y la posterior a la derecha. Archivos `imagenes/servidor-poc-lateral.jpg` y `imagenes/servidor-poc-posterior.jpg` (JPEG sin metadatos). ¶1 añade «La \cref{fig:servidor-poc} muestra el equipo.» después de la descripción del *hardware*, y la figura va antes de la `tab:vm-poc`. Las figuras siguientes del capítulo se renumeran solas (`\cref`).
 - **Verificación:** `make build` OK (79 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; la figura queda en la p. 33, junto al ¶1.
+
+### 2026-11-23 · `main.tex` (front matter) · Resumen y Abstract
+
+- **Revisó:** Melo088, en el chat; texto validado sin cambios.
+- **Redacción:** Resumen de cuatro párrafos (problema y vacío del estado del arte; propuesta, tres módulos y evaluación; método y fases; avance del POC, entregables e impacto) con 5 palabras clave, y Abstract de un párrafo con el mismo contenido, sin la frase del estado del arte ni la de impacto. Solo usa datos de los caps. 02, 04, 06, 07, 08, 09 y 10, sin citas. No incluye hipótesis porque el cap. 03 se eliminó. Para que el Resumen cupiera en una página, se dejaron 5 palabras clave (sale «infraestructura *on-premise*»).
+- **Verificación:** `make build` OK (79 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; el Resumen ocupa la p. vi y el Abstract la p. vii.
