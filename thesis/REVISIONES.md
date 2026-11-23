@@ -892,3 +892,9 @@ Las entradas van en orden cronológico, la más reciente al final. No se editan 
 - **Hecho nuevo en `project-context/`:** `README.md` («Working Model», «Scrum roles and backlog») registra el reparto, por declaración de Melo088 (2026-11-16).
 
 - **Verificación:** `make build` OK (79 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; el capítulo 07 queda sin `\todo`.
+
+### 2026-11-23 · cap. 10 (cap. 9 en el PDF) · Fotografía del servidor del POC
+
+- **Revisó:** tutor del proyecto (correcciones de 2026-11-14); Melo088 aportó dos fotografías en el chat y dejó a elección del agente usar una o ambas.
+- **F1** (tutor, pendiente desde el bloque «El equipo del POC desde el inicio» del 2026-11-15): «Acompañen la descripción con una fotografía de la estación o torre.» → aplicado · se usan las dos fotografías, recortadas al encuadre de la torre, en una sola figura `fig:servidor-poc` (Figura 9.1), con la vista lateral a la izquierda y la posterior a la derecha. Archivos `imagenes/servidor-poc-lateral.jpg` y `imagenes/servidor-poc-posterior.jpg` (JPEG sin metadatos). ¶1 añade «La \cref{fig:servidor-poc} muestra el equipo.» después de la descripción del *hardware*, y la figura va antes de la `tab:vm-poc`. Las figuras siguientes del capítulo se renumeran solas (`\cref`).
+- **Verificación:** `make build` OK (79 páginas); cero citas y referencias indefinidas, cero cajas desbordadas; la figura queda en la p. 33, junto al ¶1.

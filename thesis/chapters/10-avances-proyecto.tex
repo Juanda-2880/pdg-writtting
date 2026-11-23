@@ -16,7 +16,15 @@
 % ==========================================================================
 \chapter{Avances del proyecto}\label{cha:avances}
 
-Este capítulo informa el trabajo realizado hasta el 7 de noviembre de 2026 en la prueba de concepto (POC) del proyecto. El prototipo corre en un único servidor físico del laboratorio, un computador de escritorio con un procesador AMD Ryzen 7 1700 de 8 núcleos y 16 hilos, 60\,GiB de memoria RAM y una unidad de estado sólido NVMe, de la que el prototipo ocupa una partición de 388\,GiB. El equipo cuenta además con una unidad de procesamiento gráfico (GPU) NVIDIA GeForce GTX 1080 Ti de 11\,GB, que el prototipo aún no utiliza porque no se ha asignado a ninguna de sus máquinas virtuales. Sobre ese servidor se simula el clúster con ocho máquinas virtuales, tres de control, tres de servicios y dos de cómputo sin GPU, cuyos recursos recoge la \cref{tab:vm-poc}, y cada modelo se sirve en un solo nodo de cómputo. El clúster final también tendrá tres nodos de control, alojados en equipos físicos del laboratorio, de modo que el prototipo reproduce esa topología con máquinas virtuales. El POC permite validar el diseño antes de desplegarlo en la sala 104M en diciembre de 2026, y por esa razón su implementación puede cambiar. Las decisiones que aquí se describen son las vigentes a la fecha de corte.
+Este capítulo informa el trabajo realizado hasta el 7 de noviembre de 2026 en la prueba de concepto (POC) del proyecto. El prototipo corre en un único servidor físico del laboratorio, un computador de escritorio con un procesador AMD Ryzen 7 1700 de 8 núcleos y 16 hilos, 60\,GiB de memoria RAM y una unidad de estado sólido NVMe, de la que el prototipo ocupa una partición de 388\,GiB. El equipo cuenta además con una unidad de procesamiento gráfico (GPU) NVIDIA GeForce GTX 1080 Ti de 11\,GB, que el prototipo aún no utiliza porque no se ha asignado a ninguna de sus máquinas virtuales. La \cref{fig:servidor-poc} muestra el equipo. Sobre ese servidor se simula el clúster con ocho máquinas virtuales, tres de control, tres de servicios y dos de cómputo sin GPU, cuyos recursos recoge la \cref{tab:vm-poc}, y cada modelo se sirve en un solo nodo de cómputo. El clúster final también tendrá tres nodos de control, alojados en equipos físicos del laboratorio, de modo que el prototipo reproduce esa topología con máquinas virtuales. El POC permite validar el diseño antes de desplegarlo en la sala 104M en diciembre de 2026, y por esa razón su implementación puede cambiar. Las decisiones que aquí se describen son las vigentes a la fecha de corte.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[height=6cm]{imagenes/servidor-poc-lateral.jpg}\hspace{4mm}%
+  \includegraphics[height=6cm]{imagenes/servidor-poc-posterior.jpg}
+  \caption{Servidor físico del POC en el laboratorio, en vista lateral (izquierda) y posterior (derecha).}
+  \label{fig:servidor-poc}
+\end{figure}
 
 \begin{table}[htbp]
   \centering
